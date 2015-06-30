@@ -48,13 +48,3 @@ endif;
 function __autoload( $className ) {
     include  'classes/' . $className . '.class.php';
 }
-
-function sortByTimestamp( $a, $b ){
-    if( $a->timestamp > $b->timestamp ) :
-        return -1;
-    elseif( $a->timestamp < $b->timestamp ):
-        return 1;
-    endif;
-
-    return 0;
-}
