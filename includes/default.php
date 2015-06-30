@@ -1,36 +1,5 @@
 <?php
-// http://steamcommunity.com/app/346110/discussions/0/594821545178546859/
-$steamProfiles = array(
-    '76561198175441809' => 'TheRightHand',
-    '76561198178808059' => 'TheLeftHand',
-    'wildcarddrake' => 'Drake',
-    'wildcardjat' =>  'Jat',
-    '76561198207415608' => 'StudioWildcard',
-    '76561198229320228' => 'ArkDevEngineer',
-    '76561198178797193' => 'TheRightFoot',
-    '76561198174992766' => 'Jesse Rapczak'
-);
-
-$redditProfiles = array(
-    'jatonreddit' => 'Jat',
-    'WildcardTheRightHand' => 'TheRightHand'
-);
-
-$twitterProfiles = array(
-    'jatstweeter' => 'Jat',
-    'KaydHendricks' => 'TheRightHand'
-);
-
-$roles = array(
-    'Jat' => 'Community Manager',
-    'Drake' => 'Lead Engineer',
-    'TheLeftHand' => 'Designer',
-    'ArkDevEngineer' => 'Engineer',
-    'TheRightFoot' => 'Producer',
-    'Jesse Rapczak' => 'Art Director'
-);
-
-$databasePath = 'sqlite:' . __DIR__ . '/../data/arkdevtracker.sqlite';
+include( 'config.php' );
 
 try {
     $database = new PDO( $databasePath );
