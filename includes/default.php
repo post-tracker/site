@@ -7,13 +7,20 @@ try {
     die( '<h2>Unable to open database connection</h2><p>'  . $error->getMessage() . '</p>');
 }
 
-// Create posts table if it doesn't exist
-$tableExists = gettype( $database->exec( 'SELECT count(*) FROM posts LIMIT 1' ) ) == 'integer';
-if( !$tableExists ):
-    $query = 'CREATE TABLE posts( topic TEXT, topic_url TEXT, user TEXT, user_identifier TEXT, url TEXT, source TEXT, content TEXT, timestamp TEXT )';
-    $database->exec( $query );
-endif;
+$database->setAttribute( PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ );
 
 function __autoload( $className ) {
     include  'classes/' . $className . '.class.php';
+}
+
+function getUid( $service, $identifier ){
+    $query = 'SELECT uid FROM accounts WHERE service = :service AND identifier = :identifier LIMIT 1';
+    $PDO = $database->prepare( $query );
+
+    $PDO->bindValue( ':service', $service );
+    $PDO->bindValue( ':identifier', $identifier );
+
+    $PDO->execute();
+
+    return $PDO->fetchColumn();
 }

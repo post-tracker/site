@@ -5,9 +5,9 @@ class Reddituser extends Kurl {
 
     private $posts = array();
 
-    public function __construct( $userIdentifier, $name ){
-        $this->identifier = $userIdentifier;
-        $this->name = $name;
+    public function __construct( $uid, $identifier ){
+        $this->userId = $uid;
+        $this->identifier = $identifier;
     }
 
     public function getRecentPosts(){
@@ -26,7 +26,7 @@ class Reddituser extends Kurl {
             $post->setTopic( $redditPost->data->link_title, $commentsUrl );
             $post->setText( $redditPost->data->body );
             $post->setUrl( $commentsUrl . '#' . $redditPost->data->id );
-            $post->setUser( $this->name, $this->identifier );
+            $post->setUserId( $this->userId );
 
             $post->setSource( 'reddit' );
 

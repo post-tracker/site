@@ -3,11 +3,12 @@ include( '../includes/default.php' );
 
 switch( $_GET[ 'type' ] ):
     case 'reddit':
-        foreach( $redditProfiles as $identifier => $name ) :
-            $redditUser = new Reddituser( $identifier, $name );
+        $PDO = $database->query( 'SELECT uid, identifier FROM accounts WHERE service = "reddit"' );
+        $users = $PDO->fetchAll();
+        foreach( $users as $userData ) :
+            $redditUser = new Reddituser( $userData->uid, $userData->identifier);
 
             $posts = $redditUser->getRecentPosts();
-
             foreach( $posts as $post ) :
                 $post->save();
             endforeach;
@@ -15,8 +16,10 @@ switch( $_GET[ 'type' ] ):
         break;
 
     case 'steam':
-        foreach( $steamProfiles as $identifier => $name ) :
-            $steamProfile = new Steamprofile( $identifier, $name );
+        $PDO = $database->query( 'SELECT uid, identifier FROM accounts WHERE service = "steam"' );
+        $users = $PDO->fetchAll();
+        foreach( $users as $userData ) :
+            $steamProfile = new Steamprofile( $userData->uid, $userData->identifier );
 
             $posts = $steamProfile->getRecentPosts();
             foreach( $posts as $post ) :

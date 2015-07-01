@@ -10,7 +10,7 @@ module.exports = React.createClass({
         return (
             <div className="panel panel-default">
                 <div className="panel-heading">
-                    {this.props.data.user} {this.props.data.user_role ? '[' + this.props.data.user_role + ']' : ''} posted in <a href={this.props.data.topic_url} dangerouslySetInnerHTML={{ __html: this.props.data.topic }}></a>
+                    {this.props.data.nick} {this.props.data.role ? '[' + this.props.data.role + ']' : ''} posted in <a href={this.props.data.topic_url} dangerouslySetInnerHTML={{ __html: this.props.data.topic }}></a>
                 </div>
                 <div className="panel-body" dangerouslySetInnerHTML={{ __html: this.props.data.content }}></div>
                 <div className="panel-footer">
