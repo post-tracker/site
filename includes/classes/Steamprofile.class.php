@@ -5,9 +5,9 @@ class Steamprofile {
 
     private $posts = array();
 
-    public function __construct( $userIdentifier, $name ){
-        $this->identifier = $userIdentifier;
-        $this->name = $name;
+    public function __construct( $uid, $identifier ){
+        $this->uid = $uid;
+        $this->identifier = $identifier;
 
         include_once( __DIR__ . '/../simple_html_dom.php' );
     }
@@ -38,7 +38,7 @@ class Steamprofile {
             $post->setTopic( $communityPost->find( 'a.forum_topic_link', 0 )->plaintext, $communityPost->find( 'a.forum_topic_link', 0 )->href );
             $post->setText( $communityPost->find( 'div.post_searchresult_simplereply', 0 )->innertext );
             $post->setUrl( $url );
-            $post->setUser( $this->name, $this->identifier );
+            $post->setUserId( $this->uid );
 
             $post->setSource( 'steam' );
 
