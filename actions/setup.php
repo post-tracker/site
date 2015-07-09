@@ -94,6 +94,14 @@ $developers = array(
         'accounts' => array(
             'steam' => 'wcTLF'
         )
+    ),
+    array(
+        'nick' => 'Boris Dos',
+        'name' => '',
+        'role' => '',
+        'accounts' => array(
+            'steam' => '76561198179250147'
+        )
     )
 );
 
