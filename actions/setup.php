@@ -102,6 +102,14 @@ $developers = array(
         'accounts' => array(
             'steam' => '76561198179250147'
         )
+    ),
+    array(
+        'nick' => 'HongleBongle',
+        'name' => '',
+        'role' => '',
+        'accounts' => array(
+            'steam' => 'HongleBongle'
+        )
     )
 );
 
