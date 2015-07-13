@@ -98,7 +98,7 @@ $developers = array(
     array(
         'nick' => 'Boris Dos',
         'name' => '',
-        'role' => '',
+        'role' => 'Network Engineer',
         'accounts' => array(
             'steam' => '76561198179250147'
         )
