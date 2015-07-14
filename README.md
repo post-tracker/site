@@ -1,6 +1,8 @@
 # ARK-Dev-Tracker
 Dev Tracker for ARK: Survival Evolved
 
+[![devDependency Status](https://david-dm.org/kokarn/ark-dev-tracker/dev-status.svg)](https://david-dm.org/kokarn/ark-dev-tracker#info=devDependencies)
+
 ## Feedback
 [ARK Dev Tracker on Reddit](https://www.reddit.com/r/playark/comments/3blzar/ark_dev_tracker/)
 
