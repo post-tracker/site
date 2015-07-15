@@ -5,7 +5,7 @@ include( '../includes/default.php' );
 $developers = array(
     array(
         'nick' => 'Jat',
-        'name' => '',
+        'name' => 'Jathiesh Karunakaran',
         'role' => 'Community Manager',
         'accounts' => array(
             'steam' => 'wildcardjat',
