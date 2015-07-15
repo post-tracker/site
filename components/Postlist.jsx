@@ -79,9 +79,7 @@ module.exports = React.createClass({
         return (
             <div>
                 <Search handleSearch={this.handleSearch}></Search>
-                <div className="communityPostList">
-                    {postNodes}
-                </div>
+                {postNodes}
             </div>
         );
     }
