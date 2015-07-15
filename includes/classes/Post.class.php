@@ -33,6 +33,12 @@ class Post extends Kurl {
         $this->source = $source;
     }
 
+    public function isValid(){
+        if( strlen( $this->text ) > 0 ) :
+            return true;
+        endif;
+    }
+
     private function postExists(){
         global $database;
 
