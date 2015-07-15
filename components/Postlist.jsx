@@ -72,8 +72,8 @@ module.exports = React.createClass({
         var postNodes = this.state.data.map( function( communityPost ) {
             return (
                 <Post
-                    data={communityPost}>
-                </Post>
+                    data={communityPost}
+                ></Post>
             );
         });
         return (
