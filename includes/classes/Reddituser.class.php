@@ -11,6 +11,12 @@ class Reddituser extends Kurl {
     }
 
     public function getRecentPosts(){
+        $this->loadComments();
+
+        return $this->posts;
+    }
+
+    private function loadComments(){
         $url = self::$apiBase . str_replace( '{username}', $this->identifier, self::$userCommentsUrl );
         $data = $this->loadUrl( $url );
 
@@ -30,9 +36,10 @@ class Reddituser extends Kurl {
 
             $post->setSource( 'reddit' );
 
-            $this->posts[] = $post;
+            if( $post->isValid() ) :
+                $this->posts[] = $post;
+            endif;
         endforeach;
 
-        return $this->posts;
     }
 }
