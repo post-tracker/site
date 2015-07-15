@@ -64,7 +64,7 @@ $developers = array(
         )
     ),
     array(
-        'nick' => 'Jesse Rapczak',
+        'nick' => 'Jesse',
         'name' => 'Jesse Rapczak',
         'role' => 'Art Director',
         'accounts' => array(
