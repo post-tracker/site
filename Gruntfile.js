@@ -5,6 +5,7 @@ module.exports = function(grunt) {
         watch: {
             react: {
                 files: 'components/*.jsx',
+                // tasks: [ 'env:dev', 'browserify' ] // Uncomment if you need extra debug
                 tasks: [ 'browserify' ]
             },
             uglify: {
@@ -28,12 +29,19 @@ module.exports = function(grunt) {
                 src: [ 'scripts/app.built.js' ],
                 dest: 'scripts/app.min.js'
             }
+        },
+
+        env: {
+            dev : {
+                NODE_ENV : 'development'
+            }
         }
     });
 
     grunt.loadNpmTasks( 'grunt-browserify' );
     grunt.loadNpmTasks( 'grunt-contrib-watch' );
     grunt.loadNpmTasks( 'grunt-contrib-uglify' );
+    grunt.loadNpmTasks( 'grunt-env' );
 
     grunt.registerTask( 'default', [
         'browserify'
