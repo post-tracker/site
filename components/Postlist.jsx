@@ -4,7 +4,7 @@ var React = require( 'react' );
 var Post = require( './Post.jsx' );
 var $ = require( 'jquery' );
 var debounce = require( 'debounce' );
-var queryString = require( 'query-string' );
+var Search = require( './Search.jsx' );
 
 module.exports = React.createClass({
     updateDataTimeout : false,
@@ -12,28 +12,20 @@ module.exports = React.createClass({
         this.updateDataTimeout = setTimeout( this.loadCommentsFromServer, this.props.pollInterval );
     },
     getInitialState: function() {
-        var currentQuery = queryString.parse( location.search ),
-            defaultState =  {
-                data: [],
-                searchString: ''
-            };
-
-        if( typeof currentQuery.search !== 'undefined' ){
-            defaultState.searchString = currentQuery.search;
-        }
-
-        return defaultState;
+        return {
+            data: [],
+            searchString: ''
+        };
     },
-    handleSearch: function( event ){
-        event.persist();
-        this.debouncedSearch( event );
+    handleSearch: function( searchString ){
+        this.debouncedSearch( searchString );
     },
-    search: function( event ){
+    search: function( searchString ){
         this.setState({
-            searchString: event.target.value
+            searchString: searchString
         });
 
-        this.loadCommentsFromServer( event.target.value );
+        this.loadCommentsFromServer( searchString );
     },
     loadCommentsFromServer: function( searchString ) {
         clearTimeout( this.updateDataTimeout );
@@ -86,17 +78,7 @@ module.exports = React.createClass({
         });
         return (
             <div>
-                <form>
-                    <input
-                        type="text"
-                        role="search"
-                        name="search"
-                        className="form-control"
-                        placeholder="Search..."
-                        defaultValue={this.state.searchString}
-                        onChange={this.handleSearch}
-                    ></input>
-                </form>
+                <Search handleSearch={this.handleSearch}></Search>
                 <div className="communityPostList">
                     {postNodes}
                 </div>
