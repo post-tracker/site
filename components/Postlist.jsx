@@ -72,6 +72,7 @@ module.exports = React.createClass({
         var postNodes = this.state.data.map( function( communityPost ) {
             return (
                 <Post
+                    key={communityPost.timestamp}
                     data={communityPost}
                 ></Post>
             );
