@@ -30,7 +30,7 @@ module.exports = React.createClass({
         var bodyClasses = 'panel-body';
 
         if( this.state.expandable ){
-            expander = <div className="expander" onClick={this.expand}>Show full post</div>;
+            expander = <div className="expander" onClick={this.expand}><button className="btn btn-default">Show full post</button></div>;
             bodyClasses = bodyClasses + ' expandable';
         }
 
