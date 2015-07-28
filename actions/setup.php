@@ -114,9 +114,10 @@ $developers = array(
     array(
         'nick' => 'Nubsly',
         'name' => '',
-        'role' => '',
+        'role' => 'Forum Moderator',
         'accounts' => array(
-            'steam' => 'Nubsly'
+            'steam' => 'Nubsly',
+            'reddit' => 'Nubsly-'
         )
     )
 );
