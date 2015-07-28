@@ -1,6 +1,6 @@
 {
   "name": "ark-dev-tracker",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "description": "A developer tracker for ARK: Survival Evolved",
   "main": "index.html",
   "scripts": {
