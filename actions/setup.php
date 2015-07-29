@@ -108,7 +108,8 @@ $developers = array(
         'name' => '',
         'role' => '',
         'accounts' => array(
-            'steam' => 'HongleBongle'
+            'steam' => 'HongleBongle',
+            'reddit' => 'HongleBongleFungle'
         )
     ),
     array(
