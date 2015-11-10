@@ -36,7 +36,8 @@ $developers = array(
         'name' => '',
         'role' => 'Lead Engineer',
         'accounts' => array(
-            'steam' => 'wildcarddrake'
+            'steam' => 'wildcarddrake',
+            'reddit' => 'WC-Drake'
         )
     ),
     array(
