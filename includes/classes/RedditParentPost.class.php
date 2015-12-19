@@ -12,7 +12,8 @@ class RedditParentPost extends Kurl {
 
     private function load(){
         $url = self::$apiBase . str_replace( array( '{topicid}', '{commentid}' ), array( $this->topicid, $this->id ), self::$singleCommentUrl );
-        $this->rawData = json_decode( $this->loadUrl( $url ) );
+        // This we can store a month, it will not change
+        $this->rawData = json_decode( $this->loadUrl( $url, 2592000 ) );
 
         if( !isset( $this->rawData[ 1 ]->data->children[ 0 ]->data ) ) :
             // print_r( $this->rawData );

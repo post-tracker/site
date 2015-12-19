@@ -1,8 +1,13 @@
 <?php
 class Kurl {
     private $data = false;
+    private $ttl = 60;
 
-    public function loadUrl( $url ){
+    public function loadUrl( $url, $customTTL = false ){
+        if( $customTTL ):
+            $this->ttl = $customTTL;
+        endif;
+        
         $this->loadFromCache( $url );
 
         return $this->data;
@@ -19,6 +24,6 @@ class Kurl {
     private function loadFromWeb( $url ){
         $this->data = file_get_contents( $url );
 
-        apc_store( $url, $this->data, 60 );
+        apc_store( $url, $this->data, $this->ttl );
     }
 }
