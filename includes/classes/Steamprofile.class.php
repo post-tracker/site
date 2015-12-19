@@ -42,6 +42,10 @@ class Steamprofile {
 
             $post->setSource( 'steam' );
 
+            if( strpos( $post->text, 'blockquote' ) !== false ):
+                $post->text = preg_replace( '/href="\#(.+?)"/mis', 'href="' . $communityPost->find( 'a.forum_topic_link', 0 )->href . '#$1"', $post->text );
+            endif;
+
             $this->posts[] = $post;
         endforeach;
 
