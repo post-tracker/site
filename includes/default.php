@@ -24,3 +24,7 @@ function getUid( $service, $identifier ){
 
     return $PDO->fetchColumn();
 }
+
+function parseRedditId( $unparsedRedditId ){
+    return str_replace( array( 't1_', 't2_', 't3_' ), '', $unparsedRedditId );
+}

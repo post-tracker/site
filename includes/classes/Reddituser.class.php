@@ -23,17 +23,27 @@ class Reddituser extends Kurl {
         $data = $this->loadUrl( $url );
 
         $posts = json_decode( $data );
+
         // Go over the recent posts
         foreach( $posts->data->children as $redditPost ) :
             $commentsUrl = 'http://www.reddit.com/r/' . $redditPost->data->subreddit . '/comments/';
-            $commentsUrl = $commentsUrl . str_replace( 't3_', '', $redditPost->data->link_id ) . '/';
+            $commentsUrl = $commentsUrl . parseRedditId( $redditPost->data->link_id ) . '/';
 
             $post = new Post();
 
             $post->setTimestamp( $redditPost->data->created_utc );
             $post->setTopic( $redditPost->data->link_title, $commentsUrl );
-            $post->setText( $redditPost->data->body );
-            $post->setUrl( $commentsUrl . '#' . $redditPost->data->id );
+
+            $parentPost = new RedditParentPost( parseRedditId( $redditPost->data->link_id ), parseRedditId( $redditPost->data->parent_id ) );
+
+            // If we fail to load it, just do it the next time instead
+            if( !isset( $parentPost->post ) ) :
+                continue;
+            endif;
+
+            $post->setText( $parentPost->getPostHtml() . html_entity_decode( $redditPost->data->body_html ) );
+            $post->setUrl( $commentsUrl . '' . $parentPost->topic . '/' . $redditPost->data->id . '#' . $redditPost->data->id );
+
             $post->setUserId( $this->userId );
 
             $post->setSource( 'reddit' );
