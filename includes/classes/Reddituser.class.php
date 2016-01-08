@@ -41,7 +41,10 @@ class Reddituser extends Kurl {
                 continue;
             endif;
 
-            $post->setText( $parentPost->getPostHtml() . html_entity_decode( $redditPost->data->body_html ) );
+            $text = html_entity_decode( $redditPost->data->body_html );
+            $text = preg_replace( '#href="/([ur])/#', 'href="http://reddit.com/$1/', $text );
+
+            $post->setText( $parentPost->getPostHtml() . $text );
             $post->setUrl( $commentsUrl . '' . $parentPost->topic . '/' . $redditPost->data->id . '#' . $redditPost->data->id );
 
             $post->setUserId( $this->userId );

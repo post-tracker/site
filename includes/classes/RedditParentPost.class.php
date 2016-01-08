@@ -36,7 +36,9 @@ class RedditParentPost extends Kurl {
 
         $this->post = new Post();
         $this->post->setTimestamp( $postData->created_utc );
-        $this->post->setText( html_entity_decode( $postData->body_html ) );
+        $text = html_entity_decode( $postData->body_html );
+        $text = preg_replace( '#href="/([ur])/#', 'href="http://reddit.com/$1/', $text );
+        $this->post->setText( $text );
         $this->post->setUrl( self::$apiBase . $parentData->permalink . $this->id . '#' . $this->id );
         $this->post->setUserId( $postData->author );
     }
