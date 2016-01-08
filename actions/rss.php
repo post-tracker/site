@@ -33,6 +33,7 @@ header( 'Content-Type: application/rss+xml;' );
                 <title><?php echo $post->topic; ?></title>
                 <description><![CDATA[<?php echo $post->content; ?>]]></description>
                 <link><?php echo $post->url; ?></link>
+                <guid><?php echo $post->url; ?></guid>
                 <pubDate><?php echo date( DATE_RSS, $post->timestamp ); ?></pubDate>
             </item>
             <?php
