@@ -3,11 +3,24 @@ include( '../includes/default.php' );
 
 $query = 'SELECT
         posts.topic,
+        posts.topic_url,
         posts.url,
         posts.content,
-        posts.timestamp
+        posts.timestamp,
+        developers.nick,
+        developers.role,
+        accounts.identifier,
+        posts.source
     FROM
-        posts
+        posts,
+        developers,
+        accounts
+    WHERE
+        developers.id = posts.uid
+    AND
+        accounts.uid = posts.uid
+    AND
+        accounts.service = posts.source
     ORDER BY
         posts.timestamp
     DESC
@@ -18,7 +31,9 @@ $PDO = $database->prepare( $query );
 header( 'Content-Type: application/rss+xml;' );
 ?>
 <?xml version="1.0"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0"
+    xmlns:atom="http://www.w3.org/2005/Atom"
+    xmlns:ark="http://arkdevtracker.com">
     <channel>
         <title>ARK Dev Feed</title>
         <link>http://arkdevtracker.com</link>
@@ -36,6 +51,8 @@ header( 'Content-Type: application/rss+xml;' );
                 <link><?php echo $post->url; ?></link>
                 <guid><?php echo $post->url; ?></guid>
                 <pubDate><?php echo date( DATE_RSS, $post->timestamp ); ?></pubDate>
+                <ark:source><?php echo $post->source; ?></ark:source>
+                <ark:from><?php echo $post->nick; ?></ark:from>
             </item>
             <?php
         endwhile;
