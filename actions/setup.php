@@ -37,7 +37,8 @@ $developers = array(
         'role' => 'Lead Engineer',
         'accounts' => array(
             'steam' => 'wildcarddrake',
-            'reddit' => 'WC-Drake'
+            'reddit' => 'WC-Drake',
+            'twitter' => 'arkjeremy'
         )
     ),
     array(
@@ -114,13 +115,41 @@ $developers = array(
         )
     ),
     array(
-        'nick' => 'Nubsly',
+        'nick' => 'Jen',
         'name' => '',
-        'role' => 'Forum Moderator',
+        'role' => 'Community Manager',
         'accounts' => array(
-            'steam' => 'Nubsly',
-            'reddit' => 'Nubsly-'
-        )
+            'steam' => 'wildcardjen',
+            'reddit' => 'wildcardjen',
+            'twitter' => 'bubblywums'
+        ) 
+    ),
+    array(
+        'nick' => 'Wildcard Casanova',
+        'name' => '',
+        'role' => 'Web & Video Producer',
+        'accounts' => array(
+            'twitter' => 'Explore_ARK'
+        ) 
+    ),
+    array(
+        'nick' => 'Wildcard Zane',
+        'name' => '',
+        'role' => 'Head Bug Reports',
+        'accounts' => array(
+            'steam' => 'WildcardQA',
+            'twitter' => 'WC_Zane'
+        ) 
+    ),
+    array(
+        'nick' => 'LilPanda',
+        'name' => '',
+        'role' => 'Community Hub Leader',
+        'accounts' => array(
+            'steam' => 'wildcardpanda',
+            'reddit' => 'wildcardpanda',
+            'twitter' => 'thelilpanda'
+        ) 
     )
 );
 
