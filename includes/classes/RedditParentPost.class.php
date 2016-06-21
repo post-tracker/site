@@ -1,6 +1,6 @@
 <?php
 class RedditParentPost extends Kurl {
-    private static $apiBase = 'http://www.reddit.com';
+    private static $apiBase = 'https://www.reddit.com';
     private static $singleCommentUrl = '/comments/{topicid}/{commentid}.json';
 
     public function __construct( $topicid, $commentid ){
@@ -37,7 +37,7 @@ class RedditParentPost extends Kurl {
         $this->post = new Post();
         $this->post->setTimestamp( $postData->created_utc );
         $text = html_entity_decode( $postData->body_html );
-        $text = preg_replace( '#href="/([ur])/#', 'href="http://reddit.com/$1/', $text );
+        $text = preg_replace( '#href="/([ur])/#', 'href="https://reddit.com/$1/', $text );
         $this->post->setText( $text );
         $this->post->setUrl( self::$apiBase . $parentData->permalink . $this->id . '#' . $this->id );
         $this->post->setUserId( $postData->author );

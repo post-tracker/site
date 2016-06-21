@@ -1,6 +1,6 @@
 <?php
 class Reddituser extends Kurl {
-    private static $apiBase = 'http://www.reddit.com';
+    private static $apiBase = 'https://www.reddit.com';
     private static $userCommentsUrl = '/user/{username}/comments.json';
     private static $userPostsUrl = '/user/{username}/submitted.json';
 
@@ -26,7 +26,7 @@ class Reddituser extends Kurl {
 
         // Go over the recent posts
         foreach( $posts->data->children as $redditPost ) :
-            $commentsUrl = 'http://www.reddit.com/r/' . $redditPost->data->subreddit . '/comments/';
+            $commentsUrl = 'https://www.reddit.com/r/' . $redditPost->data->subreddit . '/comments/';
             $commentsUrl = $commentsUrl . parseRedditId( $redditPost->data->link_id ) . '/';
 
             $post = new Post();
@@ -42,7 +42,7 @@ class Reddituser extends Kurl {
             endif;
 
             $text = html_entity_decode( $redditPost->data->body_html );
-            $text = preg_replace( '#href="/([ur])/#', 'href="http://reddit.com/$1/', $text );
+            $text = preg_replace( '#href="/([ur])/#', 'href="https://reddit.com/$1/', $text );
 
             $post->setText( $parentPost->getPostHtml() . $text );
             $post->setUrl( $commentsUrl . '' . $parentPost->topic . '/' . $redditPost->data->id . '#' . $redditPost->data->id );
