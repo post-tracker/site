@@ -10,7 +10,8 @@ $developers = array(
         'accounts' => array(
             'steam' => 'wildcardjat',
             'reddit' => 'jatonreddit',
-            'twitter' => 'jatstweeter'
+            'twitter' => 'jatstweeter',
+            'survivetheark' => '2-jat'
         )
     ),
     array(
@@ -20,7 +21,8 @@ $developers = array(
         'accounts' => array(
             'steam' => '76561198175441809',
             'reddit' => 'WildcardTheRightHand',
-            'twitter' => 'KaydHendricks'
+            'twitter' => 'KaydHendricks',
+            'survivetheark' => '3836-therighthand'
         )
     ),
     array(
@@ -38,7 +40,8 @@ $developers = array(
         'accounts' => array(
             'steam' => 'wildcarddrake',
             'reddit' => 'WC-Drake',
-            'twitter' => 'arkjeremy'
+            'twitter' => 'arkjeremy',
+            'survivetheark' => '4054-jeremy-stieglitz'
         )
     ),
     array(
@@ -70,7 +73,9 @@ $developers = array(
         'name' => 'Jesse Rapczak',
         'role' => 'Art Director',
         'accounts' => array(
-            'steam' => '76561198174992766'
+            'steam' => '76561198174992766',
+            'twitter' => 'arkjesse',
+            'survivetheark' => '11-jesse'
         )
     ),
     array(
@@ -121,7 +126,8 @@ $developers = array(
         'accounts' => array(
             'steam' => 'wildcardjen',
             'reddit' => 'wildcardjen',
-            'twitter' => 'bubblywums'
+            'twitter' => 'bubblywums',
+            'survivetheark' => '7-jen'
         ) 
     ),
     array(
@@ -129,7 +135,8 @@ $developers = array(
         'name' => '',
         'role' => 'Web & Video Producer',
         'accounts' => array(
-            'twitter' => 'Explore_ARK'
+            'twitter' => 'Explore_ARK',
+            'survivetheark' => '3-casanova'
         ) 
     ),
     array(
@@ -138,7 +145,8 @@ $developers = array(
         'role' => 'Head Bug Reports',
         'accounts' => array(
             'steam' => 'WildcardQA',
-            'twitter' => 'WC_Zane'
+            'twitter' => 'WC_Zane',
+            'survivetheark' => '6-zane'
         ) 
     ),
     array(
@@ -148,7 +156,8 @@ $developers = array(
         'accounts' => array(
             'steam' => 'wildcardpanda',
             'reddit' => 'wildcardpanda',
-            'twitter' => 'thelilpanda'
+            'twitter' => 'thelilpanda',
+            'survivetheark' => '8-lilpanda'
         ) 
     )
 );
