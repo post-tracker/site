@@ -148,7 +148,7 @@ $developers = array(
         'accounts' => array(
             'steam' => 'wildcardpanda',
             'reddit' => 'wildcardpanda',
-            'twitter' => 'thelilpanda',
+            'twitter' => 'thelilpanda'
         ) 
     )
 );
