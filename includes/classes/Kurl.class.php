@@ -7,7 +7,7 @@ class Kurl {
         if( $customTTL ):
             $this->ttl = $customTTL;
         endif;
-        
+
         $this->loadFromCache( $url );
 
         return $this->data;
@@ -24,6 +24,8 @@ class Kurl {
     private function loadFromWeb( $url ){
         $this->data = file_get_contents( $url );
 
-        apc_store( $url, $this->data, $this->ttl );
+        if( $this->data ):
+            apc_store( $url, $this->data, $this->ttl );
+        endif;
     }
 }
