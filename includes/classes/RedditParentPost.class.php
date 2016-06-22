@@ -4,8 +4,8 @@ class RedditParentPost extends Kurl {
     private static $singleCommentUrl = '/comments/{topicid}/{commentid}.json';
 
     public function __construct( $topicid, $commentid ){
-        $this->id = $commentid;
         $this->topicid = $topicid;
+        $this->id = $commentid;
 
         $this->load();
     }
@@ -41,7 +41,7 @@ class RedditParentPost extends Kurl {
             $postData = $this->findPostData( $this->rawData[ 0 ]->data->children );
         endif;
 
-        if( !isset( $postData ) ):
+        if( !isset( $postData ) || !$postData || !isset( $postData->created_utc ) ):
             return false;
         endif;
 
