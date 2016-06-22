@@ -44,6 +44,10 @@ class RedditParentPost extends Kurl {
     }
 
     public function getPostHtml(){
+        if( strlen( $this->post->text ) <= 0 ):
+            return '';
+        endif;
+
         return '<blockquote><div class="bb_quoteauthor">Originally posted by <b><a href="' . $this->post->url . '">' . $this->post->uid . '</a></b></div>' . $this->post->text . '</blockquote>';
     }
 }
