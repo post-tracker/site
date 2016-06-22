@@ -10,33 +10,53 @@ class RedditParentPost extends Kurl {
         $this->load();
     }
 
+    private function findPostData( $dataset ){
+        foreach( $dataset as $post ):
+            if( $post->data->id == $this->id ) :
+                return $post->data;
+            endif;
+
+            if( isset( $post->data->replies ) && is_object( $post->data->replies ) ):
+                $postData = $this->findPostData( $post->data->replies->data->children );
+            endif;
+
+            if( isset( $postData ) && $postData ):
+                return $postData;
+            endif;
+        endforeach;
+    }
+
     private function load(){
         $url = self::$apiBase . str_replace( array( '{topicid}', '{commentid}' ), array( $this->topicid, $this->id ), self::$singleCommentUrl );
         // This we can store a month, it will not change
         $this->rawData = json_decode( $this->loadUrl( $url, 2592000 ) );
 
-        if( !isset( $this->rawData[ 1 ]->data->children[ 0 ]->data ) ) :
-            // print_r( $this->rawData );
-            return false;
+        $parentData = $this->rawData[ 0 ]->data->children[ 0 ]->data;
+
+        if( isset( $this->rawData[ 1 ]->data->children ) ):
+            $postData = $this->findPostData( $this->rawData[ 1 ]->data->children );
         endif;
 
-        $parentData = $this->rawData[ 0 ]->data->children[ 0 ]->data;
-        foreach( $this->rawData[ 1 ]->data->children as $post ):
-            if( $post->data->id == $this->id ) :
-                $postData = $post->data;
-            endif;
-        endforeach;
+        if( !$postData ):
+            $postData = $this->findPostData( $this->rawData[ 0 ]->data->children );
+        endif;
+
+        if( !isset( $postData ) ):
+            return false;
+        endif;
 
         $urlParts = array_filter( explode( '/', $parentData->permalink ), 'strlen' );
         $this->topic = end( $urlParts );
 
-        if( !isset( $postData ) ) :
-            return false;
-        endif;
-
         $this->post = new Post();
         $this->post->setTimestamp( $postData->created_utc );
-        $text = html_entity_decode( $postData->body_html );
+
+        if( isset( $postData->body_html ) ):
+            $text = html_entity_decode( $postData->body_html );
+        else:
+            $text = html_entity_decode( $postData->selftext_html );
+        endif;
+
         $text = preg_replace( '#href="/([ur])/#', 'href="https://reddit.com/$1/', $text );
         $this->post->setText( $text );
         $this->post->setUrl( self::$apiBase . $parentData->permalink . $this->id . '#' . $this->id );
