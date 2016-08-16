@@ -12,7 +12,8 @@ $developers = array(
             'reddit' => 'jatonreddit',
             'twitter' => 'jatstweeter',
             'survivetheark' => '2-jat'
-        )
+        ),
+        'active' => 1
     ),
     array(
         'nick' => 'The Right Hand',
@@ -23,7 +24,8 @@ $developers = array(
             'reddit' => 'WildcardTheRightHand',
             'twitter' => 'KaydHendricks',
             'survivetheark' => '3836-therighthand'
-        )
+        ),
+        'active' => 1
     ),
     array(
         'nick' => 'The Left Hand',
@@ -31,7 +33,8 @@ $developers = array(
         'role' => 'Designer',
         'accounts' => array(
             'steam' => '76561198178808059'
-        )
+        ),
+        'active' => 1
     ),
     array(
         'nick' => 'Drake',
@@ -42,7 +45,8 @@ $developers = array(
             'reddit' => 'WC-Drake',
             'twitter' => 'arkjeremy',
             'survivetheark' => '4054-jeremy-stieglitz'
-        )
+        ),
+        'active' => 1
     ),
     array(
         'nick' => 'Studio Wildcard',
@@ -50,7 +54,8 @@ $developers = array(
         'role' => '',
         'accounts' => array(
             'steam' => '76561198207415608'
-        )
+        ),
+        'active' => 1
     ),
     array(
         'nick' => 'Ark Dev Engineer',
@@ -58,7 +63,8 @@ $developers = array(
         'role' => 'Engineer',
         'accounts' => array(
             'steam' => '76561198229320228'
-        )
+        ),
+        'active' => 1
     ),
     array(
         'nick' => 'The Right Foot',
@@ -66,7 +72,8 @@ $developers = array(
         'role' => 'Producer',
         'accounts' => array(
             'steam' => '76561198178797193'
-        )
+        ),
+        'active' => 1
     ),
     array(
         'nick' => 'Jesse',
@@ -76,7 +83,8 @@ $developers = array(
             'steam' => '76561198174992766',
             'twitter' => 'arkjesse',
             'survivetheark' => '11-jesse'
-        )
+        ),
+        'active' => 1
     ),
     array(
         'nick' => 'RawMeat',
@@ -84,7 +92,8 @@ $developers = array(
         'role' => '',
         'accounts' => array(
             'steam' => '76561198212514456'
-        )
+        ),
+        'active' => 1
     ),
     array(
         'nick' => 'OMoussa',
@@ -92,7 +101,8 @@ $developers = array(
         'role' => '',
         'accounts' => array(
             'steam' => 'OMoussaInstinct'
-        )
+        ),
+        'active' => 1
     ),
     array(
         'nick' => 'The Left Foot',
@@ -100,7 +110,8 @@ $developers = array(
         'role' => '',
         'accounts' => array(
             'steam' => 'wcTLF'
-        )
+        ),
+        'active' => 1
     ),
     array(
         'nick' => 'Boris Dos',
@@ -108,7 +119,8 @@ $developers = array(
         'role' => 'Network Engineer',
         'accounts' => array(
             'steam' => '76561198179250147'
-        )
+        ),
+        'active' => 1
     ),
     array(
         'nick' => 'HongleBongle',
@@ -117,7 +129,8 @@ $developers = array(
         'accounts' => array(
             'steam' => 'HongleBongle',
             'reddit' => 'HongleBongleFungle'
-        )
+        ),
+        'active' => 1
     ),
     array(
         'nick' => 'Jen',
@@ -128,7 +141,8 @@ $developers = array(
             'reddit' => 'wildcardjen',
             'twitter' => 'bubblywums',
             'survivetheark' => '7-jen'
-        ) 
+        ),
+        'active' => 1
     ),
     array(
         'nick' => 'Wildcard Casanova',
@@ -137,7 +151,8 @@ $developers = array(
         'accounts' => array(
             'twitter' => 'Explore_ARK',
             'survivetheark' => '3-casanova'
-        ) 
+        ),
+        'active' => 1
     ),
     array(
         'nick' => 'Wildcard Zane',
@@ -147,7 +162,8 @@ $developers = array(
             'steam' => 'WildcardQA',
             'twitter' => 'WC_Zane',
             'survivetheark' => '6-zane'
-        ) 
+        ),
+        'active' => 1
     ),
     array(
         'nick' => 'LilPanda',
@@ -158,7 +174,41 @@ $developers = array(
             'reddit' => 'wildcardpanda',
             'twitter' => 'thelilpanda',
             'survivetheark' => '8-lilpanda'
-        ) 
+        ),
+        'active' => 1
+    ),
+    array(
+        'nick' => 'Nubsly',
+        'name' => '',
+        'role' => 'Forum Moderator',
+        'accounts' => array(
+            'steam' => 'Nubsly',
+            'reddit' => 'Nubsly-'
+        ),
+        'active' => 0
+    )
+);
+
+$developerFields = array(
+    array(
+        'name' => 'id',
+        'type' => 'INT'
+    ),
+    array(
+        'name' => 'nick',
+        'type' => 'TEXT'
+    ),
+    array(
+        'name' => 'name',
+        'type' => 'TEXT'
+    ),
+    array(
+        'name' => 'role',
+        'type' => 'TEXT'
+    ),
+    array(
+        'name' => 'active',
+        'type' => 'INT'
     )
 );
 
@@ -176,6 +226,25 @@ if( !$tableExists ):
     $database->exec( $query );
 endif;
 
+$developerTableStructurePDO = $database->query( 'PRAGMA table_info( developers )' );
+$developerTableData = $developerTableStructurePDO->fetchAll();
+
+foreach( $developerFields as $developerField ):
+    $exists = false;
+    foreach( $developerTableData as $tableData ):
+        if( $tableData->name == $developerField[ 'name' ] ):
+            $exists = true;
+            break;
+        endif;
+    endforeach;
+
+    if( !$exists ):
+        $query = 'ALTER TABLE developers ADD COLUMN ' . $developerField[ 'name' ] . ' ' . $developerField[ 'type' ];
+        echo $query;
+        $database->exec( $query );
+    endif;
+endforeach;
+
 // Create accounts table if it doesn't exist
 $tableExists = gettype( $database->exec( 'SELECT count(*) FROM accounts LIMIT 1' ) ) == 'integer';
 if( !$tableExists ):
@@ -188,10 +257,10 @@ endif;
 $userExistsQuery = 'SELECT id FROM developers WHERE nick = :nick LIMIT 1';
 $userExistsPDO = $database->prepare( $userExistsQuery );
 
-$createUserQuery = 'INSERT INTO developers ( id, nick, name, role ) VALUES( :id, :nick, :name, :role )';
+$createUserQuery = 'INSERT INTO developers ( id, nick, name, role, active ) VALUES( :id, :nick, :name, :role, :active )';
 $createUserPDO = $database->prepare( $createUserQuery );
 
-$updateUserQuery = 'UPDATE developers SET nick = :nick, name = :name, role = :role WHERE id = :id';
+$updateUserQuery = 'UPDATE developers SET nick = :nick, name = :name, role = :role, active = :active WHERE id = :id';
 $updateUserPDO = $database->prepare( $updateUserQuery );
 
 // Database stuff for accounts
@@ -223,6 +292,7 @@ foreach( $developers as $developer ) :
         $updateUserPDO->bindValue( ':nick', $developer[ 'nick' ] );
         $updateUserPDO->bindValue( ':name', $developer[ 'name' ] );
         $updateUserPDO->bindValue( ':role', $developer[ 'role' ] );
+        $updateUserPDO->bindValue( ':active', $developer[ 'active' ], PDO::PARAM_INT );
 
         $updateUserPDO->execute();
     else :
@@ -232,6 +302,7 @@ foreach( $developers as $developer ) :
         $createUserPDO->bindValue( ':nick', $developer[ 'nick' ] );
         $createUserPDO->bindValue( ':name', $developer[ 'name' ] );
         $createUserPDO->bindValue( ':role', $developer[ 'role' ] );
+        $createUserPDO->bindValue( ':active', $developer[ 'active' ], PDO::PARAM_INT );
 
         $createUserPDO->execute();
     endif;
