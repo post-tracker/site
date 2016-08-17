@@ -1,2 +1,3 @@
-arkdevtracker.sqlite
+*.sqlite
 app.built.js
+.vagrant/

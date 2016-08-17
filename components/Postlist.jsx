@@ -1,12 +1,14 @@
 'use strict';
 
 var React = require( 'react' );
-var Post = require( './Post.jsx' );
 var $ = require( 'jquery' );
 var debounce = require( 'debounce' );
+var hash = require( 'object-hash' );
+
+var Post = require( './Post.jsx' );
 var Search = require( './Search.jsx' );
 
-module.exports = React.createClass({
+var PostList = React.createClass({
     updateDataTimeout : false,
     setUpdateTimeout : function(){
         this.updateDataTimeout = setTimeout( this.loadCommentsFromServer, this.props.pollInterval );
@@ -72,11 +74,12 @@ module.exports = React.createClass({
         var postNodes = this.state.data.map( function( communityPost ) {
             return (
                 <Post
-                    key={communityPost.timestamp}
-                    data={communityPost}
+                    key = { hash( communityPost ) }
+                    data = { communityPost }
                 ></Post>
             );
         });
+
         return (
             <div>
                 <Search handleSearch={this.handleSearch}></Search>
@@ -85,3 +88,5 @@ module.exports = React.createClass({
         );
     }
 });
+
+module.exports = PostList;

@@ -1,9 +1,10 @@
 'use strict';
 
 var React = require( 'react' );
-var SmartTimeAgo = require( 'react-smart-time-ago' );
+var ReactDOM = require( 'react-dom' );
+var TimeAgo = require( 'react-timeago' ).default;
 
-module.exports = React.createClass({
+var Post = React.createClass({
     getInitialState: function() {
         return {
             expandable: false
@@ -15,7 +16,7 @@ module.exports = React.createClass({
         });
     },
     componentDidMount: function(){
-        var height = React.findDOMNode( this.refs.body ).offsetHeight;
+        var height = ReactDOM.findDOMNode( this.refs.body ).offsetHeight;
 
         if( height > 500 ){
             this.setState({
@@ -24,10 +25,9 @@ module.exports = React.createClass({
         }
     },
     render: function() {
-        var date = new Date( this.props.data.timestamp * 1000 );
         var iconClass = 'fa fa-' + this.props.data.source;
         var expander;
-        var bodyClasses = 'panel-body';
+        var bodyClasses = 'panel-body';o
 
         if( this.state.expandable ){
             expander = <div className="expander" onClick={this.expand}><button className="btn btn-default">Show full post</button></div>;
@@ -43,11 +43,15 @@ module.exports = React.createClass({
                 {expander}
                 <div className="panel-footer">
                     <i className={iconClass}></i>
-                    <a href={this.props.data.url}>
-                        <SmartTimeAgo value={date} />
-                    </a>
+                        <a href={this.props.data.url}>
+                            <TimeAgo
+                                date = { Number( this.props.data.timestamp ) * 1000 }
+                            />
+                        </a>
                 </div>
             </div>
         );
     }
 });
+
+module.exports = Post;
