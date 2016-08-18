@@ -1,5 +1,6 @@
+import http from 'http';
+
 import React from 'react';
-import $ from 'jquery';
 import debounce from 'debounce';
 
 import Post from './Post.jsx';
@@ -36,36 +37,47 @@ class PostList extends React.Component {
     loadCommentsFromServer( searchString ) {
         clearTimeout( this.updateDataTimeout );
 
-        var options = {
-            url: this.props.url,
-            dataType: 'json',
-            cache: false,
-            success: function( data ) {
-                this.setState({
-                    data: data
-                });
-
-                this.setUpdateTimeout();
-            }.bind( this ),
-            error: function( xhr, status, err ) {
-                console.error( this.props.url, status, err.toString() );
-                this.setUpdateTimeout();
-            }.bind( this )
+        let options = {
+            hostname: window.location.hostname,
+            port: window.location.port || 80,
+            path: this.props.url,
+            method: 'GET'
         };
 
         if( typeof searchString !== 'undefined' ){
             // This happends the first time
-            options.data = {
-                search: searchString
-            };
+            options.path = options.path + '?search=' + searchString;
+
         } else if( this.state.searchString.length > 0 ){
             // This happends when we load posts again after some time
-            options.data = {
-                search: this.state.searchString
-            };
+            options.path = options.path + '?search=' + this.state.searchString;
         }
 
-        $.ajax( options );
+        console.log( options );
+
+        let request = http.request( options, ( response ) => {
+            let body = '';
+            response.setEncoding( 'utf8' );
+
+            response.on( 'data', ( chunk ) => {
+                body = body + chunk;
+            });
+
+            response.on( 'end', () => {
+                console.log( body );
+                this.setState({
+                    data: body
+                });
+            });
+
+            this.setUpdateTimeout();
+        });
+
+        request.on('error', (e) => {
+            console.log(`problem with request: ${e.message}`);
+        });
+
+        request.end();
     }
 
     componentWillMount() {
