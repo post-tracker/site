@@ -7,15 +7,10 @@ sudo apt-get install -y nginx
 sudo rm -r /usr/share/nginx/html
 sudo ln -s /vagrant/web /usr/share/nginx/html
 
-sudo apt-get install -y php5-fpm php5-sqlite php-apc
-sudo service php5-fpm restart
+sudo apt-get install -y php-fpm php-sqlite3
 
 # Setup /etc/nginx/sites-available/default
 sudo rm /etc/nginx/sites-available/default
 sudo ln -s /vagrant/default /etc/nginx/sites-available/
 
-ln -s /usr/share/doc/php5-apcu/apc.php /usr/share/nginx/html/apc.php
-# Setup APC password
-
-#mkdir /vagrant/web/data
-#touch /vagrant/web/data/arkdevtracker.sqlite
+sudo service reload nginx

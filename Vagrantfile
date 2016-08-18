@@ -1,7 +1,8 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 Vagrant.configure(2) do |config|
-    config.vm.box = "ubuntu/trusty64"
+    config.vm.box = "test/yakkety64"
+    config.vm.box_url = "http://people.canonical.com/~dwatkins/livecd.ubuntu-cpc.vagrant.2.box"
     config.vm.provision :shell, path: "vagrant-bootstrap.sh"
     config.vm.network "forwarded_port", guest: 80, host: 3000
     config.vm.network "forwarded_port", guest: 443, host: 8443
