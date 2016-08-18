@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "gulp": "gulp",
-    "start": "npm run gulp -- build && npm run gulp -- watch"
+    "start": "watchify components/App.jsx -o web/scripts/app.build.js -t [ babelify --presets [ es2015 react ] ] -v --poll=100"
   },
   "author": "Oskar Risberg <kokarn@gmail.com>",
   "repository": {
@@ -18,20 +18,16 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "babel": "^6.5.2",
     "babel-preset-es2015": "^6.13.2",
     "babel-preset-react": "^6.11.1",
     "babelify": "^7.3.0",
-    "browserify": "^13.1.0",
     "debounce": "^1.0.0",
-    "gulp": "^3.9.1",
     "jquery": "^3.1.0",
     "object-hash": "^1.1.4",
     "query-string": "^4.2.3",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
     "react-timeago": "^3.1.2",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0"
+    "watchify": "^3.7.0"
   }
 }
