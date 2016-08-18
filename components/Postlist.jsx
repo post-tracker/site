@@ -1,35 +1,40 @@
-'use strict';
+import React from 'react';
+import $ from 'jquery';
+import debounce from 'debounce';
+import hash from 'object-hash';
 
-var React = require( 'react' );
-var $ = require( 'jquery' );
-var debounce = require( 'debounce' );
-var hash = require( 'object-hash' );
+import Post from './Post.jsx';
+import Search from './Search.jsx';
 
-var Post = require( './Post.jsx' );
-var Search = require( './Search.jsx' );
+class PostList extends React.Component {
+    constructor( props ){
+        super( props );
 
-var PostList = React.createClass({
-    updateDataTimeout : false,
-    setUpdateTimeout : function(){
-        this.updateDataTimeout = setTimeout( this.loadCommentsFromServer, this.props.pollInterval );
-    },
-    getInitialState: function() {
-        return {
+        this.state =  {
             data: [],
             searchString: ''
-        };
-    },
-    handleSearch: function( searchString ){
+        }
+
+        this.updateDataTimeout = false;
+    }
+
+    setUpdateTimeout(){
+        this.updateDataTimeout = setTimeout( this.loadCommentsFromServer, this.props.pollInterval );
+    }
+
+    handleSearch( searchString ){
         this.debouncedSearch( searchString );
-    },
-    search: function( searchString ){
+    }
+
+    search( searchString ){
         this.setState({
             searchString: searchString
         });
 
         this.loadCommentsFromServer( searchString );
-    },
-    loadCommentsFromServer: function( searchString ) {
+    }
+
+    loadCommentsFromServer( searchString ) {
         clearTimeout( this.updateDataTimeout );
 
         var options = {
@@ -62,15 +67,18 @@ var PostList = React.createClass({
         }
 
         $.ajax( options );
-    },
-    componentWillMount: function() {
+    }
+
+    componentWillMount() {
         this.debouncedSearch = debounce( this.search, 250 );
-    },
-    componentDidMount: function() {
+    }
+
+    componentDidMount() {
         this.loadCommentsFromServer();
         this.setUpdateTimeout();
-    },
-    render: function() {
+    }
+
+    render() {
         var postNodes = this.state.data.map( function( communityPost ) {
             return (
                 <Post
@@ -79,14 +87,14 @@ var PostList = React.createClass({
                 ></Post>
             );
         });
-
+        
         return (
             <div>
-                <Search handleSearch={this.handleSearch}></Search>
-                {postNodes}
+                <Search handleSearch = { this.handleSearch }></Search>
+                { postNodes }
             </div>
         );
     }
-});
+};
 
-module.exports = PostList;
+export default PostList;

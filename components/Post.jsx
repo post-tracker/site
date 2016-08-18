@@ -1,21 +1,23 @@
-'use strict';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import TimeAgo from 'react-timeago';
 
-var React = require( 'react' );
-var ReactDOM = require( 'react-dom' );
-var TimeAgo = require( 'react-timeago' ).default;
+class Post extends React.Component {
+    constructor( props ){
+        super( props );
 
-var Post = React.createClass({
-    getInitialState: function() {
-        return {
+        this.state = {
             expandable: false
         };
-    },
-    expand: function(){
+    }
+
+    expand(){
         this.setState({
             expandable: false
         });
-    },
-    componentDidMount: function(){
+    }
+
+    componentDidMount(){
         var height = ReactDOM.findDOMNode( this.refs.body ).offsetHeight;
 
         if( height > 500 ){
@@ -23,8 +25,9 @@ var Post = React.createClass({
                 expandable: true
             });
         }
-    },
-    render: function() {
+    }
+
+    render() {
         var iconClass = 'fa fa-' + this.props.data.source;
         var expander;
         var bodyClasses = 'panel-body';o
@@ -52,6 +55,6 @@ var Post = React.createClass({
             </div>
         );
     }
-});
+};
 
-module.exports = Post;
+export default Post;

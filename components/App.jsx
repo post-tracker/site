@@ -1,13 +1,11 @@
-'use strict';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Postlist from './Postlist.jsx';
 
-var React = require( 'react' );
-var ReactDOM = require( 'react-dom' );
-var Postlist = require( './Postlist.jsx' );
-
-React.render(
+ReactDOM.render(
     <Postlist
         url="actions/data.php"
-        pollInterval={60000}
+        pollInterval = { 60000 }
     />,
     document.getElementById( 'js-app' )
 );

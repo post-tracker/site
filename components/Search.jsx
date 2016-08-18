@@ -1,22 +1,22 @@
-'use strict';
+import React from 'react';
+import queryString from 'query-string';
 
-var React = require( 'react' );
-var queryString = require( 'query-string' );
+class Search extends React.Component {
+    constructor( props ){
+        let currentQuery = queryString.parse( location.search );
 
-module.exports = React.createClass({
-    getInitialState: function() {
-        var currentQuery = queryString.parse( location.search ),
-            defaultState =  {
-                searchString: ''
-            };
+        super( props );
+
+        this.state = {
+            searchString: ''
+        };
 
         if( typeof currentQuery.search !== 'undefined' ){
-            defaultState.searchString = currentQuery.search;
+            this.state.searchString = currentQuery.search;
         }
+    }
 
-        return defaultState;
-    },
-    handleChange: function( event ){
+    handleChange( event ){
         var searchString = event.target.value;
 
         this.props.handleSearch( searchString );
@@ -24,15 +24,17 @@ module.exports = React.createClass({
         this.setState({
             searchString: searchString
         });
-    },
-    clearInput: function(){
+    }
+
+    clearInput(){
         this.props.handleSearch( '' );
 
         this.setState({
             searchString: ''
         });
-    },
-    render: function() {
+    }
+
+    render() {
         var searchString = this.state.searchString,
             clearer;
 
@@ -57,4 +59,6 @@ module.exports = React.createClass({
             </form>
         );
     }
-});
+};
+
+export default Search;
