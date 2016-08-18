@@ -1,3 +1,4 @@
 *.sqlite
 app.built.js
 .vagrant/
+node_modules/
