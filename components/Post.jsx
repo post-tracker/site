@@ -18,7 +18,7 @@ class Post extends React.Component {
     }
 
     componentDidMount(){
-        var height = ReactDOM.findDOMNode( this.refs.body ).offsetHeight;
+        let height = ReactDOM.findDOMNode( this.refs.body ).offsetHeight;
 
         if( height > 500 ){
             this.setState({
@@ -28,9 +28,9 @@ class Post extends React.Component {
     }
 
     render() {
-        var iconClass = 'fa fa-' + this.props.data.source;
-        var expander;
-        var bodyClasses = 'panel-body';o
+        let iconClass = 'fa fa-' + this.props.data.source;
+        let expander;
+        let bodyClasses = 'panel-body';o
 
         if( this.state.expandable ){
             expander = <div className="expander" onClick={this.expand}><button className="btn btn-default">Show full post</button></div>;

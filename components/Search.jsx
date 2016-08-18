@@ -17,7 +17,7 @@ class Search extends React.Component {
     }
 
     handleChange( event ){
-        var searchString = event.target.value;
+        let searchString = event.target.value;
 
         this.props.handleSearch( searchString );
 
@@ -35,7 +35,7 @@ class Search extends React.Component {
     }
 
     render() {
-        var searchString = this.state.searchString,
+        let searchString = this.state.searchString,
             clearer;
 
         if( searchString.length > 0 ){

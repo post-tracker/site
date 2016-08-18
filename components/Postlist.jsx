@@ -90,7 +90,7 @@ class PostList extends React.Component {
     }
 
     render() {
-        var postNodes = this.state.data.map( function( communityPost ) {
+        let postNodes = this.state.data.map( ( communityPost ) => {
             return (
                 <Post
                     key = { communityPost.nick + '-' + communityPost.timestap }
@@ -98,7 +98,7 @@ class PostList extends React.Component {
                 ></Post>
             );
         });
-        
+
         return (
             <div>
                 <Search handleSearch = { this.handleSearch }></Search>
