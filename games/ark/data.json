@@ -1,0 +1,190 @@
+{
+    "name": "Ark: Survival Evolved",
+    "shortName": "Ark",
+    "developers" : [
+        {
+            "nick": "Jat",
+            "name": "Jathiesh Karunakaran",
+            "role": "Community Manager",
+            "accounts": {
+                "steam": "wildcardjat",
+                "reddit": "jatonreddit",
+                "twitter": "jatstweeter",
+                "survivetheark": "2-jat"
+            },
+            "active": 1
+        },
+        {
+            "nick": "The Right Hand",
+            "name": "Kayd Hendricks",
+            "role": "",
+            "accounts": {
+                "steam": "76561198175441809",
+                "reddit": "WildcardTheRightHand",
+                "twitter": "KaydHendricks",
+                "survivetheark": "3836-therighthand"
+            },
+            "active": 1
+        },
+        {
+            "nick": "The Left Hand",
+            "name": "",
+            "role": "Designer",
+            "accounts": {
+                "steam": "76561198178808059"
+            },
+            "active": 1
+        },
+        {
+            "nick": "Drake",
+            "name": "",
+            "role": "Lead Engineer",
+            "accounts": {
+                "steam": "wildcarddrake",
+                "reddit": "WC-Drake",
+                "twitter": "arkjeremy",
+                "survivetheark": "4054-jeremy-stieglitz"
+            },
+            "active": 1
+        },
+        {
+            "nick": "Studio Wildcard",
+            "name": "",
+            "role": "",
+            "accounts": {
+                "steam": "76561198207415608"
+            },
+            "active": 1
+        },
+        {
+            "nick": "Ark Dev Engineer",
+            "name": "",
+            "role": "Engineer",
+            "accounts": {
+                "steam": "76561198229320228"
+            },
+            "active": 1
+        },
+        {
+            "nick": "The Right Foot",
+            "name": "",
+            "role": "Producer",
+            "accounts": {
+                "steam": "76561198178797193"
+            },
+            "active": 1
+        },
+        {
+            "nick": "Jesse",
+            "name": "Jesse Rapczak",
+            "role": "Art Director",
+            "accounts": {
+                "steam": "76561198174992766",
+                "twitter": "arkjesse",
+                "survivetheark": "11-jesse"
+            },
+            "active": 1
+        },
+        {
+            "nick": "RawMeat",
+            "name": "",
+            "role": "",
+            "accounts": {
+                "steam": "76561198212514456"
+            },
+            "active": 1
+        },
+        {
+            "nick": "OMoussa",
+            "name": "",
+            "role": "",
+            "accounts": {
+                "steam": "OMoussaInstinct"
+            },
+            "active": 1
+        },
+        {
+            "nick": "The Left Foot",
+            "name": "",
+            "role": "",
+            "accounts": {
+                "steam": "wcTLF"
+            },
+            "active": 1
+        },
+        {
+            "nick": "Boris Dos",
+            "name": "",
+            "role": "Network Engineer",
+            "accounts": {
+                "steam": "76561198179250147"
+            },
+            "active": 1
+        },
+        {
+            "nick": "HongleBongle",
+            "name": "",
+            "role": "",
+            "accounts": {
+                "steam": "HongleBongle",
+                "reddit": "HongleBongleFungle"
+            },
+            "active": 1
+        },
+        {
+            "nick": "Jen",
+            "name": "",
+            "role": "Community Manager",
+            "accounts": {
+                "steam": "wildcardjen",
+                "reddit": "wildcardjen",
+                "twitter": "bubblywums",
+                "survivetheark": "7-jen"
+            },
+            "active": 1
+        },
+        {
+            "nick": "Wildcard Casanova",
+            "name": "",
+            "role": "Web & Video Producer",
+            "accounts": {
+                "twitter": "Explore_ARK",
+                "survivetheark": "3-casanova"
+            },
+            "active": 1
+        },
+        {
+            "nick": "Wildcard Zane",
+            "name": "",
+            "role": "Head Bug Reports",
+            "accounts": {
+                "steam": "WildcardQA",
+                "twitter": "WC_Zane",
+                "survivetheark": "6-zane"
+            },
+            "active": 1
+        },
+        {
+            "nick": "LilPanda",
+            "name": "",
+            "role": "Community Hub Leader",
+            "accounts": {
+                "steam": "wildcardpanda",
+                "reddit": "wildcardpanda",
+                "twitter": "thelilpanda",
+                "survivetheark": "8-lilpanda"
+            },
+            "active": 1
+        },
+        {
+            "nick": "Nubsly",
+            "name": "",
+            "role": "Forum Moderator",
+            "accounts": {
+                "steam": "Nubsly",
+                "reddit": "Nubsly-"
+            },
+            "active": 0
+        }
+    ]
+}

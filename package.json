@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "gulp": "gulp",
-    "start": "watchify components/App.jsx -o web/scripts/app.build.js -t [ babelify --presets [ es2015 react ] ] -v --poll=100"
+    "start": "watchify components/App.jsx -o web/scripts/app.build.js -t [ babelify --presets [ es2015 react ] ] -v --poll=100",
+    "build": "node scripts/build.js"
   },
   "author": "Oskar Risberg <kokarn@gmail.com>",
   "repository": {
@@ -27,5 +28,9 @@
     "react-dom": "^15.3.0",
     "react-timeago": "^3.1.2",
     "watchify": "^3.7.0"
+  },
+  "dependencies": {
+    "fs-extra": "^0.30.0",
+    "mustache": "^2.2.1"
   }
 }
