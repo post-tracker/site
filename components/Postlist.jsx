@@ -1,7 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
 import debounce from 'debounce';
-import hash from 'object-hash';
 
 import Post from './Post.jsx';
 import Search from './Search.jsx';
@@ -82,7 +81,7 @@ class PostList extends React.Component {
         var postNodes = this.state.data.map( function( communityPost ) {
             return (
                 <Post
-                    key = { hash( communityPost ) }
+                    key = { communityPost.nick + '-' + communityPost.timestap }
                     data = { communityPost }
                 ></Post>
             );
