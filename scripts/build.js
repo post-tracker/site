@@ -22,7 +22,6 @@ games.forEach( ( game ) => {
     let customFiles = [
         'favicon.ico',
         'favicon.png',
-        'styles.css'
     ];
     let gameData = JSON.parse( fs.readFileSync( path.join( __dirname + '/../games/' + game + '/data.json' ), 'utf8' ) );
 
@@ -89,6 +88,10 @@ games.forEach( ( game ) => {
     fs.readFile( gamePath + '/index.html', 'utf8', ( error, fileData ) => {
         if( error ){
             console.log( error );
+        }
+
+        if ( extraFiles.indexOf( 'styles.css' ) > -1  ){
+            gameData.styles = fs.readFileSync( gameFilesPath + '/styles.css' );
         }
 
         fs.writeFile( gamePath + '/index.html', mustache.render( fileData, gameData ), ( error ) => {
