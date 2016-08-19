@@ -32,4 +32,12 @@ switch( $_GET[ 'type' ] ):
             endforeach;
         endforeach;
         break;
+
+    case 'rss':
+        $rssParser = new RSS( 'http://www.miggy.org/games/elite-dangerous/devtracker/ed-dev-posts.rss' );
+        $posts = $rssParser->getRecentPosts();
+        foreach( $posts as $post ) :
+            $post->save();
+        endforeach;
+        break;
 endswitch;
