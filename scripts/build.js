@@ -3,6 +3,8 @@ const path = require( 'path' );
 const fs = require( 'fs-extra' );
 const mustache = require( 'mustache' );
 
+const DatabaseSetup = require( './dbsetup.js' );
+
 // Make sure the dist folder exists
 let distPath = path.join( __dirname + '/../dist' );
 try {
@@ -16,6 +18,7 @@ let games = fs.readdirSync( path.join( __dirname + '/../games' ) );
 games.forEach( ( game ) => {
     let gamePath = path.join( __dirname + '/../dist/' + game );
     let maintenanceFile = false;
+    let gameData = JSON.parse( fs.readFileSync( path.join( __dirname + '/../games/' + game + '/data.json' ), 'utf8' ) );
 
     try {
         fs.accessSync( gamePath );
@@ -54,7 +57,11 @@ games.forEach( ( game ) => {
     // Create database if it doesn't exist
     fs.ensureFileSync( path.join( gamePath + '/data' ) + '/database.sqlite' );
 
-    let gameData = JSON.parse( fs.readFileSync( path.join( __dirname + '/../games/' + game + '/data.json' ), 'utf8' ) );
+    // Setup database things
+    let gameDatabaseSetup = new DatabaseSetup( path.join( gamePath + '/data' ) + '/database.sqlite' );
+
+    gameDatabaseSetup.setDevelopers( gameData.developers );
+    gameDatabaseSetup.run();
 
     fs.readFile( gamePath + '/index.html', 'utf8', ( error, fileData ) => {
         if( error ){
