@@ -17,7 +17,13 @@ let games = fs.readdirSync( path.join( __dirname + '/../games' ) );
 
 games.forEach( ( game ) => {
     let gamePath = path.join( __dirname + '/../dist/' + game );
+    let gameFilesPath = path.join( __dirname + '/../games/' + game );
     let maintenanceFile = false;
+    let customFiles = [
+        'favicon.ico',
+        'favicon.png',
+        'styles.css'
+    ];
     let gameData = JSON.parse( fs.readFileSync( path.join( __dirname + '/../games/' + game + '/data.json' ), 'utf8' ) );
 
     try {
@@ -63,6 +69,23 @@ games.forEach( ( game ) => {
     gameDatabaseSetup.setDevelopers( gameData.developers );
     gameDatabaseSetup.run();
 
+    // Copy all extra files
+    let extraFiles = fs.readdirSync( gameFilesPath );
+
+    extraFiles.forEach( ( filename ) => {
+
+        // Skip files not marked for copy
+        if ( customFiles.indexOf( filename ) < 0 ){
+            return true;
+        }
+
+        // Copy over the file
+        fs.copySync( gameFilesPath + '/' + filename, gamePath + '/' + filename, {
+            clobber: true
+        } );
+    } );
+
+    // Fill in the data where needed
     fs.readFile( gamePath + '/index.html', 'utf8', ( error, fileData ) => {
         if( error ){
             console.log( error );
