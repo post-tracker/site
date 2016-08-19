@@ -22,6 +22,7 @@ games.forEach( ( game ) => {
     let customFiles = [
         'favicon.ico',
         'favicon.png',
+        'assets'
     ];
     let gameData = JSON.parse( fs.readFileSync( path.join( __dirname + '/../games/' + game + '/data.json' ), 'utf8' ) );
 
