@@ -1,0 +1,152 @@
+{
+    "name": "Elite Dangerous",
+    "shortName": "Elite Dangerous",
+    "developers" : [
+        {
+            "nick": "Braben",
+            "name": "David Braben",
+            "role": "CEO",
+            "accounts": {
+                "reddit": "DavidBraben",
+                "twitter": "DavidBraben"
+            }
+        },
+        {
+            "nick": "Brett C",
+            "name": "Brett Cooper",
+            "role": "Community Manager",
+            "accounts": {
+                "reddit": "BrettC_Frontier",
+                "rss": "52"
+            }
+        },
+        {
+            "nick": "Dale",
+            "name": "Dale Emasiri",
+            "role": "Social Media Community Manager",
+            "accounts": {
+                "reddit": "DaleEmasiri_Frontier"
+            }
+        },
+        {
+            "nick": "Gary",
+            "name": "Gary Richards",
+            "role": "Senior Producer, Xbox One",
+            "accounts": {
+                "rss": "10691"
+            }
+        },
+        {
+            "nick": "Zac",
+            "name": "Zac Antonaci",
+            "role": "Head of Community Management",
+            "accounts": {
+                "reddit": "ZacAntonaci_Frontier",
+                "rss": "97768"
+            }
+        },
+        {
+            "nick": "Ian",
+            "name": "Ian Dingwall",
+            "role": "Senior Designer",
+            "accounts": {
+                "rss": "100780"
+            }
+        },
+        {
+            "nick": "Adam",
+            "name": "Adam Woods",
+            "role": "Producer",
+            "accounts": {
+                "rss": "14349",
+                "twitter": "adwoods666"
+            }
+        },
+        {
+            "nick": "Michael",
+            "name": "Michael Brookes",
+            "role": "Executive Producer",
+            "accounts": {
+                "twitter": "TheCultofMe",
+                "rss": "2"
+            }
+        },
+        {
+            "nick": "Ben",
+            "name": "Ben Parry",
+            "role": "Graphics Programmer",
+            "accounts": {
+                "rss": "27895",
+                "twitter": "klumaster"
+            }
+        },
+        {
+            "nick": "Mike",
+            "name": "Mike Evans",
+            "role": "Game Designer",
+            "accounts": {}
+        },
+        {
+            "nick": "Sandro",
+            "name": "Sandro Sammarco",
+            "role": "Lead Designer",
+            "accounts": {}
+        },
+        {
+            "nick": "Gregg",
+            "name": "Gregg Chamberlain",
+            "role": "Platform Lead/Senior Tester",
+            "accounts": {}
+        },
+        {
+            "nick": "Ashley",
+            "name": "Ashley Barley",
+            "role": "Customer Services",
+            "accounts": {
+                "rss": "15645"
+            }
+        },
+        {
+            "nick": "Anthony",
+            "name": "Anthony Ross",
+            "role": "Programmer",
+            "accounts": {
+                "rss": "25591",
+                "twitter": "anttheross"
+            }
+        },
+        {
+            "nick": "Edward",
+            "name": "Edward Lewis",
+            "role": "Community Manager",
+            "accounts": {
+                "rss": "47159",
+                "reddit": "EdwardLewis_Frontier"
+            }
+        },
+        {
+            "nick": "Support",
+            "name": "Frontier Support",
+            "role": "Support",
+            "accounts": {
+                "reddit": "frontier_support"
+            }
+        },
+        {
+            "nick": "Sarah",
+            "name": "Sarah Jane Avory",
+            "role": "Programmer",
+            "accounts": {
+                "rss": "17666"
+            }
+        },
+        {
+            "nick": "hchalkley",
+            "name": "Howard Chalkley",
+            "role": "Senior Programmer",
+            "accounts": {
+                "rss": "31252"
+            }
+        }
+    ]
+}
