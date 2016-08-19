@@ -2,6 +2,7 @@ import http from 'http';
 
 import React from 'react';
 import debounce from 'debounce';
+import Hashes from 'jshashes';
 
 import Post from './Post.jsx';
 import Search from './Search.jsx';
@@ -91,9 +92,10 @@ class PostList extends React.Component {
 
     render() {
         let postNodes = this.state.data.map( ( communityPost ) => {
+            let hash = new Hashes.MD5().hex( communityPost.author + communityPost.timestamp + communityPost.content );
             return (
                 <Post
-                    key = { communityPost.nick + '-' + communityPost.timestap }
+                    key = { hash }
                     data = { communityPost }
                 ></Post>
             );
