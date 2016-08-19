@@ -41,7 +41,7 @@ class PostList extends React.Component {
         let options = {
             hostname: window.location.hostname,
             port: window.location.port || 80,
-            path: this.props.url,
+            path: window.location.pathname + this.props.url,
             method: 'GET'
         };
 
@@ -54,8 +54,6 @@ class PostList extends React.Component {
             options.path = options.path + '?search=' + this.state.searchString;
         }
 
-        console.log( options );
-
         let request = http.request( options, ( response ) => {
             let body = '';
             response.setEncoding( 'utf8' );
@@ -65,9 +63,8 @@ class PostList extends React.Component {
             });
 
             response.on( 'end', () => {
-                console.log( body );
                 this.setState({
-                    data: body
+                    data: JSON.parse( body )
                 });
             });
 
