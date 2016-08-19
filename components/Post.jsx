@@ -30,7 +30,7 @@ class Post extends React.Component {
     render() {
         let iconClass = 'fa fa-' + this.props.data.source;
         let expander;
-        let bodyClasses = 'panel-body';o
+        let bodyClasses = 'panel-body';
 
         if( this.state.expandable ){
             expander = <div className="expander" onClick={this.expand}><button className="btn btn-default">Show full post</button></div>;
