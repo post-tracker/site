@@ -5,7 +5,7 @@ sudo apt-get upgrade
 
 sudo apt-get install -y nginx
 sudo rm -r /usr/share/nginx/html
-sudo ln -s /vagrant/web /usr/share/nginx/html
+sudo ln -s /vagrant/dist /usr/share/nginx/html
 
 sudo apt-get install -y php-fpm php-sqlite3
 
