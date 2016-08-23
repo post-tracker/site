@@ -16,6 +16,8 @@ class PostList extends React.Component {
             searchString: ''
         }
 
+        this.handleSearch = this.handleSearch.bind( this );
+
         this.updateDataTimeout = false;
     }
 

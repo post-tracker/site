@@ -11,6 +11,9 @@ class Search extends React.Component {
             searchString: ''
         };
 
+        this.clearInput = this.clearInput.bind( this );
+        this.handleChange = this.handleChange.bind( this );
+
         if( typeof currentQuery.search !== 'undefined' ){
             this.state.searchString = currentQuery.search;
         }
