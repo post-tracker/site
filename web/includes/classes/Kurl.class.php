@@ -14,7 +14,7 @@ class Kurl {
     }
 
     private function loadFromCache( $key ){
-        $this->data = apc_fetch( $key );
+        $this->data = apcu_fetch( $key );
 
         if( $this->data == false ) :
             $this->loadFromWeb( $key );
@@ -25,7 +25,7 @@ class Kurl {
         $this->data = file_get_contents( $url );
 
         if( $this->data ):
-            apc_store( $url, $this->data, $this->ttl );
+            apcu_store( $url, $this->data, $this->ttl );
         endif;
     }
 }
