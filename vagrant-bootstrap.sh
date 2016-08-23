@@ -13,4 +13,4 @@ sudo apt-get install -y php-fpm php-sqlite3
 sudo rm /etc/nginx/sites-available/default
 sudo ln -s /vagrant/default /etc/nginx/sites-available/
 
-sudo service reload nginx
+sudo systemctl reload nginx
