@@ -1,6 +1,7 @@
 {
     "name": "Ark: Survival Evolved",
     "shortName": "Ark",
+    "hostname": "arkdevtracker.com",
     "developers" : [
         {
             "nick": "Jat",

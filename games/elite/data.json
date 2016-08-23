@@ -1,6 +1,7 @@
 {
     "name": "Elite Dangerous",
     "shortName": "Elite Dangerous",
+    "hostname": "elitedevtracker.com",
     "developers" : [
         {
             "nick": "Braben",
