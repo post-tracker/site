@@ -9,7 +9,8 @@
             "accounts": {
                 "reddit": "DavidBraben",
                 "twitter": "DavidBraben"
-            }
+            },
+            "active": 1
         },
         {
             "nick": "Brett C",
@@ -18,7 +19,8 @@
             "accounts": {
                 "reddit": "BrettC_Frontier",
                 "rss": "52"
-            }
+            },
+            "active": 1
         },
         {
             "nick": "Dale",
@@ -26,7 +28,8 @@
             "role": "Social Media Community Manager",
             "accounts": {
                 "reddit": "DaleEmasiri_Frontier"
-            }
+            },
+            "active": 1
         },
         {
             "nick": "Gary",
@@ -34,7 +37,8 @@
             "role": "Senior Producer, Xbox One",
             "accounts": {
                 "rss": "10691"
-            }
+            },
+            "active": 1
         },
         {
             "nick": "Zac",
@@ -43,7 +47,8 @@
             "accounts": {
                 "reddit": "ZacAntonaci_Frontier",
                 "rss": "97768"
-            }
+            },
+            "active": 1
         },
         {
             "nick": "Ian",
@@ -51,7 +56,8 @@
             "role": "Senior Designer",
             "accounts": {
                 "rss": "100780"
-            }
+            },
+            "active": 1
         },
         {
             "nick": "Adam",
@@ -60,7 +66,8 @@
             "accounts": {
                 "rss": "14349",
                 "twitter": "adwoods666"
-            }
+            },
+            "active": 1
         },
         {
             "nick": "Michael",
@@ -69,7 +76,8 @@
             "accounts": {
                 "twitter": "TheCultofMe",
                 "rss": "2"
-            }
+            },
+            "active": 1
         },
         {
             "nick": "Ben",
@@ -78,25 +86,29 @@
             "accounts": {
                 "rss": "27895",
                 "twitter": "klumaster"
-            }
+            },
+            "active": 1
         },
         {
             "nick": "Mike",
             "name": "Mike Evans",
             "role": "Game Designer",
-            "accounts": {}
+            "accounts": {},
+            "active": 1
         },
         {
             "nick": "Sandro",
             "name": "Sandro Sammarco",
             "role": "Lead Designer",
-            "accounts": {}
+            "accounts": {},
+            "active": 1
         },
         {
             "nick": "Gregg",
             "name": "Gregg Chamberlain",
             "role": "Platform Lead/Senior Tester",
-            "accounts": {}
+            "accounts": {},
+            "active": 1
         },
         {
             "nick": "Ashley",
@@ -104,7 +116,8 @@
             "role": "Customer Services",
             "accounts": {
                 "rss": "15645"
-            }
+            },
+            "active": 1
         },
         {
             "nick": "Anthony",
@@ -113,7 +126,8 @@
             "accounts": {
                 "rss": "25591",
                 "twitter": "anttheross"
-            }
+            },
+            "active": 1
         },
         {
             "nick": "Edward",
@@ -122,7 +136,8 @@
             "accounts": {
                 "rss": "47159",
                 "reddit": "EdwardLewis_Frontier"
-            }
+            },
+            "active": 1
         },
         {
             "nick": "Support",
@@ -130,7 +145,8 @@
             "role": "Support",
             "accounts": {
                 "reddit": "frontier_support"
-            }
+            },
+            "active": 1
         },
         {
             "nick": "Sarah",
@@ -138,7 +154,8 @@
             "role": "Programmer",
             "accounts": {
                 "rss": "17666"
-            }
+            },
+            "active": 1
         },
         {
             "nick": "hchalkley",
@@ -146,7 +163,8 @@
             "role": "Senior Programmer",
             "accounts": {
                 "rss": "31252"
-            }
+            },
+            "active": 1
         }
     ]
 }
