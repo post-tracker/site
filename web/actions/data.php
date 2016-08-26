@@ -65,7 +65,7 @@ else :
             posts.timestamp
         DESC
         LIMIT
-            100';
+            50';
     $PDO = $database->prepare( $query );
 endif;
 
