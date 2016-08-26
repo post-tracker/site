@@ -1,0 +1,61 @@
+{
+    "name": "Counter Strike: Global Offensive",
+    "shortName": "CSGO",
+    "hostname": "csgodevtracker.com",
+    "developers" : [
+        {
+            "nick": "Brian",
+            "name": "Brian Lev",
+            "role": "Developer",
+            "accounts": {
+                "reddit": "brianlev_valve"
+            },
+            "active": 1
+        },
+        {
+            "nick": "Matt",
+            "name": "Matt Wood",
+            "role": "Developer",
+            "accounts": {
+                "reddit": "mattwood_valve"
+            },
+            "active": 1
+        },
+        {
+            "nick": "ViTALITY",
+            "name": "ViTALITY",
+            "role": "Developer",
+            "accounts": {
+                "reddit": "vitaliy_valve"
+            },
+            "active": 1
+        },
+        {
+            "nick": "Ido",
+            "name": "Ido",
+            "role": "Developer",
+            "accounts": {
+                "reddit": "ido_valve"
+            },
+            "active": 1
+        },
+        {
+            "nick": "Ryan",
+            "name": "Ryan",
+            "role": "Developer",
+            "accounts": {
+                "reddit": "ValveRyan"
+            },
+            "active": 1
+        },
+        {
+            "nick": "McJohn",
+            "name": "McJohn",
+            "role": "Developer",
+            "accounts": {
+                "reddit": "vMcJohn"
+            },
+            "active": 1
+        }
+    ]
+}
