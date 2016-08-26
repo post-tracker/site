@@ -78,6 +78,14 @@ class Post extends Kurl {
         $PDO->bindValue( ':content', $this->text );
         $PDO->bindValue( ':timestamp', $this->timestamp );
 
-        return $PDO->execute();
+        $result = $PDO->execute();
+
+        if( $result ):
+            return $result;
+        endif;
+
+        print_r( $PDO->errorInfo() );
+
+        return false;
     }
 }
