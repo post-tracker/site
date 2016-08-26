@@ -3,3 +3,5 @@ app.built.js
 .vagrant/
 node_modules/
 dist/
+npm-debug.log
+web/scripts/app.build.js
