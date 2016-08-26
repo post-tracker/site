@@ -62,6 +62,8 @@ games.forEach( ( game ) => {
 
     // Create database if it doesn't exist
     fs.ensureFileSync( path.join( gamePath + '/data' ) + '/database.sqlite' );
+    fs.chmod( path.join( gamePath + '/data' ), 777 );
+    fs.chmod( path.join( gamePath + '/data' ) + '/database.sqlite', 777 );
 
     // Setup database things
     let gameDatabaseSetup = new DatabaseSetup( path.join( gamePath + '/data' ) + '/database.sqlite' );
