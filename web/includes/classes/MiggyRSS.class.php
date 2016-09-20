@@ -1,5 +1,5 @@
 <?php
-class RSS extends Kurl {
+class MiggyRSS extends Kurl {
     private $posts = array();
     private $developers = array();
 
@@ -25,7 +25,7 @@ class RSS extends Kurl {
         AND
             accounts.service = :service';
         $PDO = $database->prepare( $query );
-        $PDO->bindValue( ':service', 'rss' );
+        $PDO->bindValue( ':service', 'MiggyRSS' );
         $PDO->execute();
 
         while( $developer = $PDO->fetch() ):
@@ -70,7 +70,7 @@ class RSS extends Kurl {
 
             $post->setUserId( $this->developers[ $developer ] );
 
-            $post->setSource( 'rss' );
+            $post->setSource( 'MiggyRSS' );
 
             if( $post->isValid() ) :
                 $this->posts[] = $post;
