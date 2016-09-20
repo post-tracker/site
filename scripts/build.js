@@ -17,7 +17,22 @@ const varsToPHP = function varsToPHP( varObject ){
     }
 
     return returnString;
-}
+};
+
+const varsToCron = function varsToCron( gameName, varsList, callback ){
+    let cronOutput = '';
+    let cronFilename = path.join( __dirname, '../config/cron/', gameName );
+
+    for( let i = 0; i < varsList.length; i = i + 1 ){
+        cronOutput = `${ cronOutput }* * * * * root lynx -dump "http://localhost/${ gameName }/actions/update.php?type=${ varsList[ i ] }" > /home/ubuntu/cronlog\n`;
+    }
+
+    cronOutput = `${ cronOutput }* * * * * root lynx -dump "http://example.com/" > /home/ubuntu/cronlog\n`;
+
+    fs.writeFile( cronFilename, cronOutput, ( error ) => {
+        callback( error, cronFilename );
+    } );
+};
 
 // Make sure the dist folder exists
 let distPath = path.join( __dirname + '/../dist' );
@@ -39,6 +54,15 @@ games.forEach( ( game ) => {
         'assets'
     ];
     let gameData = JSON.parse( fs.readFileSync( path.join( __dirname + '/../games/' + game + '/data.json' ), 'utf8' ) );
+    gameData.services = [];
+
+    for( let developerIndex = 0; developerIndex < gameData.developers.length; developerIndex = developerIndex + 1 ){
+        for ( let service in gameData.developers[ developerIndex ].accounts ){
+            if ( gameData.services.indexOf( service ) === -1 ){
+                gameData.services.push( service );
+            }
+        }
+    }
 
     try {
         fs.accessSync( gamePath );
@@ -72,6 +96,34 @@ games.forEach( ( game ) => {
     // Copy all files from the web directory
     fs.copySync( path.join( __dirname + '/../web/' ), gamePath, {
         clobber: true
+    } );
+
+    // Create and/or update cron files
+    varsToCron( game, gameData.services, ( error, cronFilename ) => {
+        if( error ){
+            throw error;
+        }
+
+        let parsedFilename = path.parse( cronFilename );
+
+        fs.access( '/etc/cron.d/', fs.constants.W_OK, ( error ) => {
+            if( error ){
+                console.log( `Can't write to /etc/cron.d/\nSkipping symlink of cronFilename` );
+
+                return false;
+            }
+
+            fs.copy( cronFilename, path.join( '/etc/cron.d/', parsedFilename.base ), ( error ) => {
+                if( error ){
+                    throw error;
+                }
+
+                fs.chmod( path.join( '/etc/cron.d/', parsedFilename.base ), 0644 );
+            } );
+
+            return true;
+        });
+
     } );
 
     // Create database if it doesn't exist
