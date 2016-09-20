@@ -1,5 +1,5 @@
 <?php
-class Steamprofile {
+class Steam {
     private static $profileBase = 'http://steamcommunity.com/profiles/{{userIdentifier}}/posthistory/';
     private static $idBase = 'http://steamcommunity.com/id/{{userIdentifier}}/posthistory/';
 
@@ -40,7 +40,7 @@ class Steamprofile {
             $post->setUrl( $url );
             $post->setUserId( $this->uid );
 
-            $post->setSource( 'steam' );
+            $post->setSource( 'Steam' );
 
             if( strpos( $post->text, 'blockquote' ) !== false ):
                 $post->text = preg_replace( '/href="\#(.+?)"/mis', 'href="' . $communityPost->find( 'a.forum_topic_link', 0 )->href . '#$1"', $post->text );

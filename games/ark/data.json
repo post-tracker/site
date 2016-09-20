@@ -8,8 +8,8 @@
             "name": "Jathiesh Karunakaran",
             "role": "Community Manager",
             "accounts": {
-                "steam": "wildcardjat",
-                "reddit": "jatonreddit",
+                "Steam": "wildcardjat",
+                "Reddit": "jatonreddit",
                 "twitter": "jatstweeter",
                 "survivetheark": "2-jat"
             },
@@ -20,8 +20,8 @@
             "name": "Kayd Hendricks",
             "role": "",
             "accounts": {
-                "steam": "76561198175441809",
-                "reddit": "WildcardTheRightHand",
+                "Steam": "76561198175441809",
+                "Reddit": "WildcardTheRightHand",
                 "twitter": "KaydHendricks",
                 "survivetheark": "3836-therighthand"
             },
@@ -32,7 +32,7 @@
             "name": "",
             "role": "Designer",
             "accounts": {
-                "steam": "76561198178808059"
+                "Steam": "76561198178808059"
             },
             "active": 1
         },
@@ -41,8 +41,8 @@
             "name": "",
             "role": "Lead Engineer",
             "accounts": {
-                "steam": "wildcarddrake",
-                "reddit": "WC-Drake",
+                "Steam": "wildcarddrake",
+                "Reddit": "WC-Drake",
                 "twitter": "arkjeremy",
                 "survivetheark": "4054-jeremy-stieglitz"
             },
@@ -53,7 +53,7 @@
             "name": "",
             "role": "",
             "accounts": {
-                "steam": "76561198207415608"
+                "Steam": "76561198207415608"
             },
             "active": 1
         },
@@ -62,7 +62,7 @@
             "name": "",
             "role": "Engineer",
             "accounts": {
-                "steam": "76561198229320228"
+                "Steam": "76561198229320228"
             },
             "active": 1
         },
@@ -71,7 +71,7 @@
             "name": "",
             "role": "Producer",
             "accounts": {
-                "steam": "76561198178797193"
+                "Steam": "76561198178797193"
             },
             "active": 1
         },
@@ -80,7 +80,7 @@
             "name": "Jesse Rapczak",
             "role": "Art Director",
             "accounts": {
-                "steam": "76561198174992766",
+                "Steam": "76561198174992766",
                 "twitter": "arkjesse",
                 "survivetheark": "11-jesse"
             },
@@ -91,7 +91,7 @@
             "name": "",
             "role": "",
             "accounts": {
-                "steam": "76561198212514456"
+                "Steam": "76561198212514456"
             },
             "active": 1
         },
@@ -100,7 +100,7 @@
             "name": "",
             "role": "",
             "accounts": {
-                "steam": "OMoussaInstinct"
+                "Steam": "OMoussaInstinct"
             },
             "active": 1
         },
@@ -109,7 +109,7 @@
             "name": "",
             "role": "",
             "accounts": {
-                "steam": "wcTLF"
+                "Steam": "wcTLF"
             },
             "active": 1
         },
@@ -118,7 +118,7 @@
             "name": "",
             "role": "Network Engineer",
             "accounts": {
-                "steam": "76561198179250147"
+                "Steam": "76561198179250147"
             },
             "active": 1
         },
@@ -127,8 +127,8 @@
             "name": "",
             "role": "",
             "accounts": {
-                "steam": "HongleBongle",
-                "reddit": "HongleBongleFungle"
+                "Steam": "HongleBongle",
+                "Reddit": "HongleBongleFungle"
             },
             "active": 1
         },
@@ -137,8 +137,8 @@
             "name": "",
             "role": "Community Manager",
             "accounts": {
-                "steam": "wildcardjen",
-                "reddit": "wildcardjen",
+                "Steam": "wildcardjen",
+                "Reddit": "wildcardjen",
                 "twitter": "bubblywums",
                 "survivetheark": "7-jen"
             },
@@ -159,7 +159,7 @@
             "name": "",
             "role": "Head Bug Reports",
             "accounts": {
-                "steam": "WildcardQA",
+                "Steam": "WildcardQA",
                 "twitter": "WC_Zane",
                 "survivetheark": "6-zane"
             },
@@ -170,8 +170,8 @@
             "name": "",
             "role": "Community Hub Leader",
             "accounts": {
-                "steam": "wildcardpanda",
-                "reddit": "wildcardpanda",
+                "Steam": "wildcardpanda",
+                "Reddit": "wildcardpanda",
                 "twitter": "thelilpanda",
                 "survivetheark": "8-lilpanda"
             },
@@ -182,8 +182,8 @@
             "name": "",
             "role": "Forum Moderator",
             "accounts": {
-                "steam": "Nubsly",
-                "reddit": "Nubsly-"
+                "Steam": "Nubsly",
+                "Reddit": "Nubsly-"
             },
             "active": 0
         }

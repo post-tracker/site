@@ -8,7 +8,7 @@
             "name": "Brian Lev",
             "role": "Developer",
             "accounts": {
-                "reddit": "brianlev_valve"
+                "Reddit": "brianlev_valve"
             },
             "active": 1
         },
@@ -17,7 +17,7 @@
             "name": "Matt Wood",
             "role": "Developer",
             "accounts": {
-                "reddit": "mattwood_valve"
+                "Reddit": "mattwood_valve"
             },
             "active": 1
         },
@@ -26,7 +26,7 @@
             "name": "ViTALITY",
             "role": "Developer",
             "accounts": {
-                "reddit": "vitaliy_valve"
+                "Reddit": "vitaliy_valve"
             },
             "active": 1
         },
@@ -35,7 +35,7 @@
             "name": "Ido",
             "role": "Developer",
             "accounts": {
-                "reddit": "ido_valve"
+                "Reddit": "ido_valve"
             },
             "active": 1
         },
@@ -44,7 +44,7 @@
             "name": "Ryan",
             "role": "Developer",
             "accounts": {
-                "reddit": "ValveRyan"
+                "Reddit": "ValveRyan"
             },
             "active": 1
         },
@@ -53,7 +53,7 @@
             "name": "McJohn",
             "role": "Developer",
             "accounts": {
-                "reddit": "vMcJohn"
+                "Reddit": "vMcJohn"
             },
             "active": 1
         }

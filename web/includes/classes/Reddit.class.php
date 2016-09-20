@@ -1,5 +1,5 @@
 <?php
-class Reddituser extends Kurl {
+class Reddit extends Kurl {
     private static $apiBase = 'https://www.reddit.com';
     private static $userPostsUrl = '/user/{username}.json';
 
@@ -56,7 +56,7 @@ class Reddituser extends Kurl {
             $post->setTimestamp( $redditPost->data->created_utc );
             $post->setUserId( $this->userId );
 
-            $post->setSource( 'reddit' );
+            $post->setSource( 'Reddit' );
 
             if( $post->isValid() ) :
                 $this->posts[] = $post;

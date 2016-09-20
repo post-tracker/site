@@ -18,8 +18,8 @@
             "name": "Brett Cooper",
             "role": "Community Manager",
             "accounts": {
-                "reddit": "BrettC_Frontier",
                 "rss": "52"
+                "Reddit": "BrettC_Frontier",
             },
             "active": 1
         },
@@ -28,7 +28,7 @@
             "name": "Dale Emasiri",
             "role": "Social Media Community Manager",
             "accounts": {
-                "reddit": "DaleEmasiri_Frontier"
+                "Reddit": "DaleEmasiri_Frontier"
             },
             "active": 1
         },
@@ -46,8 +46,8 @@
             "name": "Zac Antonaci",
             "role": "Head of Community Management",
             "accounts": {
-                "reddit": "ZacAntonaci_Frontier",
                 "rss": "97768"
+                "Reddit": "ZacAntonaci_Frontier",
             },
             "active": 1
         },
@@ -136,7 +136,7 @@
             "role": "Community Manager",
             "accounts": {
                 "rss": "47159",
-                "reddit": "EdwardLewis_Frontier"
+                "Reddit": "EdwardLewis_Frontier"
             },
             "active": 1
         },
@@ -145,7 +145,7 @@
             "name": "Frontier Support",
             "role": "Support",
             "accounts": {
-                "reddit": "frontier_support"
+                "Reddit": "frontier_support"
             },
             "active": 1
         },
