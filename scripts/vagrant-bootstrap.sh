@@ -10,7 +10,7 @@ sudo apt-get install -y nginx
 sudo rm -r /usr/share/nginx/html
 sudo ln -s /vagrant/dist /usr/share/nginx/html
 
-sudo apt-get install -y php-fpm php-sqlite3 php-apcu
+sudo apt-get install -y php-fpm php-sqlite3 php-apcu php-xml
 
 # Setup /etc/nginx/sites-available/default
 sudo rm /etc/nginx/sites-available/default
