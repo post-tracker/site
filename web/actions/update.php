@@ -1,43 +1,58 @@
 <?php
 include( '../includes/default.php' );
 
-$fetchQuery = 'SELECT developers.id, accounts.uid, accounts.identifier, developers.active FROM developers, accounts WHERE developers.active = 1 AND developers.id = accounts.uid AND accounts.service = :service';
-$PDO = $database->prepare( $fetchQuery );
+$validTypesQuery = 'SELECT service FROM accounts GROUP BY service';
+$PDO = $database->prepare( $validTypesQuery );
+$PDO->execute();
+$validServices = $PDO->fetchAll( PDO::FETCH_COLUMN, 0 );
 
-switch( $_GET[ 'type' ] ):
-    case 'reddit':
-        $PDO->bindValue( ':service', 'reddit' );
-        $PDO->execute();
-        $users = $PDO->fetchAll();
-        foreach( $users as $userData ) :
-            $redditUser = new Reddituser( $userData->uid, $userData->identifier);
+if( !in_array( $_GET[ 'type' ], $validServices ) ):
+    die( 'No valid service specified' );
+endif;
 
-            $posts = $redditUser->getRecentPosts();
-            foreach( $posts as $post ) :
-                $post->save();
-            endforeach;
-        endforeach;
-        break;
+$type = $_GET[ 'type' ];
 
-    case 'steam':
-        $PDO->bindValue( ':service', 'steam' );
-        $PDO->execute();
-        $users = $PDO->fetchAll();
-        foreach( $users as $userData ) :
-            $steamProfile = new Steamprofile( $userData->uid, $userData->identifier );
+if( isset( $$type ) ):
+    $serviceData = $$type;
+else :
+    $serviceData = array(
+        'type' => 'multiple'
+    );
+endif;
 
-            $posts = $steamProfile->getRecentPosts();
-            foreach( $posts as $post ) :
-                $post->save();
-            endforeach;
-        endforeach;
-        break;
+if( $serviceData[ 'type' ] == 'single' ):
+    $developerService = new $type( $serviceData[ 'endpoint' ] );
 
-    case 'rss':
-        $rssParser = new RSS( 'http://www.miggy.org/games/elite-dangerous/devtracker/ed-dev-posts.rss' );
-        $posts = $rssParser->getRecentPosts();
+    $posts = $developerService->getRecentPosts();
+    foreach( $posts as $post ) :
+        $post->save();
+    endforeach;
+else :
+    $fetchQuery = 'SELECT
+        developers.id,
+        accounts.uid,
+        accounts.identifier,
+        developers.active
+    FROM
+        developers,
+        accounts
+    WHERE
+        developers.active = 1
+    AND
+        developers.id = accounts.uid
+    AND
+        accounts.service = :service';
+
+    $PDO = $database->prepare( $fetchQuery );
+    $PDO->bindValue( ':service', $type );
+    $PDO->execute();
+    $users = $PDO->fetchAll();
+
+    foreach( $users as $userData ) :
+        $developerService = new $type( $userData->uid, $userData->identifier);
+        $posts = $developerService->getRecentPosts();
         foreach( $posts as $post ) :
             $post->save();
         endforeach;
-        break;
-endswitch;
+    endforeach;
+endif;
