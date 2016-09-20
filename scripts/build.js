@@ -5,6 +5,20 @@ const mustache = require( 'mustache' );
 
 const DatabaseSetup = require( './dbsetup.js' );
 
+const varsToPHP = function varsToPHP( varObject ){
+    let returnString = '';
+
+    for( let service in varObject ){
+        returnString = `${ returnString }\n$${ service } = array();`;
+
+        for( let identifier in varObject[ service ] ){
+            returnString = `${ returnString }\n$${ service }[ '${ identifier }' ] = '${ varObject[ service ][ identifier ] }';`;
+        }
+    }
+
+    return returnString;
+}
+
 // Make sure the dist folder exists
 let distPath = path.join( __dirname + '/../dist' );
 try {
@@ -64,6 +78,14 @@ games.forEach( ( game ) => {
     fs.ensureFileSync( path.join( gamePath + '/data' ) + '/database.sqlite' );
     fs.chmod( path.join( gamePath + '/data' ), 0777 );
     fs.chmod( path.join( gamePath + '/data' ) + '/database.sqlite', 0777 );
+
+    if( gameData.config ){
+        fs.appendFile( path.join( gamePath, 'includes/config.php' ), varsToPHP( gameData.config ), ( error ) => {
+            if( error ){
+                throw error;
+            }
+        });
+    }
 
     // Setup database things
     let gameDatabaseSetup = new DatabaseSetup( path.join( gamePath + '/data' ) + '/database.sqlite' );
