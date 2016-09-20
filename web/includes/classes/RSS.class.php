@@ -12,8 +12,20 @@ class RSS extends Kurl {
     private function loadDevelopers(){
         global $database;
 
-        $query = 'SELECT id, nick, name FROM developers';
+        $query = 'SELECT
+            developers.id,
+            developers.nick,
+            developers.name,
+            accounts.identifier
+        FROM
+            developers,
+            accounts
+        WHERE
+            developers.id = accounts.uid
+        AND
+            accounts.service = :service';
         $PDO = $database->prepare( $query );
+        $PDO->bindValue( ':service', 'rss' );
         $PDO->execute();
 
         while( $developer = $PDO->fetch() ):
