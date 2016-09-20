@@ -2,14 +2,21 @@
     "name": "Elite Dangerous",
     "shortName": "Elite Dangerous",
     "hostname": "elitedevtracker.com",
+    "config": {
+        "MiggyRSS": {
+            "type": "single",
+            "endpoint": "http://www.miggy.org/games/elite-dangerous/devtracker/ed-dev-posts.rss"
+        }
+    },
     "developers" : [
         {
             "nick": "Braben",
             "name": "David Braben",
             "role": "CEO",
             "accounts": {
-                "reddit": "DavidBraben",
-                "twitter": "DavidBraben"
+                "Reddit": "DavidBraben",
+                "twitter": "DavidBraben",
+                "MiggyRSS": "7"
             },
             "active": 1
         },
@@ -18,8 +25,8 @@
             "name": "Brett Cooper",
             "role": "Community Manager",
             "accounts": {
-                "rss": "52"
                 "Reddit": "BrettC_Frontier",
+                "MiggyRSS": "52"
             },
             "active": 1
         },
@@ -37,7 +44,7 @@
             "name": "Gary Richards",
             "role": "Senior Producer, Xbox One",
             "accounts": {
-                "rss": "10691"
+                "MiggyRSS": "10691"
             },
             "active": 1
         },
@@ -46,8 +53,8 @@
             "name": "Zac Antonaci",
             "role": "Head of Community Management",
             "accounts": {
-                "rss": "97768"
                 "Reddit": "ZacAntonaci_Frontier",
+                "MiggyRSS": "97768"
             },
             "active": 1
         },
@@ -56,7 +63,7 @@
             "name": "Ian Dingwall",
             "role": "Senior Designer",
             "accounts": {
-                "rss": "100780"
+                "MiggyRSS": "100780"
             },
             "active": 1
         },
@@ -65,7 +72,7 @@
             "name": "Adam Woods",
             "role": "Producer",
             "accounts": {
-                "rss": "14349",
+                "MiggyRSS": "14349",
                 "twitter": "adwoods666"
             },
             "active": 1
@@ -76,7 +83,7 @@
             "role": "Executive Producer",
             "accounts": {
                 "twitter": "TheCultofMe",
-                "rss": "2"
+                "MiggyRSS": "2"
             },
             "active": 1
         },
@@ -85,7 +92,7 @@
             "name": "Ben Parry",
             "role": "Graphics Programmer",
             "accounts": {
-                "rss": "27895",
+                "MiggyRSS": "27895",
                 "twitter": "klumaster"
             },
             "active": 1
@@ -101,7 +108,9 @@
             "nick": "Sandro",
             "name": "Sandro Sammarco",
             "role": "Lead Designer",
-            "accounts": {},
+            "accounts": {
+                "MiggyRSS": "15655"
+            },
             "active": 1
         },
         {
@@ -116,7 +125,7 @@
             "name": "Ashley Barley",
             "role": "Customer Services",
             "accounts": {
-                "rss": "15645"
+                "MiggyRSS": "15645"
             },
             "active": 1
         },
@@ -125,7 +134,7 @@
             "name": "Anthony Ross",
             "role": "Programmer",
             "accounts": {
-                "rss": "25591",
+                "MiggyRSS": "25591",
                 "twitter": "anttheross"
             },
             "active": 1
@@ -135,7 +144,7 @@
             "name": "Edward Lewis",
             "role": "Community Manager",
             "accounts": {
-                "rss": "47159",
+                "MiggyRSS": "47159",
                 "Reddit": "EdwardLewis_Frontier"
             },
             "active": 1
@@ -154,7 +163,7 @@
             "name": "Sarah Jane Avory",
             "role": "Programmer",
             "accounts": {
-                "rss": "17666"
+                "MiggyRSS": "17666"
             },
             "active": 1
         },
@@ -163,7 +172,16 @@
             "name": "Howard Chalkley",
             "role": "Senior Programmer",
             "accounts": {
-                "rss": "31252"
+                "MiggyRSS": "31252"
+            },
+            "active": 1
+        },
+        {
+            "nick": "Mark",
+            "name": "Mark Allen",
+            "role": "Programmer",
+            "accounts": {
+                "MiggyRSS": "26549"
             },
             "active": 1
         }
