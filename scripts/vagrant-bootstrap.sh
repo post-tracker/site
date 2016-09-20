@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Something's fucky
+echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf > /dev/null
+
 sudo apt-get update
 sudo apt-get upgrade
 
