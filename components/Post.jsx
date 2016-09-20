@@ -19,6 +19,20 @@ class Post extends React.Component {
         });
     }
 
+    convertSource( originalSource ){
+
+        switch( originalSource ){
+            case 'MiggyRSS':
+                var source = 'RSS';
+                break;
+            default:
+                var source = originalSource;
+                break;
+        }
+
+        return source.toLowerCase();
+    }
+
     componentDidMount(){
         let height = ReactDOM.findDOMNode( this.refs.body ).offsetHeight;
 
@@ -30,7 +44,7 @@ class Post extends React.Component {
     }
 
     render() {
-        let iconClass = 'fa fa-' + this.props.data.source;
+        let iconClass = 'fa fa-' + this.convertSource( this.props.data.source );
         let expander;
         let bodyClasses = 'panel-body';
 
