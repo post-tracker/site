@@ -184,6 +184,33 @@
                 "MiggyRSS": "26549"
             },
             "active": 1
+        },
+        {
+            "nick": "Jon",
+            "name": "Jon Pace",
+            "role": "Head of UI",
+            "accounts": {
+                "MiggyRSS": "32348"
+            },
+            "active": 1
+        },
+        {
+            "nick": "Steve",
+            "name": "Steve Kirby",
+            "role": "Lead Games Designer",
+            "accounts": {
+                "MiggyRSS": "108846"
+            },
+            "active": 1
+        },
+        {
+            "nick": "Mike",
+            "name": "Mike Evans",
+            "role": "Designer",
+            "accounts": {
+                "MiggyRSS": "22712"
+            },
+            "active": 1
         }
     ]
 }
