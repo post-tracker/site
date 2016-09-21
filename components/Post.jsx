@@ -47,16 +47,35 @@ class Post extends React.Component {
         let iconClass = 'fa fa-' + this.convertSource( this.props.data.source );
         let expander;
         let bodyClasses = 'panel-body';
+        let title;
 
         if( this.state.expandable ){
             expander = <div className="expander" onClick={this.expand}><button className="btn btn-default">Show full post</button></div>;
             bodyClasses = bodyClasses + ' expandable';
         }
 
+        if( this.props.data.role || this.props.data.group ){
+            title = '[ ';
+
+            if( this.props.data.role ){
+                title = title + this.props.data.role;
+            }
+
+            if( this.props.data.group ){
+                if( title.length > 2 ){
+                    title = title + ' - ';
+                }
+
+                title = title + this.props.data.group;
+            }
+
+            title = title + ' ]';
+        }
+
         return (
             <div className="panel panel-default">
                 <div className="panel-heading">
-                    {this.props.data.nick} {this.props.data.role ? '[' + this.props.data.role + ']' : ''} posted in <a href={this.props.data.topic_url} dangerouslySetInnerHTML={{ __html: this.props.data.topic }}></a>
+                    {this.props.data.nick} {title} posted in <a href={this.props.data.topic_url} dangerouslySetInnerHTML={{ __html: this.props.data.topic }}></a>
                 </div>
                 <div className={bodyClasses} ref="body" dangerouslySetInnerHTML={{ __html: this.props.data.content }}></div>
                 {expander}

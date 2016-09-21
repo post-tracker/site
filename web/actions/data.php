@@ -10,6 +10,7 @@ if( isset( $_GET[ 'search' ] ) && strlen( $_GET[ 'search' ] ) > 0 ) :
             posts.timestamp,
             developers.nick,
             developers.role,
+            developers.`group`,
             accounts.identifier,
             posts.source
         FROM
@@ -31,6 +32,8 @@ if( isset( $_GET[ 'search' ] ) && strlen( $_GET[ 'search' ] ) > 0 ) :
                 developers.nick LIKE :query
                 OR
                 developers.role LIKE :query
+                OR
+                developers.`group` LIKE :query
             )
         ORDER BY
             posts.timestamp
@@ -49,6 +52,7 @@ else :
             posts.timestamp,
             developers.nick,
             developers.role,
+            developers.`group`,
             accounts.identifier,
             posts.source
         FROM

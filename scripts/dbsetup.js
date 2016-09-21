@@ -16,27 +16,28 @@ class DatabaseSetup {
 
     createTables(){
         this.database.serialize();
-        this.database.run( 'CREATE TABLE IF NOT EXISTS posts( topic TEXT, topic_url TEXT, uid TEXT, url TEXT, source TEXT, content TEXT, timestamp TEXT )' );
-        this.database.run( 'CREATE TABLE IF NOT EXISTS developers( id INT PRIMARY KEY, nick TEXT, name TEXT, role TEXT, active INT )' );
-        this.database.run( 'CREATE TABLE IF NOT EXISTS accounts( uid INT, service TEXT, identifier TEXT )' );
+        this.database.run( 'CREATE TABLE IF NOT EXISTS posts( `topic` TEXT, `topic_url` TEXT, `uid` TEXT, `url` TEXT, `source` TEXT, `content` TEXT, `timestamp` TEXT )' );
+        this.database.run( 'CREATE TABLE IF NOT EXISTS developers( `id` INT PRIMARY KEY, `nick` TEXT, `name` TEXT, `role` TEXT, `active` INT, `group` TEXT )' );
+        this.database.run( 'CREATE TABLE IF NOT EXISTS accounts( `uid` INT, `service` TEXT, `identifier` TEXT )' );
         this.database.parallelize();
     }
 
     setupData(){
         let currentMaxUID = 0;
 
-        let developerExistsStatement = this.database.prepare( 'SELECT id FROM developers WHERE nick = $nick LIMIT 1' );
-        let createDeveloperStatement = this.database.prepare( 'INSERT INTO developers ( id, nick, name, role, active ) VALUES( $id, $nick, $name, $role, $active )' );
-        let updateDeveloperStatement = this.database.prepare( 'UPDATE developers SET name = $name, role = $role, active = $active WHERE id = $id' );
+        let developerExistsStatement = this.database.prepare( 'SELECT `id` FROM `developers` WHERE `nick` = $nick LIMIT 1' );
+        let createDeveloperStatement = this.database.prepare( 'INSERT INTO `developers` ( `id`, `nick`, `name`, `role`, `active`, `group` ) VALUES( $id, $nick, $name, $role, $active, $group )' );
+        let updateDeveloperStatement = this.database.prepare( 'UPDATE `developers` SET `name` = $name, `role` = $role, `active` = $active, `group` = $group WHERE id = $id' );
 
-        let accountExistsStatement = this.database.prepare( 'SELECT COUNT(*) AS accountCount FROM accounts WHERE service = $service AND uid = $uid LIMIT 1' );
-        let createAccountStatement = this.database.prepare( 'INSERT INTO accounts ( uid, service, identifier ) VALUES( $uid, $service, $identifier)' );
-        let updateAccountStatement = this.database.prepare( 'UPDATE accounts SET identifier = $identifier WHERE uid = $uid AND service = $service' );
+        let accountExistsStatement = this.database.prepare( 'SELECT COUNT(*) AS accountCount FROM `accounts` WHERE `service` = $service AND `uid` = $uid LIMIT 1' );
+        let createAccountStatement = this.database.prepare( 'INSERT INTO `accounts` ( `uid`, `service`, `identifier` ) VALUES( $uid, $service, $identifier)' );
+        let updateAccountStatement = this.database.prepare( 'UPDATE `accounts` SET `identifier` = $identifier WHERE `uid` = $uid AND `service` = $service' );
+
+        this.database.get( 'SELECT `id` FROM `developers` ORDER BY `id` DESC LIMIT 1', ( error, highestUID ) => {
             if( error ){
                 throw error;
             }
 
-        this.database.get( 'SELECT id FROM developers ORDER BY id DESC LIMIT 1', ( error, highestUID ) => {
             if ( typeof highestUID !== 'undefined' ){
                 currentMaxUID = highestUID.id;
             }
@@ -51,7 +52,8 @@ class DatabaseSetup {
                     let bindValues = {
                         $name: this.developers[ i ].name,
                         $role: this.developers[ i ].role,
-                        $active: this.developers[ i ].active
+                        $active: this.developers[ i ].active,
+                        $group: this.developers[ i ].group
                     }
                     let developerUID;
 
