@@ -1,7 +1,7 @@
 <?php
 class Kurl {
     private $data = false;
-    private $ttl = 60;
+    private $ttl = 900;
 
     public function loadUrl( $url, $customTTL = false ){
         if( $customTTL ):
