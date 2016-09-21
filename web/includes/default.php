@@ -9,9 +9,13 @@ try {
 
 $database->setAttribute( PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ );
 
-function __autoload( $className ) {
-    include  'classes/' . $className . '.class.php';
+function classAutoloader( $className ) {
+    if( file_exists( __DIR__ . '/classes/' . $className . '.class.php' ) ) :
+        include  __DIR__ . '/classes/' . $className . '.class.php';
+    endif;
 }
+
+spl_autoload_register( 'classAutoloader' );
 
 function getUid( $service, $identifier ){
     $query = 'SELECT uid FROM accounts WHERE service = :service AND identifier = :identifier LIMIT 1';

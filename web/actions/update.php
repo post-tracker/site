@@ -12,6 +12,10 @@ endif;
 
 $type = $_GET[ 'type' ];
 
+if( !class_exists( $type ) ):
+    die( 'No class defined for ' . htmlentities( $type ) );
+endif;
+
 if( isset( $$type ) ):
     $serviceData = $$type;
 else :

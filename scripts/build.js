@@ -20,14 +20,21 @@ const varsToPHP = function varsToPHP( varObject ){
 };
 
 const varsToCron = function varsToCron( gameName, varsList, callback ){
-    let cronOutput = '';
-    let cronFilename = path.join( __dirname, '../config/cron/', gameName );
+    let cronOutput = 'MAILTO=""\n';
+    let cronConfigPath = path.join( __dirname, '../config/cron/' );
+    let cronFilename = path.join( cronConfigPath, gameName );
 
     for( let i = 0; i < varsList.length; i = i + 1 ){
-        cronOutput = `${ cronOutput }* * * * * root lynx -dump "http://localhost/${ gameName }/actions/update.php?type=${ varsList[ i ] }" > /home/ubuntu/cronlog\n`;
+        let minuteOffset = i % 5;
+        cronOutput = `${ cronOutput }${ minuteOffset }-59/5 * * * * root lynx -dump "http://localhost/${ gameName }/actions/update.php?type=${ varsList[ i ] }" > /dev/null 2>&1\n`;
     }
 
-    cronOutput = `${ cronOutput }* * * * * root lynx -dump "http://example.com/" > /home/ubuntu/cronlog\n`;
+    // Make sure the cron config path exists
+    try {
+        fs.accessSync( cronConfigPath );
+    } catch ( error ){
+        fs.mkdirSync( cronConfigPath );
+    }
 
     fs.writeFile( cronFilename, cronOutput, ( error ) => {
         callback( error, cronFilename );
@@ -108,7 +115,7 @@ games.forEach( ( game ) => {
 
         fs.access( '/etc/cron.d/', fs.constants.W_OK, ( error ) => {
             if( error ){
-                console.log( `Can't write to /etc/cron.d/\nSkipping symlink of cronFilename` );
+                console.log( `Can't write to /etc/cron.d/\nSkipping symlink of ${ cronFilename }` );
 
                 return false;
             }
