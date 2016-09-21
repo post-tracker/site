@@ -32,6 +32,9 @@ class DatabaseSetup {
         let accountExistsStatement = this.database.prepare( 'SELECT COUNT(*) AS accountCount FROM accounts WHERE service = $service AND uid = $uid LIMIT 1' );
         let createAccountStatement = this.database.prepare( 'INSERT INTO accounts ( uid, service, identifier ) VALUES( $uid, $service, $identifier)' );
         let updateAccountStatement = this.database.prepare( 'UPDATE accounts SET identifier = $identifier WHERE uid = $uid AND service = $service' );
+            if( error ){
+                throw error;
+            }
 
         this.database.get( 'SELECT id FROM developers ORDER BY id DESC LIMIT 1', ( error, highestUID ) => {
             if ( typeof highestUID !== 'undefined' ){
@@ -40,6 +43,10 @@ class DatabaseSetup {
 
             for ( let i = 0; i < this.developers.length; i = i + 1 ){
                 developerExistsStatement.get( { $nick: this.developers[ i ].nick }, ( error, row ) => {
+                    if( error ){
+                        throw error;
+                    }
+
                     let developerStatement = updateDeveloperStatement;
                     let bindValues = {
                         $name: this.developers[ i ].name,
@@ -70,6 +77,10 @@ class DatabaseSetup {
                             }
 
                             accountExistsStatement.get( { $uid: developerUID, $service: service }, ( error, row ) => {
+                                if ( error ){
+                                    throw error;
+                                }
+
                                 let accountStatement = updateAccountStatement;
                                 let accountValues = {
                                     $service: service,
