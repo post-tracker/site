@@ -3,11 +3,11 @@ include( 'config.php' );
 
 try {
     $database = new PDO( $databasePath );
+    $database->setAttribute( PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ );
+    $database->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 } catch( PDOException $error ) {
     die( '<h2>Unable to open database connection</h2><p>'  . $error->getMessage() . '</p>');
 }
-
-$database->setAttribute( PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ );
 
 function classAutoloader( $className ) {
     if( file_exists( __DIR__ . '/classes/' . $className . '.class.php' ) ) :
