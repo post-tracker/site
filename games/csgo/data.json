@@ -1,61 +1,498 @@
 {
-    "name": "Counter Strike: Global Offensive",
-    "shortName": "CSGO",
-    "hostname": "csgodevtracker.com",
-    "developers" : [
+    "developers": [
         {
-            "nick": "Brian",
-            "name": "Brian Lev",
-            "role": "Developer",
+            "accounts": {
+                "Reddit": "cevo_spangler"
+            },
+            "nick": "Spangler",
+            "group": "CEVO",
+            "role": "Executive",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "cevonews"
+            },
+            "nick": "CEVO",
+            "group": "CEVO",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "kvin_s"
+            },
+            "nick": "kVIN_S",
+            "group": "CEVO",
+            "role": "Staff / Observer",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "zwigoose"
+            },
+            "nick": "zwigoose",
+            "group": "CEVO",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "durrrr_za"
+            },
+            "nick": "durrrr_za",
+            "group": "CSGOLounge",
+            "role": "Admin",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "marcwinther",
+                "Twitter": "nix0n"
+            },
+            "name": "Marc Winther",
+            "nick": "Marc Winther",
+            "group": "DreamHack",
+            "role": "eSports",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "fewowns"
+            },
+            "nick": "FewOwns",
+            "group": "ESEA",
+            "role": "COO",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "rmigz"
+            },
+            "nick": "rmigz",
+            "group": "ESEA",
+            "role": "Community Manager",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "aluminat1"
+            },
+            "nick": "aluminat1",
+            "group": "ESEA",
+            "role": "League Admin",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "shootah06"
+            },
+            "nick": "Shootah06",
+            "group": "ESEA",
+            "role": "League Commisionner",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "machine-",
+                "Twitter": "MyNameIsMachine"
+            },
+            "name": "Alex Richardson",
+            "nick": "Machine",
+            "group": "ESL",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "theflyingdj"
+            },
+            "nick": "theflyingdj",
+            "group": "ESL",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "holtzshedden"
+            },
+            "nick": "holtzshedden",
+            "group": "ESL",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "th3rogue"
+            },
+            "nick": "Th3 Rogue",
+            "group": "ESL",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "soodi"
+            },
+            "nick": "Soodi",
+            "group": "ESL",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "eslanna"
+            },
+            "nick": "Anna",
+            "group": "ESL",
+            "role": "Head of PR",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "metabie"
+            },
+            "nick": "Metabie",
+            "group": "ESL",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "kennigit"
+            },
+            "nick": "Kennigit",
+            "group": "ESL",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Kawatv"
+            },
+            "nick": "Kawa",
+            "group": "ESL",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "TheycallmePansyY"
+            },
+            "name": "Lauren Scott",
+            "nick": "Pansy",
+            "group": "ESL",
+            "role": "Caster",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "truecashflo"
+            },
+            "nick": "Truecashflo",
+            "group": "FACEIT",
+            "role": "Product Manager",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "unseenalchemist"
+            },
+            "nick": "UnseenAlchemist",
+            "group": "FACEIT",
+            "role": "Special Events Coordinator",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "existence-"
+            },
+            "nick": "Existence-",
+            "group": "FACEIT",
+            "role": "Head Admin NA",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "braderzwh"
+            },
+            "nick": "BradErzwh",
+            "group": "FACEIT",
+            "role": "Service Delivery Manager",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "roychez"
+            },
+            "nick": "roychez",
+            "group": "FACEIT",
+            "role": "VP of Events",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "easytarget_73"
+            },
+            "nick": "easytarget_73",
+            "group": "FACEIT",
+            "role": "Head of Support",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "nvm1986"
+            },
+            "nick": "nvm1986",
+            "group": "FACEIT",
+            "role": "CEO",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "mrmlgadam",
+                "Twitter": "mradamap"
+            },
+            "name": "Adam Apicella",
+            "nick": "MLG Adam",
+            "group": "MLG",
+            "role": "Executive VP",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "mlgkc"
+            },
+            "nick": "mlgkc",
+            "group": "MLG",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "mlgannouncements"
+            },
+            "nick": "MLG",
+            "group": "MLG",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "synide"
+            },
+            "nick": "synide",
+            "group": "MLG",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "MetuzTV"
+            },
+            "name": "Vince Hill",
+            "nick": "Metuz",
+            "group": "RoomOnFire",
+            "role": "Caster",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "AndersOnFire"
+            },
+            "name": "Anders Blume",
+            "nick": "Anders",
+            "group": "RoomOnFire",
+            "role": "Caster",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "SemmlertehRiot"
+            },
+            "name": "Auguste Massonnat",
+            "nick": "Semmler",
+            "group": "RoomOnFire",
+            "role": "Caster",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "jmosesot"
+            },
+            "name": "Jason O'Toole",
+            "nick": "Moses",
+            "group": "RoomOnFire",
+            "role": "Caster",
+            "active": "1"
+        },
+        {
             "accounts": {
                 "Reddit": "brianlev_valve"
             },
-            "active": 1
+            "name": "Brian Lev",
+            "nick": "Brian Lev",
+            "group": "Valve",
+            "role": "Developer",
+            "active": "1"
         },
         {
-            "nick": "Matt",
-            "name": "Matt Wood",
-            "role": "Developer",
             "accounts": {
-                "Reddit": "mattwood_valve"
+                "Reddit": "mattwood_valve",
+                "Twitter": "[matttwood]"
             },
-            "active": 1
+            "name": "Matt Wood",
+            "nick": "Matt Wood",
+            "group": "Valve",
+            "role": "Developer",
+            "active": "1"
         },
         {
-            "nick": "ViTALITY",
-            "name": "ViTALITY",
-            "role": "Developer",
+            "accounts": {
+                "Twitter": "csgo_dev"
+            },
+            "nick": "CSGO Dev",
+            "group": "Valve",
+            "active": "1"
+        },
+        {
             "accounts": {
                 "Reddit": "vitaliy_valve"
             },
-            "active": 1
+            "nick": "ViTALITY",
+            "group": "Valve",
+            "role": "Developer",
+            "active": "1"
         },
         {
-            "nick": "Ido",
-            "name": "Ido",
-            "role": "Developer",
             "accounts": {
-                "Reddit": "ido_valve"
+                "Reddit": "ido_valve",
+                "Twitter": " "
             },
-            "active": 1
+            "nick": "Ido",
+            "group": "Valve",
+            "role": "Developer",
+            "active": "1"
         },
         {
-            "nick": "Ryan",
-            "name": "Ryan",
-            "role": "Developer",
             "accounts": {
                 "Reddit": "ValveRyan"
             },
-            "active": 1
+            "nick": "Ryan",
+            "group": "Valve",
+            "active": "1"
         },
         {
-            "nick": "McJohn",
-            "name": "McJohn",
-            "role": "Developer",
             "accounts": {
                 "Reddit": "vMcJohn"
             },
-            "active": 1
+            "nick": "McJohn",
+            "group": "Valve",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Sadokist",
+                "Twitter": "sadokist"
+            },
+            "name": "Matthew Trivett",
+            "nick": "Sadokist",
+            "group": "VIP",
+            "role": "Caster",
+            "active": "1"
+        },
+        {
+            "accounts": {},
+            "nick": "Ryu-",
+            "group": "VIP",
+            "role": "Caster",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "WarOwl"
+            },
+            "nick": "WarOwl",
+            "group": "VIP",
+            "role": "WarOwl",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "DustMouret"
+            },
+            "nick": "DustMouret",
+            "group": "VIP",
+            "role": "DustMouret",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "ESEAsapphiRe"
+            },
+            "nick": "sapphiRe",
+            "group": "VIP",
+            "role": "Spectator & Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Dinoswarleaf"
+            },
+            "nick": "Dinoswarleaf",
+            "group": "VIP",
+            "role": "Gameplay Investigator",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "SlothSquadron"
+            },
+            "nick": "SlothSquadron",
+            "group": "VIP",
+            "role": "Gameplay Investigator",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Thooorin_2",
+                "Twitter": "thooorin"
+            },
+            "name": "Duncan Shields",
+            "nick": "Thorin",
+            "group": "VIP",
+            "role": "Analyst",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "LeXCS"
+            },
+            "nick": "LeX",
+            "group": "VIP",
+            "role": "Analyst",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "megamanTV",
+                "Twitter": "megamantv"
+            },
+            "name": "Cory Gilbert",
+            "nick": "megaman",
+            "group": "VIP",
+            "role": "Commentator",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "olofm"
+            },
+            "name": "Olof Kajbjer",
+            "nick": "Olof Kajbjer",
+            "group": "VIP",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "sgares"
+            },
+            "name": "Sean Gares",
+            "nick": "seangares",
+            "group": "VIP",
+            "role": "Player",
+            "active": "1"
         }
-    ]
+    ],
+    "name": "Counter Strike: Global Offensive",
+    "shortName": "CSGO",
+    "hostname": "csgodevtracker.com"
 }
