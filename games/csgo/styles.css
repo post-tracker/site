@@ -1,38 +1,15 @@
 @font-face {
-    font-family: 'Eurostile';
-    src: url( 'assets/eurostile.eot' );
-    src: url( 'assets/eurostile.eot?#iefix' ) format( 'embedded-opentype' ),
-         url( 'assets/eurostile.woff2' ) format( 'woff2' ),
-         url( 'assets/eurostile.woff' ) format( 'woff' ),
-         url( 'assets/eurostile.ttf' ) format( 'truetype' );
+    font-family: 'counter-strike';
+    src: url( 'assets/CounterStrike.eot' );
+    src: url( 'assets/CounterStrike.eot?#iefix' ) format( 'embedded-opentype' ),
+         url( 'assets/CounterStrike.woff2' ) format( 'woff2' ),
+         url( 'assets/CounterStrike.woff' ) format( 'woff' ),
+         url( 'assets/CounterStrike.ttf' ) format( 'truetype' );
     font-weight: normal;
     font-style: normal;
 }
-
-@font-face {
-    font-family: 'Telegrama';
-    src: url( 'assets/telegrama.eot' );
-    src: url( 'assets/telegrama.eot?#iefix' ) format( 'embedded-opentype' ),
-         url( 'assets/telegrama.woff2' ) format( 'woff2' ),
-         url( 'assets/telegrama.woff' ) format( 'woff' ),
-         url( 'assets/telegrama.ttf' ) format( 'truetype' );
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Century Gothic';
-    src: url( 'assets/CenturyGothic.eot' );
-    src: url( 'assets/CenturyGothic.eot?#iefix' ) format( 'embedded-opentype' ),
-         url( 'assets/CenturyGothic.woff' ) format( 'woff' ),
-         url( 'assets/CenturyGothic.ttf' ) format( 'truetype' ),
-    font-weight: normal;
-    font-style: normal;
-}
-
 
 body {
-    font-family: Eurostile, Roboto;
     font-size: 15px;
     line-height: 1.5;
 }
@@ -48,6 +25,7 @@ br {
 }
 
 h1 {
+    font-family: counter-strike, serif;
     text-transform: uppercase;
 }
 
