@@ -3,6 +3,7 @@ import http from 'http';
 import React from 'react';
 import debounce from 'debounce';
 import Hashes from 'jshashes';
+import queryString from 'query-string';
 
 import Post from './Post.jsx';
 import Search from './Search.jsx';
@@ -11,9 +12,15 @@ class PostList extends React.Component {
     constructor( props ){
         super( props );
 
+        let currentQuery = queryString.parse( location.search );
+
         this.state =  {
             data: [],
             searchString: ''
+        };
+
+        if( typeof currentQuery.search !== 'undefined' ){
+            this.state.searchString = currentQuery.search;
         }
 
         this.handleSearch = this.handleSearch.bind( this );
@@ -22,7 +29,7 @@ class PostList extends React.Component {
     }
 
     setUpdateTimeout(){
-        this.updateDataTimeout = setTimeout( this.loadCommentsFromServer, this.props.pollInterval );
+        this.updateDataTimeout = setTimeout( this.loadCommentsFromServer.bind( this ), this.props.pollInterval );
     }
 
     handleSearch( searchString ){
@@ -85,7 +92,12 @@ class PostList extends React.Component {
     }
 
     componentDidMount() {
-        this.loadCommentsFromServer();
+        if( this.state.searchString.length > 0 ){
+            this.loadCommentsFromServer( this.state.searchString );
+        } else {
+            this.loadCommentsFromServer();
+        }
+        
         this.setUpdateTimeout();
     }
 
