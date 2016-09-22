@@ -1,11 +1,11 @@
 server {
     listen 80 default_server;
     listen [::]:80 default_server ipv6only=on;
-    
-    server_name csgodevtracker.com;
-    root /usr/share/nginx/html/csgo;
 
+    root /usr/share/nginx/html/csgo;
     index index.php index.html index.htm;
+
+    server_name csgodevtracker.com;
 
     location / {
         try_files $uri $uri/ =404;
