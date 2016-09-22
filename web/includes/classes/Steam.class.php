@@ -25,7 +25,11 @@ class Steam {
         foreach( $html->find( 'div.post_searchresult' ) as $communityPost ) :
             // Parse time into a timestamp
             $time = $communityPost->find( 'div.searchresult_timestamp', 0 )->plaintext;
-            $time = str_replace( '@', date( 'o' ), $time );
+            if( preg_match( '#[1-2][0-9]{3}\s@#mis', $time ) ) :
+                $time = str_replace( array( '@ ', ',' ), '', $time );
+            else:
+                $time = str_replace( '@', date( 'o' ), $time );
+            endif;
 
             // Parse post url to a valid one
             $url = $communityPost->find( 'div.post_searchresult_simplereply', 0 )->onclick;
