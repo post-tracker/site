@@ -394,14 +394,12 @@
             },
             "name": "Matthew Trivett",
             "nick": "Sadokist",
-            "group": "VIP",
             "role": "Caster",
             "active": "1"
         },
         {
             "accounts": {},
             "nick": "Ryu-",
-            "group": "VIP",
             "role": "Caster",
             "active": "1"
         },
@@ -410,7 +408,6 @@
                 "Reddit": "WarOwl"
             },
             "nick": "WarOwl",
-            "group": "VIP",
             "role": "WarOwl",
             "active": "1"
         },
@@ -419,7 +416,6 @@
                 "Reddit": "DustMouret"
             },
             "nick": "DustMouret",
-            "group": "VIP",
             "role": "DustMouret",
             "active": "1"
         },
@@ -428,7 +424,6 @@
                 "Reddit": "ESEAsapphiRe"
             },
             "nick": "sapphiRe",
-            "group": "VIP",
             "role": "Spectator & Player",
             "active": "1"
         },
@@ -437,7 +432,6 @@
                 "Reddit": "Dinoswarleaf"
             },
             "nick": "Dinoswarleaf",
-            "group": "VIP",
             "role": "Gameplay Investigator",
             "active": "1"
         },
@@ -446,7 +440,6 @@
                 "Reddit": "SlothSquadron"
             },
             "nick": "SlothSquadron",
-            "group": "VIP",
             "role": "Gameplay Investigator",
             "active": "1"
         },
@@ -457,7 +450,6 @@
             },
             "name": "Duncan Shields",
             "nick": "Thorin",
-            "group": "VIP",
             "role": "Analyst",
             "active": "1"
         },
@@ -466,7 +458,6 @@
                 "Reddit": "LeXCS"
             },
             "nick": "LeX",
-            "group": "VIP",
             "role": "Analyst",
             "active": "1"
         },
@@ -477,7 +468,6 @@
             },
             "name": "Cory Gilbert",
             "nick": "megaman",
-            "group": "VIP",
             "role": "Commentator",
             "active": "1"
         },
@@ -487,7 +477,6 @@
             },
             "name": "Olof Kajbjer",
             "nick": "Olof Kajbjer",
-            "group": "VIP",
             "role": "Player",
             "active": "1"
         },
@@ -497,7 +486,6 @@
             },
             "name": "Sean Gares",
             "nick": "seangares",
-            "group": "VIP",
             "role": "Player",
             "active": "1"
         }
