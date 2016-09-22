@@ -36,6 +36,15 @@
         },
         {
             "accounts": {
+                "Reddit": "tasky"
+            },
+            "nick": "tasky",
+            "group": "CEVO",
+            "role": "Developer",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "durrrr_za"
             },
             "nick": "durrrr_za",
@@ -163,6 +172,7 @@
             },
             "nick": "Kawa",
             "group": "ESL",
+            "role": "Product Manager NA",
             "active": "1"
         },
         {
