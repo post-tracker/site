@@ -1,20 +1,22 @@
+/* eslint-disable max-len */
+
 const sqlite3 = require( 'sqlite3' ).verbose();
 
 class DatabaseSetup {
-    constructor( path ){
+    constructor ( path ) {
         this.database = new sqlite3.Database( path );
     }
 
-    setDevelopers( developers ){
+    setDevelopers ( developers ) {
         this.developers = developers;
     }
 
-    run(){
+    run () {
         this.createTables();
         this.setupData();
     }
 
-    createTables(){
+    createTables () {
         this.database.serialize();
         this.database.run( 'CREATE TABLE IF NOT EXISTS posts( `topic` TEXT, `topic_url` TEXT, `uid` TEXT, `url` TEXT, `source` TEXT, `content` TEXT, `timestamp` TEXT )' );
         this.database.run( 'CREATE TABLE IF NOT EXISTS developers( `id` INT PRIMARY KEY, `nick` TEXT, `name` TEXT, `role` TEXT, `active` INT, `group` TEXT )' );
@@ -22,82 +24,87 @@ class DatabaseSetup {
         this.database.parallelize();
     }
 
-    setupData(){
+    setupData () {
         let currentMaxUID = 0;
 
-        let developerExistsStatement = this.database.prepare( 'SELECT `id` FROM `developers` WHERE `nick` = $nick LIMIT 1' );
-        let createDeveloperStatement = this.database.prepare( 'INSERT INTO `developers` ( `id`, `nick`, `name`, `role`, `active`, `group` ) VALUES( $id, $nick, $name, $role, $active, $group )' );
-        let updateDeveloperStatement = this.database.prepare( 'UPDATE `developers` SET `name` = $name, `role` = $role, `active` = $active, `group` = $group WHERE id = $id' );
+        const developerExistsStatement = this.database.prepare( 'SELECT `id` FROM `developers` WHERE `nick` = $nick LIMIT 1' );
+        const createDeveloperStatement = this.database.prepare( 'INSERT INTO `developers` ( `id`, `nick`, `name`, `role`, `active`, `group` ) VALUES( $id, $nick, $name, $role, $active, $group )' );
+        const updateDeveloperStatement = this.database.prepare( 'UPDATE `developers` SET `name` = $name, `role` = $role, `active` = $active, `group` = $group WHERE id = $id' );
 
-        let accountExistsStatement = this.database.prepare( 'SELECT COUNT(*) AS accountCount FROM `accounts` WHERE `service` = $service AND `uid` = $uid LIMIT 1' );
-        let createAccountStatement = this.database.prepare( 'INSERT INTO `accounts` ( `uid`, `service`, `identifier` ) VALUES( $uid, $service, $identifier)' );
-        let updateAccountStatement = this.database.prepare( 'UPDATE `accounts` SET `identifier` = $identifier WHERE `uid` = $uid AND `service` = $service' );
+        const accountExistsStatement = this.database.prepare( 'SELECT COUNT(*) AS accountCount FROM `accounts` WHERE `service` = $service AND `uid` = $uid LIMIT 1' );
+        const createAccountStatement = this.database.prepare( 'INSERT INTO `accounts` ( `uid`, `service`, `identifier` ) VALUES( $uid, $service, $identifier)' );
+        const updateAccountStatement = this.database.prepare( 'UPDATE `accounts` SET `identifier` = $identifier WHERE `uid` = $uid AND `service` = $service' );
 
         this.database.get( 'SELECT `id` FROM `developers` ORDER BY `id` DESC LIMIT 1', ( error, highestUID ) => {
-            if( error ){
+            if ( error ) {
                 throw error;
             }
 
-            if ( typeof highestUID !== 'undefined' ){
+            if ( typeof highestUID !== 'undefined' ) {
                 currentMaxUID = highestUID.id;
             }
 
-            for ( let i = 0; i < this.developers.length; i = i + 1 ){
-                developerExistsStatement.get( { $nick: this.developers[ i ].nick }, ( error, row ) => {
-                    if( error ){
-                        throw error;
+            for ( let i = 0; i < this.developers.length; i = i + 1 ) {
+                developerExistsStatement.get( {
+                    $nick: this.developers[ i ].nick,
+                // eslint-disable-next-line no-loop-func
+                }, ( developerExistsError, developerRow ) => {
+                    if ( developerExistsError ) {
+                        throw developerExistsError;
                     }
 
                     let developerStatement = updateDeveloperStatement;
-                    let bindValues = {
+                    const bindValues = {
+                        $active: this.developers[ i ].active,
+                        $group: this.developers[ i ].group,
                         $name: this.developers[ i ].name,
                         $role: this.developers[ i ].role,
-                        $active: this.developers[ i ].active,
-                        $group: this.developers[ i ].group
-                    }
+                    };
                     let developerUID;
 
-                    if ( typeof row === 'undefined' ){
+                    if ( typeof developerRow === 'undefined' ) {
                         developerStatement = createDeveloperStatement;
                         currentMaxUID = currentMaxUID + 1;
                         developerUID = currentMaxUID;
                         bindValues.$nick = this.developers[ i ].nick;
                     } else {
-                        developerUID = row.id;
+                        developerUID = developerRow.id;
                     }
 
                     bindValues.$id = developerUID;
 
-                    developerStatement.run( bindValues, ( error ) => {
-                        if ( error ){
-                            throw error;
+                    developerStatement.run( bindValues, ( developerError ) => {
+                        if ( developerError ) {
+                            throw developerError;
                         }
 
-                        for ( let service in this.developers[ i ].accounts ){
-                            if ( !this.developers[ i ].accounts.hasOwnProperty( service ) ){
+                        for ( const service in this.developers[ i ].accounts ) {
+                            if ( !Reflect.apply( {}.hasOwnProperty, this.developers[ i ].accounts, [ service ] ) ) {
                                 continue;
                             }
 
-                            accountExistsStatement.get( { $uid: developerUID, $service: service }, ( error, row ) => {
-                                if ( error ){
-                                    throw error;
+                            accountExistsStatement.get( {
+                                $service: service,
+                                $uid: developerUID,
+                            }, ( accountExistsError, row ) => {
+                                if ( accountExistsError ) {
+                                    throw accountExistsError;
                                 }
 
                                 let accountStatement = updateAccountStatement;
-                                let accountValues = {
-                                    $service: service,
+                                const accountValues = {
                                     $identifier: this.developers[ i ].accounts[ service ],
-                                    $uid: developerUID
+                                    $service: service,
+                                    $uid: developerUID,
                                 };
 
-                                if ( row.accountCount === 0 ){
+                                if ( row.accountCount === 0 ) {
                                     accountStatement = createAccountStatement;
                                 }
 
                                 accountStatement.run( accountValues );
                             } );
-
-                        };
+                        }
                     } );
                 } );
             }

@@ -1,46 +1,50 @@
+/* eslint-disable max-len */
+
+const ARGUMENTS_START = 2;
+const JSON_TAB_SIZE = 4;
+
 const fs = require( 'fs' );
-const util = require( 'util' );
 
 const csvParse = require( 'csv-parse' );
 
-let argv = require( 'minimist' )( process.argv.slice( 2 ) );
+const argv = require( 'minimist' )( process.argv.slice( ARGUMENTS_START ) );
 
 const baseProperties = [
     'name',
     'nick',
     'group',
     'role',
-    'active'
+    'active',
 ];
 
-let output = [];
+const output = [];
 
-let parser = csvParse( {
-    delimiter: ','
+const parser = csvParse( {
+    delimiter: ',',
 } );
 
-const parseOuput = function parseOuput( input ){
-    let parsedData = {
-        developers: []
+const parseOuput = function parseOuput ( input ) {
+    const parsedData = {
+        developers: [],
     };
     let headers;
 
-    for( let i = 0; i < input.length; i = i + 1 ){
-        let currentDeveloper = {
-            accounts: {}
+    for ( let i = 0; i < input.length; i = i + 1 ) {
+        const currentDeveloper = {
+            accounts: {},
         };
 
-        if( i === 0 ){
+        if ( i === 0 ) {
             headers = input[ i ];
             continue;
         }
 
-        for( let fieldIndex = 0; fieldIndex < input[ i ].length; fieldIndex = fieldIndex + 1 ){
+        for ( let fieldIndex = 0; fieldIndex < input[ i ].length; fieldIndex = fieldIndex + 1 ) {
             if ( input[ i ][ fieldIndex ].length === 0 ) {
                 continue;
             }
 
-            if( baseProperties.indexOf( headers[ fieldIndex ].toLowerCase() ) > -1 ){
+            if ( baseProperties.indexOf( headers[ fieldIndex ].toLowerCase() ) > -1 ) {
                 currentDeveloper[ headers[ fieldIndex ].toLowerCase() ] = input[ i ][ fieldIndex ];
             } else {
                 currentDeveloper.accounts[ headers[ fieldIndex ] ] = input[ i ][ fieldIndex ];
@@ -53,11 +57,13 @@ const parseOuput = function parseOuput( input ){
     return parsedData;
 };
 
-parser.on('readable', function(){
-    while( record = parser.read() ){
+parser.on( 'readable', () => {
+    let record;
+
+    while ( ( record = parser.read() ) !== null ) {
         output.push( record );
     }
-});
+} );
 
 // Catch any error
 parser.on( 'error', ( error ) => {
@@ -66,23 +72,23 @@ parser.on( 'error', ( error ) => {
 
 // When we are done, test that the parsed output matched what expected
 parser.on( 'finish', () => {
-    let parsedData = parseOuput( output );
+    const parsedData = parseOuput( output );
 
-    if( argv.name ){
+    if ( argv.name ) {
         parsedData.name = argv.name;
     }
 
-    if( argv.shortName ){
+    if ( argv.shortName ) {
         parsedData.shortName = argv.shortName;
     }
 
-    if( argv.hostname ){
+    if ( argv.hostname ) {
         parsedData.hostname = argv.hostname;
     }
 
-    if( argv.destination ){
-        fs.writeFile( argv.destination, JSON.stringify( parsedData, null, 4 ), ( error ) => {
-            if( error ){
+    if ( argv.destination ) {
+        fs.writeFile( argv.destination, JSON.stringify( parsedData, null, JSON_TAB_SIZE ), ( error ) => {
+            if ( error ) {
                 throw error;
             }
 
@@ -91,12 +97,13 @@ parser.on( 'finish', () => {
     }
 } );
 
-fs.readFile( argv.source, 'utf-8', ( error, data ) => {
-    if( error ){
+fs.readFile( argv.source, 'utf-8', ( error, fileContents ) => {
+    if ( error ) {
         throw error;
     }
+
     // Now that setup is done, write data to the stream
-    parser.write( data );
+    parser.write( fileContents );
 
     // Close the readable stream
     parser.end();
