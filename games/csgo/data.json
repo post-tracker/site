@@ -45,6 +45,17 @@
         },
         {
             "accounts": {
+                "Reddit": "Meekel",
+                "Twitter": "meekel"
+            },
+            "name": "Michael Valentine",
+            "nick": "Meekel",
+            "group": "Gfinity",
+            "role": "Head of eSports",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "durrrr_za"
             },
             "nick": "durrrr_za",
