@@ -9,7 +9,8 @@
     "convert-cs": "node scripts/csv-to-json.js --source=\"CSGO Devs - Sheet1.csv\" --destination=games/csgo/data.json --name=\"Counter Strike: Global Offensive\" --shortName=CSGO --hostname=csgodevtracker.com",
     "vagrant-cron": "sudo cp /vagrant/config/cron/* /etc/cron.d && sudo chmod 644 /etc/cron.d/*",
     "start": "watchify components/App.jsx -o web/scripts/app.build.js -t [ babelify --presets [ es2015 react ] ] -v --poll=100",
-    "build": "browserify components/App.jsx -o web/scripts/app.build.js -t [ babelify --presets [ es2015 react ] ] && node scripts/build.js"
+    "build": "browserify components/App.jsx -o web/scripts/app.build.js -t [ babelify --presets [ es2015 react ] ] && node scripts/build.js",
+    "lint:scripts": "eslint -c kokarn/node scripts/*.js"
   },
   "author": "Oskar Risberg <kokarn@gmail.com>",
   "repository": {
@@ -19,12 +20,17 @@
   "bugs": {
     "url": "https://github.com/kokarn/dev-tracker/issues"
   },
+  "engines": {
+    "node": "^6.5.0"
+  },
   "license": "MIT",
   "devDependencies": {
     "babel-preset-es2015": "^6.13.2",
     "babel-preset-react": "^6.11.1",
     "babelify": "^7.3.0",
     "debounce": "^1.0.0",
+    "eslint": "^3.5.0",
+    "eslint-config-kokarn": "^1.0.0",
     "jshashes": "^1.0.5",
     "query-string": "^4.2.3",
     "react": "^15.3.0",
