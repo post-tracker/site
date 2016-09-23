@@ -4,8 +4,8 @@ import Postlist from './Postlist.jsx';
 
 ReactDOM.render(
     <Postlist
-        url="actions/data.php"
         pollInterval = { 60000 }
+        url = { 'actions/data.php' }
     />,
     document.getElementById( 'js-app' )
 );

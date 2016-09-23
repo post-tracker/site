@@ -8,117 +8,131 @@ import queryString from 'query-string';
 import Post from './Post.jsx';
 import Search from './Search.jsx';
 
+const DEFAULT_DATA_PORT = 80;
+const SEARCH_DEBOUNCE_INTERVAL = 250;
+
 class PostList extends React.Component {
-    constructor( props ){
+    constructor ( props ) {
         super( props );
 
-        let currentQuery = queryString.parse( location.search );
-
-        this.state =  {
-            data: [],
-            searchString: ''
+        const defaultState = {
+            posts: [],
+            searchString: '',
         };
 
-        if( typeof currentQuery.search !== 'undefined' ){
-            this.state.searchString = currentQuery.search;
+        const currentQuery = queryString.parse( location.search );
+
+        if ( typeof currentQuery.search !== 'undefined' ) {
+            defaultState.searchString = currentQuery.search;
         }
 
-        this.handleSearch = this.handleSearch.bind( this );
+        this.onSearch = this.onSearch.bind( this );
 
         this.updateDataTimeout = false;
+
+        this.state = defaultState;
     }
 
-    setUpdateTimeout(){
-        this.updateDataTimeout = setTimeout( this.loadCommentsFromServer.bind( this ), this.props.pollInterval );
+    componentWillMount () {
+        this.debouncedSearch = debounce( this.search, SEARCH_DEBOUNCE_INTERVAL );
     }
 
-    handleSearch( searchString ){
-        this.debouncedSearch( searchString );
-    }
-
-    search( searchString ){
-        this.setState({
-            searchString: searchString
-        });
-
-        this.loadCommentsFromServer( searchString );
-    }
-
-    loadCommentsFromServer( searchString ) {
-        clearTimeout( this.updateDataTimeout );
-
-        let options = {
-            hostname: window.location.hostname,
-            port: window.location.port || 80,
-            path: window.location.pathname + this.props.url,
-            method: 'GET'
-        };
-
-        if( typeof searchString !== 'undefined' ){
-            // This happends the first time
-            options.path = options.path + '?search=' + searchString;
-
-        } else if( this.state.searchString.length > 0 ){
-            // This happends when we load posts again after some time
-            options.path = options.path + '?search=' + this.state.searchString;
-        }
-
-        let request = http.request( options, ( response ) => {
-            let body = '';
-            response.setEncoding( 'utf8' );
-
-            response.on( 'data', ( chunk ) => {
-                body = body + chunk;
-            });
-
-            response.on( 'end', () => {
-                this.setState({
-                    data: JSON.parse( body )
-                });
-            });
-
-            this.setUpdateTimeout();
-        });
-
-        request.on('error', (e) => {
-            console.log(`problem with request: ${e.message}`);
-        });
-
-        request.end();
-    }
-
-    componentWillMount() {
-        this.debouncedSearch = debounce( this.search, 250 );
-    }
-
-    componentDidMount() {
-        if( this.state.searchString.length > 0 ){
+    componentDidMount () {
+        if ( this.state.searchString.length > 0 ) {
             this.loadCommentsFromServer( this.state.searchString );
         } else {
             this.loadCommentsFromServer();
         }
-        
+
         this.setUpdateTimeout();
     }
 
-    render() {
-        let postNodes = this.state.data.map( ( communityPost ) => {
-            let hash = new Hashes.MD5().hex( communityPost.author + communityPost.timestamp + communityPost.content );
+    setUpdateTimeout () {
+        this.updateDataTimeout = setTimeout( this.loadCommentsFromServer.bind( this ), this.props.pollInterval );
+    }
+
+    onSearch ( searchString ) {
+        this.debouncedSearch( searchString );
+    }
+
+    search ( searchString ) {
+        this.setState( {
+            searchString: searchString,
+        } );
+
+        this.loadCommentsFromServer( searchString );
+    }
+
+    loadCommentsFromServer ( searchString ) {
+        clearTimeout( this.updateDataTimeout );
+
+        const options = {
+            hostname: window.location.hostname,
+            method: 'GET',
+            path: window.location.pathname + this.props.url,
+            port: window.location.port || DEFAULT_DATA_PORT,
+        };
+
+        if ( typeof searchString !== 'undefined' ) {
+            // This happends the first time
+            options.path = `${ options.path }?search=${ searchString }`;
+        } else if ( this.state.searchString.length > 0 ) {
+            // This happends when we load posts again after some time
+            options.path = `${ options.path }?search=${ this.state.searchString }`;
+        }
+
+        const request = http.request( options, ( response ) => {
+            let body = '';
+
+            response.setEncoding( 'utf8' );
+
+            response.on( 'data', ( chunk ) => {
+                body = body + chunk;
+            } );
+
+            response.on( 'end', () => {
+                this.setState( {
+                    posts: JSON.parse( body ),
+                } );
+            } );
+
+            this.setUpdateTimeout();
+        } );
+
+        request.on( 'error', ( requestError ) => {
+            // eslint-disable-next-line no-console
+            console.log( `problem with request: ${ requestError.message }` );
+        } );
+
+        request.end();
+    }
+
+    render () {
+        const postNodes = this.state.posts.map( ( communityPost ) => {
+            const hash = new Hashes.MD5().hex( `${ communityPost.author }${ communityPost.timestamp }${ communityPost.content }` );
+
             return (
                 <Post
+                    postData = { communityPost }
                     key = { hash }
-                    data = { communityPost }
-                ></Post>
+                />
             );
-        });
+        } );
 
         return (
             <div>
-                <Search handleSearch = { this.handleSearch }></Search>
+                <Search
+                    handleSearch = { this.onSearch }
+                />
                 { postNodes }
             </div>
         );
     }
+}
+
+PostList.propTypes = {
+    pollInterval: React.PropTypes.number.isRequired,
+    url: React.PropTypes.string.isRequired,
 };
 
 export default PostList;
