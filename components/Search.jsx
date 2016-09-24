@@ -31,6 +31,10 @@ class Search extends React.Component {
         } );
     }
 
+    handleSubmit ( event ) {
+        event.preventDefault();
+    }
+
     handleClearClick () {
         this.clearInput();
     }
@@ -57,7 +61,9 @@ class Search extends React.Component {
         }
 
         return (
-            <form>
+            <form
+                onSubmit = { this.handleSubmit }
+            >
                 <div
                     className = { 'form-group has-feedback' }
                 >
