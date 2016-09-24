@@ -60,6 +60,12 @@ class PostList extends React.Component {
             searchString: searchString,
         } );
 
+        if ( searchString.length > 0 ) {
+            window.history.pushState( {}, searchString, `?search=${ searchString }` );
+        } else {
+            window.history.pushState( {}, searchString, window.location.pathname );
+        }
+
         this.loadCommentsFromServer( searchString );
     }
 
@@ -113,8 +119,8 @@ class PostList extends React.Component {
 
             return (
                 <Post
-                    postData = { communityPost }
                     key = { hash }
+                    postData = { communityPost }
                 />
             );
         } );
