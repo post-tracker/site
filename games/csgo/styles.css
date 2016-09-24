@@ -24,7 +24,7 @@ br {
     margin: 15px auto;
 }
 
-h1 {
+.container > h1 {
     font-family: counter-strike, serif;
     text-transform: uppercase;
 }
@@ -32,6 +32,10 @@ h1 {
 .panel {
     position: relative;
     word-wrap: break-word;
+}
+
+.panel h1 {
+    font-size: 38px;
 }
 
 .fa {
