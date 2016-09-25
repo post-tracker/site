@@ -65,6 +65,17 @@
         },
         {
             "accounts": {
+                "Reddit": "Mod645",
+                "Twitter": "Modcsgo"
+            },
+            "name": "Marcus Mod",
+            "nick": "Mod365",
+            "group": "DreamHack",
+            "role": "Head Admin CSGO",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "marcwinther",
                 "Twitter": "nix0n"
             },
