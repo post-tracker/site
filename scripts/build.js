@@ -18,7 +18,7 @@ const DatabaseSetup = require( './dbsetup.js' );
 const varsToPHP = function varsToPHP ( varObject ) {
     let returnString = '';
 
-    if ( typeof varObject !== 'object' ){
+    if ( typeof varObject !== 'object' ) {
         return returnString;
     }
 
