@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "gulp": "gulp",
-    "convert-cs": "node scripts/csv-to-json.js --source=\"CSGO Devs - Sheet1.csv\" --destination=games/csgo/data.json --name=\"Counter Strike: Global Offensive\" --shortName=CSGO --hostname=csgodevtracker.com",
+    "convert-cs": "node scripts/csv-to-json.js --source=\"CSGO Devs - Sheet1.csv\" --destination=games/csgo/data.json",
     "vagrant-cron": "sudo cp /vagrant/config/cron/* /etc/cron.d && sudo chmod 644 /etc/cron.d/*",
     "start": "watchify components/App.jsx -o web/scripts/app.build.js -t [ babelify --presets [ es2015 react ] ] -v --poll=100",
     "build": "browserify components/App.jsx -o web/scripts/app.build.js -t [ babelify --presets [ es2015 react ] ] && node scripts/build.js",

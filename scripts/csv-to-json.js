@@ -23,10 +23,11 @@ const parser = csvParse( {
     delimiter: ',',
 } );
 
+// eslint-disable-next-line no-sync
+const currentData = JSON.parse( fs.readFileSync( argv.destination, 'utf8' ) );
+
 const parseOuput = function parseOuput ( input ) {
-    const parsedData = {
-        developers: [],
-    };
+    const developers = [];
     let headers;
 
     for ( let i = 0; i < input.length; i = i + 1 ) {
@@ -51,10 +52,10 @@ const parseOuput = function parseOuput ( input ) {
             }
         }
 
-        parsedData.developers.push( currentDeveloper );
+        developers.push( currentDeveloper );
     }
 
-    return parsedData;
+    return developers;
 };
 
 parser.on( 'readable', () => {
@@ -72,22 +73,13 @@ parser.on( 'error', ( error ) => {
 
 // When we are done, test that the parsed output matched what expected
 parser.on( 'finish', () => {
-    const parsedData = parseOuput( output );
+    const developers = parseOuput( output );
+    const writeData = currentData;
 
-    if ( argv.name ) {
-        parsedData.name = argv.name;
-    }
-
-    if ( argv.shortName ) {
-        parsedData.shortName = argv.shortName;
-    }
-
-    if ( argv.hostname ) {
-        parsedData.hostname = argv.hostname;
-    }
+    writeData.developers = developers;
 
     if ( argv.destination ) {
-        fs.writeFile( argv.destination, JSON.stringify( parsedData, null, JSON_TAB_SIZE ), ( error ) => {
+        fs.writeFile( argv.destination, JSON.stringify( writeData, null, JSON_TAB_SIZE ), ( error ) => {
             if ( error ) {
                 throw error;
             }
