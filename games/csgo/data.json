@@ -65,6 +65,24 @@
         },
         {
             "accounts": {
+                "Reddit": "borewik"
+            },
+            "nick": "Borewik",
+            "group": "CSGOLounge",
+            "role": "Owner",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "dankine"
+            },
+            "nick": "dankine",
+            "group": "CSGOLounge",
+            "role": "Admin",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "Mod645",
                 "Twitter": "Modcsgo"
             },
@@ -83,6 +101,15 @@
             "nick": "Marc Winther",
             "group": "DreamHack",
             "role": "eSports",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "UnfunMid"
+            },
+            "nick": "UnfunMid",
+            "group": "Oddshot",
+            "role": "Community Manager",
             "active": "1"
         },
         {
@@ -420,6 +447,17 @@
         },
         {
             "accounts": {
+                "Reddit": "PHedemark",
+                "Twitter": "phedemark"
+            },
+            "name": "Phillip Rasmussen",
+            "nick": "PHedemark",
+            "group": "Astralis",
+            "role": "Community Manager",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "Sadokist",
                 "Twitter": "sadokist"
             },
@@ -429,9 +467,12 @@
             "active": "1"
         },
         {
-            "accounts": {},
-            "nick": "Ryu-",
-            "role": "Caster",
+            "accounts": {
+                "Reddit": "Ryu-",
+                "Twitter": "selflessryu"
+            },
+            "nick": "Ryu",
+            "role": "Owner - Selfless Gaming",
             "active": "1"
         },
         {
@@ -471,6 +512,15 @@
                 "Reddit": "SlothSquadron"
             },
             "nick": "SlothSquadron",
+            "role": "Gameplay Investigator",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "3kliksphilip",
+                "Twitter": "3kliksphilip"
+            },
+            "nick": "3kliksphilip",
             "role": "Gameplay Investigator",
             "active": "1"
         },
@@ -517,6 +567,16 @@
             },
             "name": "Sean Gares",
             "nick": "seangares",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "natosaphix",
+                "Twitter": "natosaphix"
+            },
+            "name": "Niels Christian Sillassen",
+            "nick": "NaToSaphiX",
             "role": "Player",
             "active": "1"
         }
