@@ -411,6 +411,15 @@
         },
         {
             "accounts": {
+                "Reddit": "E-Frag",
+                "Twitter": "efragnet"
+            },
+            "nick": "E-Frag",
+            "group": "E-Frag",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "Sadokist",
                 "Twitter": "sadokist"
             },
