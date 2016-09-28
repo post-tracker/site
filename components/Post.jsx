@@ -95,6 +95,13 @@ class Post extends React.Component {
             }
 
             title = `${ title } ]`;
+
+            // If we have roles that are the same as the nick, don't display anything
+            if ( !this.props.postData.group && this.props.postData.role === this.props.postData.nick ) {
+                title = '';
+            } else if ( !this.props.postData.role && this.props.postData.group === this.props.postData.nick ) {
+                title = '';
+            }
         }
 
         return (
