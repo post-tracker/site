@@ -26,6 +26,7 @@ br {
 
 .container > h1 {
     font-family: counter-strike, serif;
+    text-align: center;
     text-transform: uppercase;
 }
 
@@ -76,12 +77,6 @@ br {
 .expander:hover {
     cursor: pointer;
     text-decoration: underline;
-}
-
-@media screen and ( max-width: 768px ){
-    h1 {
-        text-align: center;
-    }
 }
 
 @media screen and ( max-width: 480px ){

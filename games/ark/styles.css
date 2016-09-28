@@ -13,6 +13,10 @@ br {
     margin: 15px auto;
 }
 
+h1 {
+    text-align: center;
+}
+
 .panel {
     position: relative;
     word-wrap: break-word;
@@ -56,12 +60,6 @@ br {
 .expander:hover {
     cursor: pointer;
     text-decoration: underline;
-}
-
-@media screen and ( max-width: 768px ){
-    h1 {
-        text-align: center;
-    }
 }
 
 @media screen and ( max-width: 480px ){
