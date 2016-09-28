@@ -79,7 +79,7 @@
             "nick": "dankine",
             "group": "CSGOLounge",
             "role": "Admin",
-            "active": "1"
+            "active": "0"
         },
         {
             "accounts": {
@@ -480,7 +480,6 @@
                 "Reddit": "WarOwl"
             },
             "nick": "WarOwl",
-            "role": "WarOwl",
             "active": "1"
         },
         {
@@ -488,7 +487,6 @@
                 "Reddit": "DustMouret"
             },
             "nick": "DustMouret",
-            "role": "DustMouret",
             "active": "1"
         },
         {
