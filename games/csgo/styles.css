@@ -30,6 +30,11 @@ br {
     text-transform: uppercase;
 }
 
+.container > h1 a {
+    color: #000;
+    text-decoration: none;
+}
+
 .panel {
     position: relative;
     word-wrap: break-word;

@@ -17,6 +17,13 @@ h1 {
     text-align: center;
 }
 
+h1 a,
+h1 a:active,
+h1 a:hover {
+    color: #000;
+    text-decoration: none;
+}
+
 .panel {
     position: relative;
     word-wrap: break-word;
