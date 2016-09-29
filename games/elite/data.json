@@ -212,6 +212,15 @@
                 "MiggyRSS": "22712"
             },
             "active": 1
+        },
+        {
+            "nick": "Joe",
+            "name": "Joe Hogan",
+            "role": "Lead Audio Designer",
+            "accounts": {
+                "MiggyRSS": "31354"
+            },
+            "active": 1
         }
     ]
 }
