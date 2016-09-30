@@ -447,6 +447,15 @@
         },
         {
             "accounts": {
+                "Reddit": "IndependenTcs"
+            },
+            "nick": "IndependenTcs",
+            "group": "compLexity",
+            "role": "Social Media Manager",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "PHedemark",
                 "Twitter": "phedemark"
             },
