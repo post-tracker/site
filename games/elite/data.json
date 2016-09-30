@@ -221,6 +221,15 @@
                 "MiggyRSS": "31354"
             },
             "active": 1
+        },
+        {
+            "nick": "Simon",
+            "name": "Simon Brewer",
+            "role": "Lead Technical Artist",
+            "accounts": {
+                "MiggyRSS": "14849"
+            },
+            "active": 1
         }
     ]
 }
