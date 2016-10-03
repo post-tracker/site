@@ -226,6 +226,17 @@
         },
         {
             "accounts": {
+                "Reddit": "crtmN-_-",
+                "Twitter": "crtmn"
+            },
+            "name": "Alex",
+            "nick": "crtmN",
+            "group": "ESL",
+            "role": "Senior Product Manager",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "TheycallmePansyY"
             },
             "name": "Lauren Scott",
