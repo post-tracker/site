@@ -385,6 +385,17 @@
         },
         {
             "accounts": {
+                "Reddit": "YNkCSGO",
+                "Twitter": "OnFireYNk"
+            },
+            "name": "Janko Paunovic",
+            "nick": "YNk",
+            "group": "RoomOnFire",
+            "role": "Caster",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "brianlev_valve"
             },
             "name": "Brian Lev",
@@ -513,6 +524,7 @@
             "accounts": {
                 "Reddit": "ESEAsapphiRe"
             },
+            "name": "Heather Garozzo",
             "nick": "sapphiRe",
             "role": "Spectator & Player",
             "active": "1"
@@ -596,6 +608,15 @@
             "name": "Niels Christian Sillassen",
             "nick": "NaToSaphiX",
             "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Prius707",
+                "Twitter": "PriusCSGO"
+            },
+            "nick": "DJ",
+            "role": "Observer",
             "active": "1"
         }
     ],
