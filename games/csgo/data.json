@@ -19,7 +19,7 @@
         },
         {
             "accounts": {
-                "Reddit": "kvin_s"
+                "Reddit": "kVIN_S"
             },
             "nick": "kVIN_S",
             "group": "CEVO",
@@ -150,6 +150,13 @@
         },
         {
             "accounts": {
+                "Reddit": "azalea_k"
+            },
+            "group": "ESEA",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "machine-",
                 "Twitter": "MyNameIsMachine"
             },
@@ -243,6 +250,14 @@
             "nick": "Pansy",
             "group": "ESL",
             "role": "Caster",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "ESLJohannes"
+            },
+            "nick": "Johannes",
+            "group": "ESL",
             "active": "1"
         },
         {
@@ -612,11 +627,58 @@
         },
         {
             "accounts": {
+                "Reddit": "PimpCSGO",
+                "Twitter": "LiquidPimpZ"
+            },
+            "name": "Jacob Winneche",
+            "nick": "Pimp",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "Prius707",
                 "Twitter": "PriusCSGO"
             },
             "nick": "DJ",
             "role": "Observer",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "NiPGaming"
+            },
+            "nick": "NiP",
+            "group": "NiP",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "BLU42",
+                "Twitter": "blucsgo"
+            },
+            "name": "John Mullen",
+            "nick": "BLU",
+            "group": "ESL / ESEA",
+            "role": "Caster",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "punkbooster"
+            },
+            "nick": "punkbooster",
+            "role": "Na'Vi",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Mantrousse",
+                "Twitter": "palagilroysen"
+            },
+            "name": "Pala Gilroy Sen",
+            "nick": "Pala Mantrousse",
+            "role": "Host",
             "active": "1"
         }
     ],
