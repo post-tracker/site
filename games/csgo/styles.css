@@ -54,6 +54,106 @@ br {
     z-index: 1;
 }
 
+.groups-wrapper {
+    margin: 0 auto 20px auto;
+    width: 1040px;
+}
+
+.checkbox {
+    display: inline-block;
+    margin: 5px;
+    width: 120px;
+}
+
+/* Fix for bootstrap styling */
+.checkbox+.checkbox {
+    margin: 5px;
+}
+
+.group-label {
+    background-image: url( 'assets/flairs.png' );
+    background-position: -104px -176px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 15px;
+    position: relative;
+    text-indent: -9999px;
+    top: 3px;
+    width: 50px;
+}
+
+.group-label.all {
+    background: none;
+    text-indent: 0;
+    top: 0;
+}
+
+.group-label.astralis {
+    background-position: -52px -153px;
+}
+
+.group-label.cevo {
+    background-position: -104px -34px;
+}
+
+.group-label.csgolounge {
+    background-position: -104px -119px;
+}
+
+.group-label.complexity {
+    background: none;
+    text-indent: 0;
+    top: 0;
+}
+
+.group-label.dreamhack {
+    background-image: url( 'assets/logo-dreamhack.png' );
+    background-position: top left;
+}
+
+.group-label.e-frag {
+    background: none;
+    text-indent: 0;
+    top: 0;
+}
+
+.group-label.esea {
+    background-position: 0 -34px;
+}
+
+.group-label.esl {
+    background-position: -104px 0;
+}
+
+.group-label.faceit {
+    background-position: -156px -17px;
+}
+
+.group-label.gfinity {
+    background-position: 0 -170px;
+}
+
+.group-label.mlg {
+    background-position: -156px -151px;
+}
+
+.group-label.nip {
+    background-position: -156px -51px;
+}
+
+.group-label.oddshot {
+    background-image: url( 'assets/logo-oddshot.png' );
+    background-position: top left;
+}
+
+.group-label.roomonfire {
+    background-position: -156px -119px;
+}
+
+.group-label.valve {
+    background-position: -52px 0;
+}
+
 .clearer:hover {
     cursor: pointer;
 }
