@@ -3,7 +3,7 @@ const path = require( 'path' );
 const https = require( 'https' );
 
 const SKIP_FLAIRS = [
-    '/r/globaloffensive moderator'
+    '/r/globaloffensive moderator',
     '3dmax fan',
     '400k hype',
     '5 year subreddit veteran',
