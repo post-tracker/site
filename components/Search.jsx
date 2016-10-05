@@ -29,8 +29,14 @@ class Search extends React.Component {
         }
 
         if ( typeof currentQuery[ 'groups[]' ] !== 'undefined' ) {
+            let groups = currentQuery[ 'groups[]' ];
+            
+            if ( typeof groups !== 'object' ) {
+                groups = [ groups ];
+            }
+
             // eslint-disable-next-line react/no-direct-mutation-state
-            this.state.activeGroups = currentQuery[ 'groups[]' ];
+            this.state.activeGroups = groups;
         }
     }
 

@@ -30,7 +30,13 @@ class PostList extends React.Component {
         }
 
         if ( typeof currentQuery[ 'groups[]' ] !== 'undefined' ) {
-            defaultState.searchGroups = currentQuery[ 'groups[]' ];
+            let groups = currentQuery[ 'groups[]' ];
+
+            if ( typeof groups !== 'object' ) {
+                groups = [ groups ];
+            }
+
+            defaultState.searchGroups = groups;
         }
 
         this.onSearch = this.onSearch.bind( this );
