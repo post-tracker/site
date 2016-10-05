@@ -10,7 +10,8 @@
     "convert-cs": "node scripts/csv-to-json.js --source=\"CSGO Devs - Sheet1.csv\" --destination=games/csgo/data.json",
     "vagrant-cron": "sudo cp /vagrant/config/cron/* /etc/cron.d && sudo chmod 644 /etc/cron.d/*",
     "start": "watchify components/App.jsx -o web/scripts/app.build.js -t [ babelify --presets [ es2015 react ] ] -v --poll=100",
-    "build": "browserify components/App.jsx -o web/scripts/app.build.js -t [ babelify --presets [ es2015 react ] ] && node scripts/build.js",
+    "build:development": "cross-env NODE_ENV=development browserify components/App.jsx -o web/scripts/app.js -t [ babelify --presets [ es2015 react ] ] && node scripts/build.js",
+    "build": "cross-env NODE_ENV=production browserify components/App.jsx -o web/scripts/app.js -t [ babelify --presets [ es2015 react ] ] && node scripts/build.js && uglifyjs web/scripts/app.js -o web/scripts/app.min.js -c warnings=false -m",
     "lint:components": "eslint -c kokarn/react components/*",
     "lint:scripts": "eslint -c kokarn/node scripts/*.js"
   },
@@ -38,9 +39,11 @@
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
     "react-timeago": "^3.1.2",
+    "uglify-js": "^2.7.3",
     "watchify": "^3.7.0"
   },
   "dependencies": {
+    "cross-env": "^3.1.1",
     "csv-parse": "^1.1.7",
     "fs-extra": "^0.30.0",
     "minimist": "^1.2.0",
