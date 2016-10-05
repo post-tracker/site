@@ -119,6 +119,7 @@ class PostList extends React.Component {
         const postNodes = this.state.posts.map( ( communityPost ) => {
             const hash = new Hashes.MD5().hex( `${ communityPost.author }${ communityPost.timestamp }${ communityPost.content }` );
 
+            // TODO: Fix so we don't add duplicates to the database
             if ( addedHashes.indexOf( hash ) > -1 ) {
                 return false;
             }
