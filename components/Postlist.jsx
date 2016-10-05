@@ -114,8 +114,16 @@ class PostList extends React.Component {
     }
 
     render () {
+        const addedHashes = [];
+
         const postNodes = this.state.posts.map( ( communityPost ) => {
             const hash = new Hashes.MD5().hex( `${ communityPost.author }${ communityPost.timestamp }${ communityPost.content }` );
+
+            if ( addedHashes.indexOf( hash ) > -1 ) {
+                return false;
+            }
+
+            addedHashes.push( hash );
 
             return (
                 <Post
