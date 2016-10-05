@@ -1,5 +1,6 @@
 *.sqlite
-app.built.js
+app.js
+app.min.js
 .vagrant/
 node_modules/
 dist/
