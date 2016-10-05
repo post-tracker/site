@@ -62,7 +62,7 @@ class Search extends React.Component {
                 this.checkboxes[ i ].checked = false;
             }
 
-            this.props.handleSearch( this.state.searchString );
+            this.props.handleSearch( this.state.searchString, [] );
 
             this.setState( {
                 activeGroups: [],
@@ -80,7 +80,7 @@ class Search extends React.Component {
         }
 
         if ( currentGroups.length === this.state.groups.length ) {
-            this.props.handleSearch( this.state.searchString );
+            this.props.handleSearch( this.state.searchString, [] );
         } else {
             this.props.handleSearch( this.state.searchString, currentGroups );
         }
