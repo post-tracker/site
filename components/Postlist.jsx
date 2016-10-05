@@ -19,6 +19,7 @@ class PostList extends React.Component {
 
         const defaultState = {
             posts: [],
+            searchGroups: [],
             searchString: '',
         };
 
@@ -26,6 +27,10 @@ class PostList extends React.Component {
 
         if ( typeof currentQuery.search !== 'undefined' ) {
             defaultState.searchString = currentQuery.search;
+        }
+
+        if ( typeof currentQuery[ 'groups[]' ] !== 'undefined' ) {
+            defaultState.searchGroups = currentQuery[ 'groups[]' ];
         }
 
         this.onSearch = this.onSearch.bind( this );
@@ -36,42 +41,26 @@ class PostList extends React.Component {
     }
 
     componentWillMount () {
-        this.debouncedSearch = debounce( this.search, SEARCH_DEBOUNCE_INTERVAL );
+        this.debouncedSearch = debounce( this.loadCommentsFromServer, SEARCH_DEBOUNCE_INTERVAL );
     }
 
     componentDidMount () {
-        if ( this.state.searchString.length > 0 ) {
-            this.loadCommentsFromServer( this.state.searchString );
-        } else {
-            this.loadCommentsFromServer();
-        }
+        this.loadCommentsFromServer( this.state.searchString, this.state.searchGroups );
 
-        this.setUpdateTimeout();
+        this.setUpdateTimeout( this.state.searchString, this.state.searchGroups );
     }
 
-    setUpdateTimeout () {
-        this.updateDataTimeout = setTimeout( this.loadCommentsFromServer.bind( this ), this.props.pollInterval );
+    setUpdateTimeout ( searchString, searchGroups ) {
+        this.updateDataTimeout = setTimeout( () => {
+            this.loadCommentsFromServer( searchString, searchGroups );
+        }, POLL_INTERVAL );
     }
 
-    onSearch ( searchString ) {
-        this.debouncedSearch( searchString );
+    onSearch ( searchString, groups ) {
+        this.debouncedSearch( searchString, groups );
     }
 
-    search ( searchString ) {
-        this.setState( {
-            searchString: searchString,
-        } );
-
-        if ( searchString.length > 0 ) {
-            window.history.pushState( {}, searchString, `?search=${ searchString }` );
-        } else {
-            window.history.pushState( {}, searchString, window.location.pathname );
-        }
-
-        this.loadCommentsFromServer( searchString );
-    }
-
-    loadCommentsFromServer ( searchString ) {
+    loadCommentsFromServer ( searchString, groups ) {
         clearTimeout( this.updateDataTimeout );
 
         const options = {
@@ -81,12 +70,31 @@ class PostList extends React.Component {
             port: window.location.port || DEFAULT_DATA_PORT,
         };
 
-        if ( typeof searchString !== 'undefined' ) {
-            // This happends the first time
-            options.path = `${ options.path }?search=${ searchString }`;
-        } else if ( this.state.searchString.length > 0 ) {
-            // This happends when we load posts again after some time
-            options.path = `${ options.path }?search=${ this.state.searchString }`;
+        const querystringParameters = {};
+
+        if ( typeof searchString !== 'undefined' && searchString.length > 0 ) {
+            querystringParameters.search = searchString;
+            querystringParameters.type = 'search';
+        }
+
+        if ( groups && groups.length > 0 ) {
+            querystringParameters[ 'groups[]' ] = groups;
+        }
+
+        const parsedQuerystring = queryString.stringify( querystringParameters );
+
+        if ( parsedQuerystring.length > 0 ) {
+            options.path = `${ options.path }?${ parsedQuerystring }`;
+        }
+
+        if ( parsedQuerystring.length > 0 ) {
+            const locationSearch = `?${ parsedQuerystring }`;
+
+            if ( window.location.search !== locationSearch ) {
+                window.history.pushState( {}, searchString, locationSearch );
+            }
+        } else {
+            window.history.pushState( {}, searchString, window.location.pathname );
         }
 
         const request = http.request( options, ( response ) => {
@@ -101,10 +109,12 @@ class PostList extends React.Component {
             response.on( 'end', () => {
                 this.setState( {
                     posts: JSON.parse( body ),
+                    searchGroups: groups,
+                    searchString: searchString,
                 } );
             } );
 
-            this.setUpdateTimeout();
+            this.setUpdateTimeout( searchString, groups );
         } );
 
         request.on( 'error', ( requestError ) => {
@@ -140,6 +150,7 @@ class PostList extends React.Component {
             <div>
                 <Search
                     handleSearch = { this.onSearch }
+                    url = { `${ DATA_URL }?type=groups` }
                 />
                 { postNodes }
             </div>
