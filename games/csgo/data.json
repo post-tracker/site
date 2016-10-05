@@ -325,6 +325,17 @@
         },
         {
             "accounts": {
+                "Reddit": "ArmshouseTV",
+                "Twitter": "jamesbardolph"
+            },
+            "name": "James Bardolph",
+            "nick": "JZFB",
+            "group": "FACEIT",
+            "role": "Creative Director & Caster",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "mrmlgadam",
                 "Twitter": "mradamap"
             },
