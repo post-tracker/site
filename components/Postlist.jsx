@@ -10,6 +10,8 @@ import Search from './Search.jsx';
 
 const DEFAULT_DATA_PORT = 80;
 const SEARCH_DEBOUNCE_INTERVAL = 250;
+const POLL_INTERVAL = 60000;
+const DATA_URL = 'actions/data.php';
 
 class PostList extends React.Component {
     constructor ( props ) {
@@ -75,7 +77,7 @@ class PostList extends React.Component {
         const options = {
             hostname: window.location.hostname,
             method: 'GET',
-            path: window.location.pathname + this.props.url,
+            path: `${ window.location.pathname }${ DATA_URL }`,
             port: window.location.port || DEFAULT_DATA_PORT,
         };
 
@@ -144,10 +146,5 @@ class PostList extends React.Component {
         );
     }
 }
-
-PostList.propTypes = {
-    pollInterval: React.PropTypes.number.isRequired,
-    url: React.PropTypes.string.isRequired,
-};
 
 export default PostList;
