@@ -148,7 +148,7 @@ games.forEach( ( game ) => {
 
         const parsedFilename = path.parse( cronFilename );
 
-        fs.access( '/etc/cron.d/', fs.constants.W_OK, ( cronPathAccessError ) => {
+        fs.access( '/etc/cron.d/', ( fs.constants || fs ).W_OK, ( cronPathAccessError ) => {
             if ( cronPathAccessError ) {
                 console.log( `Can't write to /etc/cron.d/\nSkipping symlink of ${ cronFilename }` );
 
