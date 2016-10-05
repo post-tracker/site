@@ -11,7 +11,7 @@
     "vagrant-cron": "sudo cp /vagrant/config/cron/* /etc/cron.d && sudo chmod 644 /etc/cron.d/*",
     "start": "watchify components/App.jsx -o web/scripts/app.build.js -t [ babelify --presets [ es2015 react ] ] -v --poll=100",
     "build:development": "cross-env NODE_ENV=development browserify components/App.jsx -o web/scripts/app.js -t [ babelify --presets [ es2015 react ] ] && node scripts/build.js",
-    "build": "cross-env NODE_ENV=production browserify components/App.jsx -o web/scripts/app.js -t [ babelify --presets [ es2015 react ] ] && node scripts/build.js && uglifyjs web/scripts/app.js -o web/scripts/app.min.js -c warnings=false -m",
+    "build": "cross-env NODE_ENV=production browserify components/App.jsx -o web/scripts/app.js -t [ babelify --presets [ es2015 react ] ] && uglifyjs web/scripts/app.js -o web/scripts/app.js -c warnings=false -m && node scripts/build.js",
     "lint:components": "eslint -c kokarn/react components/*",
     "lint:scripts": "eslint -c kokarn/node scripts/*.js"
   },
