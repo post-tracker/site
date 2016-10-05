@@ -45,15 +45,13 @@ class PostList extends React.Component {
     }
 
     componentDidMount () {
-        this.loadCommentsFromServer( this.state.searchString, this.state.searchGroups );
+        this.loadCommentsFromServer();
 
-        this.setUpdateTimeout( this.state.searchString, this.state.searchGroups );
+        this.setUpdateTimeout();
     }
 
-    setUpdateTimeout ( searchString, searchGroups ) {
-        this.updateDataTimeout = setTimeout( () => {
-            this.loadCommentsFromServer( searchString, searchGroups );
-        }, POLL_INTERVAL );
+    setUpdateTimeout () {
+        this.updateDataTimeout = setTimeout( this.loadCommentsFromServer.bind( this ), POLL_INTERVAL );
     }
 
     onSearch ( searchString, groups ) {
@@ -69,6 +67,14 @@ class PostList extends React.Component {
             path: `${ window.location.pathname }${ DATA_URL }`,
             port: window.location.port || DEFAULT_DATA_PORT,
         };
+
+        if ( typeof searchString === 'undefined' ) {
+            searchString = this.state.searchString;
+        }
+
+        if ( typeof groups === 'undefined' ) {
+            groups = this.state.searchGroups;
+        }
 
         const querystringParameters = {};
 
@@ -114,7 +120,7 @@ class PostList extends React.Component {
                 } );
             } );
 
-            this.setUpdateTimeout( searchString, groups );
+            this.setUpdateTimeout();
         } );
 
         request.on( 'error', ( requestError ) => {
