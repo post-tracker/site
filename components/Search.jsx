@@ -170,7 +170,7 @@ class Search extends React.Component {
                             type = { 'checkbox' }
                         />
                         <span
-                            className = { `group-label ${ group.toLowerCase() }` }
+                            className = { `group-label ${ group.toLowerCase().replace( /\s/gim, '-' ) }` }
                             title = { group }
                         >
                             { group }

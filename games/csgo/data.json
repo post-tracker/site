@@ -691,6 +691,34 @@
             "nick": "Pala Mantrousse",
             "role": "Host",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "G2Esports",
+                "Twitter": "G2esports"
+            },
+            "nick": "G2Esports",
+            "group": "G2 Esports",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "G2ocelote",
+                "Twitter": "CarlosR"
+            },
+            "name": "Carlos Rodríguez Santiago",
+            "nick": "ocelote",
+            "group": "G2 Esports",
+            "role": "CEO",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Liquipedia",
+                "Twitter": "liquipedianet"
+            },
+            "nick": "Liquipedia",
+            "active": "1"
         }
     ],
     "name": "Counter Strike: Global Offensive",
