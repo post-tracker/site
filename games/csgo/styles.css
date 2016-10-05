@@ -140,6 +140,11 @@ br {
     background-position: -156px -151px;
 }
 
+.group-label.mousesports {
+    background-image: url( 'assets/logo-mousesports.png' );
+    background-position: top left;
+}
+
 .group-label.nip {
     background-position: -156px -51px;
 }

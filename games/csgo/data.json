@@ -719,6 +719,17 @@
             },
             "nick": "Liquipedia",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "JanDominicus",
+                "Twitter": "jandominicus"
+            },
+            "name": "JanDominicus",
+            "nick": "Jan",
+            "group": "mousesports",
+            "role": "Manager",
+            "active": "1"
         }
     ],
     "name": "Counter Strike: Global Offensive",
