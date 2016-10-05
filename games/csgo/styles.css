@@ -86,7 +86,9 @@ br {
 
 .group-label.all {
     background: none;
+    text-align: left;
     text-indent: 0;
+    top: -1px;
 }
 
 .group-label.astralis {
@@ -103,7 +105,9 @@ br {
 
 .group-label.complexity {
     background: none;
+    text-align: left;
     text-indent: 0;
+    top: -1px;
 }
 
 .group-label.dreamhack {
@@ -113,7 +117,9 @@ br {
 
 .group-label.e-frag {
     background: none;
+    text-align: left;
     text-indent: 0;
+    top: -1px;
 }
 
 .group-label.esea {
