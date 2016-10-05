@@ -102,6 +102,7 @@ const PAGE_LIMIT = 10;
 const JSON_TAB_SIZE = 4;
 const POSTS_PER_PAGE = 25;
 const CONSOLE_COL_SIZE = 8;
+const DONE_CHECK_INTERVAL = 100;
 
 const users = [];
 const counters = {
@@ -130,7 +131,7 @@ const getAccounts = function getAccounts ( game ) {
 
 const done = function done () {
     if ( counters.totalPages > counters.pagesDone ) {
-        setTimeout( done, 100 );
+        setTimeout( done, DONE_CHECK_INTERVAL );
 
         return false;
     }
@@ -139,11 +140,11 @@ const done = function done () {
     const outData = [
         {
             type: 'Total pages',
-            count: counters.totalPages
+            count: counters.totalPages,
         },
         {
             type: 'Done pages',
-            count: counters.pagesDone
+            count: counters.pagesDone,
         },
         {
             type: 'Skipped flair',
@@ -165,7 +166,7 @@ const done = function done () {
 
     /* eslint-enable sort-keys */
 
-    for( let i = 0; i < outData.length; i = i + 1 ){
+    for ( let i = 0; i < outData.length; i = i + 1 ) {
         let padding = '\t\t';
 
         if ( outData[ i ].type.length >= CONSOLE_COL_SIZE ) {
@@ -178,19 +179,17 @@ const done = function done () {
     if ( users.length > 0 ) {
         console.log( JSON.stringify( users, null, JSON_TAB_SIZE ) );
     }
+
+    return true;
 };
 
-const loadPage = function loadPage( url, callWhenDone ){
+const loadPage = function loadPage ( url, callWhenDone ) {
     counters.totalPages = counters.totalPages + 1;
 
-    let request = https.get( encodeURI( url ), ( response ) => {
+    const request = https.get( encodeURI( url ), ( response ) => {
         let body = '';
 
         response.setEncoding( 'utf8' );
-
-        if( response.statusCode === 400 ){
-            console.log( url );
-        }
 
         response.on( 'data', ( chunk ) => {
             body = `${ body }${ chunk }`;
@@ -198,17 +197,17 @@ const loadPage = function loadPage( url, callWhenDone ){
 
         response.on( 'end', () => {
             counters.pagesDone = counters.pagesDone + 1;
+            // eslint-disable-next-line prefer-reflect
             callWhenDone.call( this, body );
         } );
     } );
 
     request.on( 'error', ( error ) => {
-        console.log( `problem with request: ${error.message}` );
+        console.log( `problem with request: ${ error.message }` );
     } );
 };
 
-const isNewUser = function isNewUser( topic ){
-
+const isNewUser = function isNewUser ( topic ) {
     // Skip everthing that doesn't have flair
     if ( !topic.author_flair_text ) {
         return false;
@@ -217,12 +216,14 @@ const isNewUser = function isNewUser( topic ){
     // Skip everything with a flair we've setup to skip
     if ( SKIP_FLAIRS.indexOf( topic.author_flair_text.toLowerCase() ) > -1 ) {
         counters.skipFlairs = counters.skipFlairs + 1;
+
         return false;
     }
 
     // Skip everything with a user we already have
     if ( activeAccounts.indexOf( topic.author ) > -1 ) {
         counters.existing = counters.existing + 1;
+
         return false;
     }
 
@@ -234,7 +235,7 @@ const isNewUser = function isNewUser( topic ){
     }
 
     return true;
-}
+};
 
 const getPage = function getPage ( page, after, callWhenDone ) {
     let url = `https://www.reddit.com/r/${ page }`;
@@ -250,7 +251,7 @@ const getPage = function getPage ( page, after, callWhenDone ) {
 
         pages = pages + 1;
         for ( const i in posts.data.children ) {
-            if( isNewUser( posts.data.children[ i ].data ) ) {
+            if ( isNewUser( posts.data.children[ i ].data ) ) {
                 users.push( {
                     flair: posts.data.children[ i ].data.author_flair_text,
                     username: posts.data.children[ i ].data.author,
@@ -258,15 +259,10 @@ const getPage = function getPage ( page, after, callWhenDone ) {
             }
 
             loadPage( `https://www.reddit.com${ posts.data.children[ i ].data.permalink }.json`, ( commentsBody ) => {
-                let replies = JSON.parse( commentsBody );
-
-                if( !replies[ 1 ] ){
-                    console.log( replies );
-                    return false;
-                }
+                const replies = JSON.parse( commentsBody );
 
                 for ( const replyIndex in replies[ 1 ].data.children ) {
-                    if( isNewUser( replies[ 1 ].data.children[ replyIndex ].data ) ) {
+                    if ( isNewUser( replies[ 1 ].data.children[ replyIndex ].data ) ) {
                         users.push( {
                             flair: replies[ 1 ].data.children[ replyIndex ].data.author_flair_text,
                             username: replies[ 1 ].data.children[ replyIndex ].data.author,
@@ -279,6 +275,7 @@ const getPage = function getPage ( page, after, callWhenDone ) {
         if ( pages < PAGE_LIMIT ) {
             getPage( page, posts.data.after, callWhenDone );
         } else {
+            // eslint-disable-next-line prefer-reflect
             callWhenDone.call( this );
         }
     } );
