@@ -4,6 +4,7 @@ const https = require( 'https' );
 
 const SKIP_FLAIRS = [
     '/r/globaloffensive moderator',
+    '/r/globaloffensive monsorator',
     '3dmax fan',
     '400k hype',
     '5 year subreddit veteran',
