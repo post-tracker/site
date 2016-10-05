@@ -9,7 +9,7 @@ import Post from './Post.jsx';
 import Search from './Search.jsx';
 
 const DEFAULT_DATA_PORT = 80;
-const SEARCH_DEBOUNCE_INTERVAL = 250;
+const SEARCH_DEBOUNCE_INTERVAL = 350;
 const POLL_INTERVAL = 60000;
 const DATA_URL = 'actions/data.php';
 
