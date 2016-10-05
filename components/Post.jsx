@@ -111,7 +111,12 @@ class Post extends React.Component {
                 <div
                     className = { 'panel-heading' }
                 >
-                    { `${ this.props.postData.nick } ${ title } posted in ` }
+                    <span
+                        title = { this.props.postData.name }
+                    >
+                        { this.props.postData.nick }
+                    </span>
+                    { ` ${ title } posted in ` }
                     <a
                         // eslint-disable-next-line react/no-danger
                         dangerouslySetInnerHTML = { {
@@ -155,6 +160,7 @@ Post.propTypes = {
     postData: React.PropTypes.shape( {
         content: React.PropTypes.string,
         group: React.PropTypes.string,
+        name: React.PropTypes.string,
         nick: React.PropTypes.string,
         role: React.PropTypes.string,
         source: React.PropTypes.string,
