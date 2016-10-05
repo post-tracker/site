@@ -61,8 +61,10 @@ br {
 
 .checkbox {
     display: inline-block;
+    font-size: 12px;
     margin: 5px;
-    width: 120px;
+    line-height: 15px;
+    width: 105px;
 }
 
 /* Fix for bootstrap styling */
@@ -78,14 +80,13 @@ br {
     height: 15px;
     position: relative;
     text-indent: -9999px;
-    top: 3px;
+    top: -2px;
     width: 50px;
 }
 
 .group-label.all {
     background: none;
     text-indent: 0;
-    top: 0;
 }
 
 .group-label.astralis {
@@ -103,7 +104,6 @@ br {
 .group-label.complexity {
     background: none;
     text-indent: 0;
-    top: 0;
 }
 
 .group-label.dreamhack {
@@ -114,7 +114,6 @@ br {
 .group-label.e-frag {
     background: none;
     text-indent: 0;
-    top: 0;
 }
 
 .group-label.esea {
@@ -186,6 +185,19 @@ br {
 .expander:hover {
     cursor: pointer;
     text-decoration: underline;
+}
+
+@media screen and ( max-width: 1200px ){
+    .groups-wrapper {
+        text-align: center;
+        width: auto;
+    }
+}
+
+@media screen and ( max-width: 1040px ){
+    .checkbox {
+        width: 80px;
+    }
 }
 
 @media screen and ( max-width: 480px ){
