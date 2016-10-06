@@ -168,6 +168,11 @@ br {
     background-position: -52px 0;
 }
 
+.group-label.wesa {
+    background-image: url( 'assets/logo-wesa.png' );
+    background-position: top left;
+}
+
 .clearer:hover {
     cursor: pointer;
 }

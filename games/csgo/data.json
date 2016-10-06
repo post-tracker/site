@@ -731,6 +731,21 @@
             "group": "mousesports",
             "role": "Manager",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "WESA_Players_Council"
+            },
+            "group": "WESA",
+            "role": "Players Council",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "WESAofficial"
+            },
+            "nick": "WESA",
+            "group": "WESA"
         }
     ],
     "name": "Counter Strike: Global Offensive",
