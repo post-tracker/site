@@ -3,6 +3,7 @@ const path = require( 'path' );
 const https = require( 'https' );
 
 const SKIP_FLAIRS = [
+    '/r/globaloffensive janitor',
     '/r/globaloffensive moderator',
     '/r/globaloffensive monsorator',
     '3dmax fan',
@@ -11,6 +12,7 @@ const SKIP_FLAIRS = [
     'astana dragons fan',
     'astralis fan',
     'baggage veteran',
+    'banner competition #2 second place winner',
     'banner competition #2 third place winner',
     'bloodhound',
     'bravado gaming fan',
