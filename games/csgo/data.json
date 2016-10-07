@@ -56,6 +56,14 @@
         },
         {
             "accounts": {
+                "Reddit": "Gfinity",
+                "Twitter": "gfinity"
+            },
+            "group": "Gfinity",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "durrrr_za"
             },
             "nick": "durrrr_za",
