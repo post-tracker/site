@@ -745,7 +745,8 @@
                 "Reddit": "WESAofficial"
             },
             "nick": "WESA",
-            "group": "WESA"
+            "group": "WESA",
+            "active": "1"
         }
     ],
     "name": "Counter Strike: Global Offensive",
