@@ -164,6 +164,11 @@ br {
     background-position: -156px -119px;
 }
 
+.group-label.twitch {
+    background-image: url( 'assets/logo-twitch.png' );
+    background-position: top left;
+}
+
 .group-label.valve {
     background-position: -52px 0;
 }

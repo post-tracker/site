@@ -747,6 +747,14 @@
             "nick": "WESA",
             "group": "WESA",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Tranceh"
+            },
+            "nick": "Tranceh",
+            "group": "Twitch",
+            "active": "1"
         }
     ],
     "name": "Counter Strike: Global Offensive",
