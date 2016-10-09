@@ -271,6 +271,16 @@
         },
         {
             "accounts": {
+                "Reddit": "Rushly123456",
+                "Twitter": "rushly123456"
+            },
+            "nick": "Rush",
+            "group": "ESL",
+            "role": "Associate Producer / Observer",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "truecashflo"
             },
             "nick": "Truecashflo",
@@ -762,6 +772,17 @@
             },
             "nick": "Tranceh",
             "group": "Twitch",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "ubercs",
+                "Twitter": "ubercsgo"
+            },
+            "name": "Michael Stapells",
+            "nick": "uber",
+            "group": "compLexity",
+            "role": "Player",
             "active": "1"
         }
     ],
