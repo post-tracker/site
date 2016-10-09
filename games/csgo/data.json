@@ -784,6 +784,17 @@
             "group": "compLexity",
             "role": "Player",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Alchemister5",
+                "Twitter": "alchemister5"
+            },
+            "name": "Jason Baker",
+            "nick": "Alchemister5",
+            "group": "ELeague",
+            "role": "Producer",
+            "active": "1"
         }
     ],
     "name": "Counter Strike: Global Offensive",

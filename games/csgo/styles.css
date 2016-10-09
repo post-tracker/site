@@ -122,6 +122,11 @@ br {
     top: -1px;
 }
 
+.group-label.eleague {
+    background-image: url( 'assets/logo-eleague.png' );
+    background-position: top left;
+}
+
 .group-label.esea {
     background-position: 0 -34px;
 }
