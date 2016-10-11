@@ -795,6 +795,16 @@
             "group": "ELeague",
             "role": "Producer",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "OfficialSPUNJ",
+                "Twitter": "spunj"
+            },
+            "name": "Chad Burchill",
+            "nick": "SPUNJ",
+            "role": "Analyst",
+            "active": "1"
         }
     ],
     "name": "Counter Strike: Global Offensive",
