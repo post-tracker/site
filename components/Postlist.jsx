@@ -7,6 +7,7 @@ import queryString from 'query-string';
 
 import Post from './Post.jsx';
 import Search from './Search.jsx';
+import Loader from './Loader.jsx';
 
 const DEFAULT_DATA_PORT = 80;
 const SEARCH_DEBOUNCE_INTERVAL = 350;
@@ -18,6 +19,7 @@ class PostList extends React.Component {
         super( props );
 
         const defaultState = {
+            loading: true,
             posts: [],
             searchGroups: [],
             searchString: '',
@@ -120,6 +122,7 @@ class PostList extends React.Component {
 
             response.on( 'end', () => {
                 this.setState( {
+                    loading: false,
                     posts: JSON.parse( body ),
                     searchGroups: groups,
                     searchString: searchString,
@@ -139,24 +142,29 @@ class PostList extends React.Component {
 
     render () {
         const addedHashes = [];
+        let postNodes = [];
 
-        const postNodes = this.state.posts.map( ( communityPost ) => {
-            const hash = new Hashes.MD5().hex( `${ communityPost.author }${ communityPost.timestamp }${ communityPost.content }` );
+        if ( this.state.loading ) {
+            postNodes.push( <Loader /> );
+        } else {
+            postNodes = this.state.posts.map( ( communityPost ) => {
+                const hash = new Hashes.MD5().hex( `${ communityPost.author }${ communityPost.timestamp }${ communityPost.content }` );
 
-            // TODO: Fix so we don't add duplicates to the database
-            if ( addedHashes.indexOf( hash ) > -1 ) {
-                return false;
-            }
+                // TODO: Fix so we don't add duplicates to the database
+                if ( addedHashes.indexOf( hash ) > -1 ) {
+                    return false;
+                }
 
-            addedHashes.push( hash );
+                addedHashes.push( hash );
 
-            return (
-                <Post
-                    key = { hash }
-                    postData = { communityPost }
-                />
-            );
-        } );
+                return (
+                    <Post
+                        key = { hash }
+                        postData = { communityPost }
+                    />
+                );
+            } );
+        }
 
         return (
             <div>
