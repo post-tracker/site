@@ -817,6 +817,17 @@
             "nick": "Zeus",
             "role": "Player",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "liquid112",
+                "Twitter": "liquid112"
+            },
+            "name": "Steve Arhancet",
+            "nick": "LiQuiD112",
+            "group": "Team Liquid",
+            "role": "Co-CEO & Owner",
+            "active": "1"
         }
     ],
     "name": "Counter Strike: Global Offensive",
