@@ -30,7 +30,7 @@ class Search extends React.Component {
 
         if ( typeof currentQuery[ 'groups[]' ] !== 'undefined' ) {
             let groups = currentQuery[ 'groups[]' ];
-            
+
             if ( typeof groups !== 'object' ) {
                 groups = [ groups ];
             }
@@ -136,6 +136,13 @@ class Search extends React.Component {
         request.end();
     }
 
+    parseGroupName ( groupName ) {
+        return groupName
+            .toLowerCase()
+            .replace( /\s/gim, '-' )
+            .replace( /[^a-z0-9\-]/gim, '' );
+    }
+
     clearInput () {
         this.props.handleSearch( '', this.state.activeGroups );
 
@@ -176,7 +183,7 @@ class Search extends React.Component {
                             type = { 'checkbox' }
                         />
                         <span
-                            className = { `group-label ${ group.toLowerCase().replace( /\s/gim, '-' ) }` }
+                            className = { `group-label ${ this.parseGroupName( group ) }` }
                             title = { group }
                         >
                             { group }
