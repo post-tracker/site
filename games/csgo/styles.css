@@ -139,6 +139,10 @@ br {
     background-position: -156px -17px;
 }
 
+.group-label.fnatic {
+    background-position: -156px -34px;
+}
+
 .group-label.g2-esports {
     background-position: -52px -170px;
 }
@@ -156,6 +160,10 @@ br {
     background-position: top left;
 }
 
+.group-label.navi {
+    background-position: -156px -68px;
+}
+
 .group-label.nip {
     background-position: -156px -51px;
 }
@@ -167,6 +175,10 @@ br {
 
 .group-label.roomonfire {
     background-position: -156px -119px;
+}
+
+.group-label.team-liquid {
+    background-position: -104px -101px;
 }
 
 .group-label.twitch {
