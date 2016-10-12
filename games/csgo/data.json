@@ -633,6 +633,7 @@
             },
             "name": "Olof Kajbjer",
             "nick": "Olof Kajbjer",
+            "group": "Fnatic",
             "role": "Player",
             "active": "1"
         },
@@ -662,6 +663,7 @@
             },
             "name": "Jacob Winneche",
             "nick": "Pimp",
+            "group": "Team Liquid",
             "role": "Player",
             "active": "1"
         },
@@ -698,7 +700,7 @@
                 "Reddit": "punkbooster"
             },
             "nick": "punkbooster",
-            "role": "Na'Vi",
+            "group": "Na'Vi",
             "active": "1"
         },
         {
