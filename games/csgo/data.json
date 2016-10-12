@@ -807,6 +807,16 @@
             "nick": "SPUNJ",
             "role": "Analyst",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "NaViZeus",
+                "Twitter": "navizeus4444"
+            },
+            "name": "Daniil Teslenko",
+            "nick": "Zeus",
+            "role": "Player",
+            "active": "1"
         }
     ],
     "name": "Counter Strike: Global Offensive",
