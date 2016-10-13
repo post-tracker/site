@@ -53,8 +53,8 @@ else :
     $users = $PDO->fetchAll();
 
     foreach( $users as $userData ) :
-        $developerService = new $type( $userData->uid, $userData->identifier);
-        $posts = $developerService->getRecentPosts();
+        $developerService = new $type( $userData->uid, $userData->identifier );
+        $posts = $developerService->getRecentPosts( $serviceData );
         foreach( $posts as $post ) :
             $post->save();
         endforeach;
