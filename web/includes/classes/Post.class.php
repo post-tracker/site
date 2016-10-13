@@ -56,7 +56,11 @@ class Post extends Kurl {
         return false;
     }
 
-    public function save(){
+    public function save( $configData ){
+        if( !$this->isValid( $configData ) ):
+            return false;
+        endif;
+
         if( $this->postExists() ) :
             return false;
         endif;

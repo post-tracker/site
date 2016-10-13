@@ -58,9 +58,7 @@ class Reddit extends Kurl {
 
             $post->setSource( 'Reddit' );
 
-            if( $post->isValid() ) :
-                $this->posts[] = $post;
-            endif;
+            $this->posts[] = $post;
         endforeach;
     }
 }

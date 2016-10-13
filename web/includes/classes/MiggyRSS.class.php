@@ -72,9 +72,7 @@ class MiggyRSS extends Kurl {
 
             $post->setSource( 'MiggyRSS' );
 
-            if( $post->isValid() ) :
-                $this->posts[] = $post;
-            endif;
+            $this->posts[] = $post;
         endforeach;
     }
 }

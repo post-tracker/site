@@ -54,9 +54,9 @@ else :
 
     foreach( $users as $userData ) :
         $developerService = new $type( $userData->uid, $userData->identifier );
-        $posts = $developerService->getRecentPosts( $serviceData );
+        $posts = $developerService->getRecentPosts();
         foreach( $posts as $post ) :
-            $post->save();
+            $post->save( $serviceData );
         endforeach;
     endforeach;
 endif;
