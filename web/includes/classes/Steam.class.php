@@ -12,7 +12,7 @@ class Steam {
         include_once( __DIR__ . '/../simple_html_dom.php' );
     }
 
-    public function getRecentPosts(){
+    public function getRecentPosts( $filterData ){
         if( is_numeric( $this->identifier ) ) :
             $url = str_replace( '{{userIdentifier}}', $this->identifier, self::$profileBase );
         else :
@@ -23,6 +23,31 @@ class Steam {
 
         // Find all article blocks
         foreach( $html->find( 'div.post_searchresult' ) as $communityPost ) :
+
+            $valid = true;
+            // Filter for specific forums if we want
+            if( isset( $filterData[ 'matchOnly' ] ) ):
+                $valid = false;
+                preg_match( '#http://steamcommunity.com/app/(\d*)/discussions/0/#mis', $communityPost->find( 'a.searchresult_forum_link', 0 )->href, $matches );
+
+                $forum = $matches[ 1 ];
+
+                if( !is_array( $filterData[ 'matchOnly' ] ) ):
+                    $filterData[ 'matchOnly' ] = array( $filterData[ 'matchOnly' ] );
+                endif;
+
+                for( $i = 0; $i < count( $filterData[ 'matchOnly' ] ); $i = $i + 1 ):
+                    if( $filterData[ 'matchOnly' ][ $i ] == $forum ):
+                        $valid = true;
+                        break;
+                    endif;
+                endfor;
+            endif;
+
+            if( !$valid ):
+                continue;
+            endif;
+
             // Parse time into a timestamp
             $time = $communityPost->find( 'div.searchresult_timestamp', 0 )->plaintext;
             if( preg_match( '#[1-2][0-9]{3}\s@#mis', $time ) ) :
