@@ -60,6 +60,7 @@ class Post extends React.Component {
         let expander;
         let bodyClasses = 'panel-body';
         let title;
+        let postedString;
 
         if ( this.state.expandable ) {
             expander = (
@@ -104,6 +105,12 @@ class Post extends React.Component {
             }
         }
 
+        if( title ){
+            postedString = ` ${ title } posted in `
+        } else {
+            postedString = ` posted in `
+        }
+
         return (
             <div
                 className = { 'panel panel-default' }
@@ -116,7 +123,7 @@ class Post extends React.Component {
                     >
                         { this.props.postData.nick }
                     </span>
-                    { ` ${ title } posted in ` }
+                    { postedString }
                     <a
                         // eslint-disable-next-line react/no-danger
                         dangerouslySetInnerHTML = { {
