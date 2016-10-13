@@ -5,6 +5,14 @@
     "config": {
         "Steam": {
             "matchOnly": "346110"
+        },
+        "Reddit": {
+            "matchOnly": [
+                "SurviveTogether",
+                "playark",
+                "ARK",
+                "ARKone"
+            ]
         }
     },
     "developers" : [
