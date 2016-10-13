@@ -9,6 +9,9 @@
         },
         "Steam": {
             "matchOnly": "359320"
+        },
+        "Reddit": {
+            "matchOnly": "EliteDangerous"
         }
     },
     "developers" : [
@@ -29,7 +32,8 @@
             "role": "Community Manager",
             "accounts": {
                 "Reddit": "BrettC_Frontier",
-                "MiggyRSS": "52"
+                "MiggyRSS": "52",
+                "Steam": "BrettC_Frontier"
             },
             "active": 1
         },
