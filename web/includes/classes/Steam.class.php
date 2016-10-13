@@ -24,29 +24,7 @@ class Steam {
         // Find all article blocks
         foreach( $html->find( 'div.post_searchresult' ) as $communityPost ) :
 
-            $valid = true;
-            // Filter for specific forums if we want
-            if( isset( $filterData[ 'matchOnly' ] ) ):
-                $valid = false;
-                preg_match( '#http://steamcommunity.com/app/(\d*)/discussions/0/#mis', $communityPost->find( 'a.searchresult_forum_link', 0 )->href, $matches );
 
-                $forum = $matches[ 1 ];
-
-                if( !is_array( $filterData[ 'matchOnly' ] ) ):
-                    $filterData[ 'matchOnly' ] = array( $filterData[ 'matchOnly' ] );
-                endif;
-
-                for( $i = 0; $i < count( $filterData[ 'matchOnly' ] ); $i = $i + 1 ):
-                    if( $filterData[ 'matchOnly' ][ $i ] == $forum ):
-                        $valid = true;
-                        break;
-                    endif;
-                endfor;
-            endif;
-
-            if( !$valid ):
-                continue;
-            endif;
 
             // Parse time into a timestamp
             $time = $communityPost->find( 'div.searchresult_timestamp', 0 )->plaintext;
@@ -62,7 +40,9 @@ class Steam {
             $url = str_replace( '\'', '', $url );
 
             $post = new Post();
-
+            preg_match( '#http://steamcommunity.com/app/(\d*)/discussions/0/#mis', $communityPost->find( 'a.searchresult_forum_link', 0 )->href, $matches );
+            
+            $post->setSection( $matches[ 1 ] );
             $post->setTimestamp( strtotime( $time ) );
             $post->setTopic( $communityPost->find( 'a.forum_topic_link', 0 )->plaintext, $communityPost->find( 'a.forum_topic_link', 0 )->href );
             $post->setText( $communityPost->find( 'div.post_searchresult_simplereply', 0 )->innertext );

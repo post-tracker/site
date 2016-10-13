@@ -33,10 +33,36 @@ class Post extends Kurl {
         $this->source = $source;
     }
 
-    public function isValid(){
-        if( strlen( $this->text ) > 0 ) :
-            return true;
+    public function setSection( $section ){
+        $this->section = $section;
+    }
+
+    public function isValid( $filterData ){
+        if( strlen( $this->text ) <= 0 ) :
+            return false;
         endif;
+
+        // Filter for specific forums if we want
+        if( isset( $filterData[ 'matchOnly' ] ) ):
+            $valid = false;
+
+            if( !is_array( $filterData[ 'matchOnly' ] ) ):
+                $filterData[ 'matchOnly' ] = array( $filterData[ 'matchOnly' ] );
+            endif;
+
+            for( $i = 0; $i < count( $filterData[ 'matchOnly' ] ); $i = $i + 1 ):
+                if( $filterData[ 'matchOnly' ][ $i ] == $this->section ):
+                    $valid = true;
+                    break;
+                endif;
+            endfor;
+        endif;
+
+        if( isset( $valid ) && !$valid ):
+            return false;
+        endif;
+
+        return true;
     }
 
     private function postExists(){
