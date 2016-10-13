@@ -53,6 +53,7 @@ class Reddit extends Kurl {
                     break;
             endswitch;
 
+            $post->setSection( $redditPost->data->subreddit );
             $post->setTimestamp( $redditPost->data->created_utc );
             $post->setUserId( $this->userId );
 
