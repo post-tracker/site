@@ -2,6 +2,11 @@
     "name": "Ark: Survival Evolved",
     "shortName": "Ark",
     "hostname": "arkdevtracker.com",
+    "config": {
+        "Steam": {
+            "matchOnly": "346110"
+        }
+    },
     "developers" : [
         {
             "nick": "Jat",

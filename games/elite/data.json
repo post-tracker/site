@@ -6,6 +6,9 @@
         "MiggyRSS": {
             "type": "single",
             "endpoint": "http://www.miggy.org/games/elite-dangerous/devtracker/ed-dev-posts.rss"
+        },
+        "Steam": {
+            "matchOnly": "359320"
         }
     },
     "developers" : [
