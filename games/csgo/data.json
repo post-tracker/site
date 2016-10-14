@@ -281,6 +281,17 @@
         },
         {
             "accounts": {
+                "Reddit": "mbCARMAC",
+                "Twitter": "mbcarmac"
+            },
+            "name": "Michal Blicharz",
+            "nick": "CARMAC",
+            "group": "ESL",
+            "role": "VP Pro Gaming",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "truecashflo"
             },
             "nick": "Truecashflo",
@@ -500,6 +511,14 @@
                 "Reddit": "vMcJohn"
             },
             "nick": "McJohn",
+            "group": "Valve",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "neunon"
+            },
+            "nick": "neunon",
             "group": "Valve",
             "active": "1"
         },
@@ -789,6 +808,17 @@
         },
         {
             "accounts": {
+                "Reddit": "eSports_Beef",
+                "Twitter": "col_beef"
+            },
+            "name": "Kyle Bautista",
+            "nick": "beef",
+            "group": "compLexity",
+            "role": "General Manager",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "Alchemister5",
                 "Twitter": "alchemister5"
             },
@@ -827,6 +857,85 @@
             "nick": "LiQuiD112",
             "group": "Team Liquid",
             "role": "Co-CEO & Owner",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "csboxr",
+                "Twitter": "botlaunders"
+            },
+            "name": "Mohan Govindasamy",
+            "nick": "Launders",
+            "role": "Analyst",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "lurppis_",
+                "Twitter": "lurppis_"
+            },
+            "name": "Tomi Kovanen",
+            "nick": "lurppis",
+            "role": "Analyst",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "epicentergg"
+            },
+            "nick": "EPICENTER",
+            "group": "EPICENTER",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "azavoloka"
+            },
+            "name": "Alexander Zavoloka",
+            "nick": "azavoloka",
+            "group": "EPICENTER",
+            "role": "Product Director",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "epic_omicron"
+            },
+            "name": "Cristian Duca",
+            "nick": "omicron",
+            "group": "EPICENTER",
+            "role": "Sports Director",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "semphis",
+                "Twitter": "TSMsemphisss"
+            },
+            "name": "Kory Friesen",
+            "nick": "semphis",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "voxeminor-gomez",
+                "Twitter": "gomezcsgo"
+            },
+            "name": "Chris Orfanellis",
+            "nick": "GoMeZ",
+            "group": "Renegades",
+            "role": "Manager",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "STYKOp",
+                "Twitter": "STYKOcsgo"
+            },
+            "name": "Martin Styk",
+            "nick": "STYKO",
+            "role": "Player",
             "active": "1"
         }
     ],

@@ -125,6 +125,11 @@ br {
     background-position: top left;
 }
 
+.group-label.epicenter {
+    background-image: url( 'assets/logo-epicenter.png' );
+    background-position: top left;
+}
+
 .group-label.esea {
     background-position: 0 -34px;
 }
@@ -168,6 +173,11 @@ br {
 
 .group-label.oddshot {
     background-image: url( 'assets/logo-oddshot.png' );
+    background-position: top left;
+}
+
+.group-label.renegades {
+    background-image: url( 'assets/logo-renegades.png' );
     background-position: top left;
 }
 
