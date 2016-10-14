@@ -246,6 +246,15 @@
                 "MiggyRSS": "26755"
             },
             "active": 1
+        },
+        {
+            "nick": "Matt",
+            "name": "Matt Dickinson",
+            "role": "Head of Technical Art",
+            "accounts": {
+                "MiggyRSS": "32574"
+            },
+            "active": 1
         }
     ]
 }
