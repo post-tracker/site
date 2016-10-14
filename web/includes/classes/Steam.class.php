@@ -23,9 +23,6 @@ class Steam {
 
         // Find all article blocks
         foreach( $html->find( 'div.post_searchresult' ) as $communityPost ) :
-
-
-
             // Parse time into a timestamp
             $time = $communityPost->find( 'div.searchresult_timestamp', 0 )->plaintext;
             if( preg_match( '#[1-2][0-9]{3}\s@#mis', $time ) ) :
@@ -40,8 +37,9 @@ class Steam {
             $url = str_replace( '\'', '', $url );
 
             $post = new Post();
+
             preg_match( '#http://steamcommunity.com/app/(\d*)/discussions/0/#mis', $communityPost->find( 'a.searchresult_forum_link', 0 )->href, $matches );
-            
+
             $post->setSection( $matches[ 1 ] );
             $post->setTimestamp( strtotime( $time ) );
             $post->setTopic( $communityPost->find( 'a.forum_topic_link', 0 )->plaintext, $communityPost->find( 'a.forum_topic_link', 0 )->href );

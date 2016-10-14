@@ -44,7 +44,7 @@ class Post extends Kurl {
 
         // Filter for specific forums if we want
         if( isset( $filterData[ 'matchOnly' ] ) ):
-            $valid = false;
+            $invalid = true;
 
             if( !is_array( $filterData[ 'matchOnly' ] ) ):
                 $filterData[ 'matchOnly' ] = array( $filterData[ 'matchOnly' ] );
@@ -52,14 +52,14 @@ class Post extends Kurl {
 
             for( $i = 0; $i < count( $filterData[ 'matchOnly' ] ); $i = $i + 1 ):
                 if( $filterData[ 'matchOnly' ][ $i ] == $this->section ):
-                    $valid = true;
+                    $invalid = false;
                     break;
                 endif;
             endfor;
-        endif;
 
-        if( isset( $valid ) && !$valid ):
-            return false;
+            if( $invalid ):
+                return false;
+            endif;
         endif;
 
         return true;
