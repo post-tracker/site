@@ -572,15 +572,18 @@
         },
         {
             "accounts": {
-                "Reddit": "WarOwl"
+                "Reddit": "WarOwl",
+                "Twitter": "thewarowl"
             },
             "nick": "WarOwl",
             "active": "1"
         },
         {
             "accounts": {
-                "Reddit": "DustMouret"
+                "Reddit": "DustMouret",
+                "Twitter": "dustmouret"
             },
+            "name": "Dustin Mouret",
             "nick": "DustMouret",
             "active": "1"
         },
@@ -672,6 +675,17 @@
             },
             "name": "Niels Christian Sillassen",
             "nick": "NaToSaphiX",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Elige",
+                "Twitter": "liquidelige"
+            },
+            "name": "Jonathan Jablonowski",
+            "nick": "EliGE",
+            "group": "Team Liquid",
             "role": "Player",
             "active": "1"
         },
@@ -936,6 +950,37 @@
             "name": "Martin Styk",
             "nick": "STYKO",
             "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "hazedlol",
+                "Twitter": "clghazed"
+            },
+            "name": "James Cobb",
+            "nick": "hazed",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "officialpyth",
+                "Twitter": "pythCS"
+            },
+            "name": "Jacob Mourujärvi",
+            "nick": "pyth",
+            "group": "NiP",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "onefmp",
+                "Twitter": "fmpone"
+            },
+            "name": "Shawn Snelling",
+            "nick": "FMPONE",
+            "role": "Mapper",
             "active": "1"
         }
     ],
