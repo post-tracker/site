@@ -1,0 +1,60 @@
+{
+    "name": "Rainbow Six",
+    "shortName": "Rainbox Six",
+    "hostname": "rainbowsixdevtracker.com",
+    "config": {
+        "Reddit": {
+            "index": "Rainbow6"
+        },
+        "Steam": {
+            "matchOnly": "359550"
+        },
+        "vBulletin": {
+            "url": "http://forums.ubi.com/forumdisplay.php/64-Rainbow-Six"
+        }
+    },
+    "developers" : [
+        {
+            "accounts": {
+                "Reddit": "Ubi-Ludo"
+            },
+            "nick": "Ludo",
+            "group": "Ubisoft",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "ubijustin"
+            },
+            "nick": "Justin",
+            "group": "Ubisoft",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Its_Epi",
+                "Steam": "76561198137855828"
+            },
+            "role": "Community Manager",
+            "nick": "Epi",
+            "group": "Ubisoft",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Surulies"
+            },
+            "nick": "Surulies",
+            "group": "Ubisoft",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Pankie"
+            },
+            "nick": "Pankie",
+            "group": "ESL",
+            "active": "1"
+        }
+    ]
+}
