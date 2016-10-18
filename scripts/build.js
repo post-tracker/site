@@ -34,7 +34,13 @@ const varsToPHP = function varsToPHP ( varObject ) {
                 return false;
             }
 
-            returnString = `${ returnString }\n$${ service }[ '${ identifier }' ] = '${ varObject[ service ][ identifier ] }';`;
+            if( typeof varObject[ service ][ identifier ] === 'string' ){
+                returnString = `${ returnString }\n$${ service }[ '${ identifier }' ] = '${ varObject[ service ][ identifier ] }';`;
+            } else {
+                returnString = `${ returnString }\n$${ service }[ '${ identifier }' ] = array( ${ varObject[ service ][ identifier ].map( ( element ) => {
+                    return `'${ element }'`;
+                } ).join( ', ' ) } );`;
+            }
         }
     }
 
