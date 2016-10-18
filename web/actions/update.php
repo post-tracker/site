@@ -24,7 +24,7 @@ else :
     );
 endif;
 
-if( $serviceData[ 'type' ] == 'single' ):
+if( isset( $serviceData[ 'type' ] ) && $serviceData[ 'type' ] == 'single' ):
     $developerService = new $type( $serviceData[ 'endpoint' ] );
 
     $posts = $developerService->getRecentPosts();
