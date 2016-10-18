@@ -38,7 +38,7 @@ class Steam {
 
             $post = new Post();
 
-            preg_match( '#http://steamcommunity.com/app/(\d*)/discussions/0/#mis', $communityPost->find( 'a.searchresult_forum_link', 0 )->href, $matches );
+            preg_match( '#http://steamcommunity.com/app/(\d*)/discussions/\d/#mis', $communityPost->find( 'a.searchresult_forum_link', 0 )->href, $matches );
 
             $post->setSection( $matches[ 1 ] );
             $post->setTimestamp( strtotime( $time ) );
