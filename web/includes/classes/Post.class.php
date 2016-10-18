@@ -62,6 +62,26 @@ class Post extends Kurl {
             endif;
         endif;
 
+        // Filter for specific forums if we want
+        if( isset( $filterData[ 'exclude' ] ) ):
+            $invalid = false;
+
+            if( !is_array( $filterData[ 'exclude' ] ) ):
+                $filterData[ 'exclude' ] = array( $filterData[ 'exclude' ] );
+            endif;
+
+            for( $i = 0; $i < count( $filterData[ 'exclude' ] ); $i = $i + 1 ):
+                if( $filterData[ 'exclude' ][ $i ] == $this->section ):
+                    $invalid = true;
+                    break;
+                endif;
+            endfor;
+
+            if( $invalid ):
+                return false;
+            endif;
+        endif;
+
         return true;
     }
 
