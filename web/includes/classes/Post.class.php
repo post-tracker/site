@@ -102,7 +102,7 @@ class Post extends Kurl {
         return false;
     }
 
-    public function save( $configData ){
+    public function save( $configData = false ){
         if( !$this->isValid( $configData ) ):
             return false;
         endif;
