@@ -12,7 +12,7 @@ class Steam {
         include_once( __DIR__ . '/../simple_html_dom.php' );
     }
 
-    public function getRecentPosts( $filterData ){
+    public function getRecentPosts(){
         if( is_numeric( $this->identifier ) ) :
             $url = str_replace( '{{userIdentifier}}', $this->identifier, self::$profileBase );
         else :
