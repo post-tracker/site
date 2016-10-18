@@ -292,6 +292,17 @@
         },
         {
             "accounts": {
+                "Reddit": "messioso",
+                "Twitter": "messioso"
+            },
+            "name": "Graham Pitt",
+            "nick": "messioso",
+            "group": "ESL",
+            "role": "League Master Admin",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "truecashflo"
             },
             "nick": "Truecashflo",
@@ -431,7 +442,8 @@
         },
         {
             "accounts": {
-                "Reddit": "jmosesot"
+                "Reddit": "jmosesot",
+                "Twitter": "OnFireMoses"
             },
             "name": "Jason O'Toole",
             "nick": "Moses",
@@ -524,6 +536,15 @@
         },
         {
             "accounts": {
+                "Reddit": "FletcherDunn"
+            },
+            "name": "Fletcher Dunn",
+            "nick": "FletcherDunn",
+            "group": "Valve",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "E-Frag",
                 "Twitter": "efragnet"
             },
@@ -538,6 +559,39 @@
             "nick": "IndependenTcs",
             "group": "compLexity",
             "role": "Social Media Manager",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "dephh",
+                "Twitter": "dephh_csgo"
+            },
+            "name": "Rory Jackson",
+            "nick": "dephh",
+            "group": "compLexity",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "ubercs",
+                "Twitter": "ubercsgo"
+            },
+            "name": "Michael Stapells",
+            "nick": "uber",
+            "group": "compLexity",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "eSports_Beef",
+                "Twitter": "col_beef"
+            },
+            "name": "Kyle Bautista",
+            "nick": "beef",
+            "group": "compLexity",
+            "role": "General Manager",
             "active": "1"
         },
         {
@@ -811,28 +865,6 @@
         },
         {
             "accounts": {
-                "Reddit": "ubercs",
-                "Twitter": "ubercsgo"
-            },
-            "name": "Michael Stapells",
-            "nick": "uber",
-            "group": "compLexity",
-            "role": "Player",
-            "active": "1"
-        },
-        {
-            "accounts": {
-                "Reddit": "eSports_Beef",
-                "Twitter": "col_beef"
-            },
-            "name": "Kyle Bautista",
-            "nick": "beef",
-            "group": "compLexity",
-            "role": "General Manager",
-            "active": "1"
-        },
-        {
-            "accounts": {
                 "Reddit": "Alchemister5",
                 "Twitter": "alchemister5"
             },
@@ -984,6 +1016,19 @@
             "active": "1"
         }
     ],
+    "config": {
+        "Reddit": {
+            "index": "GlobalOffensive",
+            "exclude": [
+                "DotA2",
+                "LiverpoolFC",
+                "bloodbowl",
+                "kpop",
+                "RocketLeague",
+                "formula1"
+            ]
+        }
+    },
     "name": "Counter Strike: Global Offensive",
     "shortName": "CSGO",
     "hostname": "csgodevtracker.com"
