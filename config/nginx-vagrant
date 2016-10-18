@@ -32,4 +32,8 @@ server {
     location ~ /\.ht {
         deny all;
     }
+
+    location ~ database.sqlite {
+        deny all;
+    }
 }
