@@ -38,9 +38,18 @@ class Steam {
 
             $post = new Post();
 
-            preg_match( '#http://steamcommunity.com/app/(\d*)/discussions/\d/#mis', $communityPost->find( 'a.searchresult_forum_link', 0 )->href, $matches );
+            preg_match( '#http://steamcommunity.com/app/(\d*)/discussions/\d+/#mis', $communityPost->find( 'a.searchresult_forum_link', 0 )->href, $matches );
 
-            $post->setSection( $matches[ 1 ] );
+            if( !isset( $matches[ 1 ] ) ):
+                preg_match( '#http://steamcommunity.com/workshop/discussions/\?appid=(\d*)#mis', $communityPost->find( 'a.searchresult_forum_link', 0 )->href, $matches );
+            endif;
+
+            if( isset( $matches[ 1 ] ) ):
+                $post->setSection( $matches[ 1 ] );
+            else :
+                $post->setSection( false );
+            endif;
+
             $post->setTimestamp( strtotime( $time ) );
             $post->setTopic( $communityPost->find( 'a.forum_topic_link', 0 )->plaintext, $communityPost->find( 'a.forum_topic_link', 0 )->href );
             $post->setText( $communityPost->find( 'div.post_searchresult_simplereply', 0 )->innertext );
