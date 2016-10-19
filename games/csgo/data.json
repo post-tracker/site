@@ -377,6 +377,16 @@
         },
         {
             "accounts": {
+                "Reddit": "fabE_"
+            },
+            "name": "Fabian Logemann",
+            "nick": "fabE",
+            "group": "FACEIT",
+            "role": "Competitions Manager",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "mrmlgadam",
                 "Twitter": "mradamap"
             },
@@ -1014,6 +1024,25 @@
             "nick": "FMPONE",
             "role": "Mapper",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "kakafu"
+            },
+            "name": "Alexander Szymanczyk",
+            "nick": "kakafu",
+            "group": "PENTA Sports",
+            "role": "Coach",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "SirScoots"
+            },
+            "name": "Scott Smith",
+            "nick": "SirScoots",
+            "role": "Gentleman",
+            "active": "1"
         }
     ],
     "config": {
@@ -1025,7 +1054,10 @@
                 "bloodbowl",
                 "kpop",
                 "RocketLeague",
-                "formula1"
+                "formula1",
+                "Competitiveoverwatch",
+                "Vive",
+                "Twitch"
             ]
         }
     },
