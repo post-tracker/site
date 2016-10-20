@@ -8,5 +8,5 @@
 		}
 	],
 	"theme_color": "#ffffff",
-	"display": "standalone"
+	"display": "minimal-ui"
 }
