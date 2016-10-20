@@ -1,0 +1,53 @@
+{
+    "name": "Battlefield One",
+    "shortName": "BF1",
+    "hostname": "battlefielddevtracker.com",
+    "config": {
+        "Reddit": {
+            "index": "battlefield_one"
+        }
+    },
+    "developers": [
+        {
+            "nick": "SvartAnka",
+            "name": "SvartAnka",
+            "accounts": {
+                "Reddit": "SvartAnka"
+            },
+            "active": 1
+        },
+        {
+            "nick": "Striterax",
+            "name": "striterax",
+            "accounts": {
+                "Reddit": "striterax"
+            },
+            "active": 1
+        },
+        {
+            "nick": "_jjju_",
+            "name": "_jjju_",
+            "accounts": {
+                "Reddit": "_jjju_"
+            },
+            "active": 1
+        },
+        {
+            "nick": "Demize99",
+            "name": "Demize99",
+            "role": "Core Gameplay Designer",
+            "accounts": {
+                "Reddit": "Demize99"
+            },
+            "active": 1
+        },
+        {
+            "nick": "Widiiz",
+            "name": "Widiiz",
+            "accounts": {
+                "Reddit": "Widiiz"
+            },
+            "active": 1
+        }
+    ]
+}
