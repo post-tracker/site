@@ -10,6 +10,8 @@
 }
 
 body {
+    background-color: #2c2d30;
+    color: #fff;
     font-family: Purista, Roboto;
     font-size: 15px;
     line-height: 1.5;
@@ -33,64 +35,46 @@ h1 {
 h1 a,
 h1 a:active,
 h1 a:hover {
-    color: #000;
+    color: #fff;
     text-decoration: none;
 }
 
+a,
+a:focus,
+a:hover,
+a:active {
+    color: #f17f1a;
+}
+
+.header-logo {
+    max-height: 42px;
+    position: relative;
+    top: -5px;
+}
+
 .panel {
+    background-color: #131313;
+    border-radius: 0;
+    box-shadow: 0 1px 29px rgb(0, 0, 0);
     position: relative;
     word-wrap: break-word;
+}
+
+.panel-footer {
+    background-color: #1a1a1a;
+}
+
+.panel-default>.panel-heading {
+    color: #fff;
+    background-color: #1a1a1a;
 }
 
 .fa {
     margin-right: 5px;
 }
 
-
-.groups-wrapper {
-    margin: 0 auto 20px auto;
-    text-align: center;
-    width: auto;
-}
-
-.checkbox {
-    display: inline-block;
-    font-size: 12px;
-    margin: 5px;
-    line-height: 15px;
-    width: 105px;
-}
-
-/* Fix for bootstrap styling */
-.checkbox+.checkbox {
-    margin: 5px;
-}
-
-.group-label {
-    background-repeat: no-repeat;
-    display: inline-block;
-    height: 15px;
-    position: relative;
-    text-indent: -9999px;
-    top: -2px;
-    width: 50px;
-}
-
-.group-label.all {
-    background: none;
-    text-align: left;
-    text-indent: 0;
-    top: -1px;
-}
-
-.group-label.esl {
-    background-image: url( 'assets/logo-esl.png' );
-    background-position: top left;
-}
-
-.group-label.ubisoft {
-    background-image: url( 'assets/logo-ubisoft.png' );
-    background-position: top left;
+.form-control {
+    color: #fff;
 }
 
 .clearer {
@@ -132,6 +116,12 @@ h1 a:hover {
 @media screen and ( max-width: 480px ){
     h1 {
         font-size: 38px;
+    }
+
+    .header-logo {
+        display: block;
+        margin: 0 auto;
+        max-height: 38px;
     }
 }
 

@@ -18,6 +18,12 @@ const DatabaseSetup = require( './dbsetup.js' );
 const varsToPHP = function varsToPHP ( varObject ) {
     let returnString = '';
 
+    function arrayAsVar( data ){
+        return `array( ${ data.map( ( element ) => {
+            return `'${ element }'`;
+        } ).join( ', ' ) } );`;
+    }
+
     if ( typeof varObject !== 'object' ) {
         return returnString;
     }
@@ -36,10 +42,8 @@ const varsToPHP = function varsToPHP ( varObject ) {
 
             if( typeof varObject[ service ][ identifier ] === 'string' ){
                 returnString = `${ returnString }\n$${ service }[ '${ identifier }' ] = '${ varObject[ service ][ identifier ] }';`;
-            } else {
-                returnString = `${ returnString }\n$${ service }[ '${ identifier }' ] = array( ${ varObject[ service ][ identifier ].map( ( element ) => {
-                    return `'${ element }'`;
-                } ).join( ', ' ) } );`;
+            } else if( Array.isArray( varObject[ service ][ identifier ] ) ){
+                returnString = `${ returnString }\n$${ service }[ '${ identifier }' ] = ${ arrayAsVar( varObject[ service ][ identifier ] ) }`;
             }
         }
     }
@@ -211,12 +215,20 @@ games.forEach( ( game ) => {
 
     // Fill in the data where needed
     fs.readFile( path.join( gamePath, '/index.html' ), 'utf8', ( readFileError, fileData ) => {
+        var hasLogo = fs.existsSync( path.join( gamePath, '/assets/logo.png' ) );
+
         if ( readFileError ) {
             console.log( readFileError );
         }
 
         if ( extraFiles.indexOf( 'styles.css' ) > -1  ) {
             gameData.styles = fs.readFileSync( path.join( gameFilesPath, '/styles.css' ) );
+        }
+
+        if( hasLogo ){
+            gameData.logo = '<img src="assets/logo.png" class="header-logo">';
+        } else {
+            gameData.logo = gameData.shortName;
         }
 
         fs.writeFile( path.join( gamePath, '/index.html' ), mustache.render( fileData, gameData ), ( writeFileError ) => {
