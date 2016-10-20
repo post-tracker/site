@@ -12,6 +12,9 @@
                 "playark",
                 "ARK",
                 "ARKone"
+            ],
+            "exclude": [
+                "funny"
             ]
         }
     },
