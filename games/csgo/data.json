@@ -303,6 +303,14 @@
         },
         {
             "accounts": {
+                "Reddit": "charlesviper"
+            },
+            "nick": "charlesviper",
+            "group": "ESL",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "truecashflo"
             },
             "nick": "Truecashflo",
@@ -617,6 +625,16 @@
         },
         {
             "accounts": {
+                "Reddit": "HenryG_CS",
+                "Twitter": "HenryGcsgo"
+            },
+            "name": "Henry Greer",
+            "nick": "HenryG",
+            "role": "Caster",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "Sadokist",
                 "Twitter": "sadokist"
             },
@@ -769,7 +787,8 @@
                 "Reddit": "Prius707",
                 "Twitter": "PriusCSGO"
             },
-            "nick": "DJ",
+            "name": "DJ Kuntz",
+            "nick": "Prius",
             "role": "Observer",
             "active": "1"
         },
@@ -1042,6 +1061,27 @@
             "name": "Scott Smith",
             "nick": "SirScoots",
             "role": "Gentleman",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "IMT_Whinston",
+                "Twitter": "nwhinston"
+            },
+            "name": "Noah Whinston",
+            "nick": "Whinston",
+            "group": "Immortals",
+            "role": "CEO",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "JustHarryGG",
+                "Twitter": "JustHarryGG"
+            },
+            "name": "Harry James Russell",
+            "nick": "Harrry",
+            "role": "Caster",
             "active": "1"
         }
     ],
