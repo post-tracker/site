@@ -48,6 +48,16 @@
                 "Reddit": "Widiiz"
             },
             "active": 1
+        },
+        {
+            "nick": "TheDemno",
+            "name": "Andreas Glad",
+            "role": "VFX Artisth",
+            "accounts": {
+                "Reddit": "TheDemno",
+                "twitter": "TheDemno"
+            },
+            "active": 1
         }
     ]
 }
