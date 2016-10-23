@@ -73,134 +73,212 @@ br {
 }
 
 .group-label {
-    background-image: url( 'assets/flairs.png' );
-    background-position: -104px -176px;
     background-repeat: no-repeat;
+    background-position: top left;
     display: inline-block;
-    height: 15px;
     position: relative;
+    top: -1px;
+}
+
+.group-label.astralis {
+    background-image: url( 'assets/flairs.png' );
+    background-position: -52px -153px;
+    height: 15px;
     text-indent: -9999px;
     top: -2px;
     width: 50px;
 }
 
-.group-label.all {
-    background: none;
-    text-align: left;
-    text-indent: 0;
-    top: -1px;
-}
-
-.group-label.astralis {
-    background-position: -52px -153px;
-}
-
 .group-label.cevo {
+    background-image: url( 'assets/flairs.png' );
     background-position: -104px -34px;
+    height: 15px;
+    text-indent: -9999px;
+    top: -2px;
+    width: 50px;
 }
 
 .group-label.csgolounge {
+    background-image: url( 'assets/flairs.png' );
     background-position: -104px -119px;
+    height: 15px;
+    text-indent: -9999px;
+    top: -2px;
+    width: 50px;
 }
 
 .group-label.complexity {
     background-image: url( 'assets/logo-complexity.png' );
-    background-position: top left;
+    text-indent: -9999px;
+    width: 50px;
+}
+
+.group-label.counter-logic-gaming {
+    background-image: url( 'assets/logo-counter-logic-gaming.png' );
+    text-indent: -9999px;
+    width: 50px;
 }
 
 .group-label.dreamhack {
     background-image: url( 'assets/logo-dreamhack.png' );
-    background-position: top left;
-}
-
-.group-label.e-frag {
-    background: none;
-    text-align: left;
-    text-indent: 0;
-    top: -1px;
+    text-indent: -9999px;
+    width: 50px;
 }
 
 .group-label.eleague {
     background-image: url( 'assets/logo-eleague.png' );
-    background-position: top left;
+    text-indent: -9999px;
+    width: 50px;
 }
 
 .group-label.epicenter {
     background-image: url( 'assets/logo-epicenter.png' );
-    background-position: top left;
+    text-indent: -9999px;
+    width: 50px;
 }
 
 .group-label.esea {
+    background-image: url( 'assets/flairs.png' );
     background-position: 0 -34px;
+    height: 15px;
+    text-indent: -9999px;
+    top: -2px;
+    width: 50px;
 }
 
 .group-label.esl {
+    background-image: url( 'assets/flairs.png' );
     background-position: -104px 0;
+    height: 15px;
+    text-indent: -9999px;
+    top: -2px;
+    width: 50px;
 }
 
 .group-label.faceit {
+    background-image: url( 'assets/flairs.png' );
     background-position: -156px -17px;
+    height: 15px;
+    text-indent: -9999px;
+    top: -2px;
+    width: 50px;
 }
 
 .group-label.fnatic {
+    background-image: url( 'assets/flairs.png' );
     background-position: -156px -34px;
+    height: 15px;
+    text-indent: -9999px;
+    top: -2px;
+    width: 50px;
 }
 
 .group-label.g2-esports {
+    background-image: url( 'assets/flairs.png' );
     background-position: -52px -170px;
+    height: 15px;
+    text-indent: -9999px;
+    top: -2px;
+    width: 50px;
 }
 
 .group-label.gfinity {
+    background-image: url( 'assets/flairs.png' );
     background-position: 0 -170px;
+    height: 15px;
+    text-indent: -9999px;
+    top: -2px;
+    width: 50px;
 }
 
 .group-label.mlg {
+    background-image: url( 'assets/flairs.png' );
     background-position: -156px -151px;
+    height: 15px;
+    text-indent: -9999px;
+    top: -2px;
+    width: 50px;
 }
 
 .group-label.mousesports {
     background-image: url( 'assets/logo-mousesports.png' );
-    background-position: top left;
+    text-indent: -9999px;
+    width: 50px;
 }
 
 .group-label.navi {
+    background-image: url( 'assets/flairs.png' );
     background-position: -156px -68px;
+    height: 15px;
+    text-indent: -9999px;
+    top: -2px;
+    width: 50px;
 }
 
 .group-label.nip {
+    background-image: url( 'assets/flairs.png' );
     background-position: -156px -51px;
+    height: 15px;
+    text-indent: -9999px;
+    top: -2px;
+    width: 50px;
 }
 
 .group-label.oddshot {
     background-image: url( 'assets/logo-oddshot.png' );
-    background-position: top left;
+    text-indent: -9999px;
+    width: 50px;
 }
 
 .group-label.renegades {
     background-image: url( 'assets/logo-renegades.png' );
-    background-position: top left;
+    text-indent: -9999px;
+    width: 50px;
 }
 
 .group-label.roomonfire {
+    background-image: url( 'assets/flairs.png' );
     background-position: -156px -119px;
+    height: 15px;
+    text-indent: -9999px;
+    top: -2px;
+    width: 50px;
+}
+
+.group-label.selfless-gaming {
+    background-image: url( 'assets/logo-selfless-gaming.png' );
+    text-indent: -9999px;
+    width: 50px;
 }
 
 .group-label.team-liquid {
+    background-image: url( 'assets/flairs.png' );
     background-position: -104px -101px;
+    height: 15px;
+    text-indent: -9999px;
+    top: -2px;
+    width: 50px;
 }
 
 .group-label.twitch {
     background-image: url( 'assets/logo-twitch.png' );
-    background-position: top left;
+    text-indent: -9999px;
+    width: 50px;
 }
 
 .group-label.valve {
+    background-image: url( 'assets/flairs.png' );
     background-position: -52px 0;
+    height: 15px;
+    text-indent: -9999px;
+    top: -2px;
+    width: 50px;
 }
 
 .group-label.wesa {
     background-image: url( 'assets/logo-wesa.png' );
-    background-position: top left;
+    text-indent: -9999px;
+    width: 50px;
 }
 
 .clearer:hover {

@@ -35,7 +35,6 @@ h1 a:hover {
     margin-right: 5px;
 }
 
-
 .groups-wrapper {
     margin: 0 auto 20px auto;
     text-align: center;
@@ -57,29 +56,22 @@ h1 a:hover {
 
 .group-label {
     background-repeat: no-repeat;
+    background-position: top left;
     display: inline-block;
-    height: 15px;
     position: relative;
-    text-indent: -9999px;
-    top: -2px;
-    width: 50px;
-}
-
-.group-label.all {
-    background: none;
-    text-align: left;
-    text-indent: 0;
     top: -1px;
 }
 
 .group-label.esl {
     background-image: url( 'assets/logo-esl.png' );
-    background-position: top left;
+    text-indent: -9999px;
+    width: 50px;
 }
 
 .group-label.ubisoft {
     background-image: url( 'assets/logo-ubisoft.png' );
-    background-position: top left;
+    text-indent: -9999px;
+    width: 50px;
 }
 
 .clearer {

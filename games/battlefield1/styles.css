@@ -52,6 +52,45 @@ a:active {
     top: -5px;
 }
 
+.groups-wrapper {
+    margin: 0 auto 20px auto;
+    text-align: center;
+    width: auto;
+}
+
+.checkbox {
+    display: inline-block;
+    font-size: 12px;
+    margin: 5px;
+    line-height: 15px;
+    width: 105px;
+}
+
+/* Fix for bootstrap styling */
+.checkbox+.checkbox {
+    margin: 5px;
+}
+
+.group-label {
+    background-repeat: no-repeat;
+    background-position: top left;
+    display: inline-block;
+    position: relative;
+    top: -1px;
+}
+
+.group-label.ea {
+    background-image: url( 'assets/logo-ea.png' );
+    text-indent: -9999px;
+    width: 50px;
+}
+
+.group-label.dice {
+    background-image: url( 'assets/logo-dice.png' );
+    text-indent: -9999px;
+    width: 50px;
+}
+
 .panel {
     background-color: #131313;
     border-radius: 0;
