@@ -630,6 +630,7 @@
             },
             "name": "Henry Greer",
             "nick": "HenryG",
+            "group": "DropTheBomb",
             "role": "Caster",
             "active": "1"
         },
@@ -640,6 +641,7 @@
             },
             "name": "Matthew Trivett",
             "nick": "Sadokist",
+            "group": "DropTheBomb",
             "role": "Caster",
             "active": "1"
         },
@@ -649,7 +651,8 @@
                 "Twitter": "selflessryu"
             },
             "nick": "Ryu",
-            "role": "Owner - Selfless Gaming",
+            "group": "Selfless Gaming",
+            "role": "Owner",
             "active": "1"
         },
         {
@@ -675,6 +678,7 @@
             },
             "name": "Heather Garozzo",
             "nick": "sapphiRe",
+            "group": "Selfless Gaming",
             "role": "Spectator & Player",
             "active": "1"
         },
@@ -747,6 +751,7 @@
             },
             "name": "Sean Gares",
             "nick": "seangares",
+            "group": "Echo Fox",
             "role": "Player",
             "active": "1"
         },
@@ -866,6 +871,7 @@
                 "Twitter": "liquipedianet"
             },
             "nick": "Liquipedia",
+            "group": "Liquipedia",
             "active": "1"
         },
         {
@@ -931,6 +937,7 @@
             },
             "name": "Daniil Teslenko",
             "nick": "Zeus",
+            "group": "Gambit",
             "role": "Player",
             "active": "1"
         },
@@ -1000,6 +1007,7 @@
             },
             "name": "Kory Friesen",
             "nick": "semphis",
+            "group": "Team SoloMid",
             "role": "Player",
             "active": "1"
         },
@@ -1021,6 +1029,7 @@
             },
             "name": "Martin Styk",
             "nick": "STYKO",
+            "group": "HellRaisers",
             "role": "Player",
             "active": "1"
         },
@@ -1031,6 +1040,7 @@
             },
             "name": "James Cobb",
             "nick": "hazed",
+            "group": "Counter Logic Gaming",
             "role": "Player",
             "active": "1"
         },
@@ -1102,6 +1112,7 @@
             },
             "name": "Yassine Taoufik",
             "nick": "Subroza",
+            "group": "Counter Logic Gaming",
             "role": "Player",
             "active": "1"
         }
@@ -1121,7 +1132,8 @@
                 "Twitch",
                 "funny"
             ]
-        }
+        },
+        "minimumDevelopers": 2
     },
     "name": "Counter Strike: Global Offensive",
     "shortName": "CSGO",
