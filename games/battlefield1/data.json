@@ -9,55 +9,67 @@
     },
     "developers": [
         {
-            "nick": "SvartAnka",
-            "name": "SvartAnka",
             "accounts": {
                 "Reddit": "SvartAnka"
             },
-            "active": 1
+            "nick": "SvartAnka",
+            "group": "DICE",
+            "active": "1"
         },
         {
-            "nick": "Striterax",
-            "name": "striterax",
             "accounts": {
                 "Reddit": "striterax"
             },
-            "active": 1
+            "nick": "Striterax",
+            "group": "DICE",
+            "active": "1"
         },
         {
-            "nick": "_jjju_",
-            "name": "_jjju_",
             "accounts": {
                 "Reddit": "_jjju_"
             },
-            "active": 1
+            "nick": "_jjju_",
+            "group": "DICE",
+            "active": "1"
         },
         {
-            "nick": "Demize99",
-            "name": "Demize99",
-            "role": "Core Gameplay Designer",
             "accounts": {
                 "Reddit": "Demize99"
             },
-            "active": 1
+            "nick": "Demize99",
+            "group": "DICE",
+            "role": "Core Gameplay Designer",
+            "active": "1"
         },
         {
-            "nick": "Widiiz",
-            "name": "Widiiz",
             "accounts": {
                 "Reddit": "Widiiz"
             },
-            "active": 1
+            "nick": "Widiiz",
+            "group": "DICE",
+            "active": "1"
         },
         {
-            "nick": "TheDemno",
-            "name": "Andreas Glad",
-            "role": "VFX Artisth",
             "accounts": {
                 "Reddit": "TheDemno",
-                "twitter": "TheDemno"
+                "Twitter": "TheDemno"
             },
-            "active": 1
+            "name": "Andreas Glad",
+            "nick": "TheDemno",
+            "group": "DICE",
+            "role": "VFX Artist",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Braddock512",
+                "Twitter": "Braddock512"
+            },
+            "name": "Jeff Braddock",
+            "nick": "Braddock512",
+            "group": "EA",
+            "role": "Community Manager",
+            "active": "1"
         }
     ]
 }
