@@ -784,6 +784,17 @@
         },
         {
             "accounts": {
+                "Reddit": "robinnymann",
+                "Twitter": "robinnymann"
+            },
+            "name": "Robin Nymann",
+            "nick": "robinnymann",
+            "group": "Team Liquid",
+            "role": "Director of eSports",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "Prius707",
                 "Twitter": "PriusCSGO"
             },
@@ -1082,6 +1093,16 @@
             "name": "Harry James Russell",
             "nick": "Harrry",
             "role": "Caster",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "SubrozaCS",
+                "Twitter": "CLGSubroza"
+            },
+            "name": "Yassine Taoufik",
+            "nick": "Subroza",
+            "role": "Player",
             "active": "1"
         }
     ],
