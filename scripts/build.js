@@ -33,18 +33,24 @@ const varsToPHP = function varsToPHP ( varObject ) {
             return false;
         }
 
-        returnString = `${ returnString }\n$${ service } = array();`;
+        if( typeof varObject[ service ] === 'object' ){
+            returnString = `${ returnString }\n$${ service } = array();`;
 
-        for ( const identifier in varObject[ service ] ) {
-            if ( !Reflect.apply( {}.hasOwnProperty, varObject[ service ], [ identifier ] ) ) {
-                return false;
-            }
+            for ( const identifier in varObject[ service ] ) {
+                if ( !Reflect.apply( {}.hasOwnProperty, varObject[ service ], [ identifier ] ) ) {
+                    return false;
+                }
 
-            if( typeof varObject[ service ][ identifier ] === 'string' ){
-                returnString = `${ returnString }\n$${ service }[ '${ identifier }' ] = '${ varObject[ service ][ identifier ] }';`;
-            } else if( Array.isArray( varObject[ service ][ identifier ] ) ){
-                returnString = `${ returnString }\n$${ service }[ '${ identifier }' ] = ${ arrayAsVar( varObject[ service ][ identifier ] ) }`;
+                if( typeof varObject[ service ][ identifier ] === 'string' || typeof varObject[ service ][ identifier ] === 'number' ){
+                    returnString = `${ returnString }\n$${ service }[ '${ identifier }' ] = '${ varObject[ service ][ identifier ] }';`;
+                } else if( Array.isArray( varObject[ service ][ identifier ] ) ){
+                    returnString = `${ returnString }\n$${ service }[ '${ identifier }' ] = ${ arrayAsVar( varObject[ service ][ identifier ] ) }`;
+                } else {
+                    console.log( typeof varObject[ service ][ identifier ] );
+                }
             }
+        } else {
+            returnString = `${ returnString }\n$${ service } = ${ varObject[ service ] };`;
         }
     }
 

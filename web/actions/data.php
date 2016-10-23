@@ -175,7 +175,8 @@ switch ( $_GET[ 'type' ] ):
         die( json_encode( $posts ) );
     case 'groups':
         $query = 'SELECT
-            `group`
+            `group`,
+            COUNT(`group`) AS devs
             FROM
                 developers
             WHERE
@@ -186,10 +187,24 @@ switch ( $_GET[ 'type' ] ):
 
         $PDO = $database->prepare( $query );
         $PDO->execute();
-        $posts = $PDO->fetchAll( PDO::FETCH_COLUMN, 0 );
+        $posts = $PDO->fetchAll();
 
-        sort( $posts, SORT_NATURAL | SORT_FLAG_CASE );
+        $groups = [];
+        
+        if( !isset( $minimumDevelopers ) ):
+            $minimumDevelopers = 1;
+        endif;
+
+        foreach( $posts as $post ):
+            if( $post->devs < $minimumDevelopers ):
+                continue;
+            endif;
+
+            $groups[] = $post->group;
+        endforeach;
+
+        sort( $groups, SORT_NATURAL | SORT_FLAG_CASE );
 
         header( 'Content-Type: application/json' );
-        die( json_encode( $posts ) );
+        die( json_encode( $groups ) );
 endswitch;
