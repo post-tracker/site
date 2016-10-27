@@ -1,5 +1,5 @@
 <?php
-class Steam {
+class Steam extends Kurl {
     private static $profileBase = 'http://steamcommunity.com/profiles/{{userIdentifier}}/posthistory/';
     private static $idBase = 'http://steamcommunity.com/id/{{userIdentifier}}/posthistory/';
 
@@ -66,9 +66,5 @@ class Steam {
         endforeach;
 
         return $this->posts;
-    }
-
-    private function loadUrl( $url ){
-        return file_get_contents( $url );
     }
 }
