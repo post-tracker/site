@@ -12,6 +12,12 @@ server {
         proxy_read_timeout 600;
     }
 
+    gzip on;
+    gzip_proxied any;
+    gzip_comp_level 6;
+    gzip_types text/plain text/javascript text/xml text/html text/css application/javascript application/x-javascript application/json application/atom+xml application/rss+xml image/svg+xml;
+    gzip_vary on;
+
     error_page 404 /404.html;
 
     # redirect server error pages to the static page /50x.html
@@ -50,6 +56,12 @@ server {
         proxy_read_timeout 600;
     }
 
+    gzip on;
+    gzip_proxied any;
+    gzip_comp_level 6;
+    gzip_types text/plain text/javascript text/xml text/html text/css application/javascript application/x-javascript application/json application/atom+xml application/rss+xml image/svg+xml;
+    gzip_vary on;
+
     error_page 404 /404.html;
 
     # redirect server error pages to the static page /50x.html
@@ -87,6 +99,12 @@ server {
         try_files $uri $uri/ =404;
         proxy_read_timeout 600;
     }
+
+    gzip on;
+    gzip_proxied any;
+    gzip_comp_level 6;
+    gzip_types text/plain text/javascript text/xml text/html text/css application/javascript application/x-javascript application/json application/atom+xml application/rss+xml image/svg+xml;
+    gzip_vary on;
 
     error_page 404 /404.html;
 
