@@ -678,7 +678,7 @@
         },
         {
             "accounts": {
-                "Reddit": "mrmlgadam",
+                "Reddit": "MrMLGAdam",
                 "Twitter": "mradamap"
             },
             "name": "Adam Apicella",
@@ -766,6 +766,27 @@
             "nick": "kakafu",
             "group": "PENTA Sports",
             "role": "Coach",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "DianaPGL",
+                "Twitter": "Diana_P"
+            },
+            "name": "Diana Petrescu",
+            "nick": "Diana",
+            "group": "PGL",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "BossmanCG",
+                "Twitter": "bossmancg"
+            },
+            "name": "Vlad Rosca",
+            "nick": "BossmanCG",
+            "group": "PGL",
+            "role": "Head of eSports",
             "active": "1"
         },
         {

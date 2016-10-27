@@ -197,6 +197,12 @@ br {
     text-indent: -9999px;
 }
 
+.group-label.pgl {
+    background-image: url( 'assets/flairs.png' );
+    background-position: 0 -153px;
+    text-indent: -9999px;
+}
+
 .group-label.renegades {
     background-image: url( 'assets/logo-renegades.png' );
     text-indent: -9999px;
