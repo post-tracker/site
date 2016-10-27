@@ -70,6 +70,16 @@
             "group": "EA",
             "role": "Community Manager",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Indigowd",
+                "Twitter": "Indigowd"
+            },
+            "name": "Jojje Dalunde",
+            "nick": "Indigowd",
+            "group": "DICE",
+            "active": "1"
         }
     ]
 }
