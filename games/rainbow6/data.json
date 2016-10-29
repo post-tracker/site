@@ -13,7 +13,7 @@
             "url": "http://forums.ubi.com/forumdisplay.php/64-Rainbow-Six"
         }
     },
-    "developers" : [
+    "developers": [
         {
             "accounts": {
                 "Reddit": "Ubi-Ludo"
@@ -35,9 +35,9 @@
                 "Reddit": "Its_Epi",
                 "Steam": "76561198137855828"
             },
-            "role": "Community Manager",
             "nick": "Epi",
             "group": "Ubisoft",
+            "role": "Community Manager",
             "active": "1"
         },
         {
@@ -54,6 +54,54 @@
             },
             "nick": "Pankie",
             "group": "ESL",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Remorce"
+            },
+            "nick": "Remorce",
+            "role": "Pro Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Sixquatre-"
+            },
+            "nick": "Sixquatre-",
+            "role": "Pro Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "rr-dapz"
+            },
+            "nick": "rr-dapz",
+            "role": "Pro Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "17Serenity17"
+            },
+            "nick": "17Serenity17",
+            "role": "Pro Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "toppukekku"
+            },
+            "nick": "toppukekku",
+            "role": "Pro Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Cr1msonDeath"
+            },
+            "nick": "Cr1msonDeath",
+            "role": "Pro Player",
             "active": "1"
         }
     ]
