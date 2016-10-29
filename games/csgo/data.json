@@ -234,8 +234,17 @@
             },
             "name": "Jason Baker",
             "nick": "Alchemister5",
-            "group": "ELeague",
+            "group": "ELEAGUE",
             "role": "Producer",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "ELEAGUE_Official",
+                "Twitter": "el"
+            },
+            "nick": "ELEAGUE",
+            "group": "ELEAGUE",
             "active": "1"
         },
         {
