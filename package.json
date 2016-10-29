@@ -8,7 +8,7 @@
     "gulp": "gulp",
     "find-cs": "node scripts/flairfinder.js",
     "convert-cs": "node scripts/csv-to-json.js --source=\"Developers - CSGO.csv\" --destination=games/csgo/data.json",
-    "convert-bf": "node scripts/csv-to-json.js --source=\"Developers - Battlefield1.csv\" --destination=games/Battlefield1/data.json",
+    "convert-bf": "node scripts/csv-to-json.js --source=\"Developers - Battlefield1.csv\" --destination=games/battlefield1/data.json",
     "vagrant-cron": "sudo cp /vagrant/config/cron/* /etc/cron.d && sudo chmod 644 /etc/cron.d/*",
     "start": "watchify components/App.jsx -o web/scripts/app.build.js -t [ babelify --presets [ es2015 react ] ] -v --poll=100",
     "build:development": "cross-env NODE_ENV=development browserify components/App.jsx -o web/scripts/app.js -t [ babelify --presets [ es2015 react ] ] && node scripts/build.js",
