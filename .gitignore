@@ -8,3 +8,4 @@ npm-debug.log*
 web/scripts/app.build.js
 config/cron/
 Developers - *.csv
+*.log
