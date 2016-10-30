@@ -61,6 +61,7 @@
                 "Reddit": "Remorce"
             },
             "nick": "Remorce",
+            "group": "Pros",
             "role": "Pro Player",
             "active": "1"
         },
@@ -69,6 +70,7 @@
                 "Reddit": "Sixquatre-"
             },
             "nick": "Sixquatre-",
+            "group": "Pros",
             "role": "Pro Player",
             "active": "1"
         },
@@ -77,6 +79,7 @@
                 "Reddit": "RR-dapz"
             },
             "nick": "RR-dapz",
+            "group": "Pros",
             "role": "Pro Player",
             "active": "1"
         },
@@ -85,6 +88,7 @@
                 "Reddit": "17Serenity17"
             },
             "nick": "17Serenity17",
+            "group": "Pros",
             "role": "Pro Player",
             "active": "1"
         },
@@ -93,6 +97,7 @@
                 "Reddit": "TOPPUKEKKU"
             },
             "nick": "TOPPUKEKKU",
+            "group": "Pros",
             "role": "Pro Player",
             "active": "1"
         },
@@ -101,6 +106,7 @@
                 "Reddit": "Cr1msonDeath"
             },
             "nick": "Cr1msonDeath",
+            "group": "Pros",
             "role": "Pro Player",
             "active": "1"
         }
