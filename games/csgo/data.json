@@ -56,6 +56,17 @@
         },
         {
             "accounts": {
+                "Reddit": "Cloud9Jack",
+                "Twitter": "C9Jack"
+            },
+            "name": "Jack Etienne",
+            "nick": "Jack",
+            "group": "Cloud9",
+            "role": "Founder & CEO",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "IndependenTcs"
             },
             "nick": "IndependenTcs",
@@ -94,6 +105,17 @@
             "nick": "beef",
             "group": "compLexity",
             "role": "General Manager",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "jlake02",
+                "Twitter": "JasonBWLake"
+            },
+            "name": "Jason Lake",
+            "nick": "JLake",
+            "group": "compLexity",
+            "role": "Founder & CEO",
             "active": "1"
         },
         {
@@ -488,7 +510,7 @@
             },
             "name": "John Mullen",
             "nick": "BLU",
-            "group": "ESL",
+            "group": "ESEA",
             "role": "Caster",
             "active": "1"
         },
@@ -602,6 +624,17 @@
             },
             "nick": "G2Esports",
             "group": "G2 Esports",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "LotharHS",
+                "Twitter": "LotharHS"
+            },
+            "name": "Jakub Szygulski",
+            "nick": "Lothar",
+            "group": "G2 Esports",
+            "role": "Chief Gaming Officer",
             "active": "1"
         },
         {
@@ -894,6 +927,14 @@
         },
         {
             "accounts": {
+                "Reddit": "SoStronkCSGO"
+            },
+            "nick": "SoStronk",
+            "group": "SoStronk",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "Elige",
                 "Twitter": "liquidelige"
             },
@@ -988,6 +1029,7 @@
             "accounts": {
                 "Reddit": "vitaliy_valve"
             },
+            "name": "Vitaliy Genkin",
             "nick": "ViTALITY",
             "group": "Valve",
             "role": "Developer",
@@ -1226,7 +1268,10 @@
                 "Vive",
                 "Twitch",
                 "funny",
-                "hearthstone"
+                "hearthstone",
+                "leagueoflegends",
+                "nfl",
+                "cyberpatriot"
             ]
         },
         "minimumDevelopers": 2
