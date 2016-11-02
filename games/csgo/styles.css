@@ -83,6 +83,7 @@ br {
     text-overflow: ellipsis;
     top: 2px;
     width: 50px;
+    white-space: nowrap;
 }
 
 .group-label.astralis {
