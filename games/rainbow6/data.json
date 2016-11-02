@@ -103,6 +103,47 @@
             "nick": "Cr1msonDeath",
             "group": "Pro Player",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Steam": "UbisoftSupport"
+            },
+            "nick": "Ubisoft",
+            "group": "Ubisoft",
+            "role": "Support",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "zironicdk"
+            },
+            "nick": "zironicdk",
+            "group": "Pro Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "meepeY"
+            },
+            "nick": "meepeY",
+            "group": "Pro Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Vapo-"
+            },
+            "nick": "Vapo-",
+            "group": "Pro Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Willkey"
+            },
+            "nick": "Willkey",
+            "group": "Pro Player",
+            "active": "1"
         }
     ]
 }
