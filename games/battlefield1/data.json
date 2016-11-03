@@ -80,6 +80,14 @@
             "nick": "Indigowd",
             "group": "DICE",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Uhpam"
+            },
+            "nick": "Uhpam",
+            "group": "DICE",
+            "active": "1"
         }
     ]
 }
