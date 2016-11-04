@@ -352,6 +352,17 @@
         },
         {
             "accounts": {
+                "Reddit": "boq_",
+                "Twitter": "Boq_TV"
+            },
+            "name": "Mark Wilson",
+            "nick": "boq_",
+            "group": "ESEA",
+            "role": "Caster",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "machine-",
                 "Twitter": "MyNameIsMachine"
             },
@@ -606,6 +617,17 @@
             "nick": "Olof Kajbjer",
             "group": "Fnatic",
             "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "smathews",
+                "Twitter": "sammathews"
+            },
+            "name": "Sam Mathews",
+            "nick": "Sam",
+            "group": "Fnatic",
+            "role": "Founder & Chairman",
             "active": "1"
         },
         {
@@ -1251,6 +1273,25 @@
             "name": "Harry James Russell",
             "nick": "Harrry",
             "role": "Caster",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "JoshNissan",
+                "Twitter": "JoshNissan"
+            },
+            "name": "Joshua Nissan",
+            "nick": "steel",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "esportslaw"
+            },
+            "name": "Bryce Blum",
+            "nick": "esportslaw",
+            "role": "eSports Lawyer",
             "active": "1"
         }
     ],
