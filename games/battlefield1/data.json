@@ -88,6 +88,17 @@
             "nick": "Uhpam",
             "group": "DICE",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Floppy_Ragdoll",
+                "Twitter": "Floppy_Ragdoll"
+            },
+            "name": "Luke Mathews",
+            "nick": "Floppy_Ragdoll",
+            "group": "DICE",
+            "role": "Cinematic Artist",
+            "active": "1"
         }
     ]
 }
