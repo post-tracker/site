@@ -67,6 +67,17 @@
         },
         {
             "accounts": {
+                "Reddit": "nzer0thing",
+                "Twitter": "n0thing"
+            },
+            "name": "Jordan Gilbert",
+            "nick": "n0thing",
+            "group": "Cloud9",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "IndependenTcs"
             },
             "nick": "IndependenTcs",
@@ -536,7 +547,7 @@
         },
         {
             "accounts": {
-                "Reddit": "unseenalchemist"
+                "Reddit": "UnseenAlchemist"
             },
             "nick": "UnseenAlchemist",
             "group": "FACEIT",
