@@ -144,6 +144,14 @@
             "nick": "Willkey",
             "group": "Pro Player",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Steam": "ubizuzu"
+            },
+            "nick": "Zuzu",
+            "group": "Ubisoft",
+            "active": "1"
         }
     ]
 }
