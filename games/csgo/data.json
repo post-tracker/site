@@ -374,6 +374,17 @@
         },
         {
             "accounts": {
+                "Reddit": "BLU42",
+                "Twitter": "blucsgo"
+            },
+            "name": "John Mullen",
+            "nick": "BLU",
+            "group": "ESEA",
+            "role": "Caster",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "machine-",
                 "Twitter": "MyNameIsMachine"
             },
@@ -527,13 +538,13 @@
         },
         {
             "accounts": {
-                "Reddit": "BLU42",
-                "Twitter": "blucsgo"
+                "Reddit": "Jeremy9000CSGO",
+                "Twitter": "Jeremy9000CSGO"
             },
-            "name": "John Mullen",
-            "nick": "BLU",
-            "group": "ESEA",
-            "role": "Caster",
+            "name": "Jeremy Gray",
+            "nick": "Jeremy9000",
+            "group": "eUnited",
+            "role": "Manager",
             "active": "1"
         },
         {
@@ -809,8 +820,8 @@
             "accounts": {
                 "Reddit": "NiPGaming"
             },
-            "nick": "NiP",
-            "group": "NiP",
+            "nick": "Ninjas in Pyjamas",
+            "group": "Ninjas in Pyjamas",
             "active": "1"
         },
         {
@@ -820,7 +831,7 @@
             },
             "name": "Jacob Mourujärvi",
             "nick": "pyth",
-            "group": "NiP",
+            "group": "Ninjas in Pyjamas",
             "role": "Player",
             "active": "1"
         },

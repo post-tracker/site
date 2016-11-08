@@ -194,9 +194,9 @@ br {
     text-indent: -9999px;
 }
 
-.group-label.nip {
-    background-image: url( 'assets/flairs.png' );
-    background-position: -156px -51px;
+.group-label.ninjas-in-pyjamas {
+    background-image: url( 'assets/logo-ninjas-in-pyjamas.png' );
+    background-size: 50px 15px;
     text-indent: -9999px;
 }
 
