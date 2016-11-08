@@ -100,6 +100,7 @@ br {
 
 .group-label.cloud9 {
     background-image: url( 'assets/logo-cloud9.png' );
+    background-size: 50px 15px;
     text-indent: -9999px;
 }
 
@@ -111,6 +112,7 @@ br {
 
 .group-label.complexity {
     background-image: url( 'assets/logo-complexity.png' );
+    background-size: 50px 15px;
     text-indent: -9999px;
 }
 
@@ -244,6 +246,7 @@ br {
 
 .group-label.wesa {
     background-image: url( 'assets/logo-wesa.png' );
+    background-size: 50px 15px;
     text-indent: -9999px;
 }
 
