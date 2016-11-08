@@ -123,6 +123,7 @@ br {
 
 .group-label.dreamhack {
     background-image: url( 'assets/logo-dreamhack.png' );
+    background-size: 50px 15px;
     text-indent: -9999px;
 }
 
