@@ -152,6 +152,14 @@
             "nick": "Zuzu",
             "group": "Ubisoft",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "KiXzzz"
+            },
+            "nick": "KiXzzz",
+            "group": "Pro Player",
+            "active": "1"
         }
     ]
 }
