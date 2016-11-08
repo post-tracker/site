@@ -27,6 +27,18 @@ class Post extends React.Component {
         }
     }
 
+    getSectionURL () {
+        let url = this.props.postData.url;
+
+        if( url.indexOf( 'steamcommunity.com' ) > -1 ){
+            return url.match( /(http[s]?:\/\/steamcommunity.com\/app\/\d+\/discussions\/\d+\/).+?/ )[ 1 ];
+        } else if ( url.indexOf( 'reddit.com' ) > -1 ){
+            return url.match( /(https:\/\/www\.reddit\.com\/r\/.+?)\/.+?/ )[ 1 ];
+        }
+
+        return false;
+    }
+
     handleExpandClick () {
         this.expand();
     }
@@ -56,11 +68,40 @@ class Post extends React.Component {
     }
 
     render () {
-        const iconClass = `fa fa-${ this.convertSource( this.props.postData.source ) }`;
         let expander;
         let bodyClasses = 'panel-body';
         let title;
         let postedString;
+        let sectionURL = this.getSectionURL();
+        let iconNode;
+
+        if( sectionURL ) {
+            iconNode = (
+                <a
+                    href = { sectionURL }
+                    style = { {
+                        color: '#666'
+                    } }
+                >
+                    <i
+                        className = { `fa fa-${ this.convertSource( this.props.postData.source ) }-square` }
+                        style = { {
+                            fontSize: '1.5em',
+                            marginRight: '8px',
+                            position: 'relative',
+                            top: '2px',
+                        } }
+                    />
+                </a>
+            );
+        } else {
+            iconNode = (
+                <i
+                    className = { `fa fa-${ this.convertSource( this.props.postData.source ) }` }
+                />
+            );
+        }
+
 
         if ( this.state.expandable ) {
             expander = (
@@ -147,9 +188,7 @@ class Post extends React.Component {
                 <div
                     className = { 'panel-footer' }
                 >
-                    <i
-                        className = { iconClass }
-                    />
+                    { iconNode }
                     <a
                         href = { this.props.postData.url }
                     >
