@@ -990,6 +990,17 @@
         },
         {
             "accounts": {
+                "Reddit": "OfficialHiko",
+                "Twitter": "Liquid_Hiko"
+            },
+            "name": "Spencer Martin",
+            "nick": "Hiko",
+            "group": "Team Liquid",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "PimpCSGO",
                 "Twitter": "LiquidPimpZ"
             },
