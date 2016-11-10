@@ -99,6 +99,14 @@
             "group": "DICE",
             "role": "Cinematic Artist",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "TheHelgon"
+            },
+            "nick": "TheHelgon",
+            "group": "DICE",
+            "active": "1"
         }
     ]
 }
