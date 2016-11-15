@@ -107,6 +107,17 @@
             "nick": "TheHelgon",
             "group": "DICE",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "tiggr",
+                "Twitter": "tiggr_"
+            },
+            "name": "David Sirland",
+            "nick": "tiggr",
+            "group": "DICE",
+            "role": "Producer",
+            "active": "1"
         }
     ]
 }
