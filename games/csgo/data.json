@@ -385,20 +385,19 @@
         },
         {
             "accounts": {
-                "Reddit": "machine-",
-                "Twitter": "MyNameIsMachine"
+                "Reddit": "theflyingdj"
             },
-            "name": "Alex Richardson",
-            "nick": "Machine",
+            "nick": "theflyingdj",
             "group": "ESL",
             "active": "1"
         },
         {
             "accounts": {
-                "Reddit": "theflyingdj"
+                "Reddit": "bLackfLow"
             },
-            "nick": "theflyingdj",
+            "nick": "bLackfLow",
             "group": "ESL",
+            "role": "Community Manager",
             "active": "1"
         },
         {
@@ -534,6 +533,17 @@
             },
             "nick": "myswe",
             "group": "ESL",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "JacobNWolf",
+                "Twitter": "JacobNWolf"
+            },
+            "name": "Jacob Wolf",
+            "nick": "Jacob Wolf",
+            "group": "ESPN",
+            "role": "Senior Writer",
             "active": "1"
         },
         {
@@ -744,6 +754,15 @@
         },
         {
             "accounts": {
+                "Reddit": "Immortalsgg",
+                "Twitter": "Immortals"
+            },
+            "nick": "Immortals",
+            "group": "Immortals",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "IMT_Whinston",
                 "Twitter": "nwhinston"
             },
@@ -833,6 +852,17 @@
             "nick": "pyth",
             "group": "Ninjas in Pyjamas",
             "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "dylandidiano",
+                "Twitter": "didz_NA"
+            },
+            "name": "Dylan Didiano",
+            "nick": "didz",
+            "group": "Northern Arena",
+            "role": "Community Manager",
             "active": "1"
         },
         {
@@ -1151,6 +1181,15 @@
         },
         {
             "accounts": {
+                "Reddit": "machine-",
+                "Twitter": "MyNameIsMachine"
+            },
+            "name": "Alex Richardson",
+            "nick": "Machine",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "WarOwl",
                 "Twitter": "thewarowl"
             },
@@ -1325,6 +1364,25 @@
             "name": "Bryce Blum",
             "nick": "esportslaw",
             "role": "eSports Lawyer",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "stunna-",
+                "Twitter": "stunna"
+            },
+            "name": "Tres Saranthus",
+            "nick": "stunna",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "NiP-Fifflaren",
+                "Twitter": "Fifflaren"
+            },
+            "name": "Robin Johansson",
+            "nick": "Fifflaren",
+            "role": "Analyst",
             "active": "1"
         }
     ],
