@@ -16,43 +16,17 @@
     "developers": [
         {
             "accounts": {
-                "Reddit": "Ubi-Ludo"
-            },
-            "nick": "Ludo",
-            "group": "Ubisoft",
-            "active": "1"
-        },
-        {
-            "accounts": {
-                "Reddit": "ubijustin"
-            },
-            "nick": "Justin",
-            "group": "Ubisoft",
-            "active": "1"
-        },
-        {
-            "accounts": {
-                "Reddit": "Its_Epi",
-                "Steam": "76561198137855828"
-            },
-            "nick": "Epi",
-            "group": "Ubisoft",
-            "role": "Community Manager",
-            "active": "1"
-        },
-        {
-            "accounts": {
-                "Reddit": "Surulies"
-            },
-            "nick": "Surulies",
-            "group": "Ubisoft",
-            "active": "1"
-        },
-        {
-            "accounts": {
                 "Reddit": "Pankie"
             },
             "nick": "Pankie",
+            "group": "ESL",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "KiXzzz"
+            },
+            "nick": "KiXzzz",
             "group": "ESL",
             "active": "1"
         },
@@ -106,15 +80,6 @@
         },
         {
             "accounts": {
-                "Steam": "UbisoftSupport"
-            },
-            "nick": "Ubisoft",
-            "group": "Ubisoft",
-            "role": "Support",
-            "active": "1"
-        },
-        {
-            "accounts": {
                 "Reddit": "zironicdk"
             },
             "nick": "zironicdk",
@@ -147,18 +112,93 @@
         },
         {
             "accounts": {
-                "Steam": "ubizuzu"
+                "Reddit": "BroCanadian"
             },
-            "nick": "Zuzu",
+            "nick": "BroCanadian",
+            "group": "Pro Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Yunng"
+            },
+            "nick": "Yunng",
+            "group": "Pro Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "nvKing_"
+            },
+            "nick": "nvKing_",
+            "group": "Pro Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Necrociouss"
+            },
+            "nick": "Necrociouss",
+            "group": "Pro Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Retro1sg"
+            },
+            "nick": "Retro1sg",
+            "group": "Pro Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Ubi-Ludo"
+            },
+            "nick": "Ludo",
             "group": "Ubisoft",
             "active": "1"
         },
         {
             "accounts": {
-                "Reddit": "KiXzzz"
+                "Reddit": "ubijustin"
             },
-            "nick": "KiXzzz",
-            "group": "Pro Player",
+            "nick": "Justin",
+            "group": "Ubisoft",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Its_Epi",
+                "Steam": "76561198137855828"
+            },
+            "nick": "Epi",
+            "group": "Ubisoft",
+            "role": "Community Manager",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Surulies"
+            },
+            "nick": "Surulies",
+            "group": "Ubisoft",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Steam": "UbisoftSupport"
+            },
+            "nick": "Ubisoft",
+            "group": "Ubisoft",
+            "role": "Support",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Steam": "ubizuzu"
+            },
+            "nick": "Zuzu",
+            "group": "Ubisoft",
             "active": "1"
         }
     ]
