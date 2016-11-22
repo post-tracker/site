@@ -29,8 +29,8 @@ class MiggyRSS extends Kurl {
         $PDO->execute();
 
         while( $developer = $PDO->fetch() ):
-            $this->developers[ $developer->nick ] = $developer->id;
-            $this->developers[ $developer->name ] = $developer->id;
+            $this->developers[ strtolower( $developer->nick ) ] = $developer->id;
+            $this->developers[ strtolower( $developer->name ) ] = $developer->id;
         endwhile;
     }
 
@@ -63,12 +63,12 @@ class MiggyRSS extends Kurl {
             $post->setUrl( ( string ) $rssPost->link );
 
             // Skip posts we don't find a developer for
-            if( !isset( $this->developers[ $developer ] ) ):
+            if( !isset( $this->developers[ strtolower( $developer ) ] ) ):
                 echo '<a href="', $rssPost->link, '">Failed to find developer ', $developer, '</a><br>';
                 continue;
             endif;
 
-            $post->setUserId( $this->developers[ $developer ] );
+            $post->setUserId( $this->developers[ strtolower( $developer ) ] );
 
             $post->setSource( 'MiggyRSS' );
 
