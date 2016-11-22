@@ -385,6 +385,17 @@
         },
         {
             "accounts": {
+                "Reddit": "ESLAnna",
+                "Twitter": "ESL_Anna"
+            },
+            "name": "Anna Rozwandowicz",
+            "nick": "Anna",
+            "group": "ESL",
+            "role": "Director of Communications",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "theflyingdj"
             },
             "nick": "theflyingdj",
@@ -863,6 +874,17 @@
             "nick": "didz",
             "group": "Northern Arena",
             "role": "Community Manager",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "FugLyy",
+                "Twitter": "FuglyCS"
+            },
+            "name": "Jacob Medina",
+            "nick": "FugLy",
+            "group": "NRG eSports",
+            "role": "Player",
             "active": "1"
         },
         {
