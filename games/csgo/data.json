@@ -153,6 +153,17 @@
         },
         {
             "accounts": {
+                "Reddit": "benitanov",
+                "Twitter": "benitanov"
+            },
+            "name": "Benita Novshadian",
+            "nick": "bENITA",
+            "group": "Counter Logic Gaming",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "durrrr_za"
             },
             "nick": "durrrr_za",
@@ -278,6 +289,17 @@
             },
             "nick": "ELEAGUE",
             "group": "ELEAGUE",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "ElectricLeo",
+                "Twitter": "ElectricLeo"
+            },
+            "name": "Leo Tan",
+            "nick": "Leo",
+            "group": "ELEAGUE",
+            "role": "Marketing Manager",
             "active": "1"
         },
         {
