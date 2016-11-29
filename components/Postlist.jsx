@@ -1,4 +1,4 @@
-import http from 'http';
+import https from 'https';
 
 import React from 'react';
 import debounce from 'debounce';
@@ -9,7 +9,6 @@ import Post from './Post.jsx';
 import Search from './Search.jsx';
 import Loader from './Loader.jsx';
 
-const DEFAULT_DATA_PORT = 80;
 const SEARCH_DEBOUNCE_INTERVAL = 350;
 const POLL_INTERVAL = 60000;
 const DATA_URL = 'actions/data.php';
@@ -73,8 +72,11 @@ class PostList extends React.Component {
             hostname: window.location.hostname,
             method: 'GET',
             path: `${ window.location.pathname }${ DATA_URL }`,
-            port: window.location.port || DEFAULT_DATA_PORT,
         };
+
+        if ( window.location.port ) {
+            options.port = window.location.port;
+        }
 
         if ( typeof searchString === 'undefined' ) {
             searchString = this.state.searchString;
@@ -111,7 +113,7 @@ class PostList extends React.Component {
             window.history.pushState( {}, searchString, window.location.pathname );
         }
 
-        const request = http.request( options, ( response ) => {
+        const request = https.request( options, ( response ) => {
             let body = '';
 
             response.setEncoding( 'utf8' );

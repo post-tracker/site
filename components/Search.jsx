@@ -1,9 +1,7 @@
-import http from 'http';
+import https from 'https';
 
 import React from 'react';
 import queryString from 'query-string';
-
-const DEFAULT_DATA_PORT = 80;
 
 class Search extends React.Component {
     constructor ( props ) {
@@ -106,11 +104,14 @@ class Search extends React.Component {
         const options = {
             hostname: window.location.hostname,
             method: 'GET',
-            path: window.location.pathname + this.props.url,
-            port: window.location.port || DEFAULT_DATA_PORT,
+            path: window.location.pathname + this.props.url
         };
 
-        const request = http.request( options, ( response ) => {
+        if ( window.location.port ) {
+            options.port = window.location.port;
+        }
+
+        const request = https.request( options, ( response ) => {
             let body = '';
 
             response.setEncoding( 'utf8' );
