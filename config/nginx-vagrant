@@ -1,13 +1,17 @@
 server {
     listen 80 default_server;
     listen [::]:80 default_server ipv6only=on;
-    
+
     return 301 https://$host$request_uri;
 }
 
 server {
     listen 443 ssl http2;
     listen [::]:443 ssl http2;
+
+    location ~ ^(/.+?)/actions/rss.php$ {
+        rewrite ^(/.+?)/actions/rss.php$ $1/rss.php last;
+    }
 
     include ssl.conf;
     include server.conf;
