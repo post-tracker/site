@@ -2,130 +2,65 @@ server {
     listen 80 default_server;
     listen [::]:80 default_server ipv6only=on;
 
-    root /usr/share/nginx/html/;
-    index index.php index.html index.htm;
+    return 301 https://$host$request_uri;
+}
 
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+
+    include ssl.conf;
+    include server.conf;
+
+    root /usr/share/nginx/html/;
     server_name devtracker.kokarn.com;
 
-    location / {
-        try_files $uri $uri/ =404;
-        proxy_read_timeout 600;
-    }
-
-    gzip on;
-    gzip_proxied any;
-    gzip_comp_level 6;
-    gzip_types text/plain text/javascript text/xml text/html text/css application/javascript application/x-javascript application/json application/atom+xml application/rss+xml image/svg+xml;
-    gzip_vary on;
-
-    error_page 404 /404.html;
-
-    # redirect server error pages to the static page /50x.html
-    #
-    error_page 500 502 503 504 /50x.html;
-    location = /50x.html {
-        root /usr/share/nginx/html;
-    }
-
-    location ~ \.php$ {
-        include snippets/fastcgi-php.conf;
-        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
-        fastcgi_read_timeout 600;
-    }
-
-    location ~ /\.ht {
-        deny all;
-    }
-
-    location ~ database.sqlite {
-        deny all;
-    }
+    ssl_certificate /etc/letsencrypt/live/devtracker.kokarn.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/devtracker.kokarn.com/privkey.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/devtracker.kokarn.com/fullchain.pem;
 }
 
 server {
-    listen 80;
-    listen [::]:80;
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+
+    include ssl.conf;
+    include server.conf;
 
     root /usr/share/nginx/html/csgo;
-    index index.php index.html index.htm;
-
     server_name csgodevtracker.com;
 
-    location / {
-        try_files $uri $uri/ =404;
-        proxy_read_timeout 600;
-    }
-
-    gzip on;
-    gzip_proxied any;
-    gzip_comp_level 6;
-    gzip_types text/plain text/javascript text/xml text/html text/css application/javascript application/x-javascript application/json application/atom+xml application/rss+xml image/svg+xml;
-    gzip_vary on;
-
-    error_page 404 /404.html;
-
-    # redirect server error pages to the static page /50x.html
-    #
-    error_page 500 502 503 504 /50x.html;
-    location = /50x.html {
-        root /usr/share/nginx/html;
-    }
-
-    location ~ \.php$ {
-        include snippets/fastcgi-php.conf;
-        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
-        fastcgi_read_timeout 600;
-    }
-
-    location ~ /\.ht {
-        deny all;
-    }
-
-    location ~ database.sqlite {
-        deny all;
-    }
+    ssl_certificate /etc/letsencrypt/live/csgodevtracker.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/csgodevtracker.com/privkey.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/csgodevtracker.com/fullchain.pem;
 }
 
 server {
-    listen 80;
-    listen [::]:80;
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+
+    include ssl.conf;
+    include server.conf;
 
     root /usr/share/nginx/html/battlefield1;
-    index index.php index.html index.htm;
-
     server_name battlefielddevtracker.com;
 
-    location / {
-        try_files $uri $uri/ =404;
-        proxy_read_timeout 600;
-    }
+    ssl_certificate /etc/letsencrypt/live/battlefielddevtracker.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/battlefielddevtracker.com/privkey.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/battlefielddevtracker.com/fullchain.pem;
+}
 
-    gzip on;
-    gzip_proxied any;
-    gzip_comp_level 6;
-    gzip_types text/plain text/javascript text/xml text/html text/css application/javascript application/x-javascript application/json application/atom+xml application/rss+xml image/svg+xml;
-    gzip_vary on;
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
 
-    error_page 404 /404.html;
+    include ssl.conf;
+    include server.conf;
 
-    # redirect server error pages to the static page /50x.html
-    #
-    error_page 500 502 503 504 /50x.html;
-    location = /50x.html {
-        root /usr/share/nginx/html;
-    }
+    root /usr/share/nginx/html/elite;
+    server_name elitedevtracker.com;
 
-    location ~ \.php$ {
-        include snippets/fastcgi-php.conf;
-        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
-        fastcgi_read_timeout 600;
-    }
-
-    location ~ /\.ht {
-        deny all;
-    }
-
-    location ~ database.sqlite {
-        deny all;
-    }
+    ssl_certificate /etc/letsencrypt/live/elitedevtracker.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/elitedevtracker.com/privkey.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/elitedevtracker.com/fullchain.pem;
 }
