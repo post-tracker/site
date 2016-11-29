@@ -22,6 +22,10 @@ class Reddit extends Kurl {
 
         $posts = json_decode( $data );
 
+        if( !is_object( $posts ) ):
+            return false;
+        endif;
+
         // Go over the recent posts
         foreach( $posts->data->children as $redditPost ) :
             $post = new Post();

@@ -42,6 +42,11 @@ class MiggyRSS extends Kurl {
 
     private function loadComments(){
         $data = $this->loadUrl( $this->feedURI, 300 );
+
+        if( is_bool( $data ) ):
+            return false;
+        endif;
+
         $xml = simplexml_load_string( $data );
 
         foreach( $xml->channel->item as $rssPost ):

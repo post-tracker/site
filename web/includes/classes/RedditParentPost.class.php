@@ -31,6 +31,10 @@ class RedditParentPost extends Kurl {
         // This we can store a month, it will not change
         $this->rawData = json_decode( $this->loadUrl( $url, 86400 ) );
 
+        if( !is_object( $this->rawData[ 0 ] ) ):
+            return false;
+        endif;
+
         $parentData = $this->rawData[ 0 ]->data->children[ 0 ]->data;
 
         if( isset( $this->rawData[ 1 ]->data->children ) ):

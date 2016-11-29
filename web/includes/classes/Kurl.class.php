@@ -25,7 +25,7 @@ class Kurl {
         $this->data = file_get_contents( $url );
 
         if( $this->data ):
-            apcu_store( $url, $this->data, $this->ttl );
+            apcu_store( $url, true, $this->ttl );
         endif;
     }
 }
