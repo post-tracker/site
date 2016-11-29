@@ -108,6 +108,10 @@ games.forEach( ( game ) => {
         'mstile-150x150.png',
         'safari-pinned-tab.svg',
     ];
+    const rewriteFiles = [
+        'index.html',
+        'actions/rss.php'
+    ];
     const gameData = JSON.parse( fs.readFileSync( path.join( __dirname, `/../games/${ game }/data.json` ), 'utf8' ) );
 
     gameData.services = [];
@@ -219,28 +223,32 @@ games.forEach( ( game ) => {
         return true;
     } );
 
-    // Fill in the data where needed
-    fs.readFile( path.join( gamePath, '/index.html' ), 'utf8', ( readFileError, fileData ) => {
-        var hasLogo = fs.existsSync( path.join( gamePath, '/assets/logo.png' ) );
+    var hasLogo = fs.existsSync( path.join( gamePath, '/assets/logo.png' ) );
 
-        if ( readFileError ) {
-            console.log( readFileError );
-        }
+    if ( extraFiles.indexOf( 'styles.css' ) > -1  ) {
+        gameData.styles = fs.readFileSync( path.join( gameFilesPath, '/styles.css' ) );
+    }
 
-        if ( extraFiles.indexOf( 'styles.css' ) > -1  ) {
-            gameData.styles = fs.readFileSync( path.join( gameFilesPath, '/styles.css' ) );
-        }
+    if( hasLogo ){
+        gameData.logo = '<img src="assets/logo.png" class="header-logo">';
+    } else {
+        gameData.logo = gameData.shortName;
+    }
 
-        if( hasLogo ){
-            gameData.logo = '<img src="assets/logo.png" class="header-logo">';
-        } else {
-            gameData.logo = gameData.shortName;
-        }
+    for ( let i = 0; i < rewriteFiles.length; i = i + 1 ) {
+        // Fill in the data where needed
+        fs.readFile( path.join( gamePath, rewriteFiles[ i ] ), 'utf8', ( readFileError, fileData ) => {
+            if ( readFileError ) {
+                console.log( readFileError );
 
-        fs.writeFile( path.join( gamePath, '/index.html' ), mustache.render( fileData, gameData ), ( writeFileError ) => {
-            if ( writeFileError ) {
-                console.log( writeFileError );
+                return false;
             }
+
+            fs.writeFile( path.join( gamePath, rewriteFiles[ i ] ), mustache.render( fileData, gameData ), ( writeFileError ) => {
+                if ( writeFileError ) {
+                    console.log( writeFileError );
+                }
+            } );
         } );
-    } );
+    }
 } );
