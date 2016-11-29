@@ -110,7 +110,7 @@ games.forEach( ( game ) => {
     ];
     const rewriteFiles = [
         'index.html',
-        'actions/rss.php'
+        'rss.php'
     ];
     const gameData = JSON.parse( fs.readFileSync( path.join( __dirname, `/../games/${ game }/data.json` ), 'utf8' ) );
 

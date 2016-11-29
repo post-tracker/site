@@ -11,7 +11,7 @@ import Loader from './Loader.jsx';
 
 const SEARCH_DEBOUNCE_INTERVAL = 350;
 const POLL_INTERVAL = 60000;
-const DATA_URL = 'actions/data.php';
+const DATA_URL = 'data';
 
 class PostList extends React.Component {
     constructor ( props ) {

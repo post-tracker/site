@@ -1,5 +1,5 @@
 <?php
-include( '../includes/default.php' );
+include( 'includes/default.php' );
 
 $query = 'SELECT
         posts.topic,
@@ -39,7 +39,7 @@ header( 'Content-Type: application/rss+xml;' );
         <description>Feed with the latest posts from the developers</description>
         <language>en-us</language>
         <pubDate><?php echo date( DATE_RSS ); ?></pubDate>
-        <atom:link href="https://{{hostname}}/actions/rss.php" rel="self" type="application/rss+xml" />
+        <atom:link href="https://{{hostname}}/rss" rel="self" type="application/rss+xml" />
         <?php
         $PDO->execute();
         while( $post = $PDO->fetch() ) :

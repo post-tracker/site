@@ -1,5 +1,5 @@
 <?php
-include( '../includes/default.php' );
+include( 'includes/default.php' );
 
 $validTypesQuery = 'SELECT service FROM accounts GROUP BY service';
 $PDO = $database->prepare( $validTypesQuery );

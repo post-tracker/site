@@ -1,5 +1,5 @@
 <?php
-include( '../includes/default.php' );
+include( 'includes/default.php' );
 
 $hasSearch = false;
 $hasGroups = false;
@@ -190,7 +190,7 @@ switch ( $_GET[ 'type' ] ):
         $posts = $PDO->fetchAll();
 
         $groups = [];
-        
+
         if( !isset( $minimumDevelopers ) ):
             $minimumDevelopers = 1;
         endif;
