@@ -18,11 +18,11 @@ const DatabaseSetup = require( './dbsetup.js' );
 const varsToPHP = function varsToPHP ( varObject ) {
     let returnString = '';
 
-    function arrayAsVar( data ){
-        return `array( ${ data.map( ( element ) => {
+    const arrayAsVar = function arrayAsVar ( inputData ) {
+        return `array( ${ inputData.map( ( element ) => {
             return `'${ element }'`;
         } ).join( ', ' ) } );`;
-    }
+    };
 
     if ( typeof varObject !== 'object' ) {
         return returnString;
@@ -33,7 +33,7 @@ const varsToPHP = function varsToPHP ( varObject ) {
             return false;
         }
 
-        if( typeof varObject[ service ] === 'object' ){
+        if ( typeof varObject[ service ] === 'object' ) {
             returnString = `${ returnString }\n$${ service } = array();`;
 
             for ( const identifier in varObject[ service ] ) {
@@ -41,9 +41,9 @@ const varsToPHP = function varsToPHP ( varObject ) {
                     return false;
                 }
 
-                if( typeof varObject[ service ][ identifier ] === 'string' || typeof varObject[ service ][ identifier ] === 'number' ){
+                if ( typeof varObject[ service ][ identifier ] === 'string' || typeof varObject[ service ][ identifier ] === 'number' ) {
                     returnString = `${ returnString }\n$${ service }[ '${ identifier }' ] = '${ varObject[ service ][ identifier ] }';`;
-                } else if( Array.isArray( varObject[ service ][ identifier ] ) ){
+                } else if ( Array.isArray( varObject[ service ][ identifier ] ) ) {
                     returnString = `${ returnString }\n$${ service }[ '${ identifier }' ] = ${ arrayAsVar( varObject[ service ][ identifier ] ) }`;
                 } else {
                     console.log( typeof varObject[ service ][ identifier ] );
@@ -65,7 +65,7 @@ const varsToCron = function varsToCron ( gameName, varsList, doWhenDone ) {
     for ( let i = 0; i < varsList.length; i = i + 1 ) {
         const minuteOffset = i % CRON_INTERVAL;
 
-        cronOutput = `${ cronOutput }${ minuteOffset }-59/${ CRON_INTERVAL } * * * * root lynx -dump "http://localhost/${ gameName }/actions/update.php?type=${ varsList[ i ] }" > /dev/null 2>&1\n`;
+        cronOutput = `${ cronOutput }${ minuteOffset }-59/${ CRON_INTERVAL } * * * * root lynx -dump "http://localhost/${ gameName }/update.php?type=${ varsList[ i ] }" > /dev/null 2>&1\n`;
     }
 
     // Make sure the cron config path exists
@@ -110,9 +110,10 @@ games.forEach( ( game ) => {
     ];
     const rewriteFiles = [
         'index.html',
-        'rss.php'
+        'rss.php',
     ];
     const gameData = JSON.parse( fs.readFileSync( path.join( __dirname, `/../games/${ game }/data.json` ), 'utf8' ) );
+    const hasLogo = fs.existsSync( path.join( gamePath, '/assets/logo.png' ) );
 
     gameData.services = [];
 
@@ -223,13 +224,11 @@ games.forEach( ( game ) => {
         return true;
     } );
 
-    var hasLogo = fs.existsSync( path.join( gamePath, '/assets/logo.png' ) );
-
     if ( extraFiles.indexOf( 'styles.css' ) > -1  ) {
         gameData.styles = fs.readFileSync( path.join( gameFilesPath, '/styles.css' ) );
     }
 
-    if( hasLogo ){
+    if ( hasLogo ) {
         gameData.logo = '<img src="assets/logo.png" class="header-logo">';
     } else {
         gameData.logo = gameData.shortName;
@@ -249,6 +248,8 @@ games.forEach( ( game ) => {
                     console.log( writeFileError );
                 }
             } );
+
+            return true;
         } );
     }
 } );
