@@ -10,6 +10,7 @@ server {
     listen [::]:443 ssl http2;
 
     include ssl.conf;
+    include gzip.conf;
     include server.conf;
 
     root /usr/share/nginx/html/;
@@ -25,6 +26,7 @@ server {
     listen [::]:443 ssl http2;
 
     include ssl.conf;
+    include gzip.conf;
     include server.conf;
 
     root /usr/share/nginx/html/csgo;
@@ -40,6 +42,7 @@ server {
     listen [::]:443 ssl http2;
 
     include ssl.conf;
+    include gzip.conf;
     include server.conf;
 
     root /usr/share/nginx/html/battlefield1;
@@ -55,6 +58,7 @@ server {
     listen [::]:443 ssl http2;
 
     include ssl.conf;
+    include gzip.conf;
     include server.conf;
 
     root /usr/share/nginx/html/elite;
