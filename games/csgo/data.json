@@ -655,6 +655,28 @@
         },
         {
             "accounts": {
+                "Reddit": "dadoka",
+                "Twitter": "followddk"
+            },
+            "name": "Daniel Kapadia",
+            "nick": "ddk",
+            "group": "FACEIT",
+            "role": "Caster",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Tidus_Mino",
+                "Twitter": "Tidus_Mino"
+            },
+            "name": "Reece Fowler",
+            "nick": "Reece",
+            "group": "FACEIT",
+            "role": "Producer",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "ArmshouseTV",
                 "Twitter": "jamesbardolph"
             },
@@ -743,6 +765,17 @@
             "name": "Daniil Teslenko",
             "nick": "Zeus",
             "group": "Gambit",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "flusha",
+                "Twitter": "flushaGOD"
+            },
+            "name": "Robin Rönnquist",
+            "nick": "flusha",
+            "group": "GODSENT",
             "role": "Player",
             "active": "1"
         },
