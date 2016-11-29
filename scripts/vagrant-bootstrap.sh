@@ -20,6 +20,7 @@ apt-get install -y php-fpm php-sqlite3 php-apcu php-xml
 rm /etc/nginx/sites-available/default
 cp /vagrant/config/server.conf /etc/nginx/server.conf
 cp /vagrant/config/ssl.conf /etc/nginx/ssl.conf
+cp /vagrant/config/gzip.conf /etc/nginx/gzip.conf
 cp /vagrant/config/vagrant.conf /etc/nginx/vagrant.conf
 ln -s /vagrant/config/nginx-vagrant /etc/nginx/sites-available/default
 
