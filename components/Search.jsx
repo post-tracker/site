@@ -104,7 +104,7 @@ class Search extends React.Component {
         const options = {
             hostname: window.location.hostname,
             method: 'GET',
-            path: window.location.pathname + this.props.url
+            path: window.location.pathname + this.props.url,
         };
 
         if ( window.location.port ) {

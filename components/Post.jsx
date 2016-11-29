@@ -30,9 +30,9 @@ class Post extends React.Component {
     getSectionURL () {
         let url = this.props.postData.url;
 
-        if( url.indexOf( 'steamcommunity.com' ) > -1 ){
+        if ( url.indexOf( 'steamcommunity.com' ) > -1 ) {
             return url.match( /(http[s]?:\/\/steamcommunity.com\/app\/\d+\/discussions\/\d+\/).+?/ )[ 1 ];
-        } else if ( url.indexOf( 'reddit.com' ) > -1 ){
+        } else if ( url.indexOf( 'reddit.com' ) > -1 ) {
             return url.match( /(https:\/\/www\.reddit\.com\/r\/.+?)\/.+?/ )[ 1 ];
         }
 
@@ -75,12 +75,12 @@ class Post extends React.Component {
         let sectionURL = this.getSectionURL();
         let iconNode;
 
-        if( sectionURL ) {
+        if ( sectionURL ) {
             iconNode = (
                 <a
                     href = { sectionURL }
                     style = { {
-                        color: '#666'
+                        color: '#666',
                     } }
                 >
                     <i
@@ -146,10 +146,10 @@ class Post extends React.Component {
             }
         }
 
-        if( title ){
-            postedString = ` ${ title } posted in `
+        if ( title ) {
+            postedString = ` ${ title } posted in `;
         } else {
-            postedString = ` posted in `
+            postedString = ' posted in ';
         }
 
         return (
