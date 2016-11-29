@@ -65,7 +65,7 @@ const varsToCron = function varsToCron ( gameName, varsList, doWhenDone ) {
     for ( let i = 0; i < varsList.length; i = i + 1 ) {
         const minuteOffset = i % CRON_INTERVAL;
 
-        cronOutput = `${ cronOutput }${ minuteOffset }-59/${ CRON_INTERVAL } * * * * root lynx -dump "http://localhost/${ gameName }/update.php?type=${ varsList[ i ] }" > /dev/null 2>&1\n`;
+        cronOutput = `${ cronOutput }${ minuteOffset }-59/${ CRON_INTERVAL } * * * * root lynx -dump "https://devtracker.kokarn.com/${ gameName }/update.php?type=${ varsList[ i ] }" > /dev/null 2>&1\n`;
     }
 
     // Make sure the cron config path exists
