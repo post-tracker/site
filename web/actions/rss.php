@@ -34,12 +34,12 @@ header( 'Content-Type: application/rss+xml;' );
 <rss version="2.0"
     xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Dev Feed</title>
-        <link>http://arkdevtracker.com</link>
+        <title>{{name}} Dev Feed</title>
+        <link>https://{{hostname}}</link>
         <description>Feed with the latest posts from the developers</description>
         <language>en-us</language>
         <pubDate><?php echo date( DATE_RSS ); ?></pubDate>
-        <atom:link href="http://arkdevtracker.com/actions/rss.php" rel="self" type="application/rss+xml" />
+        <atom:link href="https://{{hostname}}/actions/rss.php" rel="self" type="application/rss+xml" />
         <?php
         $PDO->execute();
         while( $post = $PDO->fetch() ) :
