@@ -18,6 +18,11 @@ server {
     include server.conf;
     include vagrant.conf;
 
+    ssl_certificate /etc/nginx/ssl/cert.pem;
+    ssl_certificate_key /etc/nginx/ssl/key.pem;
+    #ssl_trusted_certificate /etc/nginx/ssl/fullchain.pem;
+
     root /usr/share/nginx/html;
     server_name localhost;
+
 }
