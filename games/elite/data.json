@@ -255,6 +255,15 @@
             "nick": "Matt",
             "role": "Head of Technical Art",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "MiggyRSS": "2000"
+            },
+            "name": "Drew Wager",
+            "nick": "Drew",
+            "role": "Author",
+            "active": "1"
         }
     ]
 }
