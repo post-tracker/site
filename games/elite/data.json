@@ -14,247 +14,247 @@
             "matchOnly": "EliteDangerous"
         }
     },
-    "developers" : [
+    "developers": [
         {
-            "nick": "Braben",
-            "name": "David Braben",
-            "role": "CEO",
             "accounts": {
                 "Reddit": "DavidBraben",
-                "twitter": "DavidBraben",
+                "Twitter": "DavidBraben",
                 "MiggyRSS": "7"
             },
-            "active": 1
+            "name": "David Braben",
+            "nick": "Braben",
+            "role": "CEO",
+            "active": "1"
         },
         {
-            "nick": "Brett C",
-            "name": "Brett Cooper",
-            "role": "Community Manager",
             "accounts": {
                 "Reddit": "BrettC_Frontier",
-                "MiggyRSS": "52",
-                "Steam": "BrettC_Frontier"
+                "Steam": "BrettC_Frontier",
+                "MiggyRSS": "52"
             },
-            "active": 1
+            "name": "Brett Cooper",
+            "nick": "Brett C",
+            "role": "Community Manager",
+            "active": "1"
         },
         {
-            "nick": "Dale",
-            "name": "Dale Emasiri",
-            "role": "Social Media Community Manager",
             "accounts": {
                 "Reddit": "DaleEmasiri_Frontier",
                 "MiggyRSS": "106358"
             },
-            "active": 1
+            "name": "Dale Emasiri",
+            "nick": "Dale",
+            "role": "Social Media Community Manager",
+            "active": "1"
         },
         {
-            "nick": "Gary",
-            "name": "Gary Richards",
-            "role": "Senior Producer, Xbox One",
             "accounts": {
                 "MiggyRSS": "10691"
             },
-            "active": 1
+            "name": "Gary Richards",
+            "nick": "Gary",
+            "role": "Senior Producer, Xbox One",
+            "active": "1"
         },
         {
-            "nick": "Zac",
-            "name": "Zac Antonaci",
-            "role": "Head of Community Management",
             "accounts": {
                 "Reddit": "ZacAntonaci_Frontier",
                 "MiggyRSS": "97768"
             },
-            "active": 1
+            "name": "Zac Antonaci",
+            "nick": "Zac",
+            "role": "Head of Community Management",
+            "active": "1"
         },
         {
-            "nick": "Ian",
-            "name": "Ian Dingwall",
-            "role": "Senior Designer",
             "accounts": {
                 "MiggyRSS": "100780"
             },
-            "active": 1
+            "name": "Ian Dingwall",
+            "nick": "Ian",
+            "role": "Senior Designer",
+            "active": "1"
         },
         {
-            "nick": "Adam",
-            "name": "Adam Woods",
-            "role": "Producer",
             "accounts": {
-                "MiggyRSS": "14349",
-                "twitter": "adwoods666"
+                "Twitter": "adwoods666",
+                "MiggyRSS": "14349"
             },
-            "active": 1
+            "name": "Adam Woods",
+            "nick": "Adam",
+            "role": "Producer",
+            "active": "1"
         },
         {
-            "nick": "Michael",
-            "name": "Michael Brookes",
-            "role": "Executive Producer",
             "accounts": {
-                "twitter": "TheCultofMe",
+                "Twitter": "TheCultofMe",
                 "MiggyRSS": "2"
             },
-            "active": 1
+            "name": "Michael Brookes",
+            "nick": "Michael",
+            "role": "Executive Producer",
+            "active": "1"
         },
         {
-            "nick": "Ben",
-            "name": "Ben Parry",
-            "role": "Graphics Programmer",
             "accounts": {
-                "MiggyRSS": "27895",
-                "twitter": "klumaster"
+                "Twitter": "klumaster",
+                "MiggyRSS": "27895"
             },
-            "active": 1
+            "name": "Ben Parry",
+            "nick": "Ben",
+            "role": "Graphics Programmer",
+            "active": "1"
         },
         {
-            "nick": "Mike",
-            "name": "Mike Evans",
-            "role": "Game Designer",
             "accounts": {},
-            "active": 1
+            "name": "Mike Evans",
+            "nick": "Mike",
+            "role": "Game Designer",
+            "active": "1"
         },
         {
-            "nick": "Sandro",
-            "name": "Sandro Sammarco",
-            "role": "Lead Designer",
             "accounts": {
                 "MiggyRSS": "15655"
             },
-            "active": 1
+            "name": "Sandro Sammarco",
+            "nick": "Sandro",
+            "role": "Lead Designer",
+            "active": "1"
         },
         {
-            "nick": "Gregg",
-            "name": "Gregg Chamberlain",
-            "role": "Platform Lead/Senior Tester",
             "accounts": {},
-            "active": 1
+            "name": "Gregg Chamberlain",
+            "nick": "Gregg",
+            "role": "Platform Lead/Senior Tester",
+            "active": "1"
         },
         {
-            "nick": "Ashley",
-            "name": "Ashley Barley",
-            "role": "Customer Services",
             "accounts": {
                 "MiggyRSS": "15645"
             },
-            "active": 1
+            "name": "Ashley Barley",
+            "nick": "Ashley",
+            "role": "Customer Services",
+            "active": "1"
         },
         {
-            "nick": "Anthony",
+            "accounts": {
+                "Twitter": "anttheross",
+                "MiggyRSS": "25591"
+            },
             "name": "Anthony Ross",
+            "nick": "Anthony",
             "role": "Programmer",
-            "accounts": {
-                "MiggyRSS": "25591",
-                "twitter": "anttheross"
-            },
-            "active": 1
+            "active": "1"
         },
         {
-            "nick": "Edward",
+            "accounts": {
+                "Reddit": "EdwardLewis_Frontier",
+                "MiggyRSS": "47159"
+            },
             "name": "Edward Lewis",
+            "nick": "Edward",
             "role": "Community Manager",
-            "accounts": {
-                "MiggyRSS": "47159",
-                "Reddit": "EdwardLewis_Frontier"
-            },
-            "active": 1
+            "active": "1"
         },
         {
-            "nick": "Support",
-            "name": "Frontier Support",
-            "role": "Support",
             "accounts": {
                 "Reddit": "frontier_support"
             },
-            "active": 1
+            "name": "Frontier Support",
+            "nick": "Support",
+            "role": "Support",
+            "active": "1"
         },
         {
-            "nick": "Sarah",
-            "name": "Sarah Jane Avory",
-            "role": "Programmer",
             "accounts": {
                 "MiggyRSS": "17666"
             },
-            "active": 1
+            "name": "Sarah Jane Avory",
+            "nick": "Sarah",
+            "role": "Programmer",
+            "active": "1"
         },
         {
-            "nick": "hchalkley",
-            "name": "Howard Chalkley",
-            "role": "Senior Programmer",
             "accounts": {
                 "MiggyRSS": "31252"
             },
-            "active": 1
+            "name": "Howard Chalkley",
+            "nick": "hchalkley",
+            "role": "Senior Programmer",
+            "active": "1"
         },
         {
-            "nick": "Mark",
-            "name": "Mark Allen",
-            "role": "Programmer",
             "accounts": {
                 "MiggyRSS": "26549"
             },
-            "active": 1
+            "name": "Mark Allen",
+            "nick": "Mark",
+            "role": "Programmer",
+            "active": "1"
         },
         {
-            "nick": "Jon",
-            "name": "Jon Pace",
-            "role": "Head of UI",
             "accounts": {
                 "MiggyRSS": "32348"
             },
-            "active": 1
+            "name": "Jon Pace",
+            "nick": "Jon",
+            "role": "Head of UI",
+            "active": "1"
         },
         {
-            "nick": "Steve",
-            "name": "Steve Kirby",
-            "role": "Lead Games Designer",
             "accounts": {
                 "MiggyRSS": "108846"
             },
-            "active": 1
+            "name": "Steve Kirby",
+            "nick": "Steve",
+            "role": "Lead Games Designer",
+            "active": "1"
         },
         {
-            "nick": "Mike",
-            "name": "Mike Evans",
-            "role": "Game Designer",
             "accounts": {
                 "MiggyRSS": "22712"
             },
-            "active": 1
+            "name": "Mike Evans",
+            "nick": "Mike",
+            "role": "Game Designer",
+            "active": "1"
         },
         {
-            "nick": "Joe",
-            "name": "Joe Hogan",
-            "role": "Lead Audio Designer",
             "accounts": {
                 "MiggyRSS": "31354"
             },
-            "active": 1
+            "name": "Joe Hogan",
+            "nick": "Joe",
+            "role": "Lead Audio Designer",
+            "active": "1"
         },
         {
-            "nick": "Simon",
-            "name": "Simon Brewer",
-            "role": "Lead Technical Artist",
             "accounts": {
                 "MiggyRSS": "14849"
             },
-            "active": 1
+            "name": "Simon Brewer",
+            "nick": "Simon",
+            "role": "Lead Technical Artist",
+            "active": "1"
         },
         {
-            "nick": "Barry",
-            "name": "Barry Clark",
-            "role": "Designer",
             "accounts": {
                 "MiggyRSS": "26755"
             },
-            "active": 1
+            "name": "Barry Clark",
+            "nick": "Barry",
+            "role": "Designer",
+            "active": "1"
         },
         {
-            "nick": "Matt",
-            "name": "Matt Dickinson",
-            "role": "Head of Technical Art",
             "accounts": {
                 "MiggyRSS": "32574"
             },
-            "active": 1
+            "name": "Matt Dickinson",
+            "nick": "Matt",
+            "role": "Head of Technical Art",
+            "active": "1"
         }
     ]
 }
