@@ -31,8 +31,11 @@ $PDO = $database->prepare( $query );
 header( 'Content-Type: application/rss+xml;' );
 ?>
 <?xml version="1.0"?>
-<rss version="2.0"
-    xmlns:atom="http://www.w3.org/2005/Atom">
+<rss
+    version="2.0"
+    xmlns:atom="http://www.w3.org/2005/Atom"
+    xmlsn:{{shortname}}="https://{{hostname}}"
+>
     <channel>
         <title>{{name}} Dev Feed</title>
         <link>https://{{hostname}}</link>
@@ -50,6 +53,9 @@ header( 'Content-Type: application/rss+xml;' );
                 <link><?php echo $post->url; ?></link>
                 <guid><?php echo $post->url; ?></guid>
                 <pubDate><?php echo date( DATE_RSS, $post->timestamp ); ?></pubDate>
+                {{#rss}}
+                {{{.}}}
+                {{/rss}}
             </item>
             <?php
         endwhile;
