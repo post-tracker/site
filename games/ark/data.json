@@ -2,6 +2,10 @@
     "name": "Ark: Survival Evolved",
     "shortName": "Ark",
     "hostname": "arkdevtracker.com",
+    "rss": [
+        "<ark:source><?php echo $post->source; ?></ark:source>",
+        "<ark:from><?php echo $post->nick; ?></ark:from>"
+    ],
     "config": {
         "Steam": {
             "matchOnly": "346110"
