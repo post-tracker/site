@@ -8,7 +8,7 @@
             "exclude": [
                 "funny",
                 "Steep"
-            ],
+            ]
         },
         "Steam": {
             "matchOnly": "359550"
