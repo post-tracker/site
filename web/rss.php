@@ -34,7 +34,7 @@ header( 'Content-Type: application/rss+xml;' );
 <rss
     version="2.0"
     xmlns:atom="http://www.w3.org/2005/Atom"
-    xmlsn:{{shortname}}="https://{{hostname}}"
+    xmlns:{{identifier}}="https://{{hostname}}"
 >
     <channel>
         <title>{{name}} Dev Feed</title>

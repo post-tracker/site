@@ -124,6 +124,7 @@ games.forEach( ( game ) => {
     }
 
     gameData.services = [];
+    gameData.identifier = game;
 
     for ( let developerIndex = 0; developerIndex < gameData.developers.length; developerIndex = developerIndex + 1 ) {
         for ( const service in gameData.developers[ developerIndex ].accounts ) {
