@@ -252,27 +252,6 @@
         },
         {
             "accounts": {
-                "Reddit": "sgares"
-            },
-            "name": "Sean Gares",
-            "nick": "seangares",
-            "group": "Echo Fox",
-            "role": "Player",
-            "active": "1"
-        },
-        {
-            "accounts": {
-                "Reddit": "ShahZaMcs",
-                "Twitter": "ShahZaMk"
-            },
-            "name": "Shahzeb Khan",
-            "nick": "ShahZaM",
-            "group": "Echo Fox",
-            "role": "Player",
-            "active": "1"
-        },
-        {
-            "accounts": {
                 "Reddit": "Alchemister5",
                 "Twitter": "alchemister5"
             },
@@ -770,17 +749,6 @@
         },
         {
             "accounts": {
-                "Reddit": "flusha",
-                "Twitter": "flushaGOD"
-            },
-            "name": "Robin Rönnquist",
-            "nick": "flusha",
-            "group": "GODSENT",
-            "role": "Player",
-            "active": "1"
-        },
-        {
-            "accounts": {
                 "Reddit": "Meekel",
                 "Twitter": "meekel"
             },
@@ -796,6 +764,17 @@
                 "Twitter": "gfinity"
             },
             "group": "Gfinity",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "flusha",
+                "Twitter": "flushaGOD"
+            },
+            "name": "Robin Rönnquist",
+            "nick": "flusha",
+            "group": "GODSENT",
+            "role": "Player",
             "active": "1"
         },
         {
@@ -1152,6 +1131,17 @@
         },
         {
             "accounts": {
+                "Reddit": "RelyksOG",
+                "Twitter": "TSM_Relyks"
+            },
+            "name": "Skyler Weaver",
+            "nick": "Relyks",
+            "group": "Team SoloMid",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "Tranceh"
             },
             "nick": "Tranceh",
@@ -1254,6 +1244,25 @@
             },
             "nick": "WESA",
             "group": "WESA",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "sgares"
+            },
+            "name": "Sean Gares",
+            "nick": "seangares",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "ShahZaMcs",
+                "Twitter": "ShahZaMk"
+            },
+            "name": "Shahzeb Khan",
+            "nick": "ShahZaM",
+            "role": "Player",
             "active": "1"
         },
         {
@@ -1460,6 +1469,16 @@
             "name": "Robin Johansson",
             "nick": "Fifflaren",
             "role": "Analyst",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Tombizz14",
+                "Twitter": "tombizz14"
+            },
+            "name": "Tom Bissmire",
+            "nick": "Toombizz14",
+            "role": "Caster",
             "active": "1"
         }
     ],
