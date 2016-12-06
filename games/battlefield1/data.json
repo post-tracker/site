@@ -118,6 +118,23 @@
             "group": "DICE",
             "role": "Producer",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Mars_DICELA"
+            },
+            "nick": "Maars",
+            "group": "DICE",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "AnimationMerc "
+            },
+            "nick": "AnimationMerc ",
+            "group": "DICE",
+            "role": "Animator",
+            "active": "1"
         }
     ]
 }
