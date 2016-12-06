@@ -112,8 +112,16 @@ games.forEach( ( game ) => {
         'index.html',
         'rss.php',
     ];
-    const gameData = JSON.parse( fs.readFileSync( path.join( __dirname, `/../games/${ game }/data.json` ), 'utf8' ) );
     const hasLogo = fs.existsSync( path.join( gamePath, '/assets/logo.png' ) );
+    let gameData;
+
+    try {
+        gameData = JSON.parse( fs.readFileSync( path.join( __dirname, `/../games/${ game }/data.json` ), 'utf8' ) );
+    } catch( parseError ){
+        console.error( `Invalid game data file for ${ game }. Probably just incorrect JSON. Please fix <3 (Won't build until you do...)` );
+
+        return false;
+    }
 
     gameData.services = [];
 
