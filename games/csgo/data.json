@@ -677,6 +677,17 @@
         },
         {
             "accounts": {
+                "Reddit": "Faceit_Mikey",
+                "Twitter": "Faceit_Mikey"
+            },
+            "name": "Milos Nedeljkovic",
+            "nick": "Mikey",
+            "group": "FACEIT",
+            "role": "Head of Community Management",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "olofm"
             },
             "name": "Olof Kajbjer",
@@ -1232,6 +1243,14 @@
         },
         {
             "accounts": {
+                "Reddit": "DavidWValve"
+            },
+            "nick": "DavidW",
+            "group": "Valve",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "WESA_Players_Council"
             },
             "group": "WESA",
@@ -1440,6 +1459,16 @@
             },
             "name": "Joshua Nissan",
             "nick": "steel",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "roca2k9",
+                "Twitter": "rocazor"
+            },
+            "name": "Daniel Gustaferri",
+            "nick": "roca",
             "role": "Player",
             "active": "1"
         },
