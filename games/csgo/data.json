@@ -1131,22 +1131,32 @@
         },
         {
             "accounts": {
-                "Reddit": "semphis",
-                "Twitter": "TSMsemphisss"
+                "Reddit": "RelyksOG",
+                "Twitter": "TSM_Relyks"
             },
-            "name": "Kory Friesen",
-            "nick": "semphis",
+            "name": "Skyler Weaver",
+            "nick": "Relyks",
             "group": "Team SoloMid",
             "role": "Player",
             "active": "1"
         },
         {
             "accounts": {
-                "Reddit": "RelyksOG",
-                "Twitter": "TSM_Relyks"
+                "Reddit": "sgares"
             },
-            "name": "Skyler Weaver",
-            "nick": "Relyks",
+            "name": "Sean Gares",
+            "nick": "seangares",
+            "group": "Team SoloMid",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "ShahZaMcs",
+                "Twitter": "ShahZaMk"
+            },
+            "name": "Shahzeb Khan",
+            "nick": "ShahZaM",
             "group": "Team SoloMid",
             "role": "Player",
             "active": "1"
@@ -1267,20 +1277,19 @@
         },
         {
             "accounts": {
-                "Reddit": "sgares"
+                "Reddit": "WarOwl",
+                "Twitter": "thewarowl"
             },
-            "name": "Sean Gares",
-            "nick": "seangares",
-            "role": "Player",
+            "nick": "WarOwl",
             "active": "1"
         },
         {
             "accounts": {
-                "Reddit": "ShahZaMcs",
-                "Twitter": "ShahZaMk"
+                "Reddit": "semphis",
+                "Twitter": "TSMsemphisss"
             },
-            "name": "Shahzeb Khan",
-            "nick": "ShahZaM",
+            "name": "Kory Friesen",
+            "nick": "semphis",
             "role": "Player",
             "active": "1"
         },
@@ -1291,14 +1300,6 @@
             },
             "name": "Alex Richardson",
             "nick": "Machine",
-            "active": "1"
-        },
-        {
-            "accounts": {
-                "Reddit": "WarOwl",
-                "Twitter": "thewarowl"
-            },
-            "nick": "WarOwl",
             "active": "1"
         },
         {
