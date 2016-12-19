@@ -283,6 +283,17 @@
         },
         {
             "accounts": {
+                "Reddit": "bump",
+                "Twitter": "bump"
+            },
+            "name": "Robert Occhialini",
+            "nick": "bump",
+            "group": "ELEAGUE",
+            "role": "Vice President, Content and Product Technologies",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "epicentergg"
             },
             "nick": "EPICENTER",
@@ -1509,6 +1520,16 @@
             "name": "Tom Bissmire",
             "nick": "Toombizz14",
             "role": "Caster",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "officialcadiaN",
+                "Twitter": "caspercadiaN"
+            },
+            "name": "Casper Møller",
+            "nick": "cadiaN",
+            "role": "Player",
             "active": "1"
         }
     ],
