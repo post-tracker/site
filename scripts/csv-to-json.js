@@ -41,14 +41,15 @@ const parseOuput = function parseOuput ( input ) {
         }
 
         for ( let fieldIndex = 0; fieldIndex < input[ i ].length; fieldIndex = fieldIndex + 1 ) {
-            if ( input[ i ][ fieldIndex ].length === 0 ) {
+            let fieldData = input[ i ][ fieldIndex ].trim();
+            if ( fieldData.length === 0 ) {
                 continue;
             }
 
             if ( baseProperties.indexOf( headers[ fieldIndex ].toLowerCase() ) > -1 ) {
-                currentDeveloper[ headers[ fieldIndex ].toLowerCase() ] = input[ i ][ fieldIndex ];
+                currentDeveloper[ headers[ fieldIndex ].toLowerCase() ] = fieldData;
             } else {
-                currentDeveloper.accounts[ headers[ fieldIndex ] ] = input[ i ][ fieldIndex ];
+                currentDeveloper.accounts[ headers[ fieldIndex ] ] = fieldData;
             }
         }
 
