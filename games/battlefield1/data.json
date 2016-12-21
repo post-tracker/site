@@ -135,6 +135,24 @@
             "group": "DICE",
             "role": "Animator",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "RumpusK1ng"
+            },
+            "nick": "RumpusK1ng",
+            "group": "DICE",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "thewhitewalrus",
+                "Twitter": "thewhitewalrus"
+            },
+            "name": "Steven Lin",
+            "nick": "TheWhiteWalrus",
+            "group": "DICE",
+            "active": "1"
         }
     ]
 }
