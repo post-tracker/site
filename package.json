@@ -5,7 +5,6 @@
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "find-cs": "node scripts/flairfinder.js",
     "convert-cs": "node scripts/csv-to-json.js --source=\"Developers - CSGO.csv\" --destination=games/csgo/data.json",
     "convert-bf": "node scripts/csv-to-json.js --source=\"Developers - Battlefield1.csv\" --destination=games/battlefield1/data.json",
     "convert-r6": "node scripts/csv-to-json.js --source=\"Developers - Rainbow6.csv\" --destination=games/rainbow6/data.json",
