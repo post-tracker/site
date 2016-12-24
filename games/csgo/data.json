@@ -13,6 +13,17 @@
         },
         {
             "accounts": {
+                "Reddit": "fbyskov",
+                "Twitter": "fbyskov"
+            },
+            "name": "Frederik Byskov",
+            "nick": "fbyskov",
+            "group": "Astralis",
+            "role": "Fouding Partner",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "CEVO_Spangler"
             },
             "nick": "Spangler",
@@ -812,6 +823,17 @@
         },
         {
             "accounts": {
+                "Reddit": "valdeCS",
+                "Twitter": "Officialvalde"
+            },
+            "name": "Valdemar Bjørn Vangså",
+            "nick": "valde",
+            "group": "Heroic",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "HyperxGaming",
                 "Twitter": "HyperX"
             },
@@ -900,6 +922,17 @@
             },
             "nick": "punkbooster",
             "group": "Na'Vi",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "reals1mplereal",
+                "Twitter": "s1mple0"
+            },
+            "name": "Oleksandr Kostyliev",
+            "nick": "s1mple",
+            "group": "Na'Vi",
+            "role": "Player",
             "active": "1"
         },
         {
@@ -1087,6 +1120,17 @@
         },
         {
             "accounts": {
+                "Reddit": "jdm64GO",
+                "Twitter": "Liquid_jdm"
+            },
+            "name": "Josh Marzano",
+            "nick": "jdm64",
+            "group": "Team Liquid",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "Elige",
                 "Twitter": "liquidelige"
             },
@@ -1147,16 +1191,6 @@
             },
             "name": "Skyler Weaver",
             "nick": "Relyks",
-            "group": "Team SoloMid",
-            "role": "Player",
-            "active": "1"
-        },
-        {
-            "accounts": {
-                "Reddit": "sgares"
-            },
-            "name": "Sean Gares",
-            "nick": "seangares",
             "group": "Team SoloMid",
             "role": "Player",
             "active": "1"
@@ -1283,6 +1317,15 @@
             },
             "nick": "WESA",
             "group": "WESA",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "sgares"
+            },
+            "name": "Sean Gares",
+            "nick": "seangares",
+            "role": "Player",
             "active": "1"
         },
         {
@@ -1529,6 +1572,16 @@
             "name": "Casper Møller",
             "nick": "cadiaN",
             "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "R3DEYE",
+                "Twitter": "PaulChaloner"
+            },
+            "name": "Paul Chaloner",
+            "nick": "ReDeYe",
+            "role": "Host",
             "active": "1"
         }
     ],
