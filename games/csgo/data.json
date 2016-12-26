@@ -24,6 +24,17 @@
         },
         {
             "accounts": {
+                "Reddit": "marcusmerrild",
+                "Twitter": "marcusmerrild"
+            },
+            "name": "Marcus Merrild",
+            "nick": "marcusmerrild",
+            "group": "Astralis",
+            "role": "Community Manager",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "CEVO_Spangler"
             },
             "nick": "Spangler",
