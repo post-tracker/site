@@ -29,7 +29,7 @@
                 "Reddit": "jatonreddit",
                 "Steam": "wildcardjat",
                 "Twitter": "jatstweeter",
-                "Survive The Ark": "2-jat"
+                "SurviveTheArk": "2-jat"
             },
             "name": "Jathiesh Karunakaran",
             "nick": "Jat",
@@ -41,7 +41,7 @@
                 "Reddit": "WildcardTheRightHand",
                 "Steam": "76561198175441809",
                 "Twitter": "KaydHendricks",
-                "Survive The Ark": "3836-therighthand"
+                "SurviveTheArk": "3836-therighthand"
             },
             "name": "Kayd Hendricks",
             "nick": "The Right Hand",
@@ -59,7 +59,7 @@
                 "Reddit": "WC-Drake",
                 "Steam": "wildcarddrake",
                 "Twitter": "arkjeremy",
-                "Survive The Ark": "4054-jeremy-stieglitz"
+                "SurviveTheArk": "4054-jeremy-stieglitz"
             },
             "nick": "Drake",
             "role": "Lead Engineer",
@@ -92,7 +92,7 @@
             "accounts": {
                 "Steam": "76561198174992766",
                 "Twitter": "arkjesse",
-                "Survive The Ark": "11-jesse"
+                "SurviveTheArk": "11-jesse"
             },
             "name": "Jesse Rapczak",
             "nick": "Jesse",
@@ -141,7 +141,7 @@
                 "Reddit": "wildcardjen",
                 "Steam": "wildcardjen",
                 "Twitter": "bubblywums",
-                "Survive The Ark": "7-jen"
+                "SurviveTheArk": "7-jen"
             },
             "nick": "Jen",
             "role": "Community Manager",
@@ -150,7 +150,7 @@
         {
             "accounts": {
                 "Twitter": "Explore_ARK",
-                "Survive The Ark": "3-casanova"
+                "SurviveTheArk": "3-casanova"
             },
             "nick": "Casanova",
             "role": "Web & Video Producer",
@@ -160,7 +160,7 @@
             "accounts": {
                 "Steam": "WildcardQA",
                 "Twitter": "WC_Zane",
-                "Survive The Ark": "6-zane"
+                "SurviveTheArk": "6-zane"
             },
             "nick": "Zane",
             "role": "Head Bug Reports",
@@ -171,7 +171,7 @@
                 "Reddit": "wildcardpanda",
                 "Steam": "wildcardpanda",
                 "Twitter": "thelilpanda",
-                "Survive The Ark": "8-lilpanda"
+                "SurviveTheArk": "8-lilpanda"
             },
             "nick": "LilPanda",
             "role": "Community Hub Leader",

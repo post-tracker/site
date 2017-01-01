@@ -29,12 +29,14 @@ const varsToPHP = function varsToPHP ( varObject ) {
     }
 
     for ( const service in varObject ) {
+        const parsedService = service.replace( /\s/gim, '' );
+
         if ( !Reflect.apply( {}.hasOwnProperty, varObject, [ service ] ) ) {
             return false;
         }
 
         if ( typeof varObject[ service ] === 'object' ) {
-            returnString = `${ returnString }\n$${ service } = array();`;
+            returnString = `${ returnString }\n$${ parsedService } = array();`;
 
             for ( const identifier in varObject[ service ] ) {
                 if ( !Reflect.apply( {}.hasOwnProperty, varObject[ service ], [ identifier ] ) ) {
@@ -42,15 +44,15 @@ const varsToPHP = function varsToPHP ( varObject ) {
                 }
 
                 if ( typeof varObject[ service ][ identifier ] === 'string' || typeof varObject[ service ][ identifier ] === 'number' ) {
-                    returnString = `${ returnString }\n$${ service }[ '${ identifier }' ] = '${ varObject[ service ][ identifier ] }';`;
+                    returnString = `${ returnString }\n$${ parsedService }[ '${ identifier }' ] = '${ varObject[ service ][ identifier ] }';`;
                 } else if ( Array.isArray( varObject[ service ][ identifier ] ) ) {
-                    returnString = `${ returnString }\n$${ service }[ '${ identifier }' ] = ${ arrayAsVar( varObject[ service ][ identifier ] ) }`;
+                    returnString = `${ returnString }\n$${ parsedService }[ '${ identifier }' ] = ${ arrayAsVar( varObject[ service ][ identifier ] ) }`;
                 } else {
                     console.log( typeof varObject[ service ][ identifier ] );
                 }
             }
         } else {
-            returnString = `${ returnString }\n$${ service } = ${ varObject[ service ] };`;
+            returnString = `${ returnString }\n$${ parsedService } = ${ varObject[ service ] };`;
         }
     }
 
@@ -64,8 +66,9 @@ const varsToCron = function varsToCron ( gameName, varsList, doWhenDone ) {
 
     for ( let i = 0; i < varsList.length; i = i + 1 ) {
         const minuteOffset = i % CRON_INTERVAL;
+        const parsedType = varsList[ i ].replace( /\s/gim, '' );
 
-        cronOutput = `${ cronOutput }${ minuteOffset }-59/${ CRON_INTERVAL } * * * * root lynx -dump "https://devtracker.kokarn.com/${ gameName }/update.php?type=${ varsList[ i ] }" > /dev/null 2>&1\n`;
+        cronOutput = `${ cronOutput }${ minuteOffset }-59/${ CRON_INTERVAL } * * * * root lynx -dump "https://devtracker.kokarn.com/${ gameName }/update.php?type=${ parsedType }" > /dev/null 2>&1\n`;
     }
 
     // Make sure the cron config path exists

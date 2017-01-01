@@ -49,7 +49,7 @@ const parseOuput = function parseOuput ( input ) {
             if ( baseProperties.indexOf( headers[ fieldIndex ].toLowerCase() ) > -1 ) {
                 currentDeveloper[ headers[ fieldIndex ].toLowerCase() ] = fieldData;
             } else {
-                currentDeveloper.accounts[ headers[ fieldIndex ] ] = fieldData;
+                currentDeveloper.accounts[ headers[ fieldIndex ].replace( /\s/gim, '' ) ] = fieldData;
             }
         }
 
