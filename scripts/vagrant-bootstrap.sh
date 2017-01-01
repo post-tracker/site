@@ -29,5 +29,11 @@ sed -i -e 's/error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT/error_reporting
 
 apt-get install -y lynx
 
+# SSL Stuff
+mkdir /etc/nginx/ssl
+cd /etc/nginx/ssl
+openssl dhparam -out dhparam.pem 2048
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -subj "/C=US/ST=Denial/L=Springfield/O=Dis/CN=localhost" -keyout /etc/nginx/ssl/key.pem -out /etc/nginx/ssl/cert.pem
+
 systemctl reload nginx
 systemctl restart php7.0-fpm
