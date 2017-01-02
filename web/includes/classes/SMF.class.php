@@ -17,7 +17,7 @@ class SMF extends Kurl {
         $url = str_replace( '{{userId}}', $this->identifier, self::$profileBase );
         $url = str_replace( '{{path}}', $this->path, $url );
 
-        $html = str_get_html( $this->loadUrl( $url, 0 ) );
+        $html = str_get_html( $this->loadUrl( $url ) );
 
         // Find all article blocks
         foreach( $html->find( 'div.topic' ) as $forumPost ) :
