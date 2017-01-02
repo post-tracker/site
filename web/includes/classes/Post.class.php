@@ -12,8 +12,8 @@ class Post extends Kurl {
 
     public function setTopic( $title, $url ){
         $this->topic = array(
-            'title' => $title,
-            'url' => $url
+            'title' => trim( $title ),
+            'url' => trim( $url )
         );
     }
 
@@ -22,7 +22,7 @@ class Post extends Kurl {
     }
 
     public function setUrl( $url ){
-        $this->url = $url;
+        $this->url = trim( $url );
     }
 
     public function setUserId( $uid ){
