@@ -45,6 +45,10 @@ class DatabaseSetup {
             }
 
             for ( let i = 0; i < this.developers.length; i = i + 1 ) {
+                if( this.developers[ i ].nick.length <= 0 ){
+                    continue;
+                }
+
                 developerExistsStatement.get( {
                     $nick: this.developers[ i ].nick,
                 // eslint-disable-next-line no-loop-func
