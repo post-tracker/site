@@ -21,7 +21,7 @@ class DatabaseSetup {
         this.database.serialize();
         this.database.run( 'DELETE FROM developers WHERE nick IS NULL' );
         this.database.run( 'DELETE FROM accounts WHERE NOT EXISTS ( SELECT id FROM developers WHERE accounts.uid = developers.id )' );
-        this.database.run( 'SELECT * FROM posts WHERE NOT EXISTS ( SELECT id FROM developers WHERE posts.uid = developers.id )' );
+        this.database.run( 'DELETE FROM posts WHERE NOT EXISTS ( SELECT id FROM developers WHERE posts.uid = developers.id )' );
         this.database.parallelize();
     }
 
