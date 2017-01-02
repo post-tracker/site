@@ -153,17 +153,6 @@
         },
         {
             "accounts": {
-                "Reddit": "hazedlol",
-                "Twitter": "clghazed"
-            },
-            "name": "James Cobb",
-            "nick": "hazed",
-            "group": "Counter Logic Gaming",
-            "role": "Player",
-            "active": "1"
-        },
-        {
-            "accounts": {
                 "Reddit": "SubrozaCS",
                 "Twitter": "CLGSubroza"
             },
@@ -1328,6 +1317,16 @@
             },
             "nick": "WESA",
             "group": "WESA",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "hazedlol",
+                "Twitter": "clghazed"
+            },
+            "name": "James Cobb",
+            "nick": "hazed",
+            "role": "Player",
             "active": "1"
         },
         {
