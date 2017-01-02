@@ -121,7 +121,12 @@ class Search extends React.Component {
             } );
 
             response.on( 'end', () => {
-                const groups = JSON.parse( body );
+                let groups = JSON.parse( body );
+
+                // If we only have one group, treat it as no group
+                if ( groups.length === 1 ) {
+                    groups = [];
+                }
 
                 this.setState( {
                     groups: groups,
@@ -194,7 +199,7 @@ class Search extends React.Component {
             );
         } );
 
-        if ( groupNodes.length > 0 ) {
+        if ( groupNodes.length > 1 ) {
             let defaultChecked = true;
 
             if ( this.state.activeGroups.length > 0 ) {
