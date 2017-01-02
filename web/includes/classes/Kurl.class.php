@@ -1,9 +1,11 @@
 <?php
 class Kurl {
     private $data = false;
-    private $ttl = 900;
+    private static $baseTTL = 900;
 
     public function loadUrl( $url, $customTTL = false ){
+        $this->ttl = self::$baseTTL;
+
         if( $customTTL !== false ):
             $this->ttl = $customTTL;
         endif;
@@ -29,7 +31,11 @@ class Kurl {
         $this->data = file_get_contents( $url );
 
         if( $this->data && $this->ttl > 0 ):
-            apcu_store( $url, true, $this->ttl );
+            if( $this->ttl == self::$baseTTL ):
+                apcu_store( $url, true, $this->ttl );
+            else :
+                apcu_store( $url, $this->data, $this->ttl );
+            endif;
         endif;
     }
 }
