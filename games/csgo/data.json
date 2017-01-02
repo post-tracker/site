@@ -796,6 +796,7 @@
                 "Reddit": "Gfinity",
                 "Twitter": "gfinity"
             },
+            "nick": "Gfinity",
             "group": "Gfinity",
             "active": "1"
         },
@@ -1307,6 +1308,7 @@
             "accounts": {
                 "Reddit": "WESA_Players_Council"
             },
+            "nick": "WESA",
             "group": "WESA",
             "role": "Players Council",
             "active": "1"
