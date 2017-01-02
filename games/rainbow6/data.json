@@ -36,6 +36,25 @@
         },
         {
             "accounts": {
+                "Reddit": "BK2TwoHundredOne"
+            },
+            "nick": "BK201",
+            "group": "ESL",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Kasstrierer",
+                "Twitter": "KSr6s"
+            },
+            "name": "Niklas Massierer",
+            "nick": "KS",
+            "group": "ESL",
+            "role": "Caster",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "Remorce"
             },
             "nick": "Remorce",
