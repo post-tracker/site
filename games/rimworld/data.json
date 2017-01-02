@@ -1,0 +1,31 @@
+{
+    "name": "RimWorld",
+    "shortName": "RimWorld",
+    "hostname": "devtracker.kokarn.com",
+    "config": {
+        "LudeonForums": {
+            "class": "SMF",
+            "endpoint": "https://ludeon.com/forums/"
+        },
+        "Steam": {
+            "matchOnly": "294100"
+        },
+        "Reddit": {
+            "matchOnly": "rimworld"
+        }
+    },
+    "developers": [
+        {
+            "accounts": {
+                "Reddit": "TynanSylvester",
+                "Twitter": "TynanSylvester",
+                "LudeonForums": "1"
+            },
+            "name": "Tynan Sylvester",
+            "nick": "Tynan",
+            "group": "Ludeon",
+            "role": "Lead Developer",
+            "active": "1"
+        }
+    ]
+}

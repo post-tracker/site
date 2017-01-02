@@ -57,6 +57,9 @@ class Post extends React.Component {
             case 'MiggyRSS':
                 source = 'RSS';
                 break;
+            case 'LudeonForums':
+                source = 'comments';
+                break;
             default:
                 source = originalSource;
                 break;
