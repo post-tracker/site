@@ -12,7 +12,18 @@ endif;
 
 $type = $_GET[ 'type' ];
 
+$classExists = true;
 if( !class_exists( $type ) ):
+    $classExists = false;
+
+    if( isset( $$type ) && isset( $$type[ 'class' ] ) ):
+        if( class_exists( $$type[ 'class' ] ) ):
+            $classExists = true;
+        endif;
+    endif;
+endif;
+
+if( !$classExists ):
     die( 'No class defined for ' . htmlentities( $type ) );
 endif;
 
@@ -24,8 +35,15 @@ else :
     );
 endif;
 
+$serviceData[ 'identifier' ] = $type;
+
+$className = $type;
+if( isset( $$type[ 'class' ] ) ):
+    $className = $$type[ 'class' ];
+endif;
+
 if( isset( $serviceData[ 'type' ] ) && $serviceData[ 'type' ] == 'single' ):
-    $developerService = new $type( $serviceData[ 'endpoint' ] );
+    $developerService = new $className( $serviceData[ 'endpoint' ] );
 
     $posts = $developerService->getRecentPosts();
     foreach( $posts as $post ) :
@@ -53,7 +71,7 @@ else :
     $users = $PDO->fetchAll();
 
     foreach( $users as $userData ) :
-        $developerService = new $type( $userData->uid, $userData->identifier );
+        $developerService = new $className( $userData->uid, $userData->identifier, $serviceData );
         $posts = $developerService->getRecentPosts();
         foreach( $posts as $post ) :
             $post->save( $serviceData );
