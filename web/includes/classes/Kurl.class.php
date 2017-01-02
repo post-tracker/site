@@ -4,11 +4,15 @@ class Kurl {
     private $ttl = 900;
 
     public function loadUrl( $url, $customTTL = false ){
-        if( $customTTL ):
+        if( $customTTL !== false ):
             $this->ttl = $customTTL;
         endif;
 
-        $this->loadFromCache( $url );
+        if( $this->ttl <= 0 ):
+            $this->loadFromWeb( $url );
+        else :
+            $this->loadFromCache( $url );
+        endif;
 
         return $this->data;
     }
@@ -24,7 +28,7 @@ class Kurl {
     private function loadFromWeb( $url ){
         $this->data = file_get_contents( $url );
 
-        if( $this->data ):
+        if( $this->data && $this->ttl > 0 ):
             apcu_store( $url, true, $this->ttl );
         endif;
     }
