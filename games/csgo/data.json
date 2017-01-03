@@ -2,17 +2,6 @@
     "developers": [
         {
             "accounts": {
-                "Reddit": "PHedemark",
-                "Twitter": "phedemark"
-            },
-            "name": "Phillip Rasmussen",
-            "nick": "PHedemark",
-            "group": "Astralis",
-            "role": "Community Manager",
-            "active": "1"
-        },
-        {
-            "accounts": {
                 "Reddit": "fbyskov",
                 "Twitter": "fbyskov"
             },
@@ -20,6 +9,17 @@
             "nick": "fbyskov",
             "group": "Astralis",
             "role": "Fouding Partner",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "biglittleshorts",
+                "Twitter": "biglittle_uk"
+            },
+            "name": "Matthew Truelove",
+            "nick": "BigLittleShorts",
+            "group": "Astralis",
+            "role": "Creative Director",
             "active": "1"
         },
         {
@@ -962,6 +962,17 @@
             "nick": "pyth",
             "group": "Ninjas in Pyjamas",
             "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "PHedemark",
+                "Twitter": "phedemark"
+            },
+            "name": "Phillip Rasmussen",
+            "nick": "PHedemark",
+            "group": "North",
+            "role": "Community Manager",
             "active": "1"
         },
         {
