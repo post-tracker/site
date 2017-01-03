@@ -223,6 +223,14 @@
             "nick": "Zuzu",
             "group": "Ubisoft",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Steam": "76561198256327942"
+            },
+            "nick": "Jax",
+            "group": "Ubisoft",
+            "active": "1"
         }
     ]
 }
