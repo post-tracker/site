@@ -813,6 +813,15 @@
         },
         {
             "accounts": {
+                "Reddit": "HellRaisers_CSGO",
+                "Twitter": "HRcsgo"
+            },
+            "nick": "HellRaisers",
+            "group": "HellRaisers",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "STYKOp",
                 "Twitter": "STYKOcsgo"
             },
