@@ -61,7 +61,7 @@ else :
     $countPDO->bindValue( ':service', $type );
     $countPDO->execute();
     $accountCount = $countPDO->fetchColumn();
-    
+
     $fetchQuery = 'SELECT
         developers.id,
         accounts.uid,
@@ -82,11 +82,11 @@ else :
     $PDO->execute();
     $users = $PDO->fetchAll();
 
-    shuffle( $users );
+    $updateUsers = array_chunk( $users, ceil( $accountCount / 2 ) );
 
-    $updateUsers = array_slice( $users, 0, ceil( $accountCount / 10 ) );
+    shuffle( $updateUsers );
 
-    foreach( $updateUsers as $userData ) :
+    foreach( $updateUsers[ 0 ] as $userData ) :
         $developerService = new $className( $userData->uid, $userData->identifier, $serviceData );
         $posts = $developerService->getRecentPosts();
         foreach( $posts as $post ) :
