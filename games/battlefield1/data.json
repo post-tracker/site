@@ -153,6 +153,14 @@
             "nick": "TheWhiteWalrus",
             "group": "DICE",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Sonic_Frequency"
+            },
+            "nick": "SonicFrequency",
+            "group": "DICE",
+            "active": "1"
         }
     ]
 }
