@@ -153,7 +153,6 @@
         },
         {
             "accounts": {
-                "Reddit": "SubrozaCS",
                 "Twitter": "CLGSubroza"
             },
             "name": "Yassine Taoufik",
@@ -180,15 +179,6 @@
             "nick": "durrrr_za",
             "group": "CSGOLounge",
             "role": "Admin",
-            "active": "1"
-        },
-        {
-            "accounts": {
-                "Reddit": "borewik"
-            },
-            "nick": "Borewik",
-            "group": "CSGOLounge",
-            "role": "Owner",
             "active": "1"
         },
         {
