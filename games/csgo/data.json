@@ -1141,6 +1141,16 @@
         },
         {
             "accounts": {
+                "Reddit": "lazerchickenzzz",
+                "Twitter": "Lazerchickenzzz"
+            },
+            "nick": "Lazerchicken",
+            "group": "Splyce",
+            "role": "CEO & Co-Owner",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "jdm64GO",
                 "Twitter": "Liquid_jdm"
             },
@@ -1614,6 +1624,15 @@
             "name": "Paul Chaloner",
             "nick": "ReDeYe",
             "role": "Host",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "dekaycs",
+                "Twitter": "NWDeKay"
+            },
+            "nick": "DeKay",
+            "role": "CS:GO Insider and Journalist",
             "active": "1"
         }
     ],
