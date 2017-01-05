@@ -68,6 +68,10 @@ const varsToCron = function varsToCron ( gameName, varsList, doWhenDone ) {
         const minuteOffset = i % CRON_INTERVAL;
         const parsedType = varsList[ i ].replace( /\s/gim, '' );
 
+        if( parsedType === 'Reddit' ){
+            continue;
+        }
+
         cronOutput = `${ cronOutput }${ minuteOffset }-59/${ CRON_INTERVAL } * * * * root lynx -dump "https://devtracker.kokarn.com/${ gameName }/update.php?type=${ parsedType }" > /dev/null 2>&1\n`;
     }
 
