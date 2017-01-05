@@ -30,6 +30,7 @@ class DatabaseSetup {
         this.database.run( 'CREATE TABLE IF NOT EXISTS posts( `topic` TEXT, `topic_url` TEXT, `uid` TEXT, `url` TEXT, `source` TEXT, `content` TEXT, `timestamp` TEXT )' );
         this.database.run( 'CREATE TABLE IF NOT EXISTS developers( `id` INT PRIMARY KEY, `nick` TEXT, `name` TEXT, `role` TEXT, `active` INT, `group` TEXT )' );
         this.database.run( 'CREATE TABLE IF NOT EXISTS accounts( `uid` INT, `service` TEXT, `identifier` TEXT )' );
+        this.database.run( 'PRAGMA journal_mode = WAL;' );
         this.database.parallelize();
     }
 
