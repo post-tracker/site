@@ -31,9 +31,17 @@ class Post extends React.Component {
         let url = this.props.postData.url;
 
         if ( url.indexOf( 'steamcommunity.com' ) > -1 ) {
-            return url.match( /(http[s]?:\/\/steamcommunity.com\/app\/\d+\/discussions\/\d+\/).+?/ )[ 1 ];
+            const match = url.match( /(http[s]?:\/\/steamcommunity.com\/app\/\d+\/discussions\/\d+\/).+?/ );
+
+            if( match && match[ 1 ] ){
+                return match[ 1 ];
+            }
         } else if ( url.indexOf( 'reddit.com' ) > -1 ) {
-            return url.match( /(https:\/\/www\.reddit\.com\/r\/.+?)\/.+?/ )[ 1 ];
+            const match = url.match( /(https:\/\/www\.reddit\.com\/r\/.+?)\/.+?/ );
+
+            if( match && match[ 1 ] ){
+                return match[ 1 ];
+            }
         }
 
         return false;
