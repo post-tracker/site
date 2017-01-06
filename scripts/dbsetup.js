@@ -50,6 +50,8 @@ class DatabaseSetup {
                 throw error;
             }
 
+            let developerUpdates = [];
+
             if ( typeof highestUID !== 'undefined' ) {
                 currentMaxUID = highestUID.id;
             }
@@ -59,69 +61,106 @@ class DatabaseSetup {
                     continue;
                 }
 
-                developerExistsStatement.get( {
-                    $nick: this.developers[ i ].nick,
-                // eslint-disable-next-line no-loop-func
-                }, ( developerExistsError, developerRow ) => {
-                    if ( developerExistsError ) {
-                        throw developerExistsError;
-                    }
-
-                    let developerStatement = updateDeveloperStatement;
-                    const bindValues = {
-                        $active: this.developers[ i ].active,
-                        $group: this.developers[ i ].group,
-                        $name: this.developers[ i ].name,
-                        $role: this.developers[ i ].role,
-                    };
-                    let developerUID;
-
-                    if ( typeof developerRow === 'undefined' ) {
-                        developerStatement = createDeveloperStatement;
-                        currentMaxUID = currentMaxUID + 1;
-                        developerUID = currentMaxUID;
-                        bindValues.$nick = this.developers[ i ].nick;
-                    } else {
-                        developerUID = developerRow.id;
-                    }
-
-                    bindValues.$id = developerUID;
-
-                    developerStatement.run( bindValues, ( developerError ) => {
-                        if ( developerError ) {
-                            throw developerError;
-                        }
-
-                        for ( const service in this.developers[ i ].accounts ) {
-                            if ( !Reflect.apply( {}.hasOwnProperty, this.developers[ i ].accounts, [ service ] ) ) {
-                                continue;
+                developerUpdates.push(
+                    new Promise( ( resolve, reject ) => {
+                        developerExistsStatement.get( {
+                            $nick: this.developers[ i ].nick,
+                            // eslint-disable-next-line no-loop-func
+                        }, ( developerExistsError, developerRow ) => {
+                            if ( developerExistsError ) {
+                                reject( developerExistsError );
                             }
 
-                            accountExistsStatement.get( {
-                                $service: service,
-                                $uid: developerUID,
-                            }, ( accountExistsError, row ) => {
-                                if ( accountExistsError ) {
-                                    throw accountExistsError;
+                            let developerStatement = updateDeveloperStatement;
+                            const bindValues = {
+                                $active: this.developers[ i ].active,
+                                $group: this.developers[ i ].group,
+                                $name: this.developers[ i ].name,
+                                $role: this.developers[ i ].role,
+                            };
+                            let developerUID;
+
+                            if ( typeof developerRow === 'undefined' ) {
+                                developerStatement = createDeveloperStatement;
+                                currentMaxUID = currentMaxUID + 1;
+                                developerUID = currentMaxUID;
+                                bindValues.$nick = this.developers[ i ].nick;
+                            } else {
+                                developerUID = developerRow.id;
+                            }
+
+                            bindValues.$id = developerUID;
+
+                            developerStatement.run( bindValues, ( developerError ) => {
+                                if ( developerError ) {
+                                    reject( developerError );
                                 }
 
-                                let accountStatement = updateAccountStatement;
-                                const accountValues = {
-                                    $identifier: this.developers[ i ].accounts[ service ],
-                                    $service: service,
-                                    $uid: developerUID,
-                                };
+                                let accountUpdates = [];
 
-                                if ( row.accountCount === 0 ) {
-                                    accountStatement = createAccountStatement;
+                                for ( const service in this.developers[ i ].accounts ) {
+                                    if ( !Reflect.apply( {}.hasOwnProperty, this.developers[ i ].accounts, [ service ] ) ) {
+                                        continue;
+                                    }
+
+                                    accountUpdates.push(
+                                        new Promise( ( resolve, reject ) => {
+                                            accountExistsStatement.get( {
+                                                $service: service,
+                                                $uid: developerUID,
+                                            }, ( accountExistsError, row ) => {
+                                                if ( accountExistsError ) {
+                                                    reject( accountExistsError );
+                                                }
+
+                                                let accountStatement = updateAccountStatement;
+                                                const accountValues = {
+                                                    $identifier: this.developers[ i ].accounts[ service ],
+                                                    $service: service,
+                                                    $uid: developerUID,
+                                                };
+
+                                                if ( row.accountCount === 0 ) {
+                                                    accountStatement = createAccountStatement;
+                                                }
+
+                                                accountStatement.run( accountValues, () => {
+                                                    resolve();
+                                                } );
+                                            } );
+                                        })
+                                    );
                                 }
 
-                                accountStatement.run( accountValues );
+                                Promise.all( accountUpdates )
+                                    .then(() => {
+                                        resolve();
+                                    })
+                                    .catch( ( error ) => {
+                                        reject( error );
+                                    });
                             } );
-                        }
-                    } );
-                } );
+                        } );
+
+                    })
+                );
             }
+
+            Promise.all( developerUpdates )
+                .then( () => {
+                    developerExistsStatement.finalize();
+                    createDeveloperStatement.finalize();
+                    updateDeveloperStatement.finalize();
+
+                    accountExistsStatement.finalize();
+                    createAccountStatement.finalize();
+                    updateAccountStatement.finalize();
+
+                    this.database.close();
+                })
+                .catch( ( error ) => {
+                    console.log( error );
+                });
         } );
     }
 }
