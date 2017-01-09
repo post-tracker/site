@@ -1624,6 +1624,15 @@
             "nick": "DeKay",
             "role": "CS:GO Insider and Journalist",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "ThatHugoGuy",
+                "Twitter": "ItsHugoTV"
+            },
+            "nick": "Hugo",
+            "role": "Caster",
+            "active": "1"
         }
     ],
     "config": {
