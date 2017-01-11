@@ -28,18 +28,18 @@ class Post extends React.Component {
     }
 
     getSectionURL () {
-        let url = this.props.postData.url;
+        const url = this.props.postData.url;
 
         if ( url.indexOf( 'steamcommunity.com' ) > -1 ) {
             const match = url.match( /(http[s]?:\/\/steamcommunity.com\/app\/\d+\/discussions\/\d+\/).+?/ );
 
-            if( match && match[ 1 ] ){
+            if ( match && match[ 1 ] ) {
                 return match[ 1 ];
             }
         } else if ( url.indexOf( 'reddit.com' ) > -1 ) {
             const match = url.match( /(https:\/\/www\.reddit\.com\/r\/.+?)\/.+?/ );
 
-            if( match && match[ 1 ] ){
+            if ( match && match[ 1 ] ) {
                 return match[ 1 ];
             }
         }
@@ -83,7 +83,7 @@ class Post extends React.Component {
         let bodyClasses = 'panel-body';
         let title;
         let postedString;
-        let sectionURL = this.getSectionURL();
+        const sectionURL = this.getSectionURL();
         let iconNode;
 
         if ( sectionURL ) {

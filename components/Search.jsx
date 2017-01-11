@@ -37,6 +37,7 @@ class Search extends React.Component {
 
             // eslint-disable-next-line react/no-direct-mutation-state
             this.state.activeGroups = groups;
+            // eslint-disable-next-line react/no-direct-mutation-state
             this.state.showFilters = true;
         }
     }
@@ -287,14 +288,14 @@ class Search extends React.Component {
                         className = { 'filters-wrapper' }
                         onClick = { this.handleFilterExpandClick }
                         style = { {
-                            textAlign: 'right'
+                            textAlign: 'right',
                         } }
                     >
                         { 'Filters' }
                         <i
                             className = { 'fa fa-caret-down' }
                             style = { {
-                                marginLeft: '10px'
+                                marginLeft: '10px',
                             } }
                         />
                     </div>
