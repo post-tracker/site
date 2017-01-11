@@ -13,6 +13,7 @@ class Search extends React.Component {
             activeGroups: [],
             groups: [],
             searchString: '',
+            showFilters: false,
         };
 
         this.clearInput = this.clearInput.bind( this );
@@ -20,6 +21,7 @@ class Search extends React.Component {
         this.handleClearClick = this.handleClearClick.bind( this );
         this.handleCheckboxChange = this.handleCheckboxChange.bind( this );
         this.handleAllCheckboxChange = this.handleAllCheckboxChange.bind( this );
+        this.handleFilterExpandClick = this.handleFilterExpandClick.bind( this );
 
         if ( typeof currentQuery.search !== 'undefined' ) {
             // eslint-disable-next-line react/no-direct-mutation-state
@@ -35,6 +37,7 @@ class Search extends React.Component {
 
             // eslint-disable-next-line react/no-direct-mutation-state
             this.state.activeGroups = groups;
+            this.state.showFilters = true;
         }
     }
 
@@ -58,6 +61,10 @@ class Search extends React.Component {
 
     handleClearClick () {
         this.clearInput();
+    }
+
+    handleFilterExpandClick () {
+        this.expandGroups();
     }
 
     handleAllCheckboxChange ( event ) {
@@ -97,6 +104,12 @@ class Search extends React.Component {
 
         this.setState( {
             activeGroups: currentGroups,
+        } );
+    }
+
+    expandGroups () {
+        this.setState( {
+            showFilters: true,
         } );
     }
 
@@ -160,6 +173,7 @@ class Search extends React.Component {
     render () {
         const searchString = this.state.searchString;
         let clearer;
+        let groupsClasses = 'groups-wrapper';
 
         this.checkboxes = [];
 
@@ -231,6 +245,8 @@ class Search extends React.Component {
                     </label>
                 </div>
             ) );
+        } else {
+            groupsClasses = `${ groupsClasses } hidden`;
         }
 
         if ( searchString.length > 0 ) {
@@ -240,6 +256,10 @@ class Search extends React.Component {
                     onClick = { this.handleClearClick }
                 />
             );
+        }
+
+        if ( this.state.showFilters ) {
+            groupsClasses = `${ groupsClasses } show`;
         }
 
         return (
@@ -261,8 +281,23 @@ class Search extends React.Component {
                     { clearer }
                 </div>
                 <div
-                    className = { 'groups-wrapper' }
+                    className = { groupsClasses }
                 >
+                    <div
+                        className = { 'filters-wrapper' }
+                        onClick = { this.handleFilterExpandClick }
+                        style = { {
+                            textAlign: 'right'
+                        } }
+                    >
+                        { 'Filters' }
+                        <i
+                            className = { 'fa fa-caret-down' }
+                            style = { {
+                                marginLeft: '10px'
+                            } }
+                        />
+                    </div>
                     { groupNodes }
                 </div>
             </form>

@@ -111,9 +111,26 @@ h1 a:hover {
     text-decoration: underline;
 }
 
+.filters-wrapper {
+    display: none;
+}
+
 @media screen and ( max-width: 480px ){
     h1 {
         font-size: 38px;
+    }
+
+
+    .filters-wrapper {
+        display: block;
+    }
+
+    .groups-wrapper .checkbox {
+        display: none;
+    }
+
+    .groups-wrapper.show .checkbox {
+        display: inline-block;
     }
 }
 
