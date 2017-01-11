@@ -730,6 +730,16 @@
         },
         {
             "accounts": {
+                "Reddit": "IndieFinch",
+                "Twitter": "indiefinch"
+            },
+            "nick": "IndieFinch",
+            "group": "Flipsid3",
+            "role": "Executive Director",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "G2Esports",
                 "Twitter": "G2esports"
             },
@@ -1631,6 +1641,16 @@
                 "Twitter": "ItsHugoTV"
             },
             "nick": "Hugo",
+            "role": "Caster",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "TheScrawnyGamer",
+                "Twitter": "ScrawnyGG"
+            },
+            "name": "Conner Girvan",
+            "nick": "Scrawny",
             "role": "Caster",
             "active": "1"
         }
