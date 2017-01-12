@@ -174,6 +174,15 @@
         },
         {
             "accounts": {
+                "Reddit": "Counter_Logic_Gaming",
+                "Twitter": "clgaming"
+            },
+            "nick": "Counter Logic Gaming",
+            "group": "Counter Logic Gaming",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "durrrr_za"
             },
             "nick": "durrrr_za",
@@ -807,6 +816,17 @@
             },
             "name": "Robin Rönnquist",
             "nick": "flusha",
+            "group": "GODSENT",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "JeSpErW",
+                "Twitter": "jwCSGO"
+            },
+            "name": "Jesper Wecksell",
+            "nick": "JW",
             "group": "GODSENT",
             "role": "Player",
             "active": "1"
