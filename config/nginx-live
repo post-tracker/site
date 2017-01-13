@@ -93,7 +93,7 @@ server {
     include gzip.conf;
     include server.conf;
 
-    root /usr/share/nginx/html/ark;
+    root /usr/share/nginx/html/rimworld;
     server_name rimworlddevtracker.com;
 
     ssl_certificate /etc/letsencrypt/live/rimworlddevtracker.com/fullchain.pem;
