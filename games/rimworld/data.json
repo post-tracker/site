@@ -1,7 +1,7 @@
 {
     "name": "RimWorld",
     "shortName": "RimWorld",
-    "hostname": "devtracker.kokarn.com",
+    "hostname": "rimworlddevtracker.com",
     "config": {
         "LudeonForums": {
             "class": "SMF",
