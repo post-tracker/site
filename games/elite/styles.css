@@ -59,6 +59,21 @@ h1 a:hover {
     text-decoration: none;
 }
 
+.header-container {
+    position: relative;
+}
+
+.rss-link-wrapper {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+}
+
+.rss-link-wrapper i {
+    font-size: 1.8em;
+    margin: 0;
+}
+
 .panel {
     position: relative;
     word-wrap: break-word;
@@ -102,6 +117,12 @@ h1 a:hover {
 .expander:hover {
     cursor: pointer;
     text-decoration: underline;
+}
+
+@media screen and ( max-width: 660px ){
+    .rss-link-wrapper {
+        display: none;
+    }
 }
 
 @media screen and ( max-width: 480px ){

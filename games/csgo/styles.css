@@ -24,6 +24,21 @@ br {
     margin: 15px auto;
 }
 
+.header-container {
+    position: relative;
+}
+
+.rss-link-wrapper {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+}
+
+.rss-link-wrapper i {
+    font-size: 1.8em;
+    margin: 0;
+}
+
 .container > h1 {
     font-family: counter-strike, serif;
     text-align: center;
@@ -312,6 +327,12 @@ br {
 @media screen and ( max-width: 1040px ){
     .checkbox {
         width: 80px;
+    }
+}
+
+@media screen and ( max-width: 660px ){
+    .rss-link-wrapper {
+        display: none;
     }
 }
 

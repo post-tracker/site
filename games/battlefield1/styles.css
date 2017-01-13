@@ -46,6 +46,21 @@ a:active {
     color: #f17f1a;
 }
 
+.header-container {
+    position: relative;
+}
+
+.rss-link-wrapper {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+}
+
+.rss-link-wrapper i {
+    font-size: 1.8em;
+    margin: 0;
+}
+
 .header-logo {
     max-height: 42px;
     position: relative;
@@ -157,6 +172,18 @@ a:active {
     display: none;
 }
 
+@media screen and ( max-width: 1040px ){
+    .checkbox {
+        width: 80px;
+    }
+}
+
+@media screen and ( max-width: 660px ){
+    .rss-link-wrapper {
+        display: none;
+    }
+}
+
 @media screen and ( max-width: 480px ){
     h1 {
         font-size: 38px;
@@ -179,11 +206,5 @@ a:active {
 
     .groups-wrapper.show .checkbox {
         display: inline-block;
-    }
-}
-
-@media screen and ( max-width: 1040px ){
-    .checkbox {
-        width: 80px;
     }
 }
