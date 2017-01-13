@@ -407,6 +407,17 @@
         },
         {
             "accounts": {
+                "Reddit": "TopicalTV",
+                "Twitter": "topical_tv"
+            },
+            "name": "Will Dallas",
+            "nick": "Topical",
+            "group": "ESEA",
+            "role": "Caster",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "ESLAnna",
                 "Twitter": "ESL_Anna"
             },
@@ -991,6 +1002,15 @@
             },
             "name": "Phillip Rasmussen",
             "nick": "PHedemark",
+            "group": "North",
+            "role": "Digital Marketing Manager",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "nCanoodle"
+            },
+            "nick": "nCanoodle",
             "group": "North",
             "role": "Community Manager",
             "active": "1"
