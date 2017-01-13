@@ -84,3 +84,19 @@ server {
     ssl_certificate_key /etc/letsencrypt/live/arkdevtracker.com/privkey.pem;
     ssl_trusted_certificate /etc/letsencrypt/live/arkdevtracker.com/fullchain.pem;
 }
+
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+
+    include ssl.conf;
+    include gzip.conf;
+    include server.conf;
+
+    root /usr/share/nginx/html/ark;
+    server_name rimworlddevtracker.com;
+
+    ssl_certificate /etc/letsencrypt/live/rimworlddevtracker.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/rimworlddevtracker.com/privkey.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/rimworlddevtracker.com/fullchain.pem;
+}
