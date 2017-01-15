@@ -720,6 +720,16 @@
         },
         {
             "accounts": {
+                "Reddit": "IndieFinch",
+                "Twitter": "indiefinch"
+            },
+            "nick": "IndieFinch",
+            "group": "Flipsid3",
+            "role": "Executive Director",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "olofm"
             },
             "name": "Olof Kajbjer",
@@ -746,16 +756,6 @@
             },
             "nick": "Fnatic",
             "group": "Fnatic",
-            "active": "1"
-        },
-        {
-            "accounts": {
-                "Reddit": "IndieFinch",
-                "Twitter": "indiefinch"
-            },
-            "nick": "IndieFinch",
-            "group": "Flipsid3",
-            "role": "Executive Director",
             "active": "1"
         },
         {
@@ -909,6 +909,47 @@
             },
             "nick": "Liquipedia",
             "group": "Liquipedia",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "MisfitsGG",
+                "Twitter": "misfitsgg"
+            },
+            "nick": "Misfits",
+            "group": "Misfits",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "RelyksOG",
+                "Twitter": "TSM_Relyks"
+            },
+            "name": "Skyler Weaver",
+            "nick": "Relyks",
+            "group": "Misfits",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "ShahZaMcs",
+                "Twitter": "ShahZaMk"
+            },
+            "name": "Shahzeb Khan",
+            "nick": "ShahZaM",
+            "group": "Misfits",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "sgares"
+            },
+            "name": "Sean Gares",
+            "nick": "seangares",
+            "group": "Misfits",
+            "role": "Player",
             "active": "1"
         },
         {
@@ -1257,24 +1298,13 @@
         },
         {
             "accounts": {
-                "Reddit": "RelyksOG",
-                "Twitter": "TSM_Relyks"
+                "Reddit": "reginaldBRO",
+                "Twitter": "tsmreginald"
             },
-            "name": "Skyler Weaver",
-            "nick": "Relyks",
+            "name": "Andy Dinh",
+            "nick": "reginald",
             "group": "Team SoloMid",
-            "role": "Player",
-            "active": "1"
-        },
-        {
-            "accounts": {
-                "Reddit": "ShahZaMcs",
-                "Twitter": "ShahZaMk"
-            },
-            "name": "Shahzeb Khan",
-            "nick": "ShahZaM",
-            "group": "Team SoloMid",
-            "role": "Player",
+            "role": "Owner",
             "active": "1"
         },
         {
@@ -1398,15 +1428,6 @@
             },
             "name": "James Cobb",
             "nick": "hazed",
-            "role": "Player",
-            "active": "1"
-        },
-        {
-            "accounts": {
-                "Reddit": "sgares"
-            },
-            "name": "Sean Gares",
-            "nick": "seangares",
             "role": "Player",
             "active": "1"
         },
