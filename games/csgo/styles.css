@@ -227,6 +227,12 @@ br {
     text-indent: -9999px;
 }
 
+.group-label.north {
+    background-image: url( 'assets/flairs.png' );
+    background-position: -104px -170px;
+    text-indent: -9999px;
+}
+
 .group-label.oddshot {
     background-image: url( 'assets/logo-oddshot.png' );
     text-indent: -9999px;
