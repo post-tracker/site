@@ -2,6 +2,10 @@
     "name": "Elite Dangerous",
     "shortName": "Elite Dangerous",
     "hostname": "elitedevtracker.com",
+    "rss": [
+        "<elite:source><?php echo $post->source; ?></elite:source>",
+        "<elite:author><?php echo $post->nick; ?></elite:author>"
+    ],
     "config": {
         "MiggyRSS": {
             "type": "single",
