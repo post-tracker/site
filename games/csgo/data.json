@@ -730,6 +730,15 @@
         },
         {
             "accounts": {
+                "Reddit": "FlipSid3_Tactics",
+                "Twitter": "flipsid3tactics"
+            },
+            "nick": "Flipsid3",
+            "group": "Flipsid3",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "olofm"
             },
             "name": "Olof Kajbjer",
