@@ -133,11 +133,18 @@ br {
 
 .group-label.counter-logic-gaming {
     background-image: url( 'assets/logo-counter-logic-gaming.png' );
+    background-size: 50px 15px;
     text-indent: -9999px;
 }
 
 .group-label.dreamhack {
     background-image: url( 'assets/logo-dreamhack.png' );
+    background-size: 50px 15px;
+    text-indent: -9999px;
+}
+
+.group-label.dropthebomb {
+    background-image: url( 'assets/logo-dropthebomb.png' );
     background-size: 50px 15px;
     text-indent: -9999px;
 }
@@ -199,6 +206,12 @@ br {
     text-indent: -9999px;
 }
 
+.group-label.godsent {
+    background-image: url( 'assets/logo-godsent.png' );
+    background-size: 50px 15px;
+    text-indent: -9999px;
+}
+
 .group-label.hellraisers {
     background-image: url( 'assets/logo-hellraisers.png' );
     text-indent: -9999px;
@@ -206,6 +219,12 @@ br {
 
 .group-label.immortals {
     background-image: url( 'assets/logo-immortals.png' );
+    background-size: 50px 15px;
+    text-indent: -9999px;
+}
+
+.group-label.misfits {
+    background-image: url( 'assets/logo-misfits.png' );
     background-size: 50px 15px;
     text-indent: -9999px;
 }
