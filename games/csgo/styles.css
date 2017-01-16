@@ -175,6 +175,12 @@ br {
     text-indent: -9999px;
 }
 
+.group-label.flipsid3 {
+    background-image: url( 'assets/flairs.png' );
+    background-position: 0px -102px;
+    text-indent: -9999px;
+}
+
 .group-label.fnatic {
     background-image: url( 'assets/flairs.png' );
     background-position: -156px -34px;
