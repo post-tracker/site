@@ -231,6 +231,15 @@
         },
         {
             "accounts": {
+                "Reddit": "Hellspawnl",
+                "Twitter": "hellspawnlord"
+            },
+            "nick": "Hellspawn",
+            "group": "DreamHack",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "HenryG_CS",
                 "Twitter": "HenryGcsgo"
             },
