@@ -729,6 +729,17 @@
         },
         {
             "accounts": {
+                "Reddit": "kaostic",
+                "Twitter": "Kaostic"
+            },
+            "name": "Kris West",
+            "nick": "Kaostic",
+            "group": "FACEIT",
+            "role": "Community Coordinator",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "IndieFinch",
                 "Twitter": "indiefinch"
             },
