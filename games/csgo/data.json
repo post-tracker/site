@@ -35,6 +35,17 @@
         },
         {
             "accounts": {
+                "Reddit": "LordDupreeh",
+                "Twitter": "dupreehCSGO"
+            },
+            "name": "Peter Rothmann",
+            "nick": "dupreeh",
+            "group": "Astralis",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "CEVO_Spangler"
             },
             "nick": "Spangler",
