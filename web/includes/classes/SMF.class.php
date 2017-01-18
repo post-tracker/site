@@ -24,6 +24,7 @@ class SMF extends Kurl {
             // Parse time into a timestamp
             $time = $forumPost->find( 'span.smalltext', 0 )->plaintext;
             $time = str_replace( array( '&#171;&nbsp;on:', '&nbsp;&#187;' ), '', $time );
+            $time = str_replace( 'Today at', date( 'F j, o,' ), $time );
             $time = trim( $time );
 
             $postLink = $forumPost->find( 'a', 1 );
