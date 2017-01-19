@@ -1171,6 +1171,26 @@
         },
         {
             "accounts": {
+                "Reddit": "rfrsh",
+                "Twitter": "RFRSH_Ent"
+            },
+            "nick": "rfrsh",
+            "group": "RFRSH Entertainment",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "nicolasestrup",
+                "Twitter": "nicolasestrup"
+            },
+            "name": "Nicolas Bertelsen Estrup",
+            "nick": "nicolasestrup",
+            "group": "RFRSH Entertainment",
+            "role": "Director of Content",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "MetuzTV"
             },
             "name": "Vince Hill",
