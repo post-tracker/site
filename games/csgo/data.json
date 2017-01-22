@@ -800,6 +800,17 @@
         },
         {
             "accounts": {
+                "Reddit": "cArnCS",
+                "Twitter": "carncs"
+            },
+            "name": "Patrik Sättermon",
+            "nick": "cArn",
+            "group": "Fnatic",
+            "role": "Chief Gaming Officer",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "G2Esports",
                 "Twitter": "G2esports"
             },
@@ -1036,6 +1047,17 @@
             "nick": "Jan",
             "group": "mousesports",
             "role": "Manager",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "hoagsta",
+                "Twitter": "adreN_Hoag"
+            },
+            "name": "Adren Hoag",
+            "nick": "adreN",
+            "group": "Mythic",
+            "role": "Player",
             "active": "1"
         },
         {
@@ -1418,6 +1440,7 @@
             "accounts": {
                 "Reddit": "ido_valve"
             },
+            "name": "Ido Magal",
             "nick": "Ido",
             "group": "Valve",
             "role": "Developer",
@@ -1461,6 +1484,24 @@
                 "Reddit": "DavidWValve"
             },
             "nick": "DavidW",
+            "group": "Valve",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "DRiller_Valve"
+            },
+            "name": "David Riller",
+            "nick": "DRiller",
+            "group": "Valve",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "GabeNewellBellevue"
+            },
+            "name": "Gabe Newell",
+            "nick": "Gaben",
             "group": "Valve",
             "active": "1"
         },
@@ -1627,6 +1668,7 @@
             },
             "name": "Mohan Govindasamy",
             "nick": "Launders",
+            "group": "BOXR",
             "role": "Analyst",
             "active": "1"
         },
@@ -1734,6 +1776,7 @@
             },
             "name": "Casper Møller",
             "nick": "cadiaN",
+            "group": "Rogue",
             "role": "Player",
             "active": "1"
         },
