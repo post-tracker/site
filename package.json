@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "cross-env": "^3.1.1",
-    "csv-parse": "^1.1.7",
+    "csv-parse": "^1.1.12",
     "fs-extra": "^1.0.0",
     "minimist": "^1.2.0",
     "mustache": "^2.2.1",
