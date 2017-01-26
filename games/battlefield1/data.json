@@ -26,7 +26,8 @@
         },
         {
             "accounts": {
-                "Reddit": "_jjju_"
+                "Reddit": "_jjju_",
+                "BFForums": "16576/jjju"
             },
             "nick": "_jjju_",
             "group": "DICE",
@@ -74,7 +75,8 @@
         {
             "accounts": {
                 "Reddit": "Indigowd",
-                "Twitter": "Indigowd"
+                "Twitter": "Indigowd",
+                "BFForums": "32428/Indigownd"
             },
             "name": "Jojje Dalunde",
             "nick": "Indigowd",
@@ -159,6 +161,21 @@
                 "Reddit": "Sonic_Frequency"
             },
             "nick": "SonicFrequency",
+            "group": "DICE",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "BFForums": "16919/Royale68"
+            },
+            "group": "DICE",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "EnemaicFist"
+            },
+            "nick": "EnemaicFist",
             "group": "DICE",
             "active": "1"
         }
