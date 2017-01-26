@@ -20,6 +20,82 @@
     "developers": [
         {
             "accounts": {
+                "Reddit": "BroCanadian"
+            },
+            "nick": "BroCanadian",
+            "group": "Continuum",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Yunng"
+            },
+            "nick": "Yunng",
+            "group": "Continuum",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "nvKing_"
+            },
+            "nick": "nvKing_",
+            "group": "Continuum",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Necrociouss"
+            },
+            "nick": "Necrociouss",
+            "group": "Continuum",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Retro1sg"
+            },
+            "nick": "Retro1sg",
+            "group": "Continuum",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "LordKeren"
+            },
+            "nick": "LordKeren",
+            "group": "Continuum",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "PM_ME_UR_DAYJOB"
+            },
+            "nick": "PM_ME_UR_DAYJOB",
+            "group": "Continuum",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "saxojam"
+            },
+            "nick": "saxojam",
+            "group": "Continuum",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Kledr"
+            },
+            "nick": "Kledr",
+            "group": "eRa Eternity",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "Pankie"
             },
             "nick": "Pankie",
@@ -58,15 +134,7 @@
                 "Reddit": "Remorce"
             },
             "nick": "Remorce",
-            "group": "Pro Player",
-            "active": "1"
-        },
-        {
-            "accounts": {
-                "Reddit": "Sixquatre-"
-            },
-            "nick": "Sixquatre-",
-            "group": "Pro Player",
+            "group": "MiLSPEC",
             "active": "1"
         },
         {
@@ -74,7 +142,7 @@
                 "Reddit": "RR-dapz"
             },
             "nick": "RR-dapz",
-            "group": "Pro Player",
+            "group": "MiLSPEC",
             "active": "1"
         },
         {
@@ -82,7 +150,7 @@
                 "Reddit": "17Serenity17"
             },
             "nick": "17Serenity17",
-            "group": "Pro Player",
+            "group": "MiLSPEC",
             "active": "1"
         },
         {
@@ -90,7 +158,7 @@
                 "Reddit": "TOPPUKEKKU"
             },
             "nick": "TOPPUKEKKU",
-            "group": "Pro Player",
+            "group": "MiLSPEC",
             "active": "1"
         },
         {
@@ -98,15 +166,7 @@
                 "Reddit": "Cr1msonDeath"
             },
             "nick": "Cr1msonDeath",
-            "group": "Pro Player",
-            "active": "1"
-        },
-        {
-            "accounts": {
-                "Reddit": "zironicdk"
-            },
-            "nick": "zironicdk",
-            "group": "Pro Player",
+            "group": "MiLSPEC",
             "active": "1"
         },
         {
@@ -114,63 +174,7 @@
                 "Reddit": "meepeY"
             },
             "nick": "meepeY",
-            "group": "Pro Player",
-            "active": "1"
-        },
-        {
-            "accounts": {
-                "Reddit": "Vapo-"
-            },
-            "nick": "Vapo-",
-            "group": "Pro Player",
-            "active": "1"
-        },
-        {
-            "accounts": {
-                "Reddit": "Willkey"
-            },
-            "nick": "Willkey",
-            "group": "Pro Player",
-            "active": "1"
-        },
-        {
-            "accounts": {
-                "Reddit": "BroCanadian"
-            },
-            "nick": "BroCanadian",
-            "group": "Pro Player",
-            "active": "1"
-        },
-        {
-            "accounts": {
-                "Reddit": "Yunng"
-            },
-            "nick": "Yunng",
-            "group": "Pro Player",
-            "active": "1"
-        },
-        {
-            "accounts": {
-                "Reddit": "nvKing_"
-            },
-            "nick": "nvKing_",
-            "group": "Pro Player",
-            "active": "1"
-        },
-        {
-            "accounts": {
-                "Reddit": "Necrociouss"
-            },
-            "nick": "Necrociouss",
-            "group": "Pro Player",
-            "active": "1"
-        },
-        {
-            "accounts": {
-                "Reddit": "Retro1sg"
-            },
-            "nick": "Retro1sg",
-            "group": "Pro Player",
+            "group": "Playing Ducks",
             "active": "1"
         },
         {
@@ -230,6 +234,34 @@
             },
             "nick": "Jax",
             "group": "Ubisoft",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Sixquatre-"
+            },
+            "nick": "Sixquatre-",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "zironicdk"
+            },
+            "nick": "zironicdk",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Vapo-"
+            },
+            "nick": "Vapo-",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Willkey"
+            },
+            "nick": "Willkey",
             "active": "1"
         }
     ]
