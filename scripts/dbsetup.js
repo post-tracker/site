@@ -57,7 +57,7 @@ class DatabaseSetup {
             }
 
             for ( let i = 0; i < this.developers.length; i = i + 1 ) {
-                if( this.developers[ i ].nick.length <= 0 ){
+                if( !this.developers[ i ].nick || this.developers[ i ].nick.length <= 0 ){
                     continue;
                 }
 
