@@ -1,0 +1,53 @@
+{
+    "name": "Conan Exiles",
+    "shortName": "Conan Exiles",
+    "hostname": "conandevtracker.com",
+    "config": {
+        "Reddit": {
+            "index": "ConanExiles",
+            "exclude": [
+                "funny",
+                "Steep"
+            ]
+        },
+        "Steam": {
+            "matchOnly": "440900"
+        }
+    },
+    "developers": [
+        {
+            "accounts": {
+                "Steam": "funcomcm"
+            },
+            "name": "Andy B",
+            "nick": "Andy",
+            "role": "Community Manager",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Steam": "funcomcm2"
+            },
+            "name": "Jens Erik",
+            "nick": "Jens",
+            "role": "Community Manager",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Odonoptera"
+            },
+            "nick": "Odonoptera",
+            "role": "Community Manager",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Jay_EV"
+            },
+            "nick": "Jay_EV",
+            "role": "Community Manager",
+            "active": "1"
+        }
+    ]
+}
