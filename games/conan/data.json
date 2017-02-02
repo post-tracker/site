@@ -17,6 +17,7 @@
     "developers": [
         {
             "accounts": {
+                "Reddit": "Odonoptera",
                 "Steam": "funcomcm"
             },
             "name": "Andy B",
@@ -30,14 +31,6 @@
             },
             "name": "Jens Erik",
             "nick": "Jens",
-            "role": "Community Manager",
-            "active": "1"
-        },
-        {
-            "accounts": {
-                "Reddit": "Odonoptera"
-            },
-            "nick": "Odonoptera",
             "role": "Community Manager",
             "active": "1"
         },
