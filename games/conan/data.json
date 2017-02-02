@@ -27,18 +27,11 @@
         },
         {
             "accounts": {
+                "Reddit": "Jay_EV",
                 "Steam": "funcomcm2"
             },
             "name": "Jens Erik",
             "nick": "Jens",
-            "role": "Community Manager",
-            "active": "1"
-        },
-        {
-            "accounts": {
-                "Reddit": "Jay_EV"
-            },
-            "nick": "Jay_EV",
             "role": "Community Manager",
             "active": "1"
         }
