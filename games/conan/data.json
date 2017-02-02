@@ -34,6 +34,13 @@
             "nick": "Jens",
             "role": "Community Manager",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Steam": "76561197970743075"
+            },
+            "nick": "nophex",
+            "active": "1"
         }
     ]
 }
