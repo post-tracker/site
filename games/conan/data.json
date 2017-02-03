@@ -40,6 +40,7 @@
                 "Steam": "76561197970743075"
             },
             "nick": "nophex",
+            "role": "Producer",
             "active": "1"
         },
         {
@@ -47,6 +48,7 @@
                 "Steam": "76561198043618289"
             },
             "nick": "Tamtor",
+            "role": "Support Lead",
             "active": "1"
         },
         {
@@ -54,6 +56,23 @@
                 "Steam": "76561198323487613"
             },
             "nick": "Basco",
+            "role": "Support",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Steam": "76561198356724418"
+            },
+            "nick": "CinnamonToastCrom",
+            "role": "Support",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Steam": "76561198364240461"
+            },
+            "nick": "Nossos",
+            "role": "Support",
             "active": "1"
         }
     ]
