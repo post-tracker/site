@@ -1162,6 +1162,17 @@
         },
         {
             "accounts": {
+                "Reddit": "TheH3CZ",
+                "Twitter": "optich3cz"
+            },
+            "name": "Hector Rodriguez",
+            "nick": "H3CZ",
+            "group": "OpTic Gaming",
+            "role": "Owner & CEO",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "kakafu"
             },
             "name": "Alexander Szymanczyk",
