@@ -1120,6 +1120,17 @@
         },
         {
             "accounts": {
+                "Reddit": "Maelk",
+                "Twitter": "TheMaelk"
+            },
+            "name": "Jacob Toft-Andersen",
+            "nick": "Maelk",
+            "group": "North",
+            "role": "Chief Gaming Officer",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "dylandidiano",
                 "Twitter": "didz_NA"
             },
@@ -1816,6 +1827,16 @@
             "name": "Conner Girvan",
             "nick": "Scrawny",
             "role": "Caster",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Hordeau",
+                "Twitter": "hordeau"
+            },
+            "name": "David Alexander",
+            "nick": "Hordeau",
+            "role": "Mapper",
             "active": "1"
         }
     ],
