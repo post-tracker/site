@@ -74,6 +74,13 @@
             "nick": "Nossos",
             "role": "Support",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Official_Funcom"
+            },
+            "nick": "Funcom",
+            "active": "1"
         }
     ]
 }
