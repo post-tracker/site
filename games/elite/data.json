@@ -269,6 +269,17 @@
             "nick": "Drew",
             "role": "Author",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "MFlorianz_Frontier",
+                "Twitter": "matthewflorianz",
+                "MiggyRSS": "34604"
+            },
+            "name": "Matthew Florianz",
+            "nick": "Matthew",
+            "role": "Senior Sound Designer",
+            "active": "1"
         }
     ]
 }
