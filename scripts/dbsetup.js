@@ -50,18 +50,19 @@ class DatabaseSetup {
                 throw error;
             }
 
-            let developerUpdates = [];
+            const developerUpdates = [];
 
             if ( typeof highestUID !== 'undefined' ) {
                 currentMaxUID = highestUID.id;
             }
 
             for ( let i = 0; i < this.developers.length; i = i + 1 ) {
-                if( !this.developers[ i ].nick || this.developers[ i ].nick.length <= 0 ){
+                if ( !this.developers[ i ].nick || this.developers[ i ].nick.length <= 0 ) {
                     continue;
                 }
 
                 developerUpdates.push(
+                    // eslint-disable-next-line no-loop-func
                     new Promise( ( resolve, reject ) => {
                         developerExistsStatement.get( {
                             $nick: this.developers[ i ].nick,
@@ -96,7 +97,7 @@ class DatabaseSetup {
                                     reject( developerError );
                                 }
 
-                                let accountUpdates = [];
+                                const accountUpdates = [];
 
                                 for ( const service in this.developers[ i ].accounts ) {
                                     if ( !Reflect.apply( {}.hasOwnProperty, this.developers[ i ].accounts, [ service ] ) ) {
@@ -104,13 +105,13 @@ class DatabaseSetup {
                                     }
 
                                     accountUpdates.push(
-                                        new Promise( ( resolve, reject ) => {
+                                        new Promise( ( resolveAccount, rejectAccount ) => {
                                             accountExistsStatement.get( {
                                                 $service: service,
                                                 $uid: developerUID,
                                             }, ( accountExistsError, row ) => {
                                                 if ( accountExistsError ) {
-                                                    reject( accountExistsError );
+                                                    rejectAccount( accountExistsError );
                                                 }
 
                                                 let accountStatement = updateAccountStatement;
@@ -125,24 +126,23 @@ class DatabaseSetup {
                                                 }
 
                                                 accountStatement.run( accountValues, () => {
-                                                    resolve();
+                                                    resolveAccount();
                                                 } );
                                             } );
-                                        })
+                                        } )
                                     );
                                 }
 
                                 Promise.all( accountUpdates )
-                                    .then(() => {
+                                    .then( () => {
                                         resolve();
-                                    })
-                                    .catch( ( error ) => {
-                                        reject( error );
-                                    });
+                                    } )
+                                    .catch( ( accountUpdatesError ) => {
+                                        reject( accountUpdatesError );
+                                    } );
                             } );
                         } );
-
-                    })
+                    } )
                 );
             }
 
@@ -157,10 +157,10 @@ class DatabaseSetup {
                     updateAccountStatement.finalize();
 
                     this.database.close();
-                })
-                .catch( ( error ) => {
-                    console.log( error );
-                });
+                } )
+                .catch( ( developerUpdatesError ) => {
+                    console.log( developerUpdatesError );
+                } );
         } );
     }
 }

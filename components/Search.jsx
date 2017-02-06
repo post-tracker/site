@@ -160,7 +160,7 @@ class Search extends React.Component {
         return groupName
             .toLowerCase()
             .replace( /\s/gim, '-' )
-            .replace( /[^a-z0-9\-]/gim, '' );
+            .replace( /[^a-z0-9-]/gim, '' );
     }
 
     clearInput () {
@@ -309,8 +309,8 @@ class Search extends React.Component {
 Search.displayName = 'Search';
 
 Search.propTypes = {
-    handleSearch: React.PropTypes.func,
-    url: React.PropTypes.string,
+    handleSearch: React.PropTypes.func.isRequired,
+    url: React.PropTypes.string.isRequired,
 };
 
 export default Search;

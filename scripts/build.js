@@ -29,6 +29,10 @@ const varsToPHP = function varsToPHP ( varObject ) {
     }
 
     for ( const service in varObject ) {
+        if ( !Reflect.apply( {}.hasOwnProperty, varObject, [ service ] ) ) {
+            return false;
+        }
+
         const parsedService = service.replace( /\s/gim, '' );
 
         if ( !Reflect.apply( {}.hasOwnProperty, varObject, [ service ] ) ) {
@@ -68,7 +72,7 @@ const varsToCron = function varsToCron ( gameName, varsList, doWhenDone ) {
         const minuteOffset = i % CRON_INTERVAL;
         const parsedType = varsList[ i ].replace( /\s/gim, '' );
 
-        if( parsedType === 'Reddit' ){
+        if ( parsedType === 'Reddit' ) {
             continue;
         }
 
@@ -124,7 +128,7 @@ games.forEach( ( game ) => {
 
     try {
         gameData = JSON.parse( fs.readFileSync( path.join( __dirname, `/../games/${ game }/data.json` ), 'utf8' ) );
-    } catch( parseError ){
+    } catch ( parseError ) {
         console.error( `Invalid game data file for ${ game }. Probably just incorrect JSON. Please fix <3 (Won't build until you do...)` );
 
         return false;
@@ -268,4 +272,6 @@ games.forEach( ( game ) => {
             return true;
         } );
     }
+
+    return true;
 } );

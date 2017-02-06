@@ -17,7 +17,7 @@
     "build:development": "cross-env NODE_ENV=development browserify components/App.jsx -o web/scripts/app.js -t [ babelify --presets [ es2015 react ] ] && node scripts/build.js",
     "build": "cross-env NODE_ENV=production browserify components/App.jsx -o web/scripts/app.js -t [ babelify --presets [ es2015 react ] ] && uglifyjs web/scripts/app.js -o web/scripts/app.js -c warnings=false -m && node scripts/build.js",
     "lint:components": "eslint -c kokarn/react components/*",
-    "lint:scripts": "eslint -c kokarn/node scripts/*.js"
+    "lint:scripts": "eslint -c kokarn/nodejs scripts/*.js"
   },
   "author": "Oskar Risberg <kokarn@gmail.com>",
   "repository": {
@@ -37,7 +37,7 @@
     "babelify": "^7.3.0",
     "debounce": "^1.0.0",
     "eslint": "^3.5.0",
-    "eslint-config-kokarn": "^1.0.0",
+    "eslint-config-kokarn": "^2.0.0",
     "jshashes": "^1.0.5",
     "query-string": "^4.2.3",
     "react": "^15.3.0",

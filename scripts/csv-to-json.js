@@ -41,7 +41,8 @@ const parseOuput = function parseOuput ( input ) {
         }
 
         for ( let fieldIndex = 0; fieldIndex < input[ i ].length; fieldIndex = fieldIndex + 1 ) {
-            let fieldData = input[ i ][ fieldIndex ].trim();
+            const fieldData = input[ i ][ fieldIndex ].trim();
+
             if ( fieldData.length === 0 ) {
                 continue;
             }

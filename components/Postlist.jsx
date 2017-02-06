@@ -65,7 +65,7 @@ class PostList extends React.Component {
         this.debouncedSearch( searchString, groups );
     }
 
-    loadCommentsFromServer ( searchString, groups ) {
+    loadCommentsFromServer ( searchString = this.state.searchString, groups = this.state.searchGroups ) {
         clearTimeout( this.updateDataTimeout );
 
         const options = {
@@ -76,14 +76,6 @@ class PostList extends React.Component {
 
         if ( window.location.port ) {
             options.port = window.location.port;
-        }
-
-        if ( typeof searchString === 'undefined' ) {
-            searchString = this.state.searchString;
-        }
-
-        if ( typeof groups === 'undefined' ) {
-            groups = this.state.searchGroups;
         }
 
         const querystringParameters = {};
