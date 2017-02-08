@@ -46,6 +46,36 @@
         },
         {
             "accounts": {
+                "Reddit": "sb2"
+            },
+            "nick": "sb2",
+            "group": "BIG",
+            "role": "Co-Founter",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "kakafu"
+            },
+            "name": "Alexander Szymanczyk",
+            "nick": "kakafu",
+            "group": "BIG",
+            "role": "Coach",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "csboxr",
+                "Twitter": "botlaunders"
+            },
+            "name": "Mohan Govindasamy",
+            "nick": "Launders",
+            "group": "BOXR",
+            "role": "Analyst",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "CEVO_Spangler"
             },
             "nick": "Spangler",
@@ -811,6 +841,28 @@
         },
         {
             "accounts": {
+                "Reddit": "flusha",
+                "Twitter": "flushaGOD"
+            },
+            "name": "Robin Rönnquist",
+            "nick": "flusha",
+            "group": "Fnatic",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "JeSpErW",
+                "Twitter": "jwCSGO"
+            },
+            "name": "Jesper Wecksell",
+            "nick": "JW",
+            "group": "Fnatic",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "G2Esports",
                 "Twitter": "G2esports"
             },
@@ -869,28 +921,6 @@
             },
             "nick": "Gfinity",
             "group": "Gfinity",
-            "active": "1"
-        },
-        {
-            "accounts": {
-                "Reddit": "flusha",
-                "Twitter": "flushaGOD"
-            },
-            "name": "Robin Rönnquist",
-            "nick": "flusha",
-            "group": "GODSENT",
-            "role": "Player",
-            "active": "1"
-        },
-        {
-            "accounts": {
-                "Reddit": "JeSpErW",
-                "Twitter": "jwCSGO"
-            },
-            "name": "Jesper Wecksell",
-            "nick": "JW",
-            "group": "GODSENT",
-            "role": "Player",
             "active": "1"
         },
         {
@@ -1173,12 +1203,13 @@
         },
         {
             "accounts": {
-                "Reddit": "kakafu"
+                "Reddit": "OfficialHiko",
+                "Twitter": "Liquid_Hiko"
             },
-            "name": "Alexander Szymanczyk",
-            "nick": "kakafu",
-            "group": "PENTA Sports",
-            "role": "Coach",
+            "name": "Spencer Martin",
+            "nick": "Hiko",
+            "group": "OpTic Gaming",
+            "role": "Player",
             "active": "1"
         },
         {
@@ -1231,6 +1262,17 @@
             "nick": "nicolasestrup",
             "group": "RFRSH Entertainment",
             "role": "Director of Content",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "officialcadiaN",
+                "Twitter": "caspercadiaN"
+            },
+            "name": "Casper Møller",
+            "nick": "cadiaN",
+            "group": "Rogue",
+            "role": "Player",
             "active": "1"
         },
         {
@@ -1336,6 +1378,17 @@
         },
         {
             "accounts": {
+                "Reddit": "semphis",
+                "Twitter": "TSMsemphisss"
+            },
+            "name": "Kory Friesen",
+            "nick": "semphis",
+            "group": "Splyce",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "jdm64GO",
                 "Twitter": "Liquid_jdm"
             },
@@ -1352,17 +1405,6 @@
             },
             "name": "Jonathan Jablonowski",
             "nick": "EliGE",
-            "group": "Team Liquid",
-            "role": "Player",
-            "active": "1"
-        },
-        {
-            "accounts": {
-                "Reddit": "OfficialHiko",
-                "Twitter": "Liquid_Hiko"
-            },
-            "name": "Spencer Martin",
-            "nick": "Hiko",
             "group": "Team Liquid",
             "role": "Player",
             "active": "1"
@@ -1564,16 +1606,6 @@
         },
         {
             "accounts": {
-                "Reddit": "semphis",
-                "Twitter": "TSMsemphisss"
-            },
-            "name": "Kory Friesen",
-            "nick": "semphis",
-            "role": "Player",
-            "active": "1"
-        },
-        {
-            "accounts": {
                 "Reddit": "machine-",
                 "Twitter": "MyNameIsMachine"
             },
@@ -1685,17 +1717,6 @@
         },
         {
             "accounts": {
-                "Reddit": "csboxr",
-                "Twitter": "botlaunders"
-            },
-            "name": "Mohan Govindasamy",
-            "nick": "Launders",
-            "group": "BOXR",
-            "role": "Analyst",
-            "active": "1"
-        },
-        {
-            "accounts": {
                 "Reddit": "lurppis_",
                 "Twitter": "lurppis_"
             },
@@ -1789,17 +1810,6 @@
             "name": "Tom Bissmire",
             "nick": "Toombizz14",
             "role": "Caster",
-            "active": "1"
-        },
-        {
-            "accounts": {
-                "Reddit": "officialcadiaN",
-                "Twitter": "caspercadiaN"
-            },
-            "name": "Casper Møller",
-            "nick": "cadiaN",
-            "group": "Rogue",
-            "role": "Player",
             "active": "1"
         },
         {
