@@ -82,8 +82,11 @@
         },
         {
             "accounts": {
-                "Steam": "76561198178797193"
+                "Reddit": "nayvihn",
+                "Steam": "76561198178797193",
+                "Twitter": "nayvihn"
             },
+            "name": "Navin Supphapholsiri",
             "nick": "The Right Foot",
             "role": "Producer",
             "active": "1"
