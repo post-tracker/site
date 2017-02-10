@@ -1389,6 +1389,15 @@
         },
         {
             "accounts": {
+                "Reddit": "SplyceCM"
+            },
+            "nick": "Splyce",
+            "group": "Splyce",
+            "role": "Community Manager",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "jdm64GO",
                 "Twitter": "Liquid_jdm"
             },
