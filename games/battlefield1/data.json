@@ -168,6 +168,7 @@
             "accounts": {
                 "BFForums": "16919/Royale68"
             },
+            "nick": "Royale68",
             "group": "DICE",
             "active": "1"
         },
@@ -177,6 +178,15 @@
             },
             "nick": "EnemaicFist",
             "group": "DICE",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "sabz1337"
+            },
+            "nick": "sabz",
+            "group": "DICE",
+            "role": "Anti-Cheat",
             "active": "1"
         }
     ]
