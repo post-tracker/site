@@ -1580,6 +1580,15 @@
         },
         {
             "accounts": {
+                "Reddit": "Valve_Anti-Cheat"
+            },
+            "nick": "Valve Anti-Cheat",
+            "group": "Valve",
+            "role": "Anti-Cheat",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "WESA_Players_Council"
             },
             "nick": "WESA",
