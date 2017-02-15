@@ -188,6 +188,16 @@
             "group": "DICE",
             "role": "Anti-Cheat",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Fyruna",
+                "Twitter": "Fyrunaa"
+            },
+            "name": "Aveline Estié",
+            "nick": "Fyruna",
+            "group": "DICE",
+            "active": "1"
         }
     ]
 }
