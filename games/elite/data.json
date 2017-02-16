@@ -265,7 +265,7 @@
             "accounts": {
                 "MiggyRSS": "2000"
             },
-            "name": "Drew Wager",
+            "name": "Drew Wagar",
             "nick": "Drew",
             "role": "Author",
             "active": "1"
@@ -279,6 +279,25 @@
             "name": "Matthew Florianz",
             "nick": "Matthew",
             "role": "Senior Sound Designer",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "MiggyRSS": "148080"
+            },
+            "name": "Dominic Corner",
+            "nick": "Dom",
+            "role": "Programmer (Missions Team) ",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Twitter": "bovaflux",
+                "MiggyRSS": "33396"
+            },
+            "name": "Eddie Symons",
+            "nick": "Eddie",
+            "role": "Producer",
             "active": "1"
         }
     ]
