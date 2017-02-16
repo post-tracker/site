@@ -289,6 +289,16 @@
             "nick": "Dom",
             "role": "Programmer (Missions Team) ",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Twitter": "bovaflux",
+                "MiggyRSS": "33396"
+            },
+            "name": "Eddie Symons",
+            "nick": "Eddie",
+            "role": "Producer",
+            "active": "1"
         }
     ]
 }
