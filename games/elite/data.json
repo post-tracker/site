@@ -280,6 +280,15 @@
             "nick": "Matthew",
             "role": "Senior Sound Designer",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "MiggyRSS": "148080"
+            },
+            "name": "Dominic Corner",
+            "nick": "Dom",
+            "role": "Programmer (Missions Team) ",
+            "active": "1"
         }
     ]
 }
