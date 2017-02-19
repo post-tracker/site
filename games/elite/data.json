@@ -81,12 +81,13 @@
         },
         {
             "accounts": {
-                "Twitter": "adwoods666",
+                "Reddit": "adwoodsuk",
+                "Twitter": "adwoodsuk",
                 "MiggyRSS": "14349"
             },
             "name": "Adam Woods",
             "nick": "Adam",
-            "role": "Producer",
+            "role": "Senior Producer",
             "active": "1"
         },
         {
@@ -287,7 +288,7 @@
             },
             "name": "Dominic Corner",
             "nick": "Dom",
-            "role": "Programmer (Missions Team) ",
+            "role": "Programmer (Missions Team)",
             "active": "1"
         },
         {
