@@ -1877,6 +1877,16 @@
             "nick": "Hordeau",
             "role": "Mapper",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "BanKseSports",
+                "Twitter": "BanKsEsports"
+            },
+            "name": "James Banks",
+            "nick": "BanKs",
+            "role": "Commentator",
+            "active": "1"
         }
     ],
     "config": {
