@@ -13,12 +13,13 @@
     "convert:rimworld": "node scripts/csv-to-json.js --source=\"Developers - RimWorld.csv\" --destination=games/rimworld/data.json",
     "convert:conan": "node scripts/csv-to-json.js --source=\"Developers - Conan.csv\" --destination=games/conan/data.json",
     "vagrant-cron": "sudo cp /vagrant/config/cron/* /etc/cron.d && sudo chmod 644 /etc/cron.d/*",
-    "dev:components": "npm run lint:components && cross-env NODE_ENV=development browserify components/App.jsx -o web/scripts/app.js -t [ babelify --presets [ es2015 react ] ] && node scripts/copy-app.js",
-    "build:development": "cross-env NODE_ENV=development browserify components/App.jsx -o web/scripts/app.js -t [ babelify --presets [ es2015 react ] ] && node scripts/build.js",
-    "build": "cross-env NODE_ENV=production browserify components/App.jsx -o web/scripts/app.js -t [ babelify --presets [ es2015 react ] ] && uglifyjs web/scripts/app.js -o web/scripts/app.js -c warnings=false -m && node scripts/build.js",
-    "lint:components": "eslint -c kokarn/react components/*",
+    "dev:components": "npm run lint:components && cross-env NODE_ENV=development browserify app/index.jsx -o web/scripts/app.js -t [ babelify --presets [ es2015 react ] ] && node scripts/copy-app.js",
+    "build:development": "cross-env NODE_ENV=development browserify app/index.jsx -o web/scripts/app.js -t [ babelify --presets [ es2015 react ] ] && node scripts/build.js",
+    "build": "cross-env NODE_ENV=production browserify app/index.jsx -o web/scripts/app.js -t [ babelify --presets [ es2015 react ] ] && uglifyjs web/scripts/app.js -o web/scripts/app.js -c warnings=false -m && node scripts/build.js",
+    "lint:components": "eslint -c kokarn/react app/**/*",
     "lint:scripts": "eslint -c kokarn/nodejs scripts/*.js",
-    "watch": "npm-watch"
+    "watch": "npm-watch",
+    "pretest": "eslint *.js"
   },
   "author": "Oskar Risberg <kokarn@gmail.com>",
   "repository": {
@@ -33,16 +34,19 @@
   },
   "watch": {
     "dev:components": {
-      "patterns": ["components/*"],
-      "extensions": "jsx"
+      "patterns": [
+        "app/*"
+      ],
+      "extensions": "js,jsx"
     },
     "lint:scripts": "scripts/*.js"
   },
   "license": "MIT",
   "devDependencies": {
-    "eslint-config-kokarn": "^2.0.0",
     "eslint": "^3.5.0",
-    "npm-watch": "^0.1.8"
+    "eslint-config-kokarn": "^2.0.0",
+    "npm-watch": "^0.1.8",
+    "redux-devtools": "^3.3.2"
   },
   "dependencies": {
     "babel-preset-es2015": "^6.13.2",
@@ -57,10 +61,16 @@
     "minimist": "^1.2.0",
     "mustache": "^2.2.1",
     "query-string": "^4.2.3",
-    "react-dom": "^15.3.0",
-    "react-timeago": "^3.1.2",
     "react": "^15.3.0",
+    "react-dom": "^15.3.0",
+    "react-redux": "^5.0.2",
+    "react-timeago": "^3.1.2",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0",
     "sqlite3": "^3.1.4",
     "uglify-js": "^2.7.3"
+  },
+  "eslintConfig": {
+    "extends": "kokarn"
   }
 }
