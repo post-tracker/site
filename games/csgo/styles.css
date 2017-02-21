@@ -282,6 +282,12 @@ br {
     text-indent: -9999px;
 }
 
+.group-label.optic-gaming {
+    background-image: url( 'assets/logo-optic-gaming.png' );
+    background-size: 50px 15px;
+    text-indent: -9999px;
+}
+
 .group-label.pgl {
     background-image: url( 'assets/flairs.png' );
     background-position: 0 -153px;
