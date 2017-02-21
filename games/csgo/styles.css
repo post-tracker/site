@@ -107,6 +107,24 @@ br {
     text-indent: -9999px;
 }
 
+.group-label.big {
+    background-image: url( 'http://csgo-data.com/logos/big/100' );
+    background-size: 15px 15px;
+}
+
+.group-label.big:before {
+    background-image: inherit;
+    background-position: center;
+    background-size: 50px 50px;
+    content: ' ';
+    display: block;
+    position: relative;
+    height: 100%;
+    opacity: 0.3;
+    width: 100%;
+    z-index: -1;
+}
+
 .group-label.cevo {
     background-image: url( 'assets/flairs.png' );
     background-position: -104px -34px;
