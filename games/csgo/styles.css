@@ -287,6 +287,12 @@ br {
     text-indent: -9999px;
 }
 
+.group-label.splyce {
+    background-image: url( 'assets/logo-splyce.png' );
+    background-size: 50px 15px;
+    text-indent: -9999px;
+}
+
 .group-label.team-liquid {
     background-image: url( 'assets/flairs.png' );
     background-position: -104px -101px;
