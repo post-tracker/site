@@ -1887,6 +1887,16 @@
             "nick": "BanKs",
             "role": "Commentator",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Officialemilio",
+                "Twitter": "millegud"
+            },
+            "name": "Joel Mako",
+            "nick": "emilio",
+            "role": "Player",
+            "active": "1"
         }
     ],
     "config": {
