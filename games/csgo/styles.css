@@ -294,6 +294,12 @@ br {
     text-indent: -9999px;
 }
 
+.group-label.rfrsh-entertainment {
+    background-image: url( 'assets/logo-rfrsh-entertainment.png' );
+    background-size: 50px 15px;
+    text-indent: -9999px;
+}
+
 .group-label.renegades {
     background-image: url( 'assets/logo-renegades.png' );
     text-indent: -9999px;
