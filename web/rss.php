@@ -45,7 +45,12 @@ header( 'Content-Type: application/rss+xml;' );
         <atom:link href="https://{{hostname}}/rss" rel="self" type="application/rss+xml" />
         <?php
         $PDO->execute();
+        $usedGuids = array();
         while( $post = $PDO->fetch() ) :
+            if( in_array( $post->url, $usedGuids ) ) {
+                continue;
+            }
+            $usedGuids[] = $post->url;
             ?>
             <item>
                 <title><?php echo htmlspecialchars( html_entity_decode( $post->topic ) ); ?></title>
