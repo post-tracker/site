@@ -48,7 +48,7 @@ header( 'Content-Type: application/rss+xml;' );
         while( $post = $PDO->fetch() ) :
             ?>
             <item>
-                <title><?php echo htmlentities($post->topic); ?></title>
+                <title><?php echo htmlspecialchars( html_entity_decode( $post->topic ) ); ?></title>
                 <description><![CDATA[<?php echo $post->content; ?>]]></description>
                 <link><?php echo $post->url; ?></link>
                 <guid><?php echo $post->url; ?></guid>
