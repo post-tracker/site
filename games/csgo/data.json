@@ -468,6 +468,15 @@
         },
         {
             "accounts": {
+                "Reddit": "SCREAM8X"
+            },
+            "nick": "SCREAM8X",
+            "group": "ESEA",
+            "role": "League Operations Manager",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "ESLAnna",
                 "Twitter": "ESL_Anna"
             },
@@ -796,6 +805,17 @@
             },
             "nick": "Flipsid3",
             "group": "Flipsid3",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "wuvs",
+                "Twitter": "thewuvs"
+            },
+            "name": "Dana K",
+            "nick": "wuvs",
+            "group": "Flipsid3",
+            "role": "Director of CS:GO and Global Marketing",
             "active": "1"
         },
         {
