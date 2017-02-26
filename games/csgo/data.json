@@ -488,6 +488,15 @@
         },
         {
             "accounts": {
+                "Reddit": "wobut"
+            },
+            "nick": "wobut",
+            "group": "ESEA",
+            "role": "Developer",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "ESLAnna",
                 "Twitter": "ESL_Anna"
             },
