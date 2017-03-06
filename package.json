@@ -43,7 +43,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^3.5.0",
+    "eslint": "^3.17.1",
     "eslint-config-kokarn": "^2.0.0",
     "npm-watch": "^0.1.8",
     "redux-devtools": "^3.3.2"
