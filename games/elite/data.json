@@ -300,6 +300,15 @@
             "nick": "Eddie",
             "role": "Producer",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "MiggyRSS": "32350"
+            },
+            "name": "Adam Waite",
+            "nick": "Adam",
+            "role": "Designer",
+            "active": "1"
         }
     ]
 }
