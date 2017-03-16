@@ -198,6 +198,14 @@
             "nick": "Fyruna",
             "group": "DICE",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "DICE-RandomDeviation"
+            },
+            "nick": "RandomDeviation",
+            "group": "DICE",
+            "active": "1"
         }
     ]
 }
