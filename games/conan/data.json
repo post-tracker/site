@@ -81,6 +81,16 @@
             },
             "nick": "Funcom",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "nevayo",
+                "Twitter": "Spynosaur"
+            },
+            "name": "Nicole",
+            "nick": "nevayo",
+            "role": "Community Manager",
+            "active": "1"
         }
     ]
 }
