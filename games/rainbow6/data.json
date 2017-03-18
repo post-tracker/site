@@ -24,6 +24,7 @@
             },
             "nick": "BroCanadian",
             "group": "Continuum",
+            "role": "Player",
             "active": "1"
         },
         {
@@ -32,6 +33,7 @@
             },
             "nick": "Yunng",
             "group": "Continuum",
+            "role": "Player",
             "active": "1"
         },
         {
@@ -40,6 +42,7 @@
             },
             "nick": "nvKing_",
             "group": "Continuum",
+            "role": "Player",
             "active": "1"
         },
         {
@@ -48,6 +51,7 @@
             },
             "nick": "Necrociouss",
             "group": "Continuum",
+            "role": "Player",
             "active": "1"
         },
         {
@@ -56,42 +60,25 @@
             },
             "nick": "Retro1sg",
             "group": "Continuum",
-            "active": "1"
-        },
-        {
-            "accounts": {
-                "Reddit": "LordKeren"
-            },
-            "nick": "LordKeren",
-            "group": "Continuum",
             "role": "Player",
             "active": "1"
         },
         {
             "accounts": {
-                "Reddit": "PM_ME_UR_DAYJOB"
+                "Reddit": "SlashIsCash"
             },
-            "nick": "PM_ME_UR_DAYJOB",
-            "group": "Continuum",
-            "role": "Player",
-            "active": "1"
-        },
-        {
-            "accounts": {
-                "Reddit": "saxojam"
-            },
-            "nick": "saxojam",
-            "group": "Continuum",
-            "role": "Player",
-            "active": "1"
-        },
-        {
-            "accounts": {
-                "Reddit": "Kledr"
-            },
-            "nick": "Kledr",
+            "nick": "SlashIsCash",
             "group": "eRa Eternity",
             "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "JebusJM"
+            },
+            "nick": "JebusJM",
+            "group": "ESL",
+            "role": "Australia / New Zealand",
             "active": "1"
         },
         {
@@ -131,10 +118,22 @@
         },
         {
             "accounts": {
+                "Reddit": "verdipwnz",
+                "Twitter": "verdipwnz"
+            },
+            "name": "Marius Lauer",
+            "nick": "verdi",
+            "group": "ESL",
+            "role": "Caster",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "Remorce"
             },
             "nick": "Remorce",
             "group": "MiLSPEC",
+            "role": "Player",
             "active": "1"
         },
         {
@@ -143,6 +142,7 @@
             },
             "nick": "RR-dapz",
             "group": "MiLSPEC",
+            "role": "Player",
             "active": "1"
         },
         {
@@ -151,6 +151,7 @@
             },
             "nick": "17Serenity17",
             "group": "MiLSPEC",
+            "role": "Player",
             "active": "1"
         },
         {
@@ -159,6 +160,7 @@
             },
             "nick": "TOPPUKEKKU",
             "group": "MiLSPEC",
+            "role": "Player",
             "active": "1"
         },
         {
@@ -167,6 +169,7 @@
             },
             "nick": "Cr1msonDeath",
             "group": "MiLSPEC",
+            "role": "Player",
             "active": "1"
         },
         {
@@ -175,6 +178,7 @@
             },
             "nick": "meepeY",
             "group": "Playing Ducks",
+            "role": "Player",
             "active": "1"
         },
         {
@@ -234,6 +238,16 @@
             },
             "nick": "Jax",
             "group": "Ubisoft",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "blk_widow9",
+                "Twitter": "blk_widow9"
+            },
+            "nick": "Black_Widow9",
+            "group": "Ubisoft",
+            "role": "Community Representative",
             "active": "1"
         },
         {
