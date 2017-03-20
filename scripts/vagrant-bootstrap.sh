@@ -30,10 +30,24 @@ sed -i -e 's/error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT/error_reporting
 apt-get install -y lynx
 
 # SSL Stuff
-mkdir /etc/nginx/ssl
-cd /etc/nginx/ssl
-openssl dhparam -out dhparam.pem 2048
-openssl req -x509 -nodes -days 365 -newkey rsa:2048 -subj "/C=US/ST=Denial/L=Springfield/O=Dis/CN=localhost" -keyout /etc/nginx/ssl/key.pem -out /etc/nginx/ssl/cert.pem
+if [ ! -d /etc/nginx/ssl ]; then
+    mkdir /etc/nginx/ssl
+fi
+
+if [ ! -f /etc/nginx/ssl/dhparam.pem ]; then
+    openssl dhparam -out /etc/nginx/ssl/dhparam.pem 2048
+fi
+
+if [ ! -f /etc/nginx/ssl/key.pem ]; then
+    openssl req -x509 -nodes -days 365 -newkey rsa:2048 -subj "/C=US/ST=Denial/L=Springfield/O=Dis/CN=localhost" -keyout /etc/nginx/ssl/key.pem -out /etc/nginx/ssl/cert.pem
+fi
+
+# CouchDB
+apt-get install -y couchdb
+curl localhost:5984
+
+sed -i -e 's/;bind_address = 127.0.0.1/bind_address = 0.0.0.0/g' /etc/couchdb/local.ini
 
 systemctl reload nginx
 systemctl restart php7.0-fpm
+systemctl restart couchdb

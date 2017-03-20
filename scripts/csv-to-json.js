@@ -6,9 +6,11 @@ const JSON_TAB_SIZE = 4;
 const fs = require( 'fs' );
 
 const csvParse = require( 'csv-parse' );
+const nano = require( 'nano' )( 'http://localhost:5984' );
 
 const argv = require( 'minimist' )( process.argv.slice( ARGUMENTS_START ) );
 
+const database = nano.db.use( 'people' );
 const baseProperties = [
     'name',
     'nick',
