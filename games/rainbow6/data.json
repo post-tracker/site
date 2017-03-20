@@ -129,6 +129,22 @@
         },
         {
             "accounts": {
+                "Reddit": "Vapo-"
+            },
+            "nick": "Vapo-",
+            "group": "GiFu",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Willkey"
+            },
+            "nick": "Willkey",
+            "group": "GiFu",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "Remorce"
             },
             "nick": "Remorce",
@@ -262,20 +278,6 @@
                 "Reddit": "zironicdk"
             },
             "nick": "zironicdk",
-            "active": "1"
-        },
-        {
-            "accounts": {
-                "Reddit": "Vapo-"
-            },
-            "nick": "Vapo-",
-            "active": "1"
-        },
-        {
-            "accounts": {
-                "Reddit": "Willkey"
-            },
-            "nick": "Willkey",
             "active": "1"
         }
     ]
