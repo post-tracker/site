@@ -9,6 +9,7 @@
     "convert:bf": "node scripts/csv-to-json.js --source=\"Developers - Battlefield1.csv\" --destination=games/battlefield1/data.json",
     "convert:r6": "node scripts/csv-to-json.js --source=\"Developers - Rainbow6.csv\" --destination=games/rainbow6/data.json",
     "convert:ark": "node scripts/csv-to-json.js --source=\"Developers - Ark.csv\" --destination=games/ark/data.json",
+    "convert:pubg": "node scripts/csv-to-json.js --source=\"Developers - PUBG.csv\" --destination=games/pubg/data.json",
     "convert:elite": "node scripts/csv-to-json.js --source=\"Developers - Elite Dangerous.csv\" --destination=games/elite/data.json",
     "convert:rimworld": "node scripts/csv-to-json.js --source=\"Developers - RimWorld.csv\" --destination=games/rimworld/data.json",
     "convert:conan": "node scripts/csv-to-json.js --source=\"Developers - Conan.csv\" --destination=games/conan/data.json",

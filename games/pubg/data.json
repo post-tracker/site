@@ -1,0 +1,67 @@
+{
+    "name": "PLAYERUNKNOWN'S BATTLEGROUNDS",
+    "shortName": "PUBG",
+    "hostname": "devtracker.kokarn.com",
+    "config": {
+        "Steam": {
+            "matchOnly": "578080"
+        },
+        "Reddit": {
+            "matchOnly": "PUBATTLEGROUNDS"
+        }
+    },
+    "developers": [
+        {
+            "accounts": {
+                "Reddit": "PUBG_FWG",
+                "Steam": "76561198369453251",
+                "PUBGForums": "9-pubg_fwg"
+            },
+            "nick": "FWG",
+            "group": "PLAYERUNKNOWN",
+            "role": "Associate Community Manager",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "PUBG_Hyowon",
+                "Steam": "76561198352531497",
+                "PUBGForums": "1-pubg_hyowon"
+            },
+            "nick": "Hyowon",
+            "group": "PLAYERUNKNOWN",
+            "role": "Product Manager",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "poopieQueen",
+                "Twitter": "poopieQueen"
+            },
+            "name": "Sammie",
+            "nick": "poopieQueen",
+            "group": "PLAYERUNKNOWN",
+            "role": "Community Manager",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "PUBG_Daniel",
+                "PUBGForums": "1141-pubg_daniel"
+            },
+            "nick": "Daniel",
+            "group": "PLAYERUNKNOWN",
+            "role": "Community Manager",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "lazyink"
+            },
+            "nick": "lazyink",
+            "group": "PLAYERUNKNOWN",
+            "role": "Creative Director",
+            "active": "1"
+        }
+    ]
+}
