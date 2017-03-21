@@ -78,6 +78,13 @@ parser.on( 'error', ( error ) => {
 // When we are done, test that the parsed output matched what expected
 parser.on( 'finish', () => {
     const developers = parseOuput( output );
+
+    for ( let i = 0; i < developers.length; i = i + 1 ) {
+        developers[ i ].game = argv.game;
+        database.insert( developers[ i ], `${ argv.game }-${ developers[ i ].nick }` );
+    }
+
+    return false;
     const writeData = currentData;
 
     writeData.developers = developers;
