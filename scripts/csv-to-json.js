@@ -25,8 +25,12 @@ const parser = csvParse( {
     delimiter: ',',
 } );
 
+const currentData = {};
+
 // eslint-disable-next-line no-sync
-const currentData = JSON.parse( fs.readFileSync( argv.destination, 'utf8' ) );
+if ( argv.destination ) {
+    currentData = JSON.parse( fs.readFileSync( argv.destination, 'utf8' ) );
+}
 
 const parseOuput = function parseOuput ( input ) {
     const developers = [];
