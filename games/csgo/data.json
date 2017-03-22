@@ -119,6 +119,14 @@
         },
         {
             "accounts": {
+                "Reddit": "CEVONews"
+            },
+            "nick": "CEVONews",
+            "group": "CEVO",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "Cloud9Jack",
                 "Twitter": "C9Jack"
             },
