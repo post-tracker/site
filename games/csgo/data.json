@@ -1325,14 +1325,6 @@
         },
         {
             "accounts": {
-                "Reddit": "Potato71"
-            },
-            "nick": "Potato71",
-            "group": "RuHub",
-            "active": "1"
-        },
-        {
-            "accounts": {
                 "Reddit": "MetuzTV"
             },
             "name": "Vince Hill",
@@ -1396,6 +1388,14 @@
         },
         {
             "accounts": {
+                "Reddit": "Potato71"
+            },
+            "nick": "Potato71",
+            "group": "RuHub",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "Ryu-",
                 "Twitter": "selflessryu"
             },
@@ -1454,6 +1454,17 @@
         },
         {
             "accounts": {
+                "Reddit": "roca2k9",
+                "Twitter": "rocazor"
+            },
+            "name": "Daniel Gustaferri",
+            "nick": "roca",
+            "group": "Splyce",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "jdm64GO",
                 "Twitter": "Liquid_jdm"
             },
@@ -1470,17 +1481,6 @@
             },
             "name": "Jonathan Jablonowski",
             "nick": "EliGE",
-            "group": "Team Liquid",
-            "role": "Player",
-            "active": "1"
-        },
-        {
-            "accounts": {
-                "Reddit": "PimpCSGO",
-                "Twitter": "LiquidPimpZ"
-            },
-            "name": "Jacob Winneche",
-            "nick": "Pimp",
             "group": "Team Liquid",
             "role": "Player",
             "active": "1"
@@ -1662,6 +1662,16 @@
         },
         {
             "accounts": {
+                "Reddit": "PimpCSGO",
+                "Twitter": "LiquidPimpZ"
+            },
+            "name": "Jacob Winneche",
+            "nick": "Pimp",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "hazedlol",
                 "Twitter": "clghazed"
             },
@@ -1835,16 +1845,6 @@
             },
             "name": "Joshua Nissan",
             "nick": "steel",
-            "role": "Player",
-            "active": "1"
-        },
-        {
-            "accounts": {
-                "Reddit": "roca2k9",
-                "Twitter": "rocazor"
-            },
-            "name": "Daniel Gustaferri",
-            "nick": "roca",
             "role": "Player",
             "active": "1"
         },
