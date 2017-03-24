@@ -3,6 +3,10 @@
     "shortName": "PUBG",
     "hostname": "pubgdevtracker.com",
     "config": {
+        "PUBGForums": {
+            "class": "IPB",
+            "endpoint": "http://forums.playbattlegrounds.com"
+        },
         "Steam": {
             "matchOnly": "578080"
         },

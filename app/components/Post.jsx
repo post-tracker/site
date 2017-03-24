@@ -68,6 +68,9 @@ class Post extends React.Component {
             case 'LudeonForums':
                 source = 'comments';
                 break;
+            case 'PUBGForums':
+                source = 'comments';
+                break;
             default:
                 source = originalSource;
                 break;

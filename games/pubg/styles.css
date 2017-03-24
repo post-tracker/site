@@ -84,6 +84,11 @@ h1 a:hover {
     text-decoration: underline;
 }
 
+.ipsQuote_citation {
+    font-weight: bold;
+}
+
+
 @media screen and ( max-width: 660px ){
     .rss-link-wrapper {
         display: none;
