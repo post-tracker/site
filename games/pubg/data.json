@@ -1,7 +1,7 @@
 {
     "name": "PLAYERUNKNOWN'S BATTLEGROUNDS",
     "shortName": "PUBG",
-    "hostname": "devtracker.kokarn.com",
+    "hostname": "pubgdevtracker.com",
     "config": {
         "Steam": {
             "matchOnly": "578080"
