@@ -818,6 +818,15 @@
         },
         {
             "accounts": {
+                "Reddit": "Leiria"
+            },
+            "nick": "Leiria",
+            "group": "FACEIT",
+            "role": "Executive Operations Manager",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "IndieFinch",
                 "Twitter": "indiefinch"
             },
