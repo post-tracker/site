@@ -70,6 +70,51 @@
             "nick": "SlashIsCash",
             "group": "eRa Eternity",
             "role": "Player",
+            "active": "0"
+        },
+        {
+            "accounts": {
+                "Reddit": "KingGeorgeTV"
+            },
+            "nick": "KingGeorgeTV",
+            "group": "eRa Eternity",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "-adam"
+            },
+            "nick": "adam",
+            "group": "eRa Eternity",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "ecl9pse"
+            },
+            "nick": "ecl9pse",
+            "group": "eRa Eternity",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "wiggling_snake"
+            },
+            "nick": "wiggling_snake",
+            "group": "eRa Eternity",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Avianphlu"
+            },
+            "nick": "Avianphlu",
+            "group": "eRa Eternity",
+            "role": "Player",
             "active": "1"
         },
         {
