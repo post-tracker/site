@@ -1518,6 +1518,16 @@
         },
         {
             "accounts": {
+                "Reddit": "99Swani"
+            },
+            "name": "Jan Müller",
+            "nick": "Swani",
+            "group": "Team Liquid",
+            "role": "Analyst",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "reginaldBRO",
                 "Twitter": "tsmreginald"
             },
