@@ -1292,6 +1292,15 @@
         },
         {
             "accounts": {
+                "Reddit": "DarkPGL"
+            },
+            "nick": "Dark",
+            "group": "PGL",
+            "role": "Head of Broadcast",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "voxeminor-gomez",
                 "Twitter": "gomezcsgo"
             },
