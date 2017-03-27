@@ -1981,6 +1981,16 @@
             "nick": "emilio",
             "role": "Player",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "ropzicle",
+                "Twitter": "ropzicle"
+            },
+            "name": "Robin Kool",
+            "nick": "ropz",
+            "role": "Player",
+            "active": "1"
         }
     ],
     "config": {
