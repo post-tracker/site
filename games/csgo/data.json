@@ -283,7 +283,7 @@
                 "Twitter": "marcwinther"
             },
             "name": "Marc Winther",
-            "nick": "Marc Winther",
+            "nick": "nix0n",
             "group": "DreamHack",
             "role": "eSports",
             "active": "1"
@@ -500,6 +500,17 @@
             "nick": "wobut",
             "group": "ESEA",
             "role": "Developer",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Joe__Miller",
+                "Twitter": "joe_miller"
+            },
+            "name": "Joe Miller",
+            "nick": "Joe__Miller",
+            "group": "ESL",
+            "role": "Editor in Chief",
             "active": "1"
         },
         {
