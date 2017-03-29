@@ -85,7 +85,7 @@ class Post extends React.Component {
         let expander;
         let bodyClasses = 'panel-body';
         let title;
-        let postedString;
+        let postedString = '';
         const sectionURL = this.getSectionURL();
         let iconNode;
         let topicLinkNode = false;
