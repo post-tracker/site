@@ -88,6 +88,7 @@ class Post extends React.Component {
         let postedString;
         const sectionURL = this.getSectionURL();
         let iconNode;
+        let topicLinkNode = false;
 
         if ( sectionURL ) {
             iconNode = (
@@ -161,9 +162,22 @@ class Post extends React.Component {
         }
 
         if ( title ) {
-            postedString = ` ${ title } posted in `;
+            postedString = ` ${ title } `;
+        }
+
+        if ( this.props.postData.topic_url ) {
+            postedString = `${ postedString } posted in `;
+            topicLinkNode = (
+                <a
+                    // eslint-disable-next-line react/no-danger
+                    dangerouslySetInnerHTML = { {
+                        __html: this.props.postData.topic,
+                    } }
+                    href = { this.props.postData.topic_url } // eslint-disable-line camelcase
+                />
+            );
         } else {
-            postedString = ' posted in ';
+            postedString = `${ postedString } ${ this.props.postData.topic }`;
         }
 
         return (
@@ -179,13 +193,7 @@ class Post extends React.Component {
                         { this.props.postData.nick }
                     </span>
                     { postedString }
-                    <a
-                        // eslint-disable-next-line react/no-danger
-                        dangerouslySetInnerHTML = { {
-                            __html: this.props.postData.topic,
-                        } }
-                        href = { this.props.postData.topic_url } // eslint-disable-line camelcase
-                    />
+                    { topicLinkNode }
                 </div>
                 <div
                     className = { bodyClasses }
