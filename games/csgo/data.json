@@ -149,7 +149,6 @@
         },
         {
             "accounts": {
-                "Reddit": "Skadewdle",
                 "Twitter": "C9Skadoodle"
             },
             "name": "Tyler Latham",
@@ -219,7 +218,7 @@
             "nick": "Subroza",
             "group": "Counter Logic Gaming",
             "role": "Player",
-            "active": "1"
+            "active": "0"
         },
         {
             "accounts": {
@@ -281,7 +280,7 @@
         {
             "accounts": {
                 "Reddit": "marcwinther",
-                "Twitter": "nix0n"
+                "Twitter": "marcwinther"
             },
             "name": "Marc Winther",
             "nick": "Marc Winther",
@@ -1261,7 +1260,7 @@
         {
             "accounts": {
                 "Reddit": "OfficialHiko",
-                "Twitter": "Liquid_Hiko"
+                "Twitter": "hiko"
             },
             "name": "Spencer Martin",
             "nick": "Hiko",
@@ -1453,7 +1452,7 @@
         {
             "accounts": {
                 "Reddit": "semphis",
-                "Twitter": "TSMsemphisss"
+                "Twitter": "semphisss"
             },
             "name": "Kory Friesen",
             "nick": "semphis",
@@ -1567,7 +1566,7 @@
         {
             "accounts": {
                 "Reddit": "mattwood_valve",
-                "Twitter": "[matttwood]"
+                "Twitter": "matttwood"
             },
             "name": "Matt Wood",
             "nick": "Matt Wood",
@@ -1577,6 +1576,7 @@
         },
         {
             "accounts": {
+                "Steam": "76561198082857351",
                 "Twitter": "csgo_dev"
             },
             "nick": "CSGO Dev",
@@ -1701,7 +1701,7 @@
         {
             "accounts": {
                 "Reddit": "hazedlol",
-                "Twitter": "clghazed"
+                "Twitter": "hazedcs"
             },
             "name": "James Cobb",
             "nick": "hazed",
