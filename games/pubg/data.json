@@ -22,7 +22,6 @@
                 "PUBGForums": "9-pubg_fwg"
             },
             "nick": "FWG",
-            "group": "PLAYERUNKNOWN",
             "role": "Associate Community Manager",
             "active": "1"
         },
@@ -33,7 +32,6 @@
                 "PUBGForums": "1-pubg_hyowon"
             },
             "nick": "Hyowon",
-            "group": "PLAYERUNKNOWN",
             "role": "Product Manager",
             "active": "1"
         },
@@ -44,7 +42,6 @@
             },
             "name": "Sammie",
             "nick": "poopieQueen",
-            "group": "PLAYERUNKNOWN",
             "role": "Community Manager",
             "active": "1"
         },
@@ -54,7 +51,6 @@
                 "PUBGForums": "1141-pubg_daniel"
             },
             "nick": "Daniel",
-            "group": "PLAYERUNKNOWN",
             "role": "Community Manager",
             "active": "1"
         },
@@ -63,8 +59,21 @@
                 "Reddit": "lazyink"
             },
             "nick": "lazyink",
-            "group": "PLAYERUNKNOWN",
             "role": "Creative Director",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Twitter": "PUBATTLEGROUNDS"
+            },
+            "nick": "PLAYERUNKNOWN",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "PUBGForums": "186-slyvinlisha"
+            },
+            "nick": "Slyvinlisha",
             "active": "1"
         }
     ]
