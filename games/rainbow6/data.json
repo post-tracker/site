@@ -313,6 +313,17 @@
         },
         {
             "accounts": {
+                "Reddit": "UbiGabe",
+                "Twitter": "ubigabe"
+            },
+            "name": "Gabe Graziani",
+            "nick": "Gabe",
+            "group": "Ubisoft",
+            "role": "Community Developer",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "Sixquatre-"
             },
             "nick": "Sixquatre-",
