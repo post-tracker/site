@@ -78,6 +78,14 @@ br {
     width: 1040px;
 }
 
+.groups-wrapper .filters-wrapper .fa {
+    transition: transform 0.3s ease;
+}
+
+.groups-wrapper.show .filters-wrapper .fa {
+    transform: rotate( 180deg );
+}
+
 .checkbox {
     display: inline-block;
     font-size: 12px;
