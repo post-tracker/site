@@ -11,7 +11,6 @@ import {
 
 const groups = function groups ( state = {
     items: [],
-    show: false,
 }, action ) {
     let updatedItems;
     const currentQuery = queryString.parse( location.search );

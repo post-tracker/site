@@ -3,6 +3,30 @@ import React from 'react';
 import GroupCheckbox from './GroupCheckbox.jsx';
 
 class GroupList extends React.Component {
+    constructor ( props ) {
+        super( props );
+
+        this.handleFilterExpandClick = this.handleFilterExpandClick.bind( this );
+
+        this.state = {
+            showGroups: true,
+        };
+    }
+
+    componentWillMount () {
+        if ( window.matchMedia( '( max-width: 450px )' ).matches ) {
+            this.setState( {
+                showGroups: false,
+            } );
+        }
+    }
+
+    handleFilterExpandClick () {
+        this.setState( {
+            showGroups: !this.state.showGroups,
+        } );
+    }
+
     render () {
         let groupsClasses = 'groups-wrapper';
         let allChecked = true;
@@ -33,7 +57,7 @@ class GroupList extends React.Component {
             groupsClasses = `${ groupsClasses } hidden`;
         }
 
-        if ( this.props.showGroups ) {
+        if ( this.state.showGroups ) {
             groupsClasses = `${ groupsClasses } show`;
         }
 
@@ -67,7 +91,6 @@ GroupList.displayName = 'GroupList';
 GroupList.propTypes = {
     // eslint-disable-next-line
     groups: React.PropTypes.array.isRequired,
-    showGroups: React.PropTypes.bool.isRequired,
 };
 
 export default GroupList;

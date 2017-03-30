@@ -16,7 +16,6 @@ class GroupsContainer extends React.Component {
         return (
             <GroupList
                 groups = { this.props.groups }
-                showGroups = { this.props.showGroups }
             />
         );
     }
@@ -29,7 +28,6 @@ const mapStateToProps = function mapStateToProps ( state ) {
 
     return {
         groups: groups.items || [],
-        showGroups: groups.show || true,
     };
 };
 
@@ -45,7 +43,6 @@ GroupsContainer.propTypes = {
     getGroups: React.PropTypes.func.isRequired,
     // eslint-disable-next-line react/forbid-prop-types
     groups: React.PropTypes.array.isRequired,
-    showGroups: React.PropTypes.bool.isRequired,
 };
 
 export default connect(
