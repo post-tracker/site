@@ -21,6 +21,8 @@ $query = 'SELECT
         accounts.uid = posts.uid
     AND
         accounts.service = posts.source
+    AND
+        accounts.service != \'Twitter\'
     ORDER BY
         posts.timestamp
     DESC
