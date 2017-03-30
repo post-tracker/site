@@ -115,6 +115,10 @@ a:active {
     word-wrap: break-word;
 }
 
+.panel-body img {
+    max-width: 100%;
+}
+
 .panel-footer {
     background-color: #1a1a1a;
 }

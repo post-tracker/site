@@ -46,6 +46,10 @@ h1 a:hover {
     word-wrap: break-word;
 }
 
+.panel-body img {
+    max-width: 100%;
+}
+
 .fa {
     margin-right: 5px;
 }

@@ -59,6 +59,10 @@ br {
     font-size: 38px;
 }
 
+.panel-body img {
+    max-width: 100%;
+}
+
 .fa {
     margin-right: 5px;
 }
