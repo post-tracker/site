@@ -678,6 +678,17 @@
         },
         {
             "accounts": {
+                "Reddit": "UberShouts",
+                "Twitter": "ubershouts"
+            },
+            "name": "Mitch Leslie",
+            "nick": "UberShouts",
+            "group": "ESL",
+            "role": "Caster",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "JacobNWolf",
                 "Twitter": "JacobNWolf"
             },
