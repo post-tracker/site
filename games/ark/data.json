@@ -7,6 +7,10 @@
         "<ark:from><?php echo $post->nick; ?></ark:from>"
     ],
     "config": {
+        "SurviveTheArk" : {
+            "class": "IPB",
+            "endpoint": "https://survivetheark.com"
+        },
         "Steam": {
             "matchOnly": "346110"
         },
