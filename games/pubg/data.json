@@ -38,7 +38,8 @@
         {
             "accounts": {
                 "Reddit": "poopieQueen",
-                "Twitter": "poopieQueen"
+                "Twitter": "poopieQueen",
+                "PUBGForums": "18-pubg_poopiequeen"
             },
             "name": "Sammie",
             "nick": "poopieQueen",
@@ -74,6 +75,37 @@
                 "PUBGForums": "186-slyvinlisha"
             },
             "nick": "Slyvinlisha",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "PUBGForums": "19-pubg_ch-kim"
+            },
+            "nick": "Kim",
+            "role": "Executive Producer",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "PUBGForums": "647-pubg_smookie"
+            },
+            "nick": "smookie",
+            "role": "Lead Animator",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "PUBGForums": "80-pubg_tooner"
+            },
+            "nick": "tooner",
+            "role": "Content Programmer",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "PUBGForums": "2893-sgonlee"
+            },
+            "nick": "sgonlee",
             "active": "1"
         }
     ]
