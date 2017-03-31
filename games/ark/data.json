@@ -7,7 +7,7 @@
         "<ark:from><?php echo $post->nick; ?></ark:from>"
     ],
     "config": {
-        "SurviveTheArk" : {
+        "SurviveTheArk": {
             "class": "IPB",
             "endpoint": "https://survivetheark.com"
         },
@@ -71,7 +71,8 @@
         },
         {
             "accounts": {
-                "Steam": "76561198207415608"
+                "Steam": "76561198207415608",
+                "SurviveTheArk": "180634-studiowildcard"
             },
             "nick": "Studio Wildcard",
             "active": "1"
@@ -88,7 +89,8 @@
             "accounts": {
                 "Reddit": "nayvihn",
                 "Steam": "76561198178797193",
-                "Twitter": "nayvihn"
+                "Twitter": "nayvihn",
+                "SurviveTheArk": "13-navin"
             },
             "name": "Navin Supphapholsiri",
             "nick": "The Right Foot",
@@ -129,7 +131,8 @@
         },
         {
             "accounts": {
-                "Steam": "76561198179250147"
+                "Steam": "76561198179250147",
+                "SurviveTheArk": "254484-borisdos"
             },
             "nick": "Boris Dos",
             "role": "Network Engineer",
@@ -156,6 +159,7 @@
         },
         {
             "accounts": {
+                "Steam": "76561198100781449",
                 "Twitter": "Explore_ARK",
                 "SurviveTheArk": "3-casanova"
             },
@@ -181,17 +185,106 @@
                 "SurviveTheArk": "8-lilpanda"
             },
             "nick": "LilPanda",
-            "role": "Community Hub Leader",
+            "role": "Community Lead",
             "active": "1"
         },
         {
             "accounts": {
                 "Reddit": "Nubsly-",
-                "Steam": "Nubsly"
+                "Steam": "Nubsly",
+                "SurviveTheArk": "10-nubsly"
             },
             "nick": "Nubsly",
             "role": "Forum Moderator",
             "active": "0"
+        },
+        {
+            "accounts": {
+                "Steam": "complexminded",
+                "SurviveTheArk": "2620-complexminded"
+            },
+            "nick": "complexminded",
+            "role": "Community Lead",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "SurviveTheArk": "93618-evilmrfrank"
+            },
+            "nick": "evilmrfrank",
+            "role": "Community Lead",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Steam": "76561198310841199",
+                "SurviveTheArk": "267078-jarvis"
+            },
+            "nick": "Jarvis",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "SurviveTheArk": "4054-jeremy-stieglitz"
+            },
+            "nick": "Jeremy Stieglitz",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "SurviveTheArk": "3778-nmarcel"
+            },
+            "nick": "nmarcel",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "SurviveTheArk": "115752-ortalio"
+            },
+            "nick": "Oralio",
+            "role": "Support",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Steam": "WC_Stark",
+                "SurviveTheArk": "266994-stark"
+            },
+            "nick": "Stark",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "SurviveTheArk": "6174-wildcardjaeger"
+            },
+            "nick": "Jaeger",
+            "role": "Support",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "SurviveTheArk": "3832-wildcardlelantos"
+            },
+            "nick": "Lelantos",
+            "role": "Support",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "SurviveTheArk": "3856-wildcardvanilla"
+            },
+            "nick": "Vanilla",
+            "role": "Community Officer",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Steam": "WildcardQA",
+                "SurviveTheArk": "6-zane"
+            },
+            "nick": "Zane",
+            "role": "Quality Assurance",
+            "active": "1"
         }
     ]
 }
