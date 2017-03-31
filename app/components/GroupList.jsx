@@ -14,7 +14,7 @@ class GroupList extends React.Component {
     }
 
     componentWillMount () {
-        if ( window.matchMedia( '( max-width: 450px )' ).matches ) {
+        if ( window.matchMedia && window.matchMedia( '( max-width: 450px )' ).matches ) {
             this.setState( {
                 showGroups: false,
             } );
