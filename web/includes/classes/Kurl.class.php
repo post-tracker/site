@@ -26,7 +26,7 @@ class Kurl {
     }
 
     private function loadFromWeb( $url ){
-        $this->data = file_get_contents( $url );
+        $this->data = @file_get_contents( $url );
 
         if( $this->data && $this->ttl > 0 ):
             apcu_store( $url, true, $this->ttl );

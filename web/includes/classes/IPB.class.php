@@ -1,6 +1,6 @@
 <?php
 class IPB extends Kurl {
-    private static $profileBase = '{{path}}/profile/{{userId}}/?do=content&type=forums_topic_post&change_section=1';
+    private static $profileBase = '{{path}}/profile/{{userId}}/content/';
 
     private $posts = array();
 
@@ -18,6 +18,10 @@ class IPB extends Kurl {
         $url = str_replace( '{{path}}', $this->path, $url );
 
         $html = str_get_html( $this->loadUrl( $url, 0 ) );
+
+        if( !$html ) :
+            return false;
+        endif;
 
         // Find all article blocks
         foreach( $html->find( 'div.ipsComment_content ' ) as $forumPost ) :
