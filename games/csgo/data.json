@@ -2013,6 +2013,14 @@
             "nick": "ropz",
             "role": "Player",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "xPaw"
+            },
+            "nick": "xPaw",
+            "role": "SteamDB creator",
+            "active": "1"
         }
     ],
     "config": {
