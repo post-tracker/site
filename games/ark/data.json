@@ -209,10 +209,12 @@
         },
         {
             "accounts": {
+                "Twitter": "evilmrfrank",
                 "SurviveTheArk": "93618-evilmrfrank"
             },
+            "name": "Ben Burkart",
             "nick": "evilmrfrank",
-            "role": "Community Lead",
+            "role": "Level Designer",
             "active": "1"
         },
         {
