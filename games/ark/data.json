@@ -1,6 +1,6 @@
 {
-    "name": "Ark: Survival Evolved",
-    "shortName": "Ark",
+    "name": "ARK: Survival Evolved",
+    "shortName": "ARK",
     "hostname": "arkdevtracker.com",
     "rss": [
         "<ark:source><?php echo $post->source; ?></ark:source>",
