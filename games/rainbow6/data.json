@@ -333,6 +333,17 @@
         },
         {
             "accounts": {
+                "Reddit": "Ubi-Cain",
+                "Twitter": "cainsinopoulos"
+            },
+            "name": "Cain Sinopoulos",
+            "nick": "Cain",
+            "group": "Ubisoft",
+            "role": "Community Developer",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "Sixquatre-"
             },
             "nick": "Sixquatre-",
