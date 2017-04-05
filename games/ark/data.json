@@ -49,6 +49,7 @@
             },
             "name": "Kayd Hendricks",
             "nick": "The Right Hand",
+            "role": "Senior Designer",
             "active": "1"
         },
         {
@@ -286,6 +287,15 @@
             },
             "nick": "Zane",
             "role": "Quality Assurance",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "WC_Baker",
+                "SurviveTheArk": "457887-sbaker"
+            },
+            "nick": "Baker",
+            "role": "Audio Director",
             "active": "1"
         }
     ]
