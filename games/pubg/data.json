@@ -67,7 +67,7 @@
             "accounts": {
                 "Twitter": "PUBATTLEGROUNDS"
             },
-            "nick": "PLAYERUNKNOWN",
+            "nick": "PUBATTLEGROUNDS",
             "active": "1"
         },
         {
@@ -106,6 +106,14 @@
                 "PUBGForums": "2893-sgonlee"
             },
             "nick": "sgonlee",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Twitter": "BattleRoyaleMod"
+            },
+            "nick": "PLAYERUNKNOWN",
+            "role": "Creative Director",
             "active": "1"
         }
     ]
