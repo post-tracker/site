@@ -57,7 +57,8 @@
                 "Steam": "76561198178808059"
             },
             "nick": "The Left Hand",
-            "role": "Designer"
+            "role": "Designer",
+            "active": "1"
         },
         {
             "accounts": {
@@ -210,6 +211,7 @@
         },
         {
             "accounts": {
+                "Reddit": "evilmrfrank",
                 "Twitter": "evilmrfrank",
                 "SurviveTheArk": "93618-evilmrfrank"
             },
