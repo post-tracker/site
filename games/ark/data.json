@@ -299,6 +299,16 @@
             "nick": "Baker",
             "role": "Audio Director",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "SusanCS",
+                "Twitter": "SusanCStieglitz"
+            },
+            "name": "Susan Claire",
+            "nick": "Susan",
+            "role": "Retired Co Founder of Studio Wildcard",
+            "active": "0"
         }
     ]
 }
