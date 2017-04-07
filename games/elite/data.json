@@ -309,6 +309,14 @@
             "nick": "Adam",
             "role": "Designer",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "TobiiMaguire"
+            },
+            "nick": "Tobii",
+            "role": "Community Manager",
+            "active": "1"
         }
     ]
 }
