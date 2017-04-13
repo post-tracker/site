@@ -115,6 +115,14 @@
             "nick": "PLAYERUNKNOWN",
             "role": "Creative Director",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Twitter": "Panky"
+            },
+            "nick": "Panky",
+            "role": "eSports Program Manager",
+            "active": "1"
         }
     ]
 }
