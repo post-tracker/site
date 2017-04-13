@@ -1,6 +1,6 @@
 <?php
 class IPB extends Kurl {
-    private static $profileBase = '{{path}}/profile/{{userId}}/content/';
+    private static $profileBase = '{{path}}/profile/{{userId}}/?do=content&type=forums_topic_post&change_section=1';
 
     private $posts = array();
 
@@ -24,7 +24,7 @@ class IPB extends Kurl {
         endif;
 
         // Find all article blocks
-        foreach( $html->find( 'div.ipsComment_content ' ) as $forumPost ) :
+        foreach( $html->find( 'div.ipsComment_content' ) as $forumPost ) :
             $url = $forumPost->find( 'h3 a', 0 )->href;
             $text = $forumPost->find( '.ipsType_richText', 0 )->innertext;
 
