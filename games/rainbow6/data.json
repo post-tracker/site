@@ -128,11 +128,20 @@
         },
         {
             "accounts": {
+                "Reddit": "ESL-Force"
+            },
+            "nick": "Force",
+            "group": "ESL",
+            "role": "Head Admin",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "Pankie"
             },
             "nick": "Pankie",
             "group": "ESL",
-            "active": "1"
+            "active": "0"
         },
         {
             "accounts": {
