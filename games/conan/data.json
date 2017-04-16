@@ -7,7 +7,8 @@
             "index": "ConanExiles",
             "exclude": [
                 "funny",
-                "Steep"
+                "Steep",
+                "SecretWorldLegends"
             ]
         },
         "Steam": {
