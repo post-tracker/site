@@ -3,20 +3,30 @@ import { connect } from 'react-redux';
 
 import {
     getGroups,
+    getServices,
 } from '../actions';
 
+import ServicesList from '../components/ServicesList.jsx';
+import Search from './Search.jsx';
 import GroupList from '../components/GroupList.jsx';
 
-class GroupsContainer extends React.Component {
+class FiltersContainer extends React.Component {
     componentDidMount () {
+        this.props.getServices();
         this.props.getGroups();
     }
 
     render () {
         return (
-            <GroupList
-                groups = { this.props.groups }
-            />
+            <div>
+                <ServicesList
+                    services = { this.props.services }
+                />
+                <Search />
+                <GroupList
+                    groups = { this.props.groups }
+                />
+            </div>
         );
     }
 }
@@ -24,10 +34,12 @@ class GroupsContainer extends React.Component {
 const mapStateToProps = function mapStateToProps ( state ) {
     const {
         groups,
+        services,
     } = state;
 
     return {
         groups: groups.items || [],
+        services: services.items || [],
     };
 };
 
@@ -36,16 +48,22 @@ const mapDispatchToProps = ( dispatch ) => {
         getGroups: () => {
             dispatch( getGroups() );
         },
+        getServices: () => {
+            dispatch( getServices() );
+        },
     };
 };
 
-GroupsContainer.propTypes = {
+FiltersContainer.propTypes = {
     getGroups: React.PropTypes.func.isRequired,
+    getServices: React.PropTypes.func.isRequired,
     // eslint-disable-next-line react/forbid-prop-types
     groups: React.PropTypes.array.isRequired,
+    // eslint-disable-next-line react/forbid-prop-types
+    services: React.PropTypes.array.isRequired,
 };
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)( GroupsContainer );
+)( FiltersContainer );

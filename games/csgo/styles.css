@@ -9,36 +9,6 @@
     font-style: normal;
 }
 
-body {
-    font-size: 15px;
-    line-height: 1.5;
-}
-
-blockquote {
-    font-size: inherit;
-}
-
-br {
-    content: ' ';
-    display: block;
-    margin: 15px auto;
-}
-
-.header-container {
-    position: relative;
-}
-
-.rss-link-wrapper {
-    position: absolute;
-    right: 15px;
-    top: 10px;
-}
-
-.rss-link-wrapper i {
-    font-size: 1.8em;
-    margin: 0;
-}
-
 .container > h1 {
     font-family: counter-strike, serif;
     text-align: center;
@@ -50,72 +20,16 @@ br {
     text-decoration: none;
 }
 
-.panel {
-    position: relative;
-    word-wrap: break-word;
-}
-
 .panel h1 {
     font-size: 38px;
-}
-
-.panel-body img {
-    max-width: 100%;
-}
-
-.fa {
-    margin-right: 5px;
-}
-
-.clearer {
-    line-height: 37px;
-    pointer-events: auto;
-    z-index: 1;
-}
-
-.groups-wrapper {
-    margin: 0 auto 20px auto;
-    width: 1040px;
-}
-
-.groups-wrapper .filters-wrapper .fa {
-    transition: transform 0.3s ease;
-}
-
-.groups-wrapper.show .filters-wrapper .fa {
-    transform: rotate( 180deg );
-}
-
-.checkbox {
-    display: inline-block;
-    font-size: 12px;
-    margin: 5px;
-    line-height: 15px;
-    width: 105px;
-}
-
-/* Fix for bootstrap styling */
-.checkbox+.checkbox {
-    margin: 5px;
-}
-
-.group-label {
-    background-position: top left;
-    background-repeat: no-repeat;
-    display: inline-block;
-    height: 15px;
-    overflow: hidden;
-    position: relative;
-    text-align: left;
-    text-overflow: ellipsis;
-    top: 2px;
-    width: 50px;
-    white-space: nowrap;
 }
 
 .group-label.astralis {
     background-image: url( 'assets/flairs.png' );
     background-position: -52px -153px;
+    bottom: 3px;
+    height: 15px;
+    position: relative;
     text-indent: -9999px;
 }
 
@@ -140,6 +54,9 @@ br {
 .group-label.cevo {
     background-image: url( 'assets/flairs.png' );
     background-position: -104px -34px;
+    bottom: 3px;
+    height: 15px;
+    position: relative;
     text-indent: -9999px;
 }
 
@@ -152,6 +69,9 @@ br {
 .group-label.csgolounge {
     background-image: url( 'assets/flairs.png' );
     background-position: -104px -119px;
+    bottom: 3px;
+    height: 15px;
+    position: relative;
     text-indent: -9999px;
 }
 
@@ -197,42 +117,63 @@ br {
 .group-label.esea {
     background-image: url( 'assets/flairs.png' );
     background-position: 0 -34px;
+    bottom: 3px;
+    height: 15px;
+    position: relative;
     text-indent: -9999px;
 }
 
 .group-label.esl {
     background-image: url( 'assets/flairs.png' );
     background-position: -104px 0;
+    bottom: 3px;
+    height: 15px;
+    position: relative;
     text-indent: -9999px;
 }
 
 .group-label.faceit {
     background-image: url( 'assets/flairs.png' );
     background-position: -156px -17px;
+    bottom: 3px;
+    height: 15px;
+    position: relative;
     text-indent: -9999px;
 }
 
 .group-label.flipsid3 {
     background-image: url( 'assets/flairs.png' );
     background-position: 0px -102px;
+    bottom: 3px;
+    height: 15px;
+    position: relative;
     text-indent: -9999px;
 }
 
 .group-label.fnatic {
     background-image: url( 'assets/flairs.png' );
     background-position: -156px -34px;
+    bottom: 3px;
+    height: 15px;
+    position: relative;
     text-indent: -9999px;
 }
 
 .group-label.g2-esports {
     background-image: url( 'assets/flairs.png' );
     background-position: -52px -170px;
+    bottom: 3px;
+    height: 15px;
+    position: relative;
     text-indent: -9999px;
 }
 
 .group-label.gfinity {
     background-image: url( 'assets/flairs.png' );
     background-position: 0 -170px;
+    bottom: 3px;
+    height: 15px;
+    position: relative;
     text-indent: -9999px;
 }
 
@@ -263,6 +204,9 @@ br {
 .group-label.mlg {
     background-image: url( 'assets/flairs.png' );
     background-position: -156px -151px;
+    bottom: 3px;
+    height: 15px;
+    position: relative;
     text-indent: -9999px;
 }
 
@@ -274,6 +218,9 @@ br {
 .group-label.navi {
     background-image: url( 'assets/flairs.png' );
     background-position: -156px -68px;
+    bottom: 3px;
+    height: 15px;
+    position: relative;
     text-indent: -9999px;
 }
 
@@ -286,6 +233,9 @@ br {
 .group-label.north {
     background-image: url( 'assets/flairs.png' );
     background-position: -104px -170px;
+    bottom: 3px;
+    height: 15px;
+    position: relative;
     text-indent: -9999px;
 }
 
@@ -303,6 +253,9 @@ br {
 .group-label.pgl {
     background-image: url( 'assets/flairs.png' );
     background-position: 0 -153px;
+    bottom: 3px;
+    height: 15px;
+    position: relative;
     text-indent: -9999px;
 }
 
@@ -320,6 +273,9 @@ br {
 .group-label.roomonfire {
     background-image: url( 'assets/flairs.png' );
     background-position: -156px -119px;
+    bottom: 3px;
+    height: 15px;
+    position: relative;
     text-indent: -9999px;
 }
 
@@ -338,6 +294,9 @@ br {
 .group-label.team-liquid {
     background-image: url( 'assets/flairs.png' );
     background-position: -104px -101px;
+    bottom: 3px;
+    height: 15px;
+    position: relative;
     text-indent: -9999px;
 }
 
@@ -355,6 +314,9 @@ br {
 .group-label.valve {
     background-image: url( 'assets/flairs.png' );
     background-position: -52px 0;
+    bottom: 3px;
+    height: 15px;
+    position: relative;
     text-indent: -9999px;
 }
 
@@ -364,73 +326,8 @@ br {
     text-indent: -9999px;
 }
 
-.clearer:hover {
-    cursor: pointer;
-}
-
-.expandable {
-    max-height: 500px;
-    overflow: hidden;
-}
-
-.expander {
-    background: linear-gradient(
-        to bottom,
-        rgba( 255, 255, 255, 0 ) 0%,
-        rgba( 255, 255, 255, 1 ) 40%,
-        rgba( 255, 255, 255, 1 ) 100%
-    );
-    bottom: 44px;
-    color: #2196F3;
-    left: 15px;
-    padding-bottom: 20px;
-    padding-top: 60px;
-    position: absolute;
-    right: 0;
-}
-
-.expander:hover {
-    cursor: pointer;
-    text-decoration: underline;
-}
-
-.filters-wrapper {
-    display: none;
-}
-
-@media screen and ( max-width: 1200px ){
-    .groups-wrapper {
-        text-align: center;
-        width: auto;
-    }
-}
-
-@media screen and ( max-width: 1040px ){
-    .checkbox {
-        width: 80px;
-    }
-}
-
-@media screen and ( max-width: 660px ){
-    .rss-link-wrapper {
-        display: none;
-    }
-}
-
 @media screen and ( max-width: 480px ){
     h1 {
         font-size: 38px;
-    }
-
-    .filters-wrapper {
-        display: block;
-    }
-
-    .groups-wrapper .checkbox {
-        display: none;
-    }
-
-    .groups-wrapper.show .checkbox {
-        display: inline-block;
     }
 }

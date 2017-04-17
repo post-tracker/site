@@ -7,6 +7,8 @@ export const RECEIVE_GROUPS = 'RECEIVE_GROUPS';
 export const REQUEST_POSTS = 'REQUEST_POSTS';
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 export const SET_SEARCH_TERM = 'SET_SEARCH_TERM';
+export const TOGGLE_SERVICE = 'TOGGLE_SERVICE';
+export const RECEIVE_SERVICES = 'RECEIVE_SERVICES';
 
 const DATA_URL = 'data';
 const FETCH_DEBOUNCE_INTERVAL = 250;
@@ -37,6 +39,70 @@ const toggleGroupState = function toggleGroupState ( name ) {
     return {
         name,
         type: TOGGLE_GROUP,
+    };
+};
+
+const receiveServices = function receiveServices ( json ) {
+    return {
+        items: json,
+        type: RECEIVE_SERVICES,
+    };
+};
+
+const toggleServiceState = function toggleServiceState ( name ) {
+    return {
+        name,
+        type: TOGGLE_SERVICE,
+    };
+};
+
+const fetchServices = function fetchServices () {
+    return ( dispatch ) => {
+        const options = {
+            hostname: window.location.hostname,
+            method: 'GET',
+            path: `${ window.location.pathname }${ DATA_URL }?type=services`,
+        };
+
+        if ( window.location.port ) {
+            options.port = window.location.port;
+        }
+
+        const request = https.request( options, ( response ) => {
+            let body = '';
+
+            response.setEncoding( 'utf8' );
+
+            response.on( 'data', ( chunk ) => {
+                body = body + chunk;
+            } );
+
+            response.on( 'end', () => {
+                let services = JSON.parse( body );
+
+                // If we only have one group, treat it as no group
+                if ( services.length === 1 ) {
+                    services = [];
+                }
+
+                // Transform group names to objects
+                services = services.map( ( name ) => {
+                    return {
+                        active: true,
+                        name: name,
+                    };
+                } );
+
+                dispatch( receiveServices( services ) );
+            } );
+        } );
+
+        request.on( 'error', ( requestError ) => {
+            // eslint-disable-next-line no-console
+            console.log( `problem with request: ${ requestError.message }` );
+        } );
+
+        request.end();
     };
 };
 
@@ -90,7 +156,7 @@ const fetchGroups = function fetchGroups () {
     };
 };
 
-const getPosts = function getPosts ( search, groups, dispatch ) {
+const getPosts = function getPosts ( search, groups, services, dispatch ) {
     const querystringParameters = {};
     const options = {
         hostname: window.location.hostname,
@@ -100,6 +166,9 @@ const getPosts = function getPosts ( search, groups, dispatch ) {
     const activeGroups = groups.items.filter( ( group ) => {
         return group.active;
     } );
+    const activeServices = services.items.filter( ( service ) => {
+        return service.active;
+    } );
 
     if ( window.location.port ) {
         options.port = window.location.port;
@@ -107,12 +176,17 @@ const getPosts = function getPosts ( search, groups, dispatch ) {
 
     if ( typeof search !== 'undefined' && search.length > 0 ) {
         querystringParameters.search = search;
-        querystringParameters.type = 'search';
     }
 
     if ( activeGroups && activeGroups.length > 0 ) {
         querystringParameters[ 'groups[]' ] = activeGroups.map( ( group ) => {
             return group.name;
+        } );
+    }
+
+    if ( activeServices && activeServices.length > 0 && activeServices.length !== services.items.length ) {
+        querystringParameters[ 'services[]' ] = activeServices.map( ( service ) => {
+            return service.name;
         } );
     }
 
@@ -160,10 +234,11 @@ const fetchPosts = function fetchPosts ( state ) {
     const {
         search,
         groups,
+        services,
      } = state;
 
     return ( dispatch ) => {
-        debouncedFetchPosts( search, groups, dispatch );
+        debouncedFetchPosts( search, groups, services, dispatch );
     };
 };
 
@@ -171,10 +246,11 @@ const fetchPostsImmediate = function fetchPostsImmediate ( state ) {
     const {
         search,
         groups,
+        services,
      } = state;
 
     return ( dispatch ) => {
-        getPosts( search, groups, dispatch );
+        getPosts( search, groups, services, dispatch );
     };
 };
 
@@ -201,6 +277,20 @@ export const getGroups = function getGroups () {
 export const toggleGroup = function toggleGroup ( name ) {
     return ( dispatch, getState ) => {
         dispatch( toggleGroupState( name ) );
+
+        return dispatch( fetchPostsImmediate( getState() ) );
+    };
+};
+
+export const getServices = function getServices () {
+    return ( dispatch ) => {
+        return dispatch( fetchServices() );
+    };
+};
+
+export const toggleService = function toggleService ( name ) {
+    return ( dispatch, getState ) => {
+        dispatch( toggleServiceState( name ) );
 
         return dispatch( fetchPostsImmediate( getState() ) );
     };

@@ -13,22 +13,9 @@ body {
     background-color: #2c2d30;
     color: #fff;
     font-family: Purista, Roboto;
-    font-size: 15px;
-    line-height: 1.5;
-}
-
-blockquote {
-    font-size: inherit;
-}
-
-br {
-    content: ' ';
-    display: block;
-    margin: 15px auto;
 }
 
 h1 {
-    text-align: center;
     text-transform: uppercase;
 }
 
@@ -36,7 +23,6 @@ h1 a,
 h1 a:active,
 h1 a:hover {
     color: #fff;
-    text-decoration: none;
 }
 
 a,
@@ -46,61 +32,10 @@ a:active {
     color: #f17f1a;
 }
 
-.header-container {
-    position: relative;
-}
-
-.rss-link-wrapper {
-    position: absolute;
-    right: 15px;
-    top: 10px;
-}
-
-.rss-link-wrapper i {
-    font-size: 1.8em;
-    margin: 0;
-}
-
 .header-logo {
     max-height: 42px;
     position: relative;
     top: -5px;
-}
-
-.groups-wrapper {
-    margin: 0 auto 20px auto;
-    text-align: center;
-    width: auto;
-}
-
-.groups-wrapper .filters-wrapper .fa {
-    transition: transform 0.3s ease;
-}
-
-.groups-wrapper.show .filters-wrapper .fa {
-    transform: rotate( 180deg );
-}
-
-.checkbox {
-    display: inline-block;
-    font-size: 12px;
-    margin: 5px;
-    line-height: 15px;
-    width: 105px;
-}
-
-/* Fix for bootstrap styling */
-.checkbox+.checkbox {
-    margin: 5px;
-}
-
-.group-label {
-    background-repeat: no-repeat;
-    background-position: top left;
-    display: inline-block;
-    position: relative;
-    top: -1px;
-    white-space: nowrap;
 }
 
 .group-label.ea {
@@ -119,12 +54,6 @@ a:active {
     background-color: #131313;
     border-radius: 0;
     box-shadow: 0 1px 29px rgb(0, 0, 0);
-    position: relative;
-    word-wrap: break-word;
-}
-
-.panel-body img {
-    max-width: 100%;
 }
 
 .panel-footer {
@@ -136,27 +65,8 @@ a:active {
     background-color: #1a1a1a;
 }
 
-.fa {
-    margin-right: 5px;
-}
-
 .form-control {
     color: #fff;
-}
-
-.clearer {
-    line-height: 37px;
-    pointer-events: auto;
-    z-index: 1;
-}
-
-.clearer:hover {
-    cursor: pointer;
-}
-
-.expandable {
-    max-height: 500px;
-    overflow: hidden;
 }
 
 .expander {
@@ -166,18 +76,6 @@ a:active {
         rgba( 19, 19, 17, 1 ) 40%,
         rgba( 19, 19, 17, 1 ) 100%
     );
-    bottom: 44px;
-    color: #2196F3;
-    left: 15px;
-    padding-bottom: 20px;
-    padding-top: 60px;
-    position: absolute;
-    right: 0;
-}
-
-.expander:hover {
-    cursor: pointer;
-    text-decoration: underline;
 }
 
 .filters-wrapper {
@@ -185,38 +83,15 @@ a:active {
 }
 
 @media screen and ( max-width: 1040px ){
-    .checkbox {
+    .groups-wrapper .checkbox {
         width: 80px;
     }
 }
 
-@media screen and ( max-width: 660px ){
-    .rss-link-wrapper {
-        display: none;
-    }
-}
-
 @media screen and ( max-width: 480px ){
-    h1 {
-        font-size: 38px;
-    }
-
     .header-logo {
         display: block;
         margin: 0 auto;
         max-height: 38px;
-    }
-
-
-    .filters-wrapper {
-        display: block;
-    }
-
-    .groups-wrapper .checkbox {
-        display: none;
-    }
-
-    .groups-wrapper.show .checkbox {
-        display: inline-block;
     }
 }

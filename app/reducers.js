@@ -7,6 +7,8 @@ import {
     REQUEST_POSTS,
     SET_SEARCH_TERM,
     TOGGLE_GROUP,
+    RECEIVE_SERVICES,
+    TOGGLE_SERVICE,
 } from './actions';
 
 const groups = function groups ( state = {
@@ -87,6 +89,84 @@ const groups = function groups ( state = {
     }
 };
 
+const services = function services ( state = {
+    items: [],
+}, action ) {
+    let updatedItems;
+    const currentQuery = queryString.parse( location.search );
+
+    if ( typeof currentQuery[ 'services[]' ] === 'string' ) {
+        currentQuery[ 'services[]' ] = [ currentQuery[ 'services[]' ] ];
+    }
+
+    switch ( action.type ) {
+        case TOGGLE_SERVICE:
+            if ( action.name === 'All' ) {
+                updatedItems = state.items.map( ( service ) => {
+                    service.active = false;
+
+                    return service;
+                } );
+            } else {
+                updatedItems = state.items.map( ( service ) => {
+                    if ( service.name === action.name ) {
+                        service.active = !service.active;
+                    }
+
+                    return service;
+                } );
+            }
+
+            return Object.assign( {}, state, {
+                items: updatedItems,
+            } );
+        case RECEIVE_SERVICES:
+            if ( typeof currentQuery[ 'service[]' ] !== 'undefined' ) {
+                updatedItems = action.items.map( ( service ) => {
+                    if ( currentQuery[ 'service[]' ].indexOf( service.name ) > -1 ) {
+                        service.active = true;
+                    }
+
+                    return service;
+                } );
+
+                return Object.assign( {}, state, {
+                    items: updatedItems,
+                } );
+            }
+
+            return Object.assign( {}, state, {
+                items: action.items,
+            } );
+        default:
+            if ( typeof currentQuery[ 'service[]' ] !== 'undefined' ) {
+                if ( state.items.length <= 0 ) {
+                    updatedItems = [];
+                    for ( let i = 0; i < currentQuery[ 'service[]' ].length; i = i + 1 ) {
+                        updatedItems.push( {
+                            active: true,
+                            name: currentQuery[ 'service[]' ][ i ],
+                        } );
+                    }
+                } else {
+                    updatedItems = state.items.map( ( service ) => {
+                        if ( currentQuery[ 'service[]' ].indexOf( service.name ) > -1 ) {
+                            service.active = true;
+                        }
+
+                        return service;
+                    } );
+                }
+
+                return Object.assign( {}, state, {
+                    items: updatedItems,
+                } );
+            }
+
+            return state;
+    }
+};
+
 const search = function search ( state, action ) {
     const currentQuery = queryString.parse( location.search );
 
@@ -122,6 +202,7 @@ const trackerApp = combineReducers( {
     groups,
     posts,
     search,
+    services,
 } );
 
 export default trackerApp;
