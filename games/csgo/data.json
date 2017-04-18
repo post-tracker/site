@@ -1208,6 +1208,16 @@
         },
         {
             "accounts": {
+                "Twitter": "drakenCSGO"
+            },
+            "name": "William Sundin",
+            "nick": "draken",
+            "group": "Ninjas in Pyjamas",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "PHedemark",
                 "Twitter": "phedemark"
             },
@@ -1500,6 +1510,17 @@
             "nick": "roca",
             "group": "Splyce",
             "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "hastr0",
+                "Twitter": "hastr0"
+            },
+            "name": "Mike Rufail",
+            "nick": "hastr0",
+            "group": "Team EnVyUs",
+            "role": "Team Owner & Managing Director",
             "active": "1"
         },
         {
