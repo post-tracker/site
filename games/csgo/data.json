@@ -1525,6 +1525,23 @@
         },
         {
             "accounts": {
+                "Twitter": "TeamEnVyUs"
+            },
+            "nick": "Team EnVyUs",
+            "group": "Team EnVyUs",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "SchroetKommando",
+                "Twitter": "skgaming"
+            },
+            "nick": "SK Gaming",
+            "group": "SK Gaming",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "jdm64GO",
                 "Twitter": "Liquid_jdm"
             },
