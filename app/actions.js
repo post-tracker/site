@@ -1,6 +1,7 @@
 import https from 'https';
 import queryString from 'query-string';
 import debounce from 'debounce';
+import cookie from 'react-cookie';
 
 export const TOGGLE_GROUP = 'TOGGLE_GROUP';
 export const RECEIVE_GROUPS = 'RECEIVE_GROUPS';
@@ -156,6 +157,7 @@ const fetchGroups = function fetchGroups () {
     };
 };
 
+// eslint-disable-next-line max-params
 const getPosts = function getPosts ( search, groups, services, dispatch ) {
     const querystringParameters = {};
     const options = {
@@ -166,7 +168,10 @@ const getPosts = function getPosts ( search, groups, services, dispatch ) {
     const activeGroups = groups.items.filter( ( group ) => {
         return group.active;
     } );
-    const activeServices = services.items.filter( ( service ) => {
+
+    let activeServices = [];
+
+    activeServices = services.items.filter( ( service ) => {
         return service.active;
     } );
 
@@ -190,11 +195,7 @@ const getPosts = function getPosts ( search, groups, services, dispatch ) {
         } );
     }
 
-    const parsedQuerystring = queryString.stringify( querystringParameters );
-
-    if ( parsedQuerystring.length > 0 ) {
-        options.path = `${ options.path }?${ parsedQuerystring }`;
-    }
+    let parsedQuerystring = queryString.stringify( querystringParameters );
 
     if ( parsedQuerystring.length > 0 ) {
         const locationSearch = `?${ parsedQuerystring }`;
@@ -204,6 +205,17 @@ const getPosts = function getPosts ( search, groups, services, dispatch ) {
         }
     } else {
         window.history.pushState( {}, search, window.location.pathname );
+    }
+
+    const cookieServices = cookie.load( 'services' );
+
+    if ( services.items.length === 0 && cookieServices ) {
+        querystringParameters[ 'services[]' ] = cookieServices;
+        parsedQuerystring = queryString.stringify( querystringParameters );
+    }
+
+    if ( parsedQuerystring.length > 0 ) {
+        options.path = `${ options.path }?${ parsedQuerystring }`;
     }
 
     const request = https.request( options, ( response ) => {

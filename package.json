@@ -63,6 +63,7 @@
     "mustache": "^2.2.1",
     "query-string": "^4.2.3",
     "react": "^15.3.0",
+    "react-cookie": "^1.0.5",
     "react-dom": "^15.3.0",
     "react-redux": "^5.0.2",
     "react-timeago": "^3.1.2",

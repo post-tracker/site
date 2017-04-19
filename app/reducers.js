@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import queryString from 'query-string';
+import cookie from 'react-cookie';
 
 import {
     RECEIVE_GROUPS,
@@ -101,21 +102,31 @@ const services = function services ( state = {
 
     switch ( action.type ) {
         case TOGGLE_SERVICE:
-            if ( action.name === 'All' ) {
-                updatedItems = state.items.map( ( service ) => {
-                    service.active = false;
+            updatedItems = state.items.map( ( service ) => {
+                if ( service.name === action.name ) {
+                    service.active = !service.active;
+                }
 
-                    return service;
-                } );
-            } else {
-                updatedItems = state.items.map( ( service ) => {
-                    if ( service.name === action.name ) {
-                        service.active = !service.active;
-                    }
+                return service;
+            } );
 
-                    return service;
-                } );
-            }
+            // Save an array of active services
+            cookie.save( 'services',
+                updatedItems
+                    .map( ( service ) => {
+                        if ( service.active ) {
+                            return service.name;
+                        }
+
+                        return false;
+                    } )
+                    .filter( ( service ) => {
+                        return service;
+                    } )
+                , {
+                    path: '/',
+                }
+            );
 
             return Object.assign( {}, state, {
                 items: updatedItems,
@@ -125,6 +136,22 @@ const services = function services ( state = {
                 updatedItems = action.items.map( ( service ) => {
                     if ( currentQuery[ 'service[]' ].indexOf( service.name ) > -1 ) {
                         service.active = true;
+                    }
+
+                    return service;
+                } );
+
+                return Object.assign( {}, state, {
+                    items: updatedItems,
+                } );
+            } else if ( cookie.load( 'services' ) ) {
+                const activeServices = cookie.load( 'services' );
+
+                updatedItems = action.items.map( ( service ) => {
+                    if ( activeServices.indexOf( service.name ) > -1 ) {
+                        service.active = true;
+                    } else {
+                        service.active = false;
                     }
 
                     return service;
