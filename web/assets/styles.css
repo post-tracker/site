@@ -95,7 +95,9 @@ input[type="checkbox"],
 }
 
 .filter-label {
-    line-height: 15px;
+    height: 23px;
+    line-height: 23px;
+    vertical-align: top;
 }
 
 .services-wrapper {
