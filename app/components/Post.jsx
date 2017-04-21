@@ -4,6 +4,16 @@ import TimeAgo from 'react-timeago';
 const POST_CUTOFF_HEIGHT = 500;
 const TIMESTAMP_UPDATE_INTERVAL = 1000;
 
+const styles = {
+    sourceIcon: {
+        height: '20px',
+        marginRight: '8px',
+        position: 'relative',
+        top: '4px',
+        width: '20px',
+    },
+};
+
 class Post extends React.Component {
     constructor ( props ) {
         super( props );
@@ -97,26 +107,27 @@ class Post extends React.Component {
             iconNode = (
                 <a
                     href = { sectionURL }
-                    style = { {
-                        color: '#666',
-                    } }
                 >
-                    <i
-                        className = { `fa fa-${ this.convertSource( this.props.postData.source ) }-square` }
-                        style = { {
-                            fontSize: '1.5em',
-                            marginRight: '8px',
-                            position: 'relative',
-                            top: '2px',
-                        } }
-                    />
+                    <svg
+                        className = { 'icon' }
+                        style = { styles.sourceIcon }
+                    >
+                        <use
+                            xlinkHref = { `#icon-${ this.convertSource( this.props.postData.source ) }` }
+                        />
+                    </svg>
                 </a>
             );
         } else {
             iconNode = (
-                <i
-                    className = { `fa fa-${ this.convertSource( this.props.postData.source ) }` }
-                />
+                <svg
+                    className = { 'icon' }
+                    style = { styles.sourceIcon }
+                >
+                    <use
+                        xlinkHref = { `#icon-${ this.convertSource( this.props.postData.source ) }` }
+                    />
+                </svg>
             );
         }
 

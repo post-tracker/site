@@ -73,12 +73,18 @@ class GroupList extends React.Component {
                     } }
                 >
                     { 'Filters' }
-                    <i
-                        className = { 'fa fa-caret-down' }
+                    <svg
+                        className = { 'icon' }
                         style = { {
+                            height: '12px',
                             marginLeft: '10px',
+                            width: '12px',
                         } }
-                    />
+                    >
+                        <use
+                            xlinkHref = { '#icon-caret' }
+                        />
+                    </svg>
                 </div>
                 { groupNodes }
             </div>

@@ -52,21 +52,6 @@ class ServicesList extends React.Component {
             <div
                 className = { servicesClasses }
             >
-                {/* <div
-                    className = { 'filters-wrapper' }
-                    onClick = { this.handleFilterExpandClick }
-                    style = { {
-                        textAlign: 'right',
-                    } }
-                >
-                    { 'Filters' }
-                    <i
-                        className = { 'fa fa-caret-down' }
-                        style = { {
-                            marginLeft: '10px',
-                        } }
-                    />
-                </div> */}
                 { serviceNodes }
             </div>
         );

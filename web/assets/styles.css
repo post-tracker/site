@@ -48,8 +48,29 @@ h1 a:hover {
     max-width: 100%;
 }
 
-.fa {
-    margin-right: 5px;
+.icon {
+    height: 25px;
+    width: 25px;
+}
+
+#icon-rss rect {
+    fill: #2196f3;
+}
+
+#icon-reddit rect {
+    fill: #666;
+}
+
+#icon-twitter rect {
+    fill: #666;
+}
+
+#icon-comments {
+    fill: #666;
+}
+
+#icon-caret {
+    fill: #666;
 }
 
 .clearer {
@@ -127,11 +148,11 @@ input[type="checkbox"],
     width: 18px;
 }
 
-.groups-wrapper .filters-wrapper .fa {
+.groups-wrapper .filters-wrapper svg {
     transition: transform 0.3s ease;
 }
 
-.groups-wrapper.show .filters-wrapper .fa {
+.groups-wrapper.show .filters-wrapper svg {
     transform: rotate( 180deg );
 }
 

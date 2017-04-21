@@ -32,6 +32,26 @@ a:active {
     color: #f17f1a;
 }
 
+#icon-rss rect {
+    fill: #f17f1a;
+}
+
+#icon-reddit rect {
+    fill: #f17f1a;
+}
+
+#icon-twitter rect {
+    fill: #f17f1a;
+}
+
+#icon-comments {
+    fill: #f17f1a;
+}
+
+#icon-caret {
+    fill: #f17f1a;
+}
+
 .header-logo {
     max-height: 42px;
     position: relative;
