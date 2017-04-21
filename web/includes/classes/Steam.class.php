@@ -1,7 +1,7 @@
 <?php
 class Steam extends Kurl {
-    private static $profileBase = 'http://steamcommunity.com/profiles/{{userIdentifier}}/posthistory/';
-    private static $idBase = 'http://steamcommunity.com/id/{{userIdentifier}}/posthistory/';
+    private static $profileBase = 'https://steamcommunity.com/profiles/{{userIdentifier}}/posthistory/';
+    private static $idBase = 'https://steamcommunity.com/id/{{userIdentifier}}/posthistory/';
 
     private $posts = array();
 
@@ -38,10 +38,10 @@ class Steam extends Kurl {
 
             $post = new Post();
 
-            preg_match( '#http://steamcommunity.com/app/(\d*)/discussions/\d+/#mis', $communityPost->find( 'a.searchresult_forum_link', 0 )->href, $matches );
+            preg_match( '#https://steamcommunity.com/app/(\d*)/discussions/\d+/#mis', $communityPost->find( 'a.searchresult_forum_link', 0 )->href, $matches );
 
             if( !isset( $matches[ 1 ] ) ):
-                preg_match( '#http://steamcommunity.com/workshop/discussions/\?appid=(\d*)#mis', $communityPost->find( 'a.searchresult_forum_link', 0 )->href, $matches );
+                preg_match( '#https://steamcommunity.com/workshop/discussions/\?appid=(\d*)#mis', $communityPost->find( 'a.searchresult_forum_link', 0 )->href, $matches );
             endif;
 
             if( isset( $matches[ 1 ] ) ):
