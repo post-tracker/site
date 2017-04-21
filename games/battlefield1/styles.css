@@ -98,10 +98,6 @@ a:active {
     );
 }
 
-.filters-wrapper {
-    display: none;
-}
-
 @media screen and ( max-width: 1040px ){
     .groups-wrapper .checkbox {
         width: 80px;
