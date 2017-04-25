@@ -159,6 +159,17 @@
         },
         {
             "accounts": {
+                "Reddit": "mShroud",
+                "Twitter": "c9shroud"
+            },
+            "name": "Michael Grzesiek",
+            "nick": "Shroud",
+            "group": "Cloud9",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "IndependenTcs"
             },
             "nick": "IndependenTcs",
