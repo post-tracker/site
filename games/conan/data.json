@@ -86,11 +86,19 @@
         {
             "accounts": {
                 "Reddit": "nevayo",
+                "Steam": "spynosaur",
                 "Twitter": "Spynosaur"
             },
             "name": "Nicole",
             "nick": "nevayo",
             "role": "Community Manager",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Twitter": "ConanExiles"
+            },
+            "nick": "Conan",
             "active": "1"
         }
     ]
