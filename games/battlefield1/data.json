@@ -4,7 +4,10 @@
     "hostname": "battlefielddevtracker.com",
     "config": {
         "Reddit": {
-            "index": "battlefield_one"
+            "index": [
+                "battlefield_one",
+                "battlefield_live"
+            ]
         }
     },
     "developers": [
@@ -216,6 +219,38 @@
             "nick": "Kenturrac",
             "group": "DICE",
             "role": "Level Designer",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "legmek",
+                "Twitter": "nattskift"
+            },
+            "nick": "legmek",
+            "group": "DICE",
+            "role": "Level Designer",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "jaqubajmal",
+                "Twitter": "jaqubajmal"
+            },
+            "name": "Jaqub Ajmal",
+            "nick": "jaqubajmal",
+            "group": "DICE",
+            "role": "QA Manager",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "petervesti",
+                "Twitter": "petervesti"
+            },
+            "name": "Peter Vesti Frendrup",
+            "nick": "petervesti",
+            "group": "DICE",
+            "role": "Lead/Senior Level Designer",
             "active": "1"
         }
     ]
