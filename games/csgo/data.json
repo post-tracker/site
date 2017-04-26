@@ -76,6 +76,15 @@
         },
         {
             "accounts": {
+                "Reddit": "King5pade"
+            },
+            "nick": "King5pade",
+            "group": "CAL Reloaded",
+            "role": "Owner",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "CEVO_Spangler"
             },
             "nick": "Spangler",
