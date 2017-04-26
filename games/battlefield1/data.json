@@ -206,6 +206,17 @@
             "nick": "RandomDeviation",
             "group": "DICE",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Kenturrac",
+                "Twitter": "kenturrac"
+            },
+            "name": "Matt Wagner",
+            "nick": "Kenturrac",
+            "group": "DICE",
+            "role": "Level Designer",
+            "active": "1"
         }
     ]
 }
