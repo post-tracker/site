@@ -22,6 +22,7 @@
                 "PUBGForums": "9-pubg_fwg"
             },
             "nick": "FWG",
+            "group": "Bluehole",
             "role": "Associate Community Manager",
             "active": "1"
         },
@@ -32,6 +33,7 @@
                 "PUBGForums": "1-pubg_hyowon"
             },
             "nick": "Hyowon",
+            "group": "Bluehole",
             "role": "Product Manager",
             "active": "1"
         },
@@ -43,6 +45,7 @@
             },
             "name": "Sammie",
             "nick": "poopieQueen",
+            "group": "Bluehole",
             "role": "Community Manager",
             "active": "1"
         },
@@ -52,6 +55,7 @@
                 "PUBGForums": "1141-pubg_daniel"
             },
             "nick": "Daniel",
+            "group": "Bluehole",
             "role": "Community Manager",
             "active": "1"
         },
@@ -60,6 +64,7 @@
                 "Twitter": "PUBATTLEGROUNDS"
             },
             "nick": "PUBATTLEGROUNDS",
+            "group": "Bluehole",
             "active": "1"
         },
         {
@@ -67,6 +72,7 @@
                 "PUBGForums": "186-slyvinlisha"
             },
             "nick": "Slyvinlisha",
+            "group": "Bluehole",
             "active": "1"
         },
         {
@@ -74,6 +80,7 @@
                 "PUBGForums": "19-pubg_ch-kim"
             },
             "nick": "Kim",
+            "group": "Bluehole",
             "role": "Executive Producer",
             "active": "1"
         },
@@ -82,14 +89,17 @@
                 "PUBGForums": "647-pubg_smookie"
             },
             "nick": "smookie",
+            "group": "Bluehole",
             "role": "Lead Animator",
             "active": "1"
         },
         {
             "accounts": {
+                "Twitter": "toonerDev",
                 "PUBGForums": "80-pubg_tooner"
             },
             "nick": "tooner",
+            "group": "Bluehole",
             "role": "Content Programmer",
             "active": "1"
         },
@@ -98,15 +108,19 @@
                 "PUBGForums": "2893-sgonlee"
             },
             "nick": "sgonlee",
+            "group": "Bluehole",
             "active": "1"
         },
         {
             "accounts": {
                 "Reddit": "lazyink",
                 "Steam": "lazyink",
-                "Twitter": "BattleRoyaleMod"
+                "Twitter": "BattleRoyaleMod",
+                "PUBGForums": "20-playerunknown"
             },
+            "name": "Brendan Greene",
             "nick": "PLAYERUNKNOWN",
+            "group": "Bluehole",
             "role": "Creative Director",
             "active": "1"
         },
@@ -116,6 +130,7 @@
                 "Twitter": "Panky"
             },
             "nick": "Panky",
+            "group": "Bluehole",
             "role": "eSports Program Manager",
             "active": "1"
         }
