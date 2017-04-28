@@ -252,6 +252,22 @@
             "group": "DICE",
             "role": "Lead/Senior Level Designer",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "ThyMerayo"
+            },
+            "nick": "ThyMerayo",
+            "group": "DICE",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "mischkag"
+            },
+            "nick": "mischkag",
+            "group": "DICE",
+            "active": "1"
         }
     ]
 }
