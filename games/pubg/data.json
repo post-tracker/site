@@ -135,6 +135,16 @@
             "group": "Bluehole",
             "role": "eSports Program Manager",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Twitter": "sergilluch"
+            },
+            "name": "Sergi Lluch",
+            "nick": "Sergi",
+            "group": "Bluehole",
+            "role": "Environment Artist",
+            "active": "1"
         }
     ]
 }
