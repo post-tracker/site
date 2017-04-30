@@ -86,8 +86,10 @@
         },
         {
             "accounts": {
+                "Twitter": "_psmk_",
                 "PUBGForums": "647-pubg_smookie"
             },
+            "name": "Paweł Smolewski",
             "nick": "smookie",
             "group": "Bluehole",
             "role": "Lead Animator",
