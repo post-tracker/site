@@ -19,8 +19,10 @@
             "accounts": {
                 "Reddit": "PUBG_FWG",
                 "Steam": "76561198369453251",
+                "Twitter": "PUBG_AndroDars",
                 "PUBGForums": "9-pubg_fwg"
             },
+            "name": "Andro Dars",
             "nick": "FWG",
             "group": "Bluehole",
             "role": "Associate Community Manager",
@@ -144,6 +146,15 @@
             "nick": "Sergi",
             "group": "Bluehole",
             "role": "Environment Artist",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Twitter": "PUBGpartners"
+            },
+            "nick": "PUBGPartners",
+            "group": "Bluehole",
+            "role": "Partner Community",
             "active": "1"
         }
     ]
