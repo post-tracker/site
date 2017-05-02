@@ -279,8 +279,10 @@
         {
             "accounts": {
                 "Reddit": "Its_Epi",
+                "Twitter": "ItsEpi",
                 "Steam": "76561198137855828"
             },
+            "name": "Craig Robinson",
             "nick": "Epi",
             "group": "Ubisoft",
             "role": "Community Manager",
