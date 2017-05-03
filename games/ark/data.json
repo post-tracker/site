@@ -310,6 +310,13 @@
             "nick": "Susan",
             "role": "Retired Co Founder of Studio Wildcard",
             "active": "0"
+        },
+        {
+            "accounts": {
+                "Twitter": "ARK_Support"
+            },
+            "nick": "Support",
+            "active": "1"
         }
     ]
 }
