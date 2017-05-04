@@ -278,6 +278,16 @@
             "nick": "elenarie",
             "group": "DICE",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "DRUNKKZ3",
+                "Twitter": "drunkkz3"
+            },
+            "name": "Florian Le Bihan",
+            "nick": "DRUNKKZ3",
+            "group": "DICE",
+            "active": "1"
         }
     ]
 }
