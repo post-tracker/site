@@ -45,10 +45,10 @@
                 "Twitter": "poopieQueen",
                 "PUBGForums": "18-pubg_poopiequeen"
             },
-            "name": "Sammie",
+            "name": "Sammie Kang",
             "nick": "poopieQueen",
             "group": "Bluehole",
-            "role": "Community Manager",
+            "role": "Lead Community Manager",
             "active": "1"
         },
         {
@@ -104,9 +104,10 @@
                 "Twitter": "toonerDev",
                 "PUBGForums": "80-pubg_tooner"
             },
+            "name": "Marek Krasowski",
             "nick": "tooner",
             "group": "Bluehole",
-            "role": "Content Programmer",
+            "role": "Gunplay Programmer",
             "active": "1"
         },
         {
@@ -135,6 +136,7 @@
                 "Reddit": "Pankie",
                 "Twitter": "Panky"
             },
+            "name": "Chris Pankhurst",
             "nick": "Panky",
             "group": "Bluehole",
             "role": "eSports Program Manager",
