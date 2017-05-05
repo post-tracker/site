@@ -1534,6 +1534,17 @@
         },
         {
             "accounts": {
+                "Reddit": "Dronex10",
+                "Twitter": "Dronecsgo"
+            },
+            "name": "Tayler Johnson",
+            "nick": "Drone",
+            "group": "Splyce",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "hastr0",
                 "Twitter": "hastr0"
             },
