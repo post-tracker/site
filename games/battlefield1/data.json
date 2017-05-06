@@ -288,6 +288,17 @@
             "nick": "DRUNKKZ3",
             "group": "DICE",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "DICE-TearGasJazz",
+                "Twitter": "teargasjazz"
+            },
+            "name": "Daniel Cambrand",
+            "nick": "TearGasJazz",
+            "group": "DICE",
+            "role": "Level Artist",
+            "active": "1"
         }
     ]
 }
