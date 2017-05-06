@@ -1352,6 +1352,24 @@
         },
         {
             "accounts": {
+                "Reddit": "pgl_darkmickey"
+            },
+            "nick": "DarkMickey",
+            "group": "PGL",
+            "role": "R&D Lead",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "andra_dorobantu"
+            },
+            "nick": "Andro Dorobantu",
+            "group": "PGL",
+            "role": "Social Media Manager",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "voxeminor-gomez",
                 "Twitter": "gomezcsgo"
             },
@@ -1646,6 +1664,14 @@
         },
         {
             "accounts": {
+                "Reddit": "brad_valve"
+            },
+            "nick": "Brad",
+            "group": "Valve",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "brianlev_valve"
             },
             "name": "Brian Lev",
@@ -1676,6 +1702,14 @@
         },
         {
             "accounts": {
+                "Reddit": "DanielJ_Valve"
+            },
+            "nick": "DanielJ",
+            "group": "Valve",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "vitaliy_valve"
             },
             "name": "Vitaliy Genkin",
@@ -1692,6 +1726,14 @@
             "nick": "Ido",
             "group": "Valve",
             "role": "Developer",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "DanB_VALVE"
+            },
+            "nick": "DanB",
+            "group": "Valve",
             "active": "1"
         },
         {
@@ -1760,6 +1802,46 @@
             "nick": "Valve Anti-Cheat",
             "group": "Valve",
             "role": "Anti-Cheat",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Drunken_F00l"
+            },
+            "nick": "Drunken F00l",
+            "group": "Valve",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "gautam_valve"
+            },
+            "nick": "Gautam",
+            "group": "Valve",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "higels"
+            },
+            "nick": "Higels",
+            "group": "Valve",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "j_cliffe"
+            },
+            "nick": "J Cliffe",
+            "group": "Valve",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "will_valve"
+            },
+            "nick": "Will",
+            "group": "Valve",
             "active": "1"
         },
         {
