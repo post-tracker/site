@@ -181,6 +181,16 @@ input[type="checkbox"],
     display: none;
 }
 
+.adsbygoogle {
+    display: block;
+}
+
+@media screen and ( max-width: 1800px ){
+    .adsbygoogle {
+        display: none;
+    }
+}
+
 @media screen and ( max-width: 1200px ){
     .groups-wrapper {
         text-align: center;

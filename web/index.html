@@ -67,9 +67,18 @@
 			</svg>
         </a>
     </div>
+    <div
+        id="left-ad"
+        style="position: absolute; left: 10px; top: 0; width: 300px;"
+    ></div>
     <div class="container" id="js-app"></div>
+    <div
+        id="right-ad"
+        style="position: absolute; right: 10px; top: 0; width: 300px;"
+    ></div>
     <script src="scripts/polyfills.js"></script>
     <script async src="scripts/app.js"></script>
+    <script async src="scripts/ads.js"></script>
     <script>
         window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
         ga('set', 'dimension1', '{{name}}');
@@ -77,5 +86,9 @@
         ga('send', 'pageview');
     </script>
     <script async src="https://www.google-analytics.com/analytics.js"></script>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
 </body>
 </html>

@@ -1,5 +1,7 @@
 *.sqlite
 app.js
+ads.js
+ads.min.js
 app.min.js
 .vagrant/
 node_modules/
