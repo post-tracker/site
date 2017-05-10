@@ -18,6 +18,12 @@ class Ad extends React.Component {
         this.state.styles = Object.assign( {}, styles.wrapper, props.styles || {} );
     }
 
+    componentDidMount(){
+        if( window ) {
+            ( window.adsbygoogle = window.adsbygoogle || [] ).push( {} );
+        }
+    }
+
     render () {
         return (
             <ins
