@@ -5,6 +5,10 @@ const POST_CUTOFF_HEIGHT = 500;
 const TIMESTAMP_UPDATE_INTERVAL = 1000;
 
 const styles = {
+    permalink: {
+        float: 'right',
+        lineHeight: '27px',
+    },
     sourceIcon: {
         height: '20px',
         marginRight: '8px',
@@ -231,6 +235,14 @@ class Post extends React.Component {
                         <TimeAgo
                             date = { Number( this.props.postData.timestamp ) * TIMESTAMP_UPDATE_INTERVAL }
                         />
+                    </a>
+                    <a
+                        href = { `?post=${ this.props.postData.id }` }
+                        style = {
+                            styles.permalink
+                        }
+                    >
+                        { 'Direct link' }
                     </a>
                 </div>
             </div>

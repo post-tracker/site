@@ -159,7 +159,7 @@ const fetchGroups = function fetchGroups () {
 
 // eslint-disable-next-line max-params
 const getPosts = function getPosts ( search, groups, services, dispatch ) {
-    const querystringParameters = {};
+    let querystringParameters = {};
     const options = {
         hostname: window.location.hostname,
         method: 'GET',
@@ -195,6 +195,15 @@ const getPosts = function getPosts ( search, groups, services, dispatch ) {
         } );
     }
 
+    const currentQuery = queryString.parse( location.search );
+
+    // If we have a post, don't keep anything else in the querystring
+    if ( currentQuery[ 'post' ] ) {
+        querystringParameters = {
+            post: currentQuery[ 'post' ],
+        };
+    }
+
     let parsedQuerystring = queryString.stringify( querystringParameters );
 
     if ( parsedQuerystring.length > 0 ) {
@@ -209,7 +218,7 @@ const getPosts = function getPosts ( search, groups, services, dispatch ) {
 
     const cookieServices = cookie.load( 'services' );
 
-    if ( services.items.length === 0 && cookieServices ) {
+    if ( services.items.length === 0 && cookieServices && !currentQuery[ 'post' ] ) {
         querystringParameters[ 'services[]' ] = cookieServices;
         parsedQuerystring = queryString.stringify( querystringParameters );
     }

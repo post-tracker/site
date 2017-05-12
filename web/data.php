@@ -4,6 +4,7 @@ include( 'includes/default.php' );
 $hasSearch = false;
 $hasGroups = false;
 $hasServices = false;
+$isPost = false;
 
 if( isset( $_GET[ 'search' ] ) && strlen( $_GET[ 'search' ] ) > 0 ) :
     $hasSearch = true;
@@ -15,6 +16,56 @@ endif;
 
 if( isset( $_GET[ 'services' ] ) && count( $_GET[ 'services' ] ) > 0 ):
     $hasServices = true;
+endif;
+
+if( isset( $_GET[ 'post' ] ) && strlen( $_GET[ 'post' ] ) > 0 ):
+    $isPost = true;
+endif;
+
+if ( $isPost ) :
+    $postId = 0 + $_GET[ 'post' ];
+
+    if ( $postId <= 0 ) :
+        die();
+    endif;
+
+    $query = 'SELECT
+            accounts.identifier,
+            developers.`group`,
+            developers.name,
+            developers.nick,
+            developers.role,
+            posts.content,
+            posts.source,
+            posts.timestamp,
+            posts.topic_url,
+            posts.topic,
+            posts.url,
+            posts.rowid as id
+        FROM
+            posts,
+            developers,
+            accounts
+        WHERE
+            developers.id = posts.uid
+        AND
+            accounts.uid = posts.uid
+        AND
+            accounts.service = posts.source
+        AND
+            posts.rowid = :postId
+        LIMIT
+            1';
+
+    $PDO = $database->prepare( $query );
+
+    $PDO->bindValue( ':postId', $postId );
+
+    $PDO->execute();
+    $posts = $PDO->fetchAll();
+
+    header( 'Content-Type: application/json' );
+    die( json_encode( $posts ) );
 endif;
 
 if ( !isset( $_GET[ 'type' ] ) && !$hasSearch ):
@@ -29,7 +80,8 @@ if ( !isset( $_GET[ 'type' ] ) && !$hasSearch ):
             posts.timestamp,
             posts.topic_url,
             posts.topic,
-            posts.url
+            posts.url,
+            posts.rowid as id
         FROM
             posts,
             developers,
@@ -103,7 +155,8 @@ if( $hasSearch ):
         posts.timestamp,
         posts.topic_url,
         posts.topic,
-        posts.url
+        posts.url,
+        posts.rowid as id
     FROM
         posts,
         developers,
