@@ -299,6 +299,23 @@
             "group": "DICE",
             "role": "Level Artist",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Dasdonia"
+            },
+            "nick": "Dasdonia",
+            "group": "Dice",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "DICE_TheBikingViking"
+            },
+            "name": "Jesper Nielsen",
+            "nick": "TheBikingViking",
+            "group": "Dice",
+            "active": "1"
         }
     ]
 }
