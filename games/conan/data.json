@@ -100,6 +100,16 @@
             },
             "nick": "Conan",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "jcbylos",
+                "Twitter": "joelbylos"
+            },
+            "name": "Joel Bylos",
+            "nick": "jcbylos",
+            "role": "Game Director",
+            "active": "1"
         }
     ]
 }
