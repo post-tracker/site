@@ -305,7 +305,7 @@
                 "Reddit": "Dasdonia"
             },
             "nick": "Dasdonia",
-            "group": "Dice",
+            "group": "DICE",
             "active": "1"
         },
         {
@@ -314,7 +314,16 @@
             },
             "name": "Jesper Nielsen",
             "nick": "TheBikingViking",
-            "group": "Dice",
+            "group": "DICE",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "jnsole"
+            },
+            "nick": "jnsole",
+            "group": "DICE",
+            "role": "Analytics",
             "active": "1"
         }
     ]
