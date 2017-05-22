@@ -317,6 +317,16 @@
             "nick": "Tobii",
             "role": "Community Manager",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Bo_Frontier",
+                "Twitter": "bomarit89"
+            },
+            "name": "Bo Marit",
+            "nick": "Bo",
+            "role": "Community Content Manager",
+            "active": "1"
         }
     ]
 }
