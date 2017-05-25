@@ -1,5 +1,17 @@
 import React from 'react';
 
+const styles = {
+    clearer: {
+        height: '15px',
+        pointerEvents: 'auto',
+        position: 'absolute',
+        right: '6px',
+        top: '6px',
+        width: '15px',
+        zIndex: 1,
+    },
+};
+
 class Search extends React.Component {
     constructor ( props ) {
         super( props );
@@ -27,10 +39,15 @@ class Search extends React.Component {
 
         if ( this.props.searchTerm.length > 0 ) {
             clearerNode = (
-                <span
-                    className = { 'clearer fa fa-times-circle-o form-control-feedback' }
+                <svg
+                    className = { 'icon clearer' }
                     onClick = { this.handleClearClick }
-                />
+                    style = { styles.clearer }
+                >
+                    <use
+                        xlinkHref = { '#icon-clear' }
+                    />
+                </svg>
             );
         }
 
