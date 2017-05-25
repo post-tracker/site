@@ -15,6 +15,21 @@ const DATA_URL = 'data';
 const FETCH_DEBOUNCE_INTERVAL = 250;
 
 const setSearchTerm = function setSearchTerm ( term ) {
+    const currentQuery = queryString.parse( location.search );
+
+    if ( currentQuery.post ) {
+        Reflect.deleteProperty( currentQuery, 'post' );
+        let newPath = queryString.stringify( currentQuery );
+
+        if ( newPath.length > 0 ) {
+            newPath = `?${ newPath }`;
+        } else {
+            newPath = window.location.origin + window.location.pathname;
+        }
+
+        window.history.pushState( {}, '', newPath );
+    }
+
     return {
         term,
         type: SET_SEARCH_TERM,
