@@ -254,6 +254,7 @@ Post.propTypes = {
     postData: React.PropTypes.shape( {
         content: React.PropTypes.string,
         group: React.PropTypes.string,
+        id: React.PropTypes.string,
         name: React.PropTypes.string,
         nick: React.PropTypes.string,
         role: React.PropTypes.string,

@@ -13,13 +13,13 @@ class Ad extends React.Component {
     constructor ( props ) {
         super( props );
 
-        this.state = {};
-
-        this.state.styles = Object.assign( {}, styles.wrapper, props.styles || {} );
+        this.state = {
+            styles: Object.assign( {}, styles.wrapper, props.styles || {} ),
+        };
     }
 
-    componentDidMount(){
-        if( window ) {
+    componentDidMount () {
+        if ( window ) {
             ( window.adsbygoogle = window.adsbygoogle || [] ).push( {} );
         }
     }
@@ -38,8 +38,14 @@ class Ad extends React.Component {
 
 Ad.displayName = 'Ad';
 
+Ad.defaultProps = {
+    styles: {},
+};
+
 Ad.propTypes = {
     dataAdSlot: React.PropTypes.string.isRequired,
+    // eslint-disable-next-line react/forbid-prop-types
+    styles: React.PropTypes.object,
 };
 
 export default Ad;
