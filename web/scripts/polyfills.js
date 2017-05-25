@@ -25,9 +25,9 @@ if (typeof Object.assign != 'function') {
 
 // Add window.location.origin to IE & Edge
 if ( !window.location.origin ) {
-    window.location.origin = `${ window.location.protocol }//$ { window.location.hostname }`;
+    window.location.origin = window.location.protocol + '//' + window.location.hostname;
 
     if ( window.location.port ) {
-        window.location.origin = `${ window.location.origin }:${ window.location.port }`;
+        window.location.origin = window.location.origin + ':' + window.location.port;
     }
 }
