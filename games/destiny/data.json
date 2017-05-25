@@ -1,0 +1,58 @@
+{
+    "name": "Destiny",
+    "shortName": "Destiny",
+    "hostname": "destinydevtracker.com",
+    "config": {
+        "Reddit": {
+            "matchOnly": "DestinyTheGame"
+        }
+    },
+    "developers": [
+        {
+            "accounts": {
+                "Reddit": "Cozmo23",
+                "Twitter": "cozmo23",
+                "Bungie.net": "22704"
+            },
+            "nick": "Cozmo",
+            "group": "Bungie",
+            "role": "Community Manager",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "dmg04",
+                "Twitter": "a_dmg04",
+                "Bungie.net": "2526"
+            },
+            "nick": "dmg04",
+            "group": "Bungie",
+            "role": "Player support",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "DeeJ_BNG",
+                "Twitter": "deej_bng",
+                "Bungie.net": "8011"
+            },
+            "name": "David Dague",
+            "nick": "DeeJ",
+            "group": "Bungie",
+            "role": "Player support",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Level_1_Warrior",
+                "Twitter": "level_1_warrior",
+                "Bungie.net": "2706"
+            },
+            "name": "Jeremiah Pieschl",
+            "nick": "Jeremiah",
+            "group": "Bungie",
+            "role": "Designer",
+            "active": "1"
+        }
+    ]
+}

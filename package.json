@@ -13,6 +13,7 @@
     "convert:elite": "node scripts/csv-to-json.js --source=\"Developers - Elite Dangerous.csv\" --destination=games/elite/data.json",
     "convert:rimworld": "node scripts/csv-to-json.js --source=\"Developers - RimWorld.csv\" --destination=games/rimworld/data.json",
     "convert:conan": "node scripts/csv-to-json.js --source=\"Developers - Conan.csv\" --destination=games/conan/data.json",
+    "convert:destiny": "node scripts/csv-to-json.js --source=\"Developers - Destiny.csv\" --destination=games/destiny/data.json",
     "vagrant-cron": "sudo cp /vagrant/config/cron/* /etc/cron.d && sudo chmod 644 /etc/cron.d/*",
     "dev:components": "npm run lint:components && cross-env NODE_ENV=development browserify app/index.jsx -o web/scripts/app.js -t [ babelify --presets [ es2015 react ] ] && node scripts/copy-app.js",
     "build:ads": "cross-env NODE_ENV=production browserify app/ads.jsx -o web/scripts/ads.js -t [ babelify --presets [ es2015 react ] ] && uglifyjs web/scripts/ads.js -o web/scripts/ads.js -c warnings=false -m",

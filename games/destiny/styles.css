@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'Destiny';
+    font-weight: normal;
+    font-style: normal;
+    src: url( 'assets/destiny-font.woff2' ) format( 'woff2' ),
+         url( 'assets/destiny-font.woff' ) format( 'woff' );
+}
+
+@font-face {
+    font-family: 'futurist-fixed';
+    font-style: normal;
+    font-weight: normal;
+    src: url( 'assets/futurist-fixed.woff2' ) format( 'woff2' ),
+        url( 'assets/futurist-fixed.woff' ) format( 'woff' );
+}
+
+body {
+    font-family: Destiny, Roboto;
+}
+
+h1 {
+    font-family: futurist-fixed, Roboto;
+    letter-spacing: -5px;
+}
