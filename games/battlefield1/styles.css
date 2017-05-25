@@ -1,10 +1,7 @@
 @font-face {
     font-family: 'Purista';
-    src: url( 'assets/purista-medium.eot' );
-    src: url( 'assets/purista-medium.eot?#iefix' ) format( 'embedded-opentype' ),
-         url( 'assets/purista-medium.woff2' ) format( 'woff2' ),
-         url( 'assets/purista-medium.woff' ) format( 'woff' ),
-         url( 'assets/purista-medium.ttf' ) format( 'truetype' );
+    src: url( 'assets/purista-medium.woff2' ) format( 'woff2' ),
+         url( 'assets/purista-medium.woff' ) format( 'woff' );
     font-weight: normal;
     font-style: normal;
 }

@@ -1,10 +1,7 @@
 @font-face {
     font-family: 'counter-strike';
-    src: url( 'assets/CounterStrike.eot' );
-    src: url( 'assets/CounterStrike.eot?#iefix' ) format( 'embedded-opentype' ),
-         url( 'assets/CounterStrike.woff2' ) format( 'woff2' ),
-         url( 'assets/CounterStrike.woff' ) format( 'woff' ),
-         url( 'assets/CounterStrike.ttf' ) format( 'truetype' );
+    src: url( 'assets/CounterStrike.woff2' ) format( 'woff2' ),
+         url( 'assets/CounterStrike.woff' ) format( 'woff' );
     font-weight: normal;
     font-style: normal;
 }

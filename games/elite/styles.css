@@ -1,10 +1,7 @@
 @font-face {
     font-family: 'Eurostile';
-    src: url( 'assets/eurostile.eot' );
-    src: url( 'assets/eurostile.eot?#iefix' ) format( 'embedded-opentype' ),
-         url( 'assets/eurostile.woff2' ) format( 'woff2' ),
-         url( 'assets/eurostile.woff' ) format( 'woff' ),
-         url( 'assets/eurostile.ttf' ) format( 'truetype' );
+    src: url( 'assets/eurostile.woff2' ) format( 'woff2' ),
+         url( 'assets/eurostile.woff' ) format( 'woff' );
     font-weight: normal;
     font-style: normal;
 }
