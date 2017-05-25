@@ -198,9 +198,9 @@ const getPosts = function getPosts ( search, groups, services, dispatch ) {
     const currentQuery = queryString.parse( location.search );
 
     // If we have a post, don't keep anything else in the querystring
-    if ( currentQuery[ 'post' ] ) {
+    if ( currentQuery.post ) {
         querystringParameters = {
-            post: currentQuery[ 'post' ],
+            post: currentQuery.post,
         };
     }
 
@@ -218,7 +218,7 @@ const getPosts = function getPosts ( search, groups, services, dispatch ) {
 
     const cookieServices = cookie.load( 'services' );
 
-    if ( services.items.length === 0 && cookieServices && !currentQuery[ 'post' ] ) {
+    if ( services.items.length === 0 && cookieServices && !currentQuery.post ) {
         querystringParameters[ 'services[]' ] = cookieServices;
         parsedQuerystring = queryString.stringify( querystringParameters );
     }
