@@ -709,6 +709,14 @@
         },
         {
             "accounts": {
+                "Reddit": "DGNo1"
+            },
+            "nick": "DGNo1",
+            "group": "ESL",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "JacobNWolf",
                 "Twitter": "JacobNWolf"
             },
