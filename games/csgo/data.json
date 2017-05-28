@@ -1609,6 +1609,17 @@
         },
         {
             "accounts": {
+                "Reddit": "GAFALLEN",
+                "Twitter": "FalleNCS"
+            },
+            "name": "Gabriel Toledo",
+            "nick": "Fallen",
+            "group": "SK Gaming",
+            "role": "Player",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "jdm64GO",
                 "Twitter": "Liquid_jdm"
             },
