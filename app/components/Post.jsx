@@ -32,7 +32,7 @@ class Post extends React.Component {
 
     componentWillMount (){
         this.setState( {
-            source: this.normaliseSource( this.props.postData.source );
+            source: this.normaliseSource( this.props.postData.source ),
         } );
     }
 
