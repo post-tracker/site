@@ -728,6 +728,17 @@
         },
         {
             "accounts": {
+                "Reddit": "ESLqntm",
+                "Twitter": "ESLqntm"
+            },
+            "name": "Brian Kraemer",
+            "nick": "qntm",
+            "group": "ESL",
+            "role": "Product Manager",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "JacobNWolf",
                 "Twitter": "JacobNWolf"
             },
