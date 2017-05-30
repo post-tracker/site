@@ -67,6 +67,18 @@
             },
             "nick": "ItchyFlea",
             "group": "Ludeon",
+            "role": "Moderator",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "ZorbaTHut",
+                "Twitter": "ZorbaTHut",
+                "LudeonForums": "61193"
+            },
+            "nick": "ZorbaTHut",
+            "group": "Ludeon",
+            "role": "Developer",
             "active": "1"
         }
     ]
