@@ -65,6 +65,17 @@
         },
         {
             "accounts": {
+                "Reddit": "SympaticoTV",
+                "Twitter": "SympaticoTV"
+            },
+            "name": "Simon Abitbol",
+            "nick": "Sympatico",
+            "group": "Boomeo",
+            "role": "Founder",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "csboxr",
                 "Twitter": "botlaunders"
             },
