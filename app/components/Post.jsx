@@ -1,7 +1,7 @@
 import React from 'react';
 import TimeAgo from 'react-timeago';
 
-const POST_CUTOFF_HEIGHT = 500;
+const POST_CUTOFF_HEIGHT = 1000;
 const TIMESTAMP_UPDATE_INTERVAL = 1000;
 
 const styles = {
