@@ -53,6 +53,25 @@
             "group": "Bungie",
             "role": "Designer",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "PopAndWarlockIt"
+            },
+            "nick": "PopAndWarlockIt",
+            "group": "Bungie",
+            "role": "Game Designer",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Veegie",
+                "Bungie.net": "1358354"
+            },
+            "nick": "Veegie",
+            "group": "Bungie",
+            "role": "Technical Artist",
+            "active": "1"
         }
     ]
 }
