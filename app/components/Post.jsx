@@ -30,6 +30,12 @@ class Post extends React.Component {
         };
     }
 
+    componentWillMount (){
+        this.setState( {
+            source: this.normaliseSource( this.props.postData.source );
+        } );
+    }
+
     componentDidMount () {
         const height = this.body.offsetHeight;
 
@@ -71,7 +77,7 @@ class Post extends React.Component {
         } );
     }
 
-    convertSource ( originalSource ) {
+    normaliseSource ( originalSource ) {
         let source;
 
         /* eslint-disable indent */
@@ -98,17 +104,11 @@ class Post extends React.Component {
         return source.toLowerCase();
     }
 
-    render () {
-        let expander;
-        let bodyClasses = 'panel-body';
-        let title;
-        let postedString = '';
+    getSectionIcon () {
         const sectionURL = this.getSectionURL();
-        let iconNode;
-        let topicLinkNode = false;
 
         if ( sectionURL ) {
-            iconNode = (
+            return (
                 <a
                     href = { sectionURL }
                 >
@@ -117,24 +117,31 @@ class Post extends React.Component {
                         style = { styles.sourceIcon }
                     >
                         <use
-                            xlinkHref = { `#icon-${ this.convertSource( this.props.postData.source ) }` }
+                            xlinkHref = { `#icon-${ this.state.source }` }
                         />
                     </svg>
                 </a>
             );
-        } else {
-            iconNode = (
-                <svg
-                    className = { 'icon' }
-                    style = { styles.sourceIcon }
-                >
-                    <use
-                        xlinkHref = { `#icon-${ this.convertSource( this.props.postData.source ) }` }
-                    />
-                </svg>
-            );
         }
 
+        return (
+            <svg
+                className = { 'icon' }
+                style = { styles.sourceIcon }
+            >
+                <use
+                    xlinkHref = { `#icon-${ this.state.source }` }
+                />
+            </svg>
+        );
+    }
+
+    render () {
+        let expander;
+        let bodyClasses = 'panel-body';
+        let title;
+        let postedString = '';
+        let topicLinkNode = false;
 
         if ( this.state.expandable ) {
             expander = (
@@ -228,7 +235,7 @@ class Post extends React.Component {
                 <div
                     className = { 'panel-footer' }
                 >
-                    { iconNode }
+                    { this.getSectionIcon() }
                     <a
                         href = { this.props.postData.url }
                     >
