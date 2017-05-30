@@ -136,6 +136,16 @@ class Post extends React.Component {
         );
     }
 
+    getPostLink () {
+        if ( this.state.source === 'reddit' ) {
+            const postId = this.props.postData.url.match( /.*\/(.+?)\/$/ )[ 1 ];
+
+            return `${ this.props.postData.url }?context=999#${ postId }`;
+        }
+
+        return this.props.postData.url;
+    }
+
     render () {
         let expander;
         let bodyClasses = 'panel-body';
@@ -237,7 +247,7 @@ class Post extends React.Component {
                 >
                     { this.getSectionIcon() }
                     <a
-                        href = { this.props.postData.url }
+                        href = { this.getPostLink() }
                     >
                         <TimeAgo
                             date = { Number( this.props.postData.timestamp ) * TIMESTAMP_UPDATE_INTERVAL }
