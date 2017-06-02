@@ -72,6 +72,25 @@
             "group": "Bungie",
             "role": "Technical Artist",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Twitter": "DestinyTheGame"
+            },
+            "nick": "Destiny",
+            "group": "Bungie",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Justinisonreddit",
+                "Twitter": "justinsocial"
+            },
+            "name": "Justin Reynolds",
+            "nick": "Justin",
+            "group": "Activision",
+            "role": "Influencer relations",
+            "active": "1"
         }
     ]
 }
