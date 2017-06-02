@@ -4,7 +4,6 @@
     "hostname": "rainbowsixdevtracker.com",
     "config": {
         "Reddit": {
-            "index": "Rainbow6",
             "exclude": [
                 "funny",
                 "Steep"

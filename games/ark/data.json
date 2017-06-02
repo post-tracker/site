@@ -23,8 +23,7 @@
             ],
             "exclude": [
                 "funny"
-            ],
-            "index": "playark"
+            ]
         }
     },
     "developers": [

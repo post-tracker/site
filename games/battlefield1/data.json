@@ -2,14 +2,6 @@
     "name": "Battlefield 1",
     "shortName": "Battlefield 1",
     "hostname": "battlefielddevtracker.com",
-    "config": {
-        "Reddit": {
-            "index": [
-                "battlefield_one",
-                "battlefield_live"
-            ]
-        }
-    },
     "developers": [
         {
             "accounts": {

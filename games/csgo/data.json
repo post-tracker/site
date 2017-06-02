@@ -2227,7 +2227,6 @@
     ],
     "config": {
         "Reddit": {
-            "index": "GlobalOffensive",
             "exclude": [
                 "DotA2",
                 "LiverpoolFC",

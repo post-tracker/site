@@ -4,7 +4,6 @@
     "hostname": "conandevtracker.com",
     "config": {
         "Reddit": {
-            "index": "ConanExiles",
             "exclude": [
                 "funny",
                 "Steep",
