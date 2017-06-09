@@ -91,6 +91,17 @@
             "group": "Activision",
             "role": "Influencer relations",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "AmusedApricot",
+                "Twitter": "AmusedApricot"
+            },
+            "name": "David Bocek",
+            "nick": "AmusedApricot",
+            "group": "Bungie",
+            "role": "Game Designer",
+            "active": "1"
         }
     ]
 }
