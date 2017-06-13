@@ -102,6 +102,17 @@
             "group": "Bungie",
             "role": "Game Designer",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "danielout",
+                "Twitter": "danielOut"
+            },
+            "name": "Daniel Auchenpaugh",
+            "nick": "danielout",
+            "group": "Bungie",
+            "role": "Investment Test Team Lead",
+            "active": "1"
         }
     ]
 }
