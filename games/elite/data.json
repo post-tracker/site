@@ -327,6 +327,17 @@
             "nick": "Bo",
             "role": "Community Content Manager",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "PaigeHarvey_Frontier",
+                "Twitter": "PaigeHarveyFDEV",
+                "MiggyRSS": "130893"
+            },
+            "name": "Paige Harvey",
+            "nick": "Normandy",
+            "role": "Community Manager",
+            "active": "1"
         }
     ]
 }
