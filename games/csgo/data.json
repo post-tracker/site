@@ -46,6 +46,15 @@
         },
         {
             "accounts": {
+                "Reddit": "ESPORTS_HotBid"
+            },
+            "nick": "HotBid",
+            "group": "Beyond The Summit",
+            "role": "Lead Creative Producer",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "sb2"
             },
             "nick": "sb2",
