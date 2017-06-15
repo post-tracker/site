@@ -23,7 +23,7 @@
                 "PUBGForums": "9-pubg_fwg"
             },
             "name": "Andro Dars",
-            "nick": "FWG",
+            "nick": "Andro",
             "group": "Bluehole",
             "role": "Associate Community Manager",
             "active": "1"
@@ -46,7 +46,7 @@
                 "PUBGForums": "18-pubg_poopiequeen"
             },
             "name": "Sammie Kang",
-            "nick": "poopieQueen",
+            "nick": "Sammie",
             "group": "Bluehole",
             "role": "Lead Community Manager",
             "active": "1"
@@ -134,7 +134,8 @@
         {
             "accounts": {
                 "Reddit": "Pankie",
-                "Twitter": "Panky"
+                "Twitter": "Panky",
+                "PUBGForums": "40174-panky"
             },
             "name": "Chris Pankhurst",
             "nick": "Panky",
@@ -159,6 +160,45 @@
             "nick": "PUBGPartners",
             "group": "Bluehole",
             "role": "Partner Community",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Twitter": "sandra__mad",
+                "PUBGForums": "34340-pubg_sandra_mad"
+            },
+            "nick": "Sandra",
+            "group": "Bluehole",
+            "role": "Assistant Community Manager",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Twitter": "PrimmroseTwitch"
+            },
+            "name": "Ayre Wilson",
+            "nick": "Ayre",
+            "group": "Bluehole",
+            "role": "Partnerships Manager",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Twitter": "odysseygrrrl"
+            },
+            "nick": "OdysseyGrrrl",
+            "group": "Bluehole",
+            "role": "Partnerships Manager",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Twitter": "TheSparrowsJour",
+                "PUBGForums": "41106-pubg_the-sparrow"
+            },
+            "nick": "TheSparrow",
+            "group": "Bluehole",
+            "role": "Assistant Community Manager",
             "active": "1"
         }
     ]
