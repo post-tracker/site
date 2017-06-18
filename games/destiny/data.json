@@ -113,6 +113,48 @@
             "group": "Bungie",
             "role": "Investment Test Team Lead",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Purple-Toupee"
+            },
+            "nick": "Purple-Toupee",
+            "group": "Bungie",
+            "role": "Engineer",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "bng_hopps",
+                "Twitter": "kingkeoua"
+            },
+            "name": "Andrew Hopps",
+            "nick": "hopps",
+            "group": "Bungie",
+            "role": "Senior Raid Artist and Level Designer",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "Achronos",
+                "Twitter": "Achronos",
+                "Bungie.net": "1"
+            },
+            "nick": "Achronos",
+            "group": "Bungie",
+            "role": "Server Engineer",
+            "active": "1"
+        },
+        {
+            "accounts": {
+                "Reddit": "thislukesmith",
+                "Twitter": "thislukesmith"
+            },
+            "name": "Luke Smith",
+            "nick": "thislukesmith",
+            "group": "Bungie",
+            "role": "Director",
+            "active": "1"
         }
     ]
 }
