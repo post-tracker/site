@@ -338,6 +338,15 @@
             "nick": "Normandy",
             "role": "Community Manager",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "MiggyRSS": "157490"
+            },
+            "name": "Lloyd Morgan-Moore",
+            "nick": "Lloyd",
+            "role": "Assistant Producer",
+            "active": "1"
         }
     ]
 }
