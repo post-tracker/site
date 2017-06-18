@@ -132,3 +132,19 @@ server {
     ssl_certificate_key /etc/letsencrypt/live/pubgdevtracker.com/privkey.pem;
     ssl_trusted_certificate /etc/letsencrypt/live/pubgdevtracker.com/fullchain.pem;
 }
+
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+
+    include ssl.conf;
+    include gzip.conf;
+    include server.conf;
+
+    root /usr/share/nginx/html/destiny;
+    server_name destinydevtracker.com;
+
+    ssl_certificate /etc/letsencrypt/live/destinydevtracker.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/destinydevtracker.com/privkey.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/destinydevtracker.com/fullchain.pem;
+}
