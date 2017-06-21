@@ -109,6 +109,13 @@
             "nick": "jcbylos",
             "role": "Game Director",
             "active": "1"
+        },
+        {
+            "accounts": {
+                "Steam": "Vrykos"
+            },
+            "nick": "Vrykos",
+            "active": "1"
         }
     ]
 }
