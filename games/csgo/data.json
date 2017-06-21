@@ -1082,6 +1082,16 @@
         },
         {
             "accounts": {
+                "Reddit": "HellRaisersCEO"
+            },
+            "name": "Maksym Bednarsky",
+            "nick": "Maksym",
+            "group": "HellRaisers",
+            "role": "CEO",
+            "active": "1"
+        },
+        {
+            "accounts": {
                 "Reddit": "valdeCS",
                 "Twitter": "Officialvalde"
             },
