@@ -22,8 +22,7 @@
         {
             "accounts": {
                 "Reddit": "DavidBraben",
-                "Twitter": "DavidBraben",
-                "MiggyRSS": "7"
+                "Twitter": "DavidBraben"
             },
             "name": "David Braben",
             "nick": "Braben",
@@ -34,7 +33,7 @@
             "accounts": {
                 "Reddit": "BrettC_Frontier",
                 "Steam": "BrettC_Frontier",
-                "MiggyRSS": "52"
+                "MiggyRSS": "Brett C"
             },
             "name": "Brett Cooper",
             "nick": "Brett C",
@@ -44,7 +43,7 @@
         {
             "accounts": {
                 "Reddit": "DaleEmasiri_Frontier",
-                "MiggyRSS": "106358"
+                "MiggyRSS": "Dale Emasiri"
             },
             "name": "Dale Emasiri",
             "nick": "Dale",
@@ -53,7 +52,7 @@
         },
         {
             "accounts": {
-                "MiggyRSS": "10691"
+                "MiggyRSS": "Gary Richards"
             },
             "name": "Gary Richards",
             "nick": "Gary",
@@ -63,7 +62,7 @@
         {
             "accounts": {
                 "Reddit": "ZacAntonaci_Frontier",
-                "MiggyRSS": "97768"
+                "MiggyRSS": "Zac Antonaci"
             },
             "name": "Zac Antonaci",
             "nick": "Zac",
@@ -71,9 +70,7 @@
             "active": "1"
         },
         {
-            "accounts": {
-                "MiggyRSS": "100780"
-            },
+            "accounts": {},
             "name": "Ian Dingwall",
             "nick": "Ian",
             "role": "Senior Designer",
@@ -82,8 +79,7 @@
         {
             "accounts": {
                 "Reddit": "adwoodsuk",
-                "Twitter": "adwoodsuk",
-                "MiggyRSS": "14349"
+                "Twitter": "adwoodsuk"
             },
             "name": "Adam Woods",
             "nick": "Adam Woods",
@@ -93,7 +89,7 @@
         {
             "accounts": {
                 "Twitter": "TheCultofMe",
-                "MiggyRSS": "2"
+                "MiggyRSS": "Michael Brookes"
             },
             "name": "Michael Brookes",
             "nick": "Michael",
@@ -102,8 +98,7 @@
         },
         {
             "accounts": {
-                "Twitter": "klumaster",
-                "MiggyRSS": "27895"
+                "Twitter": "klumaster"
             },
             "name": "Ben Parry",
             "nick": "Ben",
@@ -120,7 +115,7 @@
         {
             "accounts": {
                 "Reddit": "Sandro_Sammarco",
-                "MiggyRSS": "15655"
+                "MiggyRSS": "Sandro Sammarco"
             },
             "name": "Sandro Sammarco",
             "nick": "Sandro",
@@ -135,9 +130,7 @@
             "active": "1"
         },
         {
-            "accounts": {
-                "MiggyRSS": "15645"
-            },
+            "accounts": {},
             "name": "Ashley Barley",
             "nick": "Ashley",
             "role": "Customer Services",
@@ -145,8 +138,7 @@
         },
         {
             "accounts": {
-                "Twitter": "anttheross",
-                "MiggyRSS": "25591"
+                "Twitter": "anttheross"
             },
             "name": "Anthony Ross",
             "nick": "Anthony",
@@ -155,8 +147,7 @@
         },
         {
             "accounts": {
-                "Reddit": "EdwardLewis_Frontier",
-                "MiggyRSS": "47159"
+                "Reddit": "EdwardLewis_Frontier"
             },
             "name": "Edward Lewis",
             "nick": "Edward",
@@ -174,7 +165,7 @@
         },
         {
             "accounts": {
-                "MiggyRSS": "17666"
+                "MiggyRSS": "Sarah Jane Avory"
             },
             "name": "Sarah Jane Avory",
             "nick": "Sarah",
@@ -182,81 +173,63 @@
             "active": "1"
         },
         {
-            "accounts": {
-                "MiggyRSS": "31252"
-            },
+            "accounts": {},
             "name": "Howard Chalkley",
             "nick": "hchalkley",
             "role": "Senior Programmer",
             "active": "1"
         },
         {
-            "accounts": {
-                "MiggyRSS": "26549"
-            },
+            "accounts": {},
             "name": "Mark Allen",
             "nick": "Mark",
             "role": "Programmer",
             "active": "1"
         },
         {
-            "accounts": {
-                "MiggyRSS": "32348"
-            },
+            "accounts": {},
             "name": "Jon Pace",
             "nick": "Jon",
             "role": "Head of UI",
             "active": "1"
         },
         {
-            "accounts": {
-                "MiggyRSS": "108846"
-            },
+            "accounts": {},
             "name": "Steve Kirby",
             "nick": "Steve",
             "role": "Lead Games Designer",
             "active": "1"
         },
         {
-            "accounts": {
-                "MiggyRSS": "22712"
-            },
+            "accounts": {},
             "name": "Mike Evans",
             "nick": "Mike",
             "role": "Game Designer",
             "active": "1"
         },
         {
-            "accounts": {
-                "MiggyRSS": "31354"
-            },
+            "accounts": {},
             "name": "Joe Hogan",
             "nick": "Joe",
             "role": "Lead Audio Designer",
             "active": "1"
         },
         {
-            "accounts": {
-                "MiggyRSS": "14849"
-            },
+            "accounts": {},
             "name": "Simon Brewer",
             "nick": "Simon",
             "role": "Lead Technical Artist",
             "active": "1"
         },
         {
-            "accounts": {
-                "MiggyRSS": "26755"
-            },
+            "accounts": {},
             "name": "Barry Clark",
             "nick": "Barry",
             "role": "Designer",
             "active": "1"
         },
         {
-            "accounts": {
-                "MiggyRSS": "32574"
-            },
+            "accounts": {},
             "name": "Matt Dickinson",
             "nick": "Matt",
             "role": "Head of Technical Art",
@@ -264,7 +237,7 @@
         },
         {
             "accounts": {
-                "MiggyRSS": "2000"
+                "MiggyRSS": "drew"
             },
             "name": "Drew Wagar",
             "nick": "Drew",
@@ -274,8 +247,7 @@
         {
             "accounts": {
                 "Reddit": "MFlorianz_Frontier",
-                "Twitter": "matthewflorianz",
-                "MiggyRSS": "34604"
+                "Twitter": "matthewflorianz"
             },
             "name": "Matthew Florianz",
             "nick": "Matthew",
@@ -284,7 +256,7 @@
         },
         {
             "accounts": {
-                "MiggyRSS": "148080"
+                "MiggyRSS": "Dominic Corner"
             },
             "name": "Dominic Corner",
             "nick": "Dom",
@@ -293,8 +265,7 @@
         },
         {
             "accounts": {
-                "Twitter": "bovaflux",
-                "MiggyRSS": "33396"
+                "Twitter": "bovaflux"
             },
             "name": "Eddie Symons",
             "nick": "Eddie",
@@ -302,9 +273,7 @@
             "active": "1"
         },
         {
-            "accounts": {
-                "MiggyRSS": "32350"
-            },
+            "accounts": {},
             "name": "Adam Waite",
             "nick": "Adam Waite",
             "role": "Designer",
@@ -332,7 +301,7 @@
             "accounts": {
                 "Reddit": "PaigeHarvey_Frontier",
                 "Twitter": "PaigeHarveyFDEV",
-                "MiggyRSS": "130893"
+                "MiggyRSS": "Paige Harvey"
             },
             "name": "Paige Harvey",
             "nick": "Normandy",
@@ -341,7 +310,7 @@
         },
         {
             "accounts": {
-                "MiggyRSS": "157490"
+                "MiggyRSS": "Lloyd Morgan-Moore"
             },
             "name": "Lloyd Morgan-Moore",
             "nick": "Lloyd Morgan-Moore",
