@@ -33,15 +33,23 @@ h1 a:hover {
     position: relative;
 }
 
-.rss-link-wrapper {
+.header-link {
     position: absolute;
     right: 15px;
     top: 10px;
 }
 
-.rss-link-wrapper i {
+.header-link i {
     font-size: 1.8em;
     margin: 0;
+}
+
+.github-link {
+    right: 45px;
+}
+
+.reddit-link {
+    right: 75px;
 }
 
 .panel {
@@ -204,7 +212,7 @@ input[type="checkbox"],
 }
 
 @media screen and ( max-width: 660px ){
-    .rss-link-wrapper {
+    .header-link {
         display: none;
     }
 }
