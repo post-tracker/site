@@ -11,8 +11,10 @@ export const SET_SEARCH_TERM = 'SET_SEARCH_TERM';
 export const TOGGLE_SERVICE = 'TOGGLE_SERVICE';
 export const RECEIVE_SERVICES = 'RECEIVE_SERVICES';
 
-const DATA_URL = 'data';
 const FETCH_DEBOUNCE_INTERVAL = 250;
+
+const API_HOSTNAME = 'api.kokarn.com';
+const API_PORT = 443;
 
 const setSearchTerm = function setSearchTerm ( term ) {
     const currentQuery = queryString.parse( location.search );
@@ -75,14 +77,11 @@ const toggleServiceState = function toggleServiceState ( name ) {
 const fetchServices = function fetchServices () {
     return ( dispatch ) => {
         const options = {
-            hostname: window.location.hostname,
+            hostname: API_HOSTNAME,
             method: 'GET',
-            path: `${ window.location.pathname }${ DATA_URL }?type=services`,
+            path: `/${ window.game }/services`,
+            port: API_PORT,
         };
-
-        if ( window.location.port ) {
-            options.port = window.location.port;
-        }
 
         const request = https.request( options, ( response ) => {
             let body = '';
@@ -94,7 +93,7 @@ const fetchServices = function fetchServices () {
             } );
 
             response.on( 'end', () => {
-                let services = JSON.parse( body );
+                let services = JSON.parse( body ).data;
 
                 // If we only have one group, treat it as no group
                 if ( services.length === 1 ) {
@@ -125,14 +124,11 @@ const fetchServices = function fetchServices () {
 const fetchGroups = function fetchGroups () {
     return ( dispatch ) => {
         const options = {
-            hostname: window.location.hostname,
+            hostname: API_HOSTNAME,
             method: 'GET',
-            path: `${ window.location.pathname }${ DATA_URL }?type=groups`,
+            path: `/${ window.game }/groups`,
+            port: API_PORT,
         };
-
-        if ( window.location.port ) {
-            options.port = window.location.port;
-        }
 
         const request = https.request( options, ( response ) => {
             let body = '';
@@ -144,7 +140,7 @@ const fetchGroups = function fetchGroups () {
             } );
 
             response.on( 'end', () => {
-                let groups = JSON.parse( body );
+                let groups = JSON.parse( body ).data;
 
                 // If we only have one group, treat it as no group
                 if ( groups.length === 1 ) {
@@ -176,9 +172,10 @@ const fetchGroups = function fetchGroups () {
 const getPosts = function getPosts ( search, groups, services, dispatch ) {
     let querystringParameters = {};
     const options = {
-        hostname: window.location.hostname,
+        hostname: API_HOSTNAME,
         method: 'GET',
-        path: `${ window.location.pathname }${ DATA_URL }`,
+        path: `/${ window.game }/posts`,
+        port: API_PORT,
     };
     const activeGroups = groups.items.filter( ( group ) => {
         return group.active;
@@ -189,10 +186,6 @@ const getPosts = function getPosts ( search, groups, services, dispatch ) {
     activeServices = services.items.filter( ( service ) => {
         return service.active;
     } );
-
-    if ( window.location.port ) {
-        options.port = window.location.port;
-    }
 
     if ( typeof search !== 'undefined' && search.length > 0 ) {
         querystringParameters.search = search;
@@ -239,7 +232,11 @@ const getPosts = function getPosts ( search, groups, services, dispatch ) {
     }
 
     if ( parsedQuerystring.length > 0 ) {
-        options.path = `${ options.path }?${ parsedQuerystring }`;
+        if ( querystringParameters.post ) {
+            options.path = `${ options.path }/${ querystringParameters.post }`;
+        } else {
+            options.path = `${ options.path }?${ parsedQuerystring }`;
+        }
     }
 
     const request = https.request( options, ( response ) => {
@@ -252,7 +249,7 @@ const getPosts = function getPosts ( search, groups, services, dispatch ) {
         } );
 
         response.on( 'end', () => {
-            dispatch( receivePosts( JSON.parse( body ) ) );
+            dispatch( receivePosts( JSON.parse( body ).data ) );
         } );
     } );
 

@@ -1,38 +1,18 @@
 <?php
-include( 'includes/default.php' );
+$url = 'https://api.kokarn.com/{{identifier}}/posts?excludeService=Twitter';
 
-$query = 'SELECT
-        posts.topic,
-        posts.topic_url,
-        posts.url,
-        posts.content,
-        posts.timestamp,
-        developers.nick,
-        developers.role,
-        accounts.identifier,
-        posts.source
-    FROM
-        posts,
-        developers,
-        accounts
-    WHERE
-        developers.id = posts.uid
-    AND
-        accounts.uid = posts.uid
-    AND
-        accounts.service = posts.source
-    AND
-        accounts.service != \'Twitter\'
-    ORDER BY
-        posts.timestamp
-    DESC
-    LIMIT
-        100';
-$PDO = $database->prepare( $query );
+$fileContext = array(
+    'ssl' => array(
+        'verify_peer' => false,
+        'verify_peer_name' => false,
+    ),
+);
+
+$jsonData = file_get_contents( $url, false, stream_context_create( $fileContext ) );
+$data = json_decode( $jsonData );
 
 header( 'Content-Type: application/rss+xml;' );
-?>
-<?xml version="1.0"?>
+?><?xml version="1.0"?>
 <rss
     version="2.0"
     xmlns:atom="http://www.w3.org/2005/Atom"
@@ -46,9 +26,8 @@ header( 'Content-Type: application/rss+xml;' );
         <pubDate><?php echo date( DATE_RSS ); ?></pubDate>
         <atom:link href="https://{{hostname}}/rss" rel="self" type="application/rss+xml" />
         <?php
-        $PDO->execute();
         $usedGuids = array();
-        while( $post = $PDO->fetch() ) :
+        foreach( $data->data as $post ) :
             if( in_array( $post->url, $usedGuids ) ) {
                 continue;
             }
@@ -59,13 +38,13 @@ header( 'Content-Type: application/rss+xml;' );
                 <description><![CDATA[<?php echo $post->content; ?>]]></description>
                 <link><?php echo $post->url; ?></link>
                 <guid><?php echo $post->url; ?></guid>
+                <{{identifier}}:source><?php echo $post->source; ?></{{identifier}}:source>,
+                <{{identifier}}:from><?php echo $post->nick; ?></{{identifier}}:from>
+                <{{identifier}}:author><?php echo $post->nick; ?></{{identifier}}:author>
                 <pubDate><?php echo date( DATE_RSS, $post->timestamp ); ?></pubDate>
-                {{#rss}}
-                {{{.}}}
-                {{/rss}}
             </item>
             <?php
-        endwhile;
+        endforeach;
         ?>
     </channel>
 </rss>

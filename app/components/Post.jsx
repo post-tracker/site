@@ -30,9 +30,9 @@ class Post extends React.Component {
         };
     }
 
-    componentWillMount (){
+    componentWillMount () {
         this.setState( {
-            source: this.normaliseSource( this.props.postData.source ),
+            service: this.normaliseSource( this.props.postData.account.service ),
         } );
     }
 
@@ -77,31 +77,31 @@ class Post extends React.Component {
         } );
     }
 
-    normaliseSource ( originalSource ) {
-        let source;
+    normaliseSource ( originalService ) {
+        let service;
 
         /* eslint-disable indent */
-        switch ( originalSource ) {
+        switch ( originalService ) {
             case 'MiggyRSS':
-                source = 'RSS';
+                service = 'RSS';
                 break;
             case 'LudeonForums':
-                source = 'comments';
+                service = 'comments';
                 break;
             case 'PUBGForums':
-                source = 'comments';
+                service = 'comments';
                 break;
             case 'SurviveTheArk':
-                source = 'comments';
+                service = 'comments';
                 break;
             default:
-                source = originalSource;
+                service = originalService;
                 break;
         }
 
         /* eslint-enable indent */
 
-        return source.toLowerCase();
+        return service.toLowerCase();
     }
 
     getSectionIcon () {
@@ -117,7 +117,7 @@ class Post extends React.Component {
                         style = { styles.sourceIcon }
                     >
                         <use
-                            xlinkHref = { `#icon-${ this.state.source }` }
+                            xlinkHref = { `#icon-${ this.state.service }` }
                         />
                     </svg>
                 </a>
@@ -130,14 +130,14 @@ class Post extends React.Component {
                 style = { styles.sourceIcon }
             >
                 <use
-                    xlinkHref = { `#icon-${ this.state.source }` }
+                    xlinkHref = { `#icon-${ this.state.service }` }
                 />
             </svg>
         );
     }
 
     getPostLink () {
-        if ( this.state.source === 'reddit' ) {
+        if ( this.state.service === 'reddit' ) {
             const postId = this.props.postData.url.match( /.*\/(.+?)\/$/ )[ 1 ];
 
             return `${ this.props.postData.url }?context=999#${ postId }`;
@@ -170,28 +170,28 @@ class Post extends React.Component {
             bodyClasses = `${ bodyClasses } expandable`;
         }
 
-        if ( this.props.postData.role || this.props.postData.group ) {
+        if ( this.props.postData.account.developer.role || this.props.postData.account.developer.group ) {
             title = '[ ';
 
-            if ( this.props.postData.role ) {
-                title = `${ title }${ this.props.postData.role }`;
+            if ( this.props.postData.account.developer.role ) {
+                title = `${ title }${ this.props.postData.account.developer.role }`;
             }
 
-            if ( this.props.postData.group ) {
+            if ( this.props.postData.account.developer.group ) {
                 // eslint-disable-next-line no-magic-numbers
                 if ( title.length > 2 ) {
                     title = `${ title } - `;
                 }
 
-                title = `${ title }${ this.props.postData.group }`;
+                title = `${ title }${ this.props.postData.account.developer.group }`;
             }
 
             title = `${ title } ]`;
 
             // If we have roles that are the same as the nick, don't display anything
-            if ( !this.props.postData.group && this.props.postData.role === this.props.postData.nick ) {
+            if ( !this.props.postData.account.developer.group && this.props.postData.account.developer.role === this.props.postData.account.developer.nick ) {
                 title = '';
-            } else if ( !this.props.postData.role && this.props.postData.group === this.props.postData.nick ) {
+            } else if ( !this.props.postData.account.developer.role && this.props.postData.account.developer.group === this.props.postData.account.developer.nick ) {
                 title = '';
             }
         }
@@ -200,7 +200,7 @@ class Post extends React.Component {
             postedString = ` ${ title } `;
         }
 
-        if ( this.props.postData.topic_url ) {
+        if ( this.props.postData.topicUrl ) {
             postedString = `${ postedString } posted in `;
             topicLinkNode = (
                 <a
@@ -208,7 +208,7 @@ class Post extends React.Component {
                     dangerouslySetInnerHTML = { {
                         __html: this.props.postData.topic,
                     } }
-                    href = { this.props.postData.topic_url } // eslint-disable-line camelcase
+                    href = { this.props.postData.topicUrl } // eslint-disable-line camelcase
                 />
             );
         } else {
@@ -223,9 +223,9 @@ class Post extends React.Component {
                     className = { 'panel-heading' }
                 >
                     <span
-                        title = { this.props.postData.name }
+                        title = { this.props.postData.account.developer.name }
                     >
-                        { this.props.postData.nick }
+                        { this.props.postData.account.developer.nick }
                     </span>
                     { postedString }
                     { topicLinkNode }
@@ -269,17 +269,24 @@ class Post extends React.Component {
 
 Post.propTypes = {
     postData: React.PropTypes.shape( {
+        account: React.PropTypes.shape( {
+            developer: React.PropTypes.shape( {
+                group: React.PropTypes.string,
+                name: React.PropTypes.string,
+                nick: React.PropTypes.string,
+                role: React.PropTypes.string,
+            } ),
+            identifier: React.PropTypes.string,
+            service: React.PropTypes.string,
+        } ),
         content: React.PropTypes.string,
-        group: React.PropTypes.string,
         id: React.PropTypes.string,
-        name: React.PropTypes.string,
-        nick: React.PropTypes.string,
-        role: React.PropTypes.string,
-        source: React.PropTypes.string,
-        timestamp: React.PropTypes.string,
+        section: React.PropTypes.string,
+        timestamp: React.PropTypes.number,
         topic: React.PropTypes.string,
-        topic_url: React.PropTypes.string, // eslint-disable-line camelcase
+        topicUrl: React.PropTypes.string,
         url: React.PropTypes.string,
+        urlHash: React.PropTypes.string,
     } ).isRequired,
 };
 

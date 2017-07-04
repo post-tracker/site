@@ -60,7 +60,6 @@
     "csv-parse": "^1.1.7",
     "debounce": "^1.0.0",
     "fs-extra": "^2.0.0",
-    "jshashes": "^1.0.5",
     "minimist": "^1.2.0",
     "mustache": "^2.2.1",
     "query-string": "^4.2.3",
