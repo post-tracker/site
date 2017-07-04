@@ -38,9 +38,9 @@ header( 'Content-Type: application/rss+xml;' );
                 <description><![CDATA[<?php echo $post->content; ?>]]></description>
                 <link><?php echo $post->url; ?></link>
                 <guid><?php echo $post->url; ?></guid>
-                <{{identifier}}:source><?php echo $post->source; ?></{{identifier}}:source>
-                <{{identifier}}:from><?php echo $post->nick; ?></{{identifier}}:from>
-                <{{identifier}}:author><?php echo $post->nick; ?></{{identifier}}:author>
+                <{{identifier}}:source><?php echo $post->account->service; ?></{{identifier}}:source>
+                <{{identifier}}:from><?php echo $post->account->developer->nick; ?></{{identifier}}:from>
+                <{{identifier}}:author><?php echo $post->account->developer->nick; ?></{{identifier}}:author>
                 <pubDate><?php echo date( DATE_RSS, $post->timestamp ); ?></pubDate>
             </item>
             <?php
