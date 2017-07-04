@@ -1,20 +1,10 @@
 {
-  "name": "dev-tracker",
-  "version": "1.0.0",
+  "name": "site",
+  "version": "2.0.0",
   "description": "A framework for running multiple dev trackers",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "convert:cs": "node scripts/csv-to-json.js --source=\"Developers - CSGO.csv\" --destination=games/csgo/data.json",
-    "convert:bf": "node scripts/csv-to-json.js --source=\"Developers - Battlefield1.csv\" --destination=games/battlefield1/data.json",
-    "convert:r6": "node scripts/csv-to-json.js --source=\"Developers - Rainbow6.csv\" --destination=games/rainbow6/data.json",
-    "convert:ark": "node scripts/csv-to-json.js --source=\"Developers - Ark.csv\" --destination=games/ark/data.json",
-    "convert:pubg": "node scripts/csv-to-json.js --source=\"Developers - PUBG.csv\" --destination=games/pubg/data.json",
-    "convert:elite": "node scripts/csv-to-json.js --source=\"Developers - Elite Dangerous.csv\" --destination=games/elite/data.json",
-    "convert:rimworld": "node scripts/csv-to-json.js --source=\"Developers - RimWorld.csv\" --destination=games/rimworld/data.json",
-    "convert:conan": "node scripts/csv-to-json.js --source=\"Developers - Conan.csv\" --destination=games/conan/data.json",
-    "convert:destiny": "node scripts/csv-to-json.js --source=\"Developers - Destiny.csv\" --destination=games/destiny/data.json",
-    "vagrant-cron": "sudo cp /vagrant/config/cron/* /etc/cron.d && sudo chmod 644 /etc/cron.d/*",
     "dev:components": "npm run lint:components && cross-env NODE_ENV=development browserify app/index.jsx -o web/scripts/app.js -t [ babelify --presets [ es2015 react ] ] && node scripts/copy-app.js",
     "build:ads": "cross-env NODE_ENV=production browserify app/ads.jsx -o web/scripts/ads.js -t [ babelify --presets [ es2015 react ] ] && uglifyjs web/scripts/ads.js -o web/scripts/ads.js -c warnings=false -m",
     "build:app": "cross-env NODE_ENV=production browserify app/index.jsx -o web/scripts/app.js -t [ babelify --presets [ es2015 react ] ] && uglifyjs web/scripts/app.js -o web/scripts/app.js -c warnings=false -m",
@@ -57,7 +47,6 @@
     "babelify": "^7.3.0",
     "browserify": "^14.0.0",
     "cross-env": "^3.1.1",
-    "csv-parse": "^1.1.7",
     "debounce": "^1.0.0",
     "fs-extra": "^2.0.0",
     "minimist": "^1.2.0",
@@ -70,7 +59,6 @@
     "react-timeago": "^3.1.2",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
-    "sqlite3": "^3.1.4",
     "uglify-js": "^2.7.3"
   },
   "eslintConfig": {

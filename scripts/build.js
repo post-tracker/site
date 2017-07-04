@@ -1,4 +1,4 @@
-/* eslint-disable max-len, no-sync */
+/* eslint-disable no-sync */
 
 const path = require( 'path' );
 
