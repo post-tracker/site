@@ -192,6 +192,20 @@ input[type="checkbox"],
     display: block;
 }
 
+.bb-spoiler-toggle + .bb-spoiler {
+    display: none;
+}
+
+.bb-spoiler-toggle.active + .bb-spoiler {
+    display: block;
+}
+
+.bb-spoiler {
+    border: 1px dashed #ccc;
+    margin: 10px 0;
+    padding: 10px;
+}
+
 @media screen and ( max-width: 1800px ){
     .adsbygoogle {
         display: none;

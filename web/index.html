@@ -102,6 +102,41 @@
     <script src="scripts/polyfills.js"></script>
     <script>
         window.game = '{{identifier}}';
+
+        (function(){
+            let preventClick = false;
+
+            function parentHasClass( element, className ) {
+                if ( !element || !element.classList ) {
+                    return false;
+                }
+
+                if ( element.classList.contains( className ) ) {
+                    return true;
+                }
+
+                return element.parentNode && parentHasClass( element.parentNode, className );
+            }
+
+            window.addEventListener( 'click', ( event ) => {
+                // If set, bail early to prevent ghost clicks
+                if ( preventClick ) {
+                    return true;
+                }
+
+                if ( parentHasClass( event.target.parentNode, 'bb-spoiler-toggle' ) ) {
+                    event.target.closest( '.bb-spoiler-toggle' ).classList.toggle( 'active' );
+                }
+            });
+
+            window.addEventListener( 'touchstart', ( event ) => {
+                preventClick = false;
+                if ( parentHasClass( event.target.parentNode, 'bb-spoiler-toggle' ) ) {
+                    preventClick = true;
+                    event.target.closest( '.bb-spoiler-toggle' ).classList.toggle( 'active' );
+                }
+            });
+        })();
     </script>
     <script async src="scripts/app.js"></script>
     <!-- <script async src="scripts/ads.js"></script> -->

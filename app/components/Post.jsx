@@ -170,6 +170,11 @@ class Post extends React.Component {
             bodyClasses = `${ bodyClasses } expandable`;
         }
 
+        // Handle bbcode spoilers
+        if ( this.props.postData.content.indexOf( 'bb-spoiler-toggle' ) > -1 ) {
+            this.props.postData.content = this.props.postData.content.replace( /bb-spoiler-toggle"><button>/g, 'bb-spoiler-toggle"><button class="btn btn-default">' );
+        }
+
         if ( this.props.postData.account.developer.role || this.props.postData.account.developer.group ) {
             title = '[ ';
 
