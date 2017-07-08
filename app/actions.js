@@ -12,9 +12,14 @@ export const TOGGLE_SERVICE = 'TOGGLE_SERVICE';
 export const RECEIVE_SERVICES = 'RECEIVE_SERVICES';
 
 const FETCH_DEBOUNCE_INTERVAL = 250;
+let API_HOSTNAME = 'api.kokarn.com';
+let API_PORT = 443;
 
-const API_HOSTNAME = 'api.kokarn.com';
-const API_PORT = 443;
+if ( window.location.hostname === 'localhost' ) {
+    API_HOSTNAME = 'lvh.me';
+    // eslint-disable-next-line no-magic-numbers
+    API_PORT = 3000;
+}
 
 const setSearchTerm = function setSearchTerm ( term ) {
     const currentQuery = queryString.parse( location.search );
