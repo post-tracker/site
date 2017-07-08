@@ -94,6 +94,9 @@ class Post extends React.Component {
             case 'SurviveTheArk':
                 service = 'comments';
                 break;
+            case 'Bungie.net':
+                service = 'comments';
+                break;
             default:
                 service = originalService;
                 break;
