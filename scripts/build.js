@@ -50,6 +50,7 @@ games.forEach( ( game ) => {
 
     gameData.services = [];
     gameData.identifier = game;
+    gameData.version = Date.now();
 
     try {
         fs.accessSync( gamePath );
