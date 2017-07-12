@@ -4,6 +4,8 @@ const path = require( 'path' );
 
 const fs = require( 'fs-extra' );
 const mustache = require( 'mustache' );
+const postcss = require( 'postcss' );
+const cssnano = require( 'cssnano' );
 
 // Make sure the dist folder exists
 const distPath = path.join( __dirname, '/../dist' );
@@ -15,122 +17,141 @@ try {
 }
 
 const games = fs.readdirSync( path.join( __dirname, '/../games' ) );
-const polyfills = fs.readFileSync( path.join( __dirname, '/../web/scripts/polyfills.js' ), 'utf8' );
+const polyfills = fs.readFileSync( path.join( __dirname, '/../web-assets/polyfills.js' ), 'utf8' );
+const generalStyles = fs.readFileSync( path.join( __dirname, '/../web-assets/bootswatch.css' ), 'utf8' );
+const trackerStyles = fs.readFileSync( path.join( __dirname, '/../web-assets/styles.css' ), 'utf8' );
 
-games.forEach( ( game ) => {
-    const gamePath = path.join( __dirname, `/../dist/${ game }` );
-    const gameFilesPath = path.join( __dirname, `/../games/${ game }` );
-    let maintenanceFile = false;
-    const customFiles = [
-        'android-chrome-192x192.png',
-        'android-chrome-512x512.png',
-        'apple-touch-icon.png',
-        'assets',
-        'browserconfig.xml',
-        'favicon-16x16.png',
-        'favicon-32x32.png',
-        'favicon.ico',
-        'manifest.json',
-        'mstile-150x150.png',
-        'safari-pinned-tab.svg',
-    ];
-    const rewriteFiles = [
-        'index.html',
-        'rss.php',
-    ];
-    const hasLogo = fs.existsSync( path.join( gamePath, '/assets/logo.png' ) );
-    let gameData;
+const globalStyles = `${ generalStyles }\n${ trackerStyles }`;
+let builtStyles = false;
 
-    try {
-        gameData = JSON.parse( fs.readFileSync( path.join( __dirname, `/../games/${ game }/data.json` ), 'utf8' ) );
-    } catch ( parseError ) {
-        console.error( `Invalid game data file for ${ game }. Probably just incorrect JSON. Please fix <3 (Won't build until you do...)` );
-
-        return false;
-    }
-
-    gameData.services = [];
-    gameData.identifier = game;
-    gameData.version = Date.now();
-    gameData.polyfills = polyfills;
-
-    try {
-        fs.accessSync( gamePath );
-    } catch ( error ) {
-        fs.mkdirSync( gamePath );
-    }
-
-    try {
-        fs.accessSync( path.join( gamePath, '/maintenance.html' ) );
-        maintenanceFile = fs.readFileSync( path.join( gamePath, '/maintenance.html' ), 'utf8' );
-    } catch ( error ) {
-        // If doesn't exist we don't really have to do anything
-    }
-
-    // Remove everything
-    const gameFiles = fs.readdirSync( gamePath );
-
-    gameFiles.forEach( ( fileOrFolder ) => {
-        fs.removeSync( path.join( gamePath, `/${ fileOrFolder }` ) );
-
-        return true;
+postcss( [ cssnano ] )
+    .process( globalStyles )
+    .then( ( result ) => {
+        builtStyles = result.css;
+        buildGames();
+    } )
+    .catch( ( postCSSError ) => {
+        throw postCSSError;
     } );
 
-    // Write a temporary maintenance file
-    if ( maintenanceFile ) {
-        fs.writeFileSync( path.join( gamePath, '/index.html' ), maintenanceFile );
-    }
+const buildGames = function buildGames() {
+    games.forEach( ( game ) => {
+        const gamePath = path.join( __dirname, `/../dist/${ game }` );
+        const gameFilesPath = path.join( __dirname, `/../games/${ game }` );
+        let maintenanceFile = false;
+        const customFiles = [
+            'android-chrome-192x192.png',
+            'android-chrome-512x512.png',
+            'apple-touch-icon.png',
+            'assets',
+            'browserconfig.xml',
+            'favicon-16x16.png',
+            'favicon-32x32.png',
+            'favicon.ico',
+            'manifest.json',
+            'mstile-150x150.png',
+            'safari-pinned-tab.svg',
+        ];
+        const rewriteFiles = [
+            'index.html',
+            'rss.php',
+        ];
+        const hasLogo = fs.existsSync( path.join( gamePath, '/assets/logo.png' ) );
+        let gameData;
 
-    // Copy all files from the web directory
-    fs.copySync( path.join( __dirname, '/../web/' ), gamePath, {
-        clobber: true,
-    } );
+        try {
+            gameData = JSON.parse( fs.readFileSync( path.join( __dirname, `/../games/${ game }/data.json` ), 'utf8' ) );
+        } catch ( parseError ) {
+            console.error( `Invalid game data file for ${ game }. Probably just incorrect JSON. Please fix <3 (Won't build until you do...)` );
 
-    // Copy all extra files
-    const extraFiles = fs.readdirSync( gameFilesPath );
-
-    extraFiles.forEach( ( filename ) => {
-        // Skip files not marked for copy
-        if ( customFiles.indexOf( filename ) < 0 ) {
-            return true;
+            return false;
         }
 
-        // Copy over the file
-        fs.copySync( path.join( gameFilesPath, `/${ filename }` ), path.join( gamePath,  `/${ filename }` ), {
+        gameData.services = [];
+        gameData.identifier = game;
+        gameData.version = Date.now();
+        gameData.polyfills = polyfills;
+
+        try {
+            fs.accessSync( gamePath );
+        } catch ( error ) {
+            fs.mkdirSync( gamePath );
+        }
+
+        try {
+            fs.accessSync( path.join( gamePath, '/maintenance.html' ) );
+            maintenanceFile = fs.readFileSync( path.join( gamePath, '/maintenance.html' ), 'utf8' );
+        } catch ( error ) {
+            // If doesn't exist we don't really have to do anything
+        }
+
+        // Remove everything
+        const gameFiles = fs.readdirSync( gamePath );
+
+        gameFiles.forEach( ( fileOrFolder ) => {
+            fs.removeSync( path.join( gamePath, `/${ fileOrFolder }` ) );
+
+            return true;
+        } );
+
+        // Write a temporary maintenance file
+        if ( maintenanceFile ) {
+            fs.writeFileSync( path.join( gamePath, '/index.html' ), maintenanceFile );
+        }
+
+        // Copy all files from the web directory
+        fs.copySync( path.join( __dirname, '/../web/' ), gamePath, {
             clobber: true,
         } );
 
-        return true;
-    } );
+        fs.writeFileSync( path.join( gamePath, '/assets/styles.min.css' ), builtStyles );
 
-    if ( extraFiles.indexOf( 'styles.css' ) > -1  ) {
-        gameData.styles = fs.readFileSync( path.join( gameFilesPath, '/styles.css' ) );
-    }
+        // Copy all extra files
+        const extraFiles = fs.readdirSync( gameFilesPath );
 
-    if ( hasLogo ) {
-        gameData.logo = '<img src="assets/logo.png" class="header-logo">';
-    } else {
-        gameData.logo = gameData.shortName;
-    }
-
-    for ( let i = 0; i < rewriteFiles.length; i = i + 1 ) {
-        // Fill in the data where needed
-        fs.readFile( path.join( gamePath, rewriteFiles[ i ] ), 'utf8', ( readFileError, fileData ) => {
-            if ( readFileError ) {
-                console.log( readFileError );
-
-                return false;
+        extraFiles.forEach( ( filename ) => {
+            // Skip files not marked for copy
+            if ( customFiles.indexOf( filename ) < 0 ) {
+                return true;
             }
 
-            fs.writeFile( path.join( gamePath, rewriteFiles[ i ] ), mustache.render( fileData, gameData ), ( writeFileError ) => {
-                if ( writeFileError ) {
-                    console.log( writeFileError );
-                }
+            // Copy over the file
+            fs.copySync( path.join( gameFilesPath, `/${ filename }` ), path.join( gamePath,  `/${ filename }` ), {
+                clobber: true,
             } );
 
             return true;
         } );
-    }
 
-    return true;
-} );
+        if ( extraFiles.indexOf( 'styles.css' ) > -1  ) {
+            gameData.styles = fs.readFileSync( path.join( gameFilesPath, '/styles.css' ) );
+        }
+
+        if ( hasLogo ) {
+            gameData.logo = '<img src="assets/logo.png" class="header-logo">';
+        } else {
+            gameData.logo = gameData.shortName;
+        }
+
+        for ( let i = 0; i < rewriteFiles.length; i = i + 1 ) {
+            // Fill in the data where needed
+            fs.readFile( path.join( gamePath, rewriteFiles[ i ] ), 'utf8', ( readFileError, fileData ) => {
+                if ( readFileError ) {
+                    console.log( readFileError );
+
+                    return false;
+                }
+
+                fs.writeFile( path.join( gamePath, rewriteFiles[ i ] ), mustache.render( fileData, gameData ), ( writeFileError ) => {
+                    if ( writeFileError ) {
+                        console.log( writeFileError );
+                    }
+                } );
+
+                return true;
+            } );
+        }
+
+        return true;
+    } );
+};
