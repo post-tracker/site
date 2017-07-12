@@ -118,7 +118,7 @@
                 return element.parentNode && parentHasClass( element.parentNode, className );
             }
 
-            window.addEventListener( 'click', ( event ) => {
+            window.addEventListener( 'click', function( event ) {
                 // If set, bail early to prevent ghost clicks
                 if ( preventClick ) {
                     return true;
@@ -129,7 +129,7 @@
                 }
             });
 
-            window.addEventListener( 'touchstart', ( event ) => {
+            window.addEventListener( 'touchstart', function( event ) {
                 preventClick = false;
                 if ( parentHasClass( event.target.parentNode, 'bb-spoiler-toggle' ) ) {
                     preventClick = true;
