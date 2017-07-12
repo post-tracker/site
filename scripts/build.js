@@ -15,6 +15,7 @@ try {
 }
 
 const games = fs.readdirSync( path.join( __dirname, '/../games' ) );
+const polyfills = fs.readFileSync( path.join( __dirname, '/../web/scripts/polyfills.js' ), 'utf8' );
 
 games.forEach( ( game ) => {
     const gamePath = path.join( __dirname, `/../dist/${ game }` );
@@ -51,6 +52,7 @@ games.forEach( ( game ) => {
     gameData.services = [];
     gameData.identifier = game;
     gameData.version = Date.now();
+    gameData.polyfills = polyfills;
 
     try {
         fs.accessSync( gamePath );
