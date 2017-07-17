@@ -30,6 +30,33 @@
     text-indent: -9999px;
 }
 
+.group-label.beyond-the-summit {
+    background-image: url( 'assets/flairs.png' );
+    background-position: -52px -187px;
+    bottom: 3px;
+    height: 15px;
+    position: relative;
+    text-indent: -9999px;
+}
+
+.group-label.boxr {
+    background-image: url( 'https://csgo-data.com/logos/boxr/100' );
+    background-size: 15px 15px;
+}
+
+.group-label.boxr:before {
+    background-image: inherit;
+    background-position: center;
+    background-size: 50px 50px;
+    content: ' ';
+    display: block;
+    position: relative;
+    height: 100%;
+    opacity: 0.3;
+    width: 100%;
+    z-index: -1;
+}
+
 .group-label.big {
     background-image: url( 'https://csgo-data.com/logos/big/100' );
     background-size: 15px 15px;
@@ -84,6 +111,24 @@
     text-indent: -9999px;
 }
 
+.group-label.dignitas {
+    background-image: url( 'https://csgo-data.com/logos/team dignitas/100' );
+    background-size: 15px 15px;
+}
+
+.group-label.dignitas:before {
+    background-image: inherit;
+    background-position: center;
+    background-size: 50px 50px;
+    content: ' ';
+    display: block;
+    position: relative;
+    height: 100%;
+    opacity: 0.3;
+    width: 100%;
+    z-index: -1;
+}
+
 .group-label.dreamhack {
     background-image: url( 'assets/logo-dreamhack.png' );
     background-size: 50px 15px;
@@ -106,6 +151,24 @@
     text-indent: -9999px;
 }
 
+.group-label.eunited {
+    background-image: url( 'https://csgo-data.com/logos/eunited/100' );
+    background-size: 15px 15px;
+}
+
+.group-label.eunited:before {
+    background-image: inherit;
+    background-position: center;
+    background-size: 50px 50px;
+    content: ' ';
+    display: block;
+    position: relative;
+    height: 100%;
+    opacity: 0.3;
+    width: 100%;
+    z-index: -1;
+}
+
 .group-label.epicenter {
     background-image: url( 'assets/logo-epicenter.png' );
     text-indent: -9999px;
@@ -126,6 +189,12 @@
     bottom: 3px;
     height: 15px;
     position: relative;
+    text-indent: -9999px;
+}
+
+.group-label.espn {
+    background-image: url( 'assets/logo-espn.png' );
+    background-size: 50px 15px;
     text-indent: -9999px;
 }
 
@@ -165,6 +234,24 @@
     text-indent: -9999px;
 }
 
+.group-label.gambit {
+    background-image: url( 'https://csgo-data.com/logos/gambit gaming/100' );
+    background-size: 15px 15px;
+}
+
+.group-label.gambit:before {
+    background-image: inherit;
+    background-position: center;
+    background-size: 50px 50px;
+    content: ' ';
+    display: block;
+    position: relative;
+    height: 100%;
+    opacity: 0.3;
+    width: 100%;
+    z-index: -1;
+}
+
 .group-label.gfinity {
     background-image: url( 'assets/flairs.png' );
     background-position: 0 -170px;
@@ -186,9 +273,30 @@
     text-indent: -9999px;
 }
 
+.group-label.heroic {
+    background-image: url( 'https://csgo-data.com/logos/heroic/100' );
+    background-size: 15px 15px;
+}
+
+.group-label.heroic:before {
+    background-image: inherit;
+    background-position: center;
+    background-size: 50px 50px;
+    content: ' ';
+    display: block;
+    position: relative;
+    height: 100%;
+    opacity: 0.3;
+    width: 100%;
+    z-index: -1;
+}
+
 .group-label.immortals {
-    background-image: url( 'assets/logo-immortals.png' );
-    background-size: 50px 15px;
+    background-image: url( 'assets/flairs.png' );
+    background-position: 0 -204px;
+    bottom: 3px;
+    height: 15px;
+    position: relative;
     text-indent: -9999px;
 }
 
@@ -212,6 +320,24 @@
     text-indent: -9999px;
 }
 
+.group-label.mythic {
+    background-image: url( 'https://csgo-data.com/logos/mythic/100' );
+    background-size: 15px 15px;
+}
+
+.group-label.mythic:before {
+    background-image: inherit;
+    background-position: center;
+    background-size: 50px 50px;
+    content: ' ';
+    display: block;
+    position: relative;
+    height: 100%;
+    opacity: 0.3;
+    width: 100%;
+    z-index: -1;
+}
+
 .group-label.navi {
     background-image: url( 'assets/flairs.png' );
     background-position: -156px -68px;
@@ -225,6 +351,24 @@
     background-image: url( 'assets/logo-ninjas-in-pyjamas.png' );
     background-size: 50px 15px;
     text-indent: -9999px;
+}
+
+.group-label.nrg-esports {
+    background-image: url( 'https://csgo-data.com/logos/nrg esports/100' );
+    background-size: 15px 15px;
+}
+
+.group-label.nrg-esports:before {
+    background-image: inherit;
+    background-position: center;
+    background-size: 50px 50px;
+    content: ' ';
+    display: block;
+    position: relative;
+    height: 100%;
+    opacity: 0.3;
+    width: 100%;
+    z-index: -1;
 }
 
 .group-label.north {
@@ -245,6 +389,24 @@
     background-image: url( 'assets/logo-optic-gaming.png' );
     background-size: 50px 15px;
     text-indent: -9999px;
+}
+
+.group-label.penta-sports {
+    background-image: url( 'https://csgo-data.com/logos/penta sports/100' );
+    background-size: 15px 15px;
+}
+
+.group-label.penta-sports:before {
+    background-image: inherit;
+    background-position: center;
+    background-size: 50px 50px;
+    content: ' ';
+    display: block;
+    position: relative;
+    height: 100%;
+    opacity: 0.3;
+    width: 100%;
+    z-index: -1;
 }
 
 .group-label.pgl {
@@ -282,10 +444,37 @@
     text-indent: -9999px;
 }
 
+.group-label.sk-gaming {
+    background-image: url( 'assets/flairs.png' );
+    background-position: 0 -187px;
+    bottom: 3px;
+    height: 15px;
+    position: relative;
+    text-indent: -9999px;
+}
+
 .group-label.splyce {
     background-image: url( 'assets/logo-splyce.png' );
     background-size: 50px 15px;
     text-indent: -9999px;
+}
+
+.group-label.team-envyus {
+    background-image: url( 'https://csgo-data.com/logos/team envyus/100' );
+    background-size: 15px 15px;
+}
+
+.group-label.team-envyus:before {
+    background-image: inherit;
+    background-position: center;
+    background-size: 50px 50px;
+    content: ' ';
+    display: block;
+    position: relative;
+    height: 100%;
+    opacity: 0.3;
+    width: 100%;
+    z-index: -1;
 }
 
 .group-label.team-liquid {
@@ -311,6 +500,16 @@
 .group-label.valve {
     background-image: url( 'assets/flairs.png' );
     background-position: -52px 0;
+    bottom: 3px;
+    height: 15px;
+    position: relative;
+    text-indent: -9999px;
+}
+
+
+.group-label.vega-squadron {
+    background-image: url( 'assets/flairs.png' );
+    background-position: -104px -187px;
     bottom: 3px;
     height: 15px;
     position: relative;
