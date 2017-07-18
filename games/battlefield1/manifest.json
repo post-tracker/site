@@ -1,6 +1,6 @@
 {
-	"name": "Battlefield 1 Dev Tracker",
-	"short_name": "Battlefield Dev Tracker",
+	"name": "BF Dev Tracker",
+	"short_name": "BF Dev Tracker",
 	"icons": [
 		{
 			"src": "./android-chrome-192x192.png",
