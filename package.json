@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev:components": "webpack --progress --colors --watch && node scripts/copy-app.js",
+    "dev:serviceworker": "node scripts/build.js",
     "build": "webpack -p --progress && node scripts/build.js",
     "lint:components": "eslint -c kokarn/react app/**/*",
     "lint:scripts": "eslint -c kokarn/nodejs scripts/*.js",
@@ -30,7 +31,8 @@
       ],
       "extensions": "js,jsx"
     },
-    "lint:scripts": "scripts/*.js"
+    "lint:scripts": "scripts/*.js",
+    "dev:serviceworker": "web/service-worker.js"
   },
   "license": "MIT",
   "devDependencies": {

@@ -22,6 +22,7 @@ const generalStyles = fs.readFileSync( path.join( __dirname, '/../web-assets/boo
 const trackerStyles = fs.readFileSync( path.join( __dirname, '/../web-assets/styles.css' ), 'utf8' );
 
 const globalStyles = `${ generalStyles }\n${ trackerStyles }`;
+const buildTime = Date.now();
 let builtStyles = false;
 
 postcss( [ cssnano ] )
@@ -54,7 +55,7 @@ const buildGames = function buildGames() {
         ];
         const rewriteFiles = [
             'index.html',
-            'rss.php',
+            'service-worker.js',
         ];
         const hasLogo = fs.existsSync( path.join( gamePath, '/assets/logo.png' ) );
         let gameData;
@@ -69,7 +70,7 @@ const buildGames = function buildGames() {
 
         gameData.services = [];
         gameData.identifier = game;
-        gameData.version = Date.now();
+        gameData.version = buildTime;
         gameData.polyfills = polyfills;
 
         try {

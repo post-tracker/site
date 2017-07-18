@@ -103,6 +103,9 @@
     </script>
     <script>
         window.game = '{{identifier}}';
+        if ( 'serviceWorker' in navigator ) {
+            navigator.serviceWorker.register( 'service-worker.js' );
+        }
 
         (function(){
             var preventClick = false;
