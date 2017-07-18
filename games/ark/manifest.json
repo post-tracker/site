@@ -1,5 +1,6 @@
 {
-	"name": "ARK Dev Tracker",
+	"name": "ARK: Survival Evolved Dev Tracker",
+	"short_name": "Ark Dev Tracker",
 	"icons": [
 		{
 			"src": "./android-chrome-192x192.png",

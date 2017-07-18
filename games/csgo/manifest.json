@@ -1,5 +1,6 @@
 {
-	"name": "CSGO Dev Tracker",
+	"name": "Counter-Strike: Global Offensive Dev Tracker",
+	"short_name": "CSGO Dev Tracker",
 	"icons": [
 		{
 			"src": "./android-chrome-192x192.png",

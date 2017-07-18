@@ -1,5 +1,6 @@
 {
-    "name": "PUBG Dev Tracker",
+    "name": "PLAYERUNKNOWN'S BATTLEGROUNDS Dev Tracker",
+    "short_name": "PUBG Dev Tracker",
     "icons": [
         {
             "src": "./android-chrome-192x192.png",

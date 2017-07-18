@@ -1,5 +1,6 @@
 {
-	"name": "Elite Dev Tracker",
+	"name": "Elite: Dangerous Dev Tracker",
+	"short_name": "Elite Dev Tracker",
 	"icons": [
 		{
 			"src": "./android-chrome-192x192.png",

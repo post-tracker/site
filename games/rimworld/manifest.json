@@ -1,5 +1,6 @@
 {
-    "name": "Rimworld Dev Tracker",
+    "name": "RimWorld Dev Tracker",
+    "short_name": "RimWorld Dev Tracker",
     "icons": [
         {
             "src": "./android-chrome-192x192.png",
