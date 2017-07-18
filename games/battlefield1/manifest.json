@@ -1,5 +1,5 @@
 {
-	"name": "Battlefield 1 Dev Tracker",
+	"name": "Battlefield Dev Tracker",
 	"icons": [
 		{
 			"src": "\/android-chrome-192x192.png",
@@ -8,5 +8,7 @@
 		}
 	],
 	"theme_color": "#ffffff",
-	"display": "minimal-ui"
+	"background_color": "#2c2d30",
+	"display": "minimal-ui",
+	"start_url": "/?utm_source=homescreen"
 }

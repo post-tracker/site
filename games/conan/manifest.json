@@ -1,5 +1,5 @@
 {
-    "name": "Conan Exiles Dev Tracker",
+    "name": "Conan Dev Tracker",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -14,5 +14,6 @@
     ],
     "theme_color": "#ffffff",
     "background_color": "#ffffff",
-    "display": "standalone"
+    "display": "minimal-ui",
+    "start_url": "/?utm_source=homescreen"
 }

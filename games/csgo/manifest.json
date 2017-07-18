@@ -8,5 +8,7 @@
 		}
 	],
 	"theme_color": "#ffffff",
-	"display": "minimal-ui"
+	"background_color": "#ffffff",
+	"display": "minimal-ui",
+	"start_url": "/?utm_source=homescreen"
 }
