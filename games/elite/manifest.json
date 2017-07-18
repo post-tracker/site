@@ -2,13 +2,13 @@
 	"name": "Elite Dev Tracker",
 	"icons": [
 		{
-			"src": "\/android-chrome-192x192.png",
+			"src": "./android-chrome-192x192.png",
 			"sizes": "192x192",
-			"type": "image\/png"
+			"type": "image/png"
 		}
 	],
 	"theme_color": "#ffffff",
 	"background_color": "#ffffff",
-	"display": "minimal-ui",
-	"start_url": "/?utm_source=homescreen"
+	"display": "standalone",
+	"start_url": "./?utm_source=homescreen"
 }
