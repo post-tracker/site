@@ -56,6 +56,7 @@ const buildGames = function buildGames() {
         const rewriteFiles = [
             'index.html',
             'service-worker.js',
+            'rss.php',
         ];
         const hasLogo = fs.existsSync( path.join( gamePath, '/assets/logo.png' ) );
         let gameData;
