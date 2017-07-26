@@ -141,9 +141,16 @@ class Post extends React.Component {
 
     getPostLink () {
         if ( this.state.service === 'reddit' ) {
-            const postId = this.props.postData.url.match( /.*\/(.+?)\/$/ )[ 1 ];
+            const matches = this.props.postData.url.match( /.*\/(.+?)\/$/ );
 
-            return `${ this.props.postData.url }?context=999#${ postId }`;
+            if ( matches && matches[ 1 ] ) {
+                return `${ this.props.postData.url }?context=999#${ matches[ 1 ] }`;
+            // } else if ( matches && matches[ 0 ] ) {
+            //    return `${ this.props.postData.url }?context=999#${ matches[ 0 ] }`;
+            } else {
+                console.log( `Unable to match postId for ${ this.props.postData.url }` );
+                return `${ this.props.postData.url }?context=999`;
+            }
         }
 
         return this.props.postData.url;
