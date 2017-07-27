@@ -144,7 +144,10 @@
     </script>
     <script async src="scripts/app.js?v={{version}}"></script>
     <!-- <script async src="scripts/ads.js"></script> -->
+    <script src="https://cdn.ravenjs.com/3.17.0/raven.min.js" crossorigin="anonymous"></script>
     <script>
+        Raven.config('https://2b33c8dea5644772a16965c650e7703b@sentry.io/196507').install();
+
         window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
         ga('set', 'dimension1', '{{name}}');
         ga('create', 'UA-3953312-29', 'auto');
