@@ -14,5 +14,5 @@ Let us know by posting an [issue](https://github.com/post-tracker/site/issues/ne
 [Destiny Dev Tracker](https://destinydevtracker.com)  
 [Elite: Dangerous Dev Tracker](https://elitedevtracker.com)  
 [PLAYERUNKNOWN'S BATTLEGROUNDS Dev Tracker](https://pubgdevtracker.com)  
-[Rainbow 6: Siege Dev Tracker](https://devtracker.kokarn.com/rainbow6)  
+[Rainbow 6: Siege Dev Tracker](https://developertracker.com/rainbow6/)  
 [RimWorld Dev Tracker](https://rimworlddevtracker.com)  
