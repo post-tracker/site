@@ -141,12 +141,14 @@ class Post extends React.Component {
 
     getPostLink () {
         if ( this.state.service === 'reddit' ) {
-            const matches = this.props.postData.url.match( /.*\/(.+?)\/$/ );
+            // Fix some old urls
+            // https://www.reddit.com/r/EliteDangerous/comments/3w7t0y/1_week_blind_auction/cxu11nt#cxu11nt
+            // to
+            // https://www.reddit.com/r/EliteDangerous/comments/3w7t0y/1_week_blind_auction/cxu11nt/
+            const matches = this.props.postData.url.replace( /(.+?)\#\1/, '$1/' ).match( /.*\/(.+?)\/$/ );
 
             if ( matches && matches[ 1 ] ) {
                 return `${ this.props.postData.url }?context=999#${ matches[ 1 ] }`;
-            // } else if ( matches && matches[ 0 ] ) {
-            //    return `${ this.props.postData.url }?context=999#${ matches[ 0 ] }`;
             } else {
                 console.log( `Unable to match postId for ${ this.props.postData.url }` );
                 return `${ this.props.postData.url }?context=999`;
