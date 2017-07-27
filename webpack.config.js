@@ -19,6 +19,7 @@ module.exports = {
             },
         ],
     },
+    devtool: 'source-map',
     output: {
         filename: 'app.js',
         path: path.resolve( __dirname, 'web/scripts' ),
