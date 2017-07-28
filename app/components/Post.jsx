@@ -158,6 +158,21 @@ class Post extends React.Component {
         return this.props.postData.url;
     }
 
+    getSSLContent () {
+        const maxWidth = Math.min( window.innerWidth, 1140 );
+        const maxHeight = Math.min( window.innerWidth, 600 );
+        const regex = new RegExp( '<img.*?(src="http:\/\/(.+?)").*?>', 'g' );
+        let content = this.props.postData.content;
+        let matches;
+
+        while ( ( matches = regex.exec( content ) ) !== null ) {
+            const newSrc = `src="https://images.weserv.nl/?url=${ encodeURIComponent( matches[ 2 ] ) }&w=${ maxWidth }&h=${ maxHeight }&t=fit&il"`
+            content = content.replace( matches[ 1 ], newSrc );
+        }
+
+        return content;
+    }
+
     render () {
         let expander;
         let bodyClasses = 'panel-body';
@@ -225,7 +240,7 @@ class Post extends React.Component {
                     dangerouslySetInnerHTML = { {
                         __html: this.props.postData.topic,
                     } }
-                    href = { this.props.postData.topicUrl } // eslint-disable-line camelcase
+                    href = { this.props.postData.topicUrl }
                 />
             );
         } else {
@@ -251,7 +266,7 @@ class Post extends React.Component {
                     className = { bodyClasses }
                     // eslint-disable-next-line react/no-danger
                     dangerouslySetInnerHTML = { {
-                        __html: this.props.postData.content,
+                        __html: this.getSSLContent(),
                     } }
                     // eslint-disable-next-line react/jsx-no-bind
                     ref = { ( node ) => {
