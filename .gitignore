@@ -13,3 +13,5 @@ Developers - *.csv
 *.log
 
 web/scripts/app\.js\.map
+
+package-lock\.json
