@@ -6,8 +6,19 @@ server {
 }
 
 server {
-  server_name devtracker.kokarn.com;
-  return 301 $scheme://developertracker.com$request_uri;
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+
+    include ssl.conf;
+    include gzip.conf;
+    include server.conf;
+
+    server_name devtracker.kokarn.com;
+    return 301 $scheme://developertracker.com$request_uri;
+
+    ssl_certificate /etc/letsencrypt/live/devtracker.kokarn.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/devtracker.kokarn.com/privkey.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/devtracker.kokarn.com/fullchain.pem;
 }
 
 server {
