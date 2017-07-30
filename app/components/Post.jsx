@@ -161,7 +161,7 @@ class Post extends React.Component {
     getSSLContent () {
         const maxWidth = Math.min( window.innerWidth, 1140 );
         const maxHeight = Math.min( window.innerWidth, 600 );
-        const regex = new RegExp( '<img.*?(src="http:\/\/(.+?)").*?>', 'g' );
+        const regex = new RegExp( '<img[^>]+?(src="(?:https?:)?\/\/(.+?)").*?>', 'g' );
         let content = this.props.postData.content;
         let matches;
 
