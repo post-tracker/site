@@ -158,17 +158,26 @@ class Post extends React.Component {
         return this.props.postData.url;
     }
 
-    getSSLContent () {
+    updateImages ( htmlString ) {
         const maxWidth = Math.min( window.innerWidth, 1140 );
         const maxHeight = Math.min( window.innerWidth, 600 );
-        const regex = new RegExp( '<img[^>]+?(src="(?:https?:)?\/\/(.+?)").*?>', 'g' );
-        let content = this.props.postData.content;
+        const regex = new RegExp( '<img[^>]+?(src="(https?:)?\/\/(.+?)").*?>', 'g' );
         let matches;
 
-        while ( ( matches = regex.exec( content ) ) !== null ) {
-            const newSrc = `src="https://images.weserv.nl/?url=${ encodeURIComponent( matches[ 2 ] ) }&w=${ maxWidth }&h=${ maxHeight }&t=fit&il"`
-            content = content.replace( matches[ 1 ], newSrc );
+        while ( ( matches = regex.exec( htmlString ) ) !== null ) {
+            let fallbackUrl = matches[ 3 ];
+            if ( matches[ 2 ] === 'https:' ) {
+                fallbackUrl = `ssl:${ fallbackUrl }`;
+            }
+            const newSrc = `src="https://images.weserv.nl/?url=${ encodeURIComponent( matches[ 3 ] ) }&w=${ maxWidth }&h=${ maxHeight }&t=fit&il&errorredirect=${ encodeURIComponent( fallbackUrl ) }"`
+            htmlString = htmlString.replace( matches[ 1 ], newSrc );
         }
+
+        return htmlString;
+    }
+
+    getContentMarkup () {
+        let content = this.updateImages( this.props.postData.content );
 
         return content;
     }
@@ -266,7 +275,7 @@ class Post extends React.Component {
                     className = { bodyClasses }
                     // eslint-disable-next-line react/no-danger
                     dangerouslySetInnerHTML = { {
-                        __html: this.getSSLContent(),
+                        __html: this.getContentMarkup(),
                     } }
                     // eslint-disable-next-line react/jsx-no-bind
                     ref = { ( node ) => {
