@@ -16,23 +16,39 @@ try {
     fs.mkdirSync( distPath );
 }
 
+const addGameProperty = function addGameProperty( games, property, value ) {
+    for ( const identifier in games ) {
+        games[ identifier ][ property ] = value;
+    }
+};
+
 const games = fs.readdirSync( path.join( __dirname, '/../games' ) );
+const gameExtraData = {};
+
+for ( let i = 0; i < games.length; i = i + 1 ) {
+    gameExtraData[ games[ i ] ] = {
+        identifier: games[ i ],
+    };
+}
+
 const polyfills = fs.readFileSync( path.join( __dirname, '/../web-assets/polyfills.js' ), 'utf8' );
+addGameProperty( gameExtraData, 'polyfills', polyfills );
+
+// Styles
 const generalStyles = fs.readFileSync( path.join( __dirname, '/../web-assets/bootswatch.css' ), 'utf8' );
 const trackerStyles = fs.readFileSync( path.join( __dirname, '/../web-assets/styles.css' ), 'utf8' );
-
 const globalStyles = `${ generalStyles }\n${ trackerStyles }`;
-const buildTime = Date.now();
-let builtStyles = false;
+
+addGameProperty( gameExtraData, 'version', Date.now() );
 
 postcss( [ cssnano ] )
     .process( globalStyles )
     .then( ( result ) => {
-        builtStyles = result.css;
+        addGameProperty( gameExtraData, 'builtStyles', result.css );
         buildGames();
     } )
-    .catch( ( postCSSError ) => {
-        throw postCSSError;
+    .catch( ( chainError ) => {
+        throw chainError;
     } );
 
 const buildGames = function buildGames() {
@@ -69,10 +85,7 @@ const buildGames = function buildGames() {
             return false;
         }
 
-        gameData.services = [];
-        gameData.identifier = game;
-        gameData.version = buildTime;
-        gameData.polyfills = polyfills;
+        gameData = Object.assign( {}, gameData, gameExtraData[ game ] );
 
         try {
             fs.accessSync( gamePath );
@@ -106,7 +119,7 @@ const buildGames = function buildGames() {
             clobber: true,
         } );
 
-        fs.writeFileSync( path.join( gamePath, '/assets/styles.min.css' ), builtStyles );
+        fs.writeFileSync( path.join( gamePath, '/assets/styles.min.css' ), gameData.builtStyles );
 
         // Copy all extra files
         const extraFiles = fs.readdirSync( gameFilesPath );
