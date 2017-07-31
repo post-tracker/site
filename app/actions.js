@@ -4,12 +4,10 @@ import debounce from 'debounce';
 import cookie from 'react-cookie';
 
 export const TOGGLE_GROUP = 'TOGGLE_GROUP';
-export const RECEIVE_GROUPS = 'RECEIVE_GROUPS';
 export const REQUEST_POSTS = 'REQUEST_POSTS';
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 export const SET_SEARCH_TERM = 'SET_SEARCH_TERM';
 export const TOGGLE_SERVICE = 'TOGGLE_SERVICE';
-export const RECEIVE_SERVICES = 'RECEIVE_SERVICES';
 
 const FETCH_DEBOUNCE_INTERVAL = 250;
 let API_HOSTNAME = 'api.kokarn.com';
@@ -51,13 +49,6 @@ const receivePosts = function receivePosts ( json ) {
     };
 };
 
-const receiveGroups = function receiveGroups ( json ) {
-    return {
-        items: json,
-        type: RECEIVE_GROUPS,
-    };
-};
-
 const toggleGroupState = function toggleGroupState ( name ) {
     return {
         name,
@@ -65,111 +56,10 @@ const toggleGroupState = function toggleGroupState ( name ) {
     };
 };
 
-const receiveServices = function receiveServices ( json ) {
-    return {
-        items: json,
-        type: RECEIVE_SERVICES,
-    };
-};
-
 const toggleServiceState = function toggleServiceState ( name ) {
     return {
         name,
         type: TOGGLE_SERVICE,
-    };
-};
-
-const fetchServices = function fetchServices () {
-    return ( dispatch ) => {
-        const options = {
-            hostname: API_HOSTNAME,
-            method: 'GET',
-            path: `/${ window.game }/services`,
-            port: API_PORT,
-        };
-
-        const request = https.request( options, ( response ) => {
-            let body = '';
-
-            response.setEncoding( 'utf8' );
-
-            response.on( 'data', ( chunk ) => {
-                body = body + chunk;
-            } );
-
-            response.on( 'end', () => {
-                let services = JSON.parse( body ).data;
-
-                // If we only have one group, treat it as no group
-                if ( services.length === 1 ) {
-                    services = [];
-                }
-
-                // Transform group names to objects
-                services = services.map( ( name ) => {
-                    return {
-                        active: true,
-                        name: name,
-                    };
-                } );
-
-                dispatch( receiveServices( services ) );
-            } );
-        } );
-
-        request.on( 'error', ( requestError ) => {
-            // eslint-disable-next-line no-console
-            console.log( `problem with request: ${ requestError.message }` );
-        } );
-
-        request.end();
-    };
-};
-
-const fetchGroups = function fetchGroups () {
-    return ( dispatch ) => {
-        const options = {
-            hostname: API_HOSTNAME,
-            method: 'GET',
-            path: `/${ window.game }/groups`,
-            port: API_PORT,
-        };
-
-        const request = https.request( options, ( response ) => {
-            let body = '';
-
-            response.setEncoding( 'utf8' );
-
-            response.on( 'data', ( chunk ) => {
-                body = body + chunk;
-            } );
-
-            response.on( 'end', () => {
-                let groups = JSON.parse( body ).data;
-
-                // If we only have one group, treat it as no group
-                if ( groups.length === 1 ) {
-                    groups = [];
-                }
-
-                // Transform group names to objects
-                groups = groups.map( ( name ) => {
-                    return {
-                        active: false,
-                        name: name,
-                    };
-                } );
-
-                dispatch( receiveGroups( groups ) );
-            } );
-        } );
-
-        request.on( 'error', ( requestError ) => {
-            // eslint-disable-next-line no-console
-            console.log( `problem with request: ${ requestError.message }` );
-        } );
-
-        request.end();
     };
 };
 
@@ -196,15 +86,9 @@ const getPosts = function getPosts ( search, groups, services, dispatch ) {
         querystringParameters.search = search;
     }
 
-    if ( activeGroups && activeGroups.length > 0 ) {
+    if ( activeGroups && activeGroups.length > 0 && activeGroups.length !== groups.items.length ) {
         querystringParameters[ 'groups[]' ] = activeGroups.map( ( group ) => {
             return group.name;
-        } );
-    }
-
-    if ( activeServices && activeServices.length > 0 && activeServices.length !== services.items.length ) {
-        querystringParameters[ 'services[]' ] = activeServices.map( ( service ) => {
-            return service.name;
         } );
     }
 
@@ -230,6 +114,14 @@ const getPosts = function getPosts ( search, groups, services, dispatch ) {
     }
 
     const cookieServices = cookie.load( 'services' );
+
+    if ( activeServices && activeServices.length > 0 && activeServices.length !== services.items.length ) {
+        querystringParameters[ 'services[]' ] = activeServices.map( ( service ) => {
+            return service.name;
+        } );
+
+        parsedQuerystring = queryString.stringify( querystringParameters );
+    }
 
     if ( services.items.length === 0 && cookieServices && !currentQuery.post ) {
         querystringParameters[ 'services[]' ] = cookieServices;
@@ -306,23 +198,11 @@ export const search = function search ( searchTerm ) {
     };
 };
 
-export const getGroups = function getGroups () {
-    return ( dispatch ) => {
-        return dispatch( fetchGroups() );
-    };
-};
-
 export const toggleGroup = function toggleGroup ( name ) {
     return ( dispatch, getState ) => {
         dispatch( toggleGroupState( name ) );
 
         return dispatch( fetchPostsImmediate( getState() ) );
-    };
-};
-
-export const getServices = function getServices () {
-    return ( dispatch ) => {
-        return dispatch( fetchServices() );
     };
 };
 

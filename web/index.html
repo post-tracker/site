@@ -105,6 +105,12 @@
     </script>
     <script>
         window.game = '{{identifier}}';
+
+        window.trackerData = {
+            groups: {{{groups}}},
+            services: {{{services}}},
+        };
+
         if ( 'serviceWorker' in navigator ) {
             navigator.serviceWorker.register( 'service-worker.js' );
         }

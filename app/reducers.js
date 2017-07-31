@@ -3,17 +3,15 @@ import queryString from 'query-string';
 import cookie from 'react-cookie';
 
 import {
-    RECEIVE_GROUPS,
     RECEIVE_POSTS,
     REQUEST_POSTS,
     SET_SEARCH_TERM,
     TOGGLE_GROUP,
-    RECEIVE_SERVICES,
     TOGGLE_SERVICE,
 } from './actions';
 
 const groups = function groups ( state = {
-    items: [],
+    items: window.trackerData.groups,
 }, action ) {
     let updatedItems;
     const currentQuery = queryString.parse( location.search );
@@ -43,9 +41,9 @@ const groups = function groups ( state = {
             return Object.assign( {}, state, {
                 items: updatedItems,
             } );
-        case RECEIVE_GROUPS:
+        default:
             if ( typeof currentQuery[ 'groups[]' ] !== 'undefined' ) {
-                updatedItems = action.items.map( ( group ) => {
+                updatedItems = state.items.map( ( group ) => {
                     if ( currentQuery[ 'groups[]' ].indexOf( group.name ) > -1 ) {
                         group.active = true;
                     }
@@ -58,31 +56,15 @@ const groups = function groups ( state = {
                 } );
             }
 
-            return Object.assign( {}, state, {
-                items: action.items,
+            const active = state.items.filter( ( item ) => {
+                return item.active;
             } );
-        default:
-            if ( typeof currentQuery[ 'groups[]' ] !== 'undefined' ) {
-                if ( state.items.length <= 0 ) {
-                    updatedItems = [];
-                    for ( let i = 0; i < currentQuery[ 'groups[]' ].length; i = i + 1 ) {
-                        updatedItems.push( {
-                            active: true,
-                            name: currentQuery[ 'groups[]' ][ i ],
-                        } );
-                    }
-                } else {
-                    updatedItems = state.items.map( ( group ) => {
-                        if ( currentQuery[ 'groups[]' ].indexOf( group.name ) > -1 ) {
-                            group.active = true;
-                        }
 
-                        return group;
-                    } );
-                }
+            if ( active.length === state.items.length ) {
+                state.items = state.items.map( ( item ) => {
+                    item.active = false;
 
-                return Object.assign( {}, state, {
-                    items: updatedItems,
+                    return item;
                 } );
             }
 
@@ -91,7 +73,7 @@ const groups = function groups ( state = {
 };
 
 const services = function services ( state = {
-    items: [],
+    items: window.trackerData.services,
 }, action ) {
     let updatedItems;
     const currentQuery = queryString.parse( location.search );
@@ -131,9 +113,10 @@ const services = function services ( state = {
             return Object.assign( {}, state, {
                 items: updatedItems,
             } );
-        case RECEIVE_SERVICES:
+        default:
+            // Check if we have a query of services
             if ( typeof currentQuery[ 'service[]' ] !== 'undefined' ) {
-                updatedItems = action.items.map( ( service ) => {
+                updatedItems = state.items.map( ( service ) => {
                     if ( currentQuery[ 'service[]' ].indexOf( service.name ) > -1 ) {
                         service.active = true;
                     }
@@ -144,10 +127,13 @@ const services = function services ( state = {
                 return Object.assign( {}, state, {
                     items: updatedItems,
                 } );
-            } else if ( cookie.load( 'services' ) ) {
+            }
+
+            // Check if we have a cookie set for services
+            if ( cookie.load( 'services' ) ) {
                 const activeServices = cookie.load( 'services' );
 
-                updatedItems = action.items.map( ( service ) => {
+                updatedItems = state.items.map( ( service ) => {
                     if ( activeServices.indexOf( service.name ) > -1 ) {
                         service.active = true;
                     } else {
@@ -156,34 +142,6 @@ const services = function services ( state = {
 
                     return service;
                 } );
-
-                return Object.assign( {}, state, {
-                    items: updatedItems,
-                } );
-            }
-
-            return Object.assign( {}, state, {
-                items: action.items,
-            } );
-        default:
-            if ( typeof currentQuery[ 'service[]' ] !== 'undefined' ) {
-                if ( state.items.length <= 0 ) {
-                    updatedItems = [];
-                    for ( let i = 0; i < currentQuery[ 'service[]' ].length; i = i + 1 ) {
-                        updatedItems.push( {
-                            active: true,
-                            name: currentQuery[ 'service[]' ][ i ],
-                        } );
-                    }
-                } else {
-                    updatedItems = state.items.map( ( service ) => {
-                        if ( currentQuery[ 'service[]' ].indexOf( service.name ) > -1 ) {
-                            service.active = true;
-                        }
-
-                        return service;
-                    } );
-                }
 
                 return Object.assign( {}, state, {
                     items: updatedItems,

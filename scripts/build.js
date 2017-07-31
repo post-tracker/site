@@ -1,6 +1,7 @@
 /* eslint-disable no-sync */
 
 const path = require( 'path' );
+const https = require( 'https' );
 
 const fs = require( 'fs-extra' );
 const mustache = require( 'mustache' );
@@ -9,6 +10,31 @@ const cssnano = require( 'cssnano' );
 
 // Make sure the dist folder exists
 const distPath = path.join( __dirname, '/../dist' );
+
+
+const promiseGet = function( url ) {
+    return new Promise( ( resolve, reject ) => {
+        const request = https.get( url, ( response ) => {
+            if ( response.statusCode < 200 || response.statusCode > 299 ) {
+                reject( new Error( 'Failed to load page, status code: ' + response.statusCode ) );
+            }
+
+            const body = [];
+
+            response.on( 'data', ( chunk ) => {
+                body.push( chunk );
+            } );
+
+            response.on( 'end', () => {
+                resolve( body.join( '' ) );
+            } );
+        } );
+
+        request.on( 'error', ( requestError ) => {
+            reject( requestError );
+        } );
+    } );
+};
 
 try {
     fs.accessSync( distPath );
@@ -41,10 +67,77 @@ const globalStyles = `${ generalStyles }\n${ trackerStyles }`;
 
 addGameProperty( gameExtraData, 'version', Date.now() );
 
+const servicePromises = [];
+
+for ( const identifier in gameExtraData ) {
+    const servicePromise = promiseGet( `https://api.kokarn.com/${ identifier }/services` )
+        .then( ( servicesResponse ) => {
+            let services = JSON.parse( servicesResponse ).data;
+
+            // If we only have one service, treat it as none
+            if ( services.length === 1 ) {
+                services = [];
+            }
+
+            // Transform service names to objects
+            services = services.map( ( name ) => {
+                return {
+                    active: true,
+                    name: name,
+                };
+            } );
+
+            gameExtraData[ identifier ].services = JSON.stringify( services );
+        } )
+        .catch( ( serviceError ) => {
+            throw serviceError;
+        } );
+
+    servicePromises.push( servicePromise );
+}
+
+const groupPromises = [];
+
+for ( const identifier in gameExtraData ) {
+    const groupPromise = promiseGet( `https://api.kokarn.com/${ identifier }/groups` )
+        .then( ( groupsResponse ) => {
+            let groups = JSON.parse( groupsResponse ).data;
+
+            // If we only have one group, treat it as none
+            if ( groups.length === 1 ) {
+                groups = [];
+            }
+
+            // Transform group names to objects
+            groups = groups.map( ( name ) => {
+                return {
+                    active: true,
+                    name: name,
+                };
+            } );
+
+            gameExtraData[ identifier ].groups = JSON.stringify( groups );
+        } )
+        .catch( ( groupError ) => {
+            throw groupError;
+        } );
+
+    groupPromises.push( groupPromise );
+}
+
 postcss( [ cssnano ] )
     .process( globalStyles )
     .then( ( result ) => {
         addGameProperty( gameExtraData, 'builtStyles', result.css );
+    } )
+    .then( () => {
+        // Wait for a bunch of promises
+        return Promise.all( [
+            Promise.all( servicePromises ),
+            Promise.all( groupPromises ),
+        ] );
+    } )
+    .then( () => {
         buildGames();
     } )
     .catch( ( chainError ) => {
