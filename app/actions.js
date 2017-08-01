@@ -35,7 +35,9 @@ const setSearchTerm = function setSearchTerm ( term ) {
             newPath = window.location.origin + window.location.pathname;
         }
 
-        window.history.pushState( {}, '', newPath );
+        if ( window.history.pushState ) {
+            window.history.pushState( {}, '', newPath );
+        }
     }
 
     return {
@@ -109,11 +111,13 @@ const getPosts = function getPosts ( search, groups, services, dispatch ) {
     if ( parsedQuerystring.length > 0 ) {
         const locationSearch = `?${ parsedQuerystring }`;
 
-        if ( window.location.search !== locationSearch ) {
+        if ( window.location.search !== locationSearch && window.history.pushState ) {
             window.history.pushState( {}, search, locationSearch );
         }
     } else {
-        window.history.pushState( {}, search, window.location.pathname );
+        if ( window.history.pushState ) {
+            window.history.pushState( {}, search, window.location.pathname );
+        }
     }
 
     const cookieServices = cookie.load( 'services' );
