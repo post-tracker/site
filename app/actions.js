@@ -23,7 +23,10 @@ const setSearchTerm = function setSearchTerm ( term ) {
     const currentQuery = queryString.parse( location.search );
 
     if ( currentQuery.post ) {
-        Reflect.deleteProperty( currentQuery, 'post' );
+        // Bad browser support
+        // Reflect.deleteProperty( currentQuery, 'post' );
+        delete currentQuery.post;
+        
         let newPath = queryString.stringify( currentQuery );
 
         if ( newPath.length > 0 ) {
