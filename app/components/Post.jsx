@@ -3,6 +3,7 @@ import TimeAgo from 'react-timeago';
 
 const POST_CUTOFF_HEIGHT = 1000;
 const TIMESTAMP_UPDATE_INTERVAL = 1000;
+const DATA_URL_PREFIX = 'data:text/html;base64,';
 
 const styles = {
     permalink: {
@@ -24,6 +25,7 @@ class Post extends React.Component {
 
         this.expand = this.expand.bind( this );
         this.handleExpandClick = this.handleExpandClick.bind( this );
+        this.handleContentClick = this.handleContentClick.bind( this );
 
         this.state = {
             expandable: false,
@@ -69,6 +71,10 @@ class Post extends React.Component {
 
     handleExpandClick () {
         this.expand();
+    }
+
+    handleContentClick ( event ) {
+        console.log( event );
     }
 
     expand () {
@@ -176,8 +182,21 @@ class Post extends React.Component {
         return htmlString;
     }
 
+    updateIframes ( htmlString ) {
+        const regex = new RegExp( '<iframe[^>]+?(src="(.+?)").*?>', 'g' );
+        let matches;
+
+        while ( ( matches = regex.exec( htmlString ) ) !== null ) {
+            const newSrc = `src="${ DATA_URL_PREFIX }${ window.iframeSrc }" name="${ matches[ 2 ] }"`;
+            htmlString = htmlString.replace( matches[ 1 ], newSrc );
+        }
+
+        return htmlString;
+    }
+
     getContentMarkup () {
         let content = this.updateImages( this.props.postData.content );
+        content = this.updateIframes( content );
 
         return content;
     }
@@ -277,6 +296,7 @@ class Post extends React.Component {
                     dangerouslySetInnerHTML = { {
                         __html: this.getContentMarkup(),
                     } }
+                    onClick = { this.handleContentClick }
                     // eslint-disable-next-line react/jsx-no-bind
                     ref = { ( node ) => {
                         this.body = node;

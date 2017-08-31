@@ -52,6 +52,7 @@
     "cssnano": "^3.10.0",
     "debounce": "^1.0.0",
     "fs-extra": "^2.0.0",
+    "html-minifier": "^3.5.3",
     "minimist": "^1.2.0",
     "mustache": "^2.2.1",
     "postcss": "^6.0.6",
