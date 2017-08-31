@@ -20,6 +20,13 @@ module.exports = {
         ],
     },
     devtool: 'source-map',
+    devServer: {
+        contentBase: path.join( __dirname, 'dev' ),
+        compress: true,
+        https: true,
+        port: 9000,
+        publicPath: "https://localhost:9000/scripts/"
+    },
     output: {
         filename: 'app.js',
         path: path.resolve( __dirname, 'web/scripts' ),
