@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+@font-face {
+	font-family: 'Burbank Big Condensed';
+	font-style: normal;
+	font-weight: bold;
+	src: url('assets/BurbankBigCondensed-Bold.woff2') format('woff2'),
+		url('assets/BurbankBigCondensed-Bold.woff') format('woff');
+}
+
+body {
+	font-family: 'Open Sans';
+}
+
+h1 {
+	font-family: 'Burbank Big Condensed';
+	font-weight: 'bold';
+}
