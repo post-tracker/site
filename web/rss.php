@@ -31,7 +31,7 @@ header( 'Content-Type: application/rss+xml;' );
             if( in_array( $post->url, $usedGuids ) ) {
                 continue;
             }
-            $guid = str_replace( $post->url, '&amp;' );
+            $guid = str_replace( '&', '&amp;', $post->url );
             $usedGuids[] = $guid;
             ?>
             <item>
