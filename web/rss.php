@@ -31,13 +31,14 @@ header( 'Content-Type: application/rss+xml;' );
             if( in_array( $post->url, $usedGuids ) ) {
                 continue;
             }
-            $usedGuids[] = $post->url;
+            $guid = str_replace( $post->url, '&amp;' );
+            $usedGuids[] = $guid;
             ?>
             <item>
                 <title><?php echo htmlspecialchars( html_entity_decode( $post->topic ) ); ?></title>
                 <description><![CDATA[<?php echo $post->content; ?>]]></description>
-                <link><?php echo $post->url; ?></link>
-                <guid><?php echo $post->url; ?></guid>
+                <link><?php echo $guid; ?></link>
+                <guid><?php echo $guid; ?></guid>
                 <{{identifier}}:source><?php echo $post->account->service; ?></{{identifier}}:source>
                 <{{identifier}}:from><?php echo $post->account->developer->nick; ?></{{identifier}}:from>
                 <{{identifier}}:author><?php echo $post->account->developer->nick; ?></{{identifier}}:author>
