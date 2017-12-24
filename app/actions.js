@@ -10,7 +10,7 @@ export const SET_SEARCH_TERM = 'SET_SEARCH_TERM';
 export const TOGGLE_SERVICE = 'TOGGLE_SERVICE';
 
 const FETCH_DEBOUNCE_INTERVAL = 250;
-let API_HOSTNAME = 'api.kokarn.com';
+let API_HOSTNAME = 'api.developertracker.com';
 let API_PORT = 443;
 
 if ( window.location.hostname === 'localhost' ) {
