@@ -2,21 +2,44 @@
 
 const path = require( 'path' );
 const https = require( 'https' );
+const url = require( 'url' );
 
 const fs = require( 'fs-extra' );
 const mustache = require( 'mustache' );
 const postcss = require( 'postcss' );
 const cssnano = require( 'cssnano' );
 
-// Make sure the dist folder exists
 const distPath = path.join( __dirname, '/../dist' );
+const KEYS = require( '../config/keys.json' );
+const API_TOKEN = KEYS.API_KEY;
 
+if ( !API_TOKEN ) {
+    throw new Error( 'Unable to load api key' );
+}
 
-const promiseGet = function( url ) {
+// Make sure the dist folder exists
+try {
+    fs.accessSync( distPath );
+} catch ( error ) {
+    fs.mkdirSync( distPath );
+}
+
+const promiseGet = function promiseGet( requestUrl, headers = false ) {
     return new Promise( ( resolve, reject ) => {
-        const request = https.get( url, ( response ) => {
+        let httpsGet = requestUrl;
+        if ( headers ) {
+            const urlParts = url.parse( requestUrl );
+
+            httpsGet = {
+                headers: headers,
+                hostname: urlParts.hostname,
+                path: urlParts.path,
+            };
+        }
+
+        const request = https.get( httpsGet, ( response ) => {
             if ( response.statusCode < 200 || response.statusCode > 299 ) {
-                reject( new Error( 'Failed to load page, status code: ' + response.statusCode ) );
+                reject( new Error( `Failed to load ${ requestUrl }, status code: ${ response.statusCode }` ) );
             }
 
             const body = [];
@@ -36,118 +59,25 @@ const promiseGet = function( url ) {
     } );
 };
 
-try {
-    fs.accessSync( distPath );
-} catch ( error ) {
-    fs.mkdirSync( distPath );
-}
+const getGames = async function getGames() {
+    const gamesConfigResponse = await promiseGet( 'https://api.kokarn.com/games', {
+        Authorization: `Bearer ${ API_TOKEN }`,
+    } );
+    const allGamesConfig = JSON.parse( gamesConfigResponse );
+    const gamesConfig = {};
 
-const addGameProperty = function addGameProperty( games, property, value ) {
-    for ( const identifier in games ) {
-        games[ identifier ][ property ] = value;
-    }
-};
-
-const games = fs.readdirSync( path.join( __dirname, '/../games' ) );
-const gameExtraData = {};
-
-for ( let i = 0; i < games.length; i = i + 1 ) {
-    gameExtraData[ games[ i ] ] = {
-        identifier: games[ i ],
-    };
-}
-
-const polyfills = fs.readFileSync( path.join( __dirname, '/../web-assets/polyfills.js' ), 'utf8' );
-addGameProperty( gameExtraData, 'polyfills', polyfills );
-
-// Styles
-const generalStyles = fs.readFileSync( path.join( __dirname, '/../web-assets/bootswatch.css' ), 'utf8' );
-const trackerStyles = fs.readFileSync( path.join( __dirname, '/../web-assets/styles.css' ), 'utf8' );
-const globalStyles = `${ generalStyles }\n${ trackerStyles }`;
-
-addGameProperty( gameExtraData, 'version', Date.now() );
-
-const servicePromises = [];
-
-for ( const identifier in gameExtraData ) {
-    const servicePromise = promiseGet( `https://api.kokarn.com/${ identifier }/services` )
-        .then( ( servicesResponse ) => {
-            let services = JSON.parse( servicesResponse ).data;
-
-            // If we only have one service, treat it as none
-            if ( services.length === 1 ) {
-                services = [];
-            }
-
-            // Transform service names to objects
-            services = services.map( ( name ) => {
-                return {
-                    active: true,
-                    name: name,
-                };
-            } );
-
-            gameExtraData[ identifier ].services = JSON.stringify( services );
-        } )
-        .catch( ( serviceError ) => {
-            throw serviceError;
-        } );
-
-    servicePromises.push( servicePromise );
-}
-
-const groupPromises = [];
-
-for ( const identifier in gameExtraData ) {
-    const groupPromise = promiseGet( `https://api.kokarn.com/${ identifier }/groups` )
-        .then( ( groupsResponse ) => {
-            let groups = JSON.parse( groupsResponse ).data;
-
-            // If we only have one group, treat it as none
-            if ( groups.length === 1 ) {
-                groups = [];
-            }
-
-            // Transform group names to objects
-            groups = groups.map( ( name ) => {
-                return {
-                    active: true,
-                    name: name,
-                };
-            } );
-
-            gameExtraData[ identifier ].groups = JSON.stringify( groups );
-        } )
-        .catch( ( groupError ) => {
-            throw groupError;
-        } );
-
-    groupPromises.push( groupPromise );
-}
-
-postcss( [ cssnano ] )
-    .process( globalStyles )
-    .then( ( result ) => {
-        addGameProperty( gameExtraData, 'builtStyles', result.css );
-    } )
-    .then( () => {
-        // Wait for a bunch of promises
-        return Promise.all( [
-            Promise.all( servicePromises ),
-            Promise.all( groupPromises ),
-        ] );
-    } )
-    .then( () => {
-        buildGames();
-    } )
-    .catch( ( chainError ) => {
-        throw chainError;
+    allGamesConfig.data.forEach( ( gameConfig ) => {
+        gamesConfig[ gameConfig.identifier ] = gameConfig;
     } );
 
-const buildGames = function buildGames() {
-    games.forEach( ( game ) => {
-        const gamePath = path.join( __dirname, `/../dist/${ game }` );
-        const gameFilesPath = path.join( __dirname, `/../games/${ game }` );
+    return gamesConfig;
+};
+
+const buildGames = function buildGames( games ) {
+    for ( gameIdentifier in games ) {
+        const gameData = games[ gameIdentifier ];
+        const gamePath = path.join( __dirname, `/../dist/${ gameIdentifier }` );
+        const gameFilesPath = path.join( __dirname, `/../games/${ gameIdentifier }` );
         let maintenanceFile = false;
         const customFiles = [
             'android-chrome-192x192.png',
@@ -168,17 +98,6 @@ const buildGames = function buildGames() {
             'rss.php',
         ];
         const hasLogo = fs.existsSync( path.join( gamePath, '/assets/logo.png' ) );
-        let gameData;
-
-        try {
-            gameData = JSON.parse( fs.readFileSync( path.join( __dirname, `/../games/${ game }/data.json` ), 'utf8' ) );
-        } catch ( parseError ) {
-            console.error( `Invalid game data file for ${ game }. Probably just incorrect JSON. Please fix <3 (Won't build until you do...)` );
-
-            return false;
-        }
-
-        gameData = Object.assign( {}, gameData, gameExtraData[ game ] );
 
         try {
             fs.accessSync( gamePath );
@@ -261,5 +180,102 @@ const buildGames = function buildGames() {
         }
 
         return true;
-    } );
+    }
 };
+
+const run = async function run() {
+    const games = await getGames();
+    const addGameProperty = function addGameProperty( property, value ) {
+        for ( const identifier in games ) {
+            games[ identifier ][ property ] = value;
+        }
+    };
+    const polyfills = fs.readFileSync( path.join( __dirname, '/../web-assets/polyfills.js' ), 'utf8' );
+    addGameProperty( 'polyfills', polyfills );
+
+    // Styles
+    const generalStyles = fs.readFileSync( path.join( __dirname, '/../web-assets/bootswatch.css' ), 'utf8' );
+    const trackerStyles = fs.readFileSync( path.join( __dirname, '/../web-assets/styles.css' ), 'utf8' );
+    const globalStyles = `${ generalStyles }\n${ trackerStyles }`;
+
+    addGameProperty( 'version', Date.now() );
+
+    const servicePromises = [];
+
+    for ( const identifier in games ) {
+        const servicePromise = promiseGet( `https://api.kokarn.com/${ identifier }/services` )
+            .then( ( servicesResponse ) => {
+                let services = JSON.parse( servicesResponse ).data;
+
+                // If we only have one service, treat it as none
+                if ( services.length === 1 ) {
+                    services = [];
+                }
+
+                // Transform service names to objects
+                services = services.map( ( name ) => {
+                    return {
+                        active: true,
+                        name: name,
+                    };
+                } );
+
+                games[ identifier ].services = JSON.stringify( services );
+            } )
+            .catch( ( serviceError ) => {
+                throw serviceError;
+            } );
+
+        servicePromises.push( servicePromise );
+    }
+
+    const groupPromises = [];
+
+    for ( const identifier in games ) {
+        const groupPromise = promiseGet( `https://api.kokarn.com/${ identifier }/groups` )
+            .then( ( groupsResponse ) => {
+                let groups = JSON.parse( groupsResponse ).data;
+
+                // If we only have one group, treat it as none
+                if ( groups.length === 1 ) {
+                    groups = [];
+                }
+
+                // Transform group names to objects
+                groups = groups.map( ( name ) => {
+                    return {
+                        active: true,
+                        name: name,
+                    };
+                } );
+
+                games[ identifier ].groups = JSON.stringify( groups );
+            } )
+            .catch( ( groupError ) => {
+                throw groupError;
+            } );
+
+        groupPromises.push( groupPromise );
+    }
+
+    postcss( [ cssnano ] )
+        .process( globalStyles )
+        .then( ( result ) => {
+            addGameProperty( 'builtStyles', result.css );
+        } )
+        .then( () => {
+            // Wait for a bunch of promises
+            return Promise.all( [
+                Promise.all( servicePromises ),
+                Promise.all( groupPromises ),
+            ] );
+        } )
+        .then( () => {
+            buildGames( games );
+        } )
+        .catch( ( chainError ) => {
+            throw chainError;
+        } );
+};
+
+run();

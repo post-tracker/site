@@ -11,7 +11,6 @@ web/scripts/app.build.js
 config/cron/
 Developers - *.csv
 *.log
-
 web/scripts/app\.js\.map
-
+config/keys.json
 package-lock\.json
