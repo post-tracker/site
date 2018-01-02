@@ -1,6 +1,9 @@
 import React from 'react';
 
 const styles = {
+    image: {
+        width: 200,
+    },
     wrapper: {
         textAlign: 'center',
     },
@@ -8,16 +11,21 @@ const styles = {
 
 class Loader extends React.Component {
     render () {
+        if ( !this.props.isFetching ) {
+            return null;
+        }
+
         return (
             <div
-                style = { styles.wrapper }
-            >
-                <img
-                    className = { 'loader' }
-                    src = { 'assets/loader.svg' }
-                />
-            </div>
-        );
+               style = { styles.wrapper }
+           >
+               <img
+                   className = { 'loader' }
+                   src = { 'assets/loader.svg' }
+                   style = { styles.image }
+               />
+           </div>
+        )
     }
 }
 

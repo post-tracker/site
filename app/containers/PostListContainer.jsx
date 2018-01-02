@@ -17,7 +17,9 @@ class PostListContainer extends React.Component {
     render () {
         if ( this.props.isFetching ) {
             return (
-                <Loader />
+                <Loader
+                    isFetching = { this.props.isFetching }
+                />
             );
         }
 
