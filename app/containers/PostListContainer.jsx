@@ -23,7 +23,10 @@ class PostListContainer extends React.Component {
 
         if ( this.props.posts.length < 1 ) {
             return (
-                <NoPosts />
+                <NoPosts
+                    show = { ( !this.props.posts.length && !this.props.isFetching ) }
+                    query = { this.props.searchString }
+                />
             );
         }
 
@@ -38,11 +41,13 @@ class PostListContainer extends React.Component {
 const mapStateToProps = function mapStateToProps ( state ) {
     const {
         posts,
+        search,
     } = state;
 
     return {
         isFetching: posts.isFetching,
         posts: posts.items || [],
+        searchString: search,
     };
 };
 

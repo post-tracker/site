@@ -8,11 +8,15 @@ const styles = {
 
 class NoPosts extends React.Component {
     render () {
+        if ( !this.props.show ) {
+            return null;
+        }
+
         return (
             <div
                 style = { styles.wrapper }
             >
-                { 'Sorry, that search didn\'t return any posts' }
+                { `Sorry, no posts matching ${ this.props.query }` }
             </div>
         );
     }
