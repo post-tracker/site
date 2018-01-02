@@ -55,6 +55,12 @@ const receivePosts = function receivePosts ( json ) {
     };
 };
 
+const requestPosts = function requestPosts () {
+    return {
+        type: REQUEST_POSTS,
+    };
+};
+
 const toggleGroupState = function toggleGroupState ( name ) {
     return {
         name,
@@ -82,6 +88,7 @@ const getPosts = function getPosts ( search, groups, services, dispatch ) {
         return group.active;
     } );
 
+    dispatch( requestPosts() );
     let activeServices = [];
 
     activeServices = services.items.filter( ( service ) => {

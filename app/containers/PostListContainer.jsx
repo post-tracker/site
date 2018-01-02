@@ -6,6 +6,7 @@ import {
 } from '../actions';
 
 import PostList from '../components/PostList.jsx';
+import Loader from '../components/Loader.jsx';
 
 class PostListContainer extends React.Component {
     componentDidMount () {
@@ -13,6 +14,12 @@ class PostListContainer extends React.Component {
     }
 
     render () {
+        if ( this.props.isFetching ) {
+            return (
+                <Loader />
+            );
+        }
+
         return (
             <PostList
                 posts = { this.props.posts }
@@ -27,6 +34,7 @@ const mapStateToProps = function mapStateToProps ( state ) {
     } = state;
 
     return {
+        isFetching: posts.isFetching,
         posts: posts.items || [],
     };
 };
@@ -40,6 +48,7 @@ const mapDispatchToProps = ( dispatch ) => {
 };
 
 PostListContainer.propTypes = {
+    isFetching: React.PropTypes.bool.isRequired,
     getPosts: React.PropTypes.func.isRequired,
     // eslint-disable-next-line react/forbid-prop-types
     posts: React.PropTypes.array.isRequired,

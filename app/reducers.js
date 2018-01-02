@@ -169,14 +169,18 @@ const search = function search ( state, action ) {
 
 const posts = function posts ( state = {
     items: [],
+    isFetching: true,
 }, action ) {
     switch ( action.type ) {
         case REQUEST_POSTS:
-            return Object.assign( {}, state );
+            return Object.assign( {}, state, {
+                isFetching: true,
+            } );
         case RECEIVE_POSTS:
             return Object.assign( {}, state, {
                 items: action.posts,
                 lastUpdated: action.receivedAt,
+                isFetching: false,
             } );
         default:
             return state;
