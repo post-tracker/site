@@ -7,6 +7,7 @@ import {
 
 import PostList from '../components/PostList.jsx';
 import Loader from '../components/Loader.jsx';
+import NoPosts from '../components/NoPosts.jsx';
 
 class PostListContainer extends React.Component {
     componentDidMount () {
@@ -17,6 +18,12 @@ class PostListContainer extends React.Component {
         if ( this.props.isFetching ) {
             return (
                 <Loader />
+            );
+        }
+
+        if ( this.props.posts.length < 1 ) {
+            return (
+                <NoPosts />
             );
         }
 
