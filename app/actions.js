@@ -12,6 +12,7 @@ export const TOGGLE_SERVICE = 'TOGGLE_SERVICE';
 const FETCH_DEBOUNCE_INTERVAL = 250;
 let API_HOSTNAME = 'api.developertracker.com';
 let API_PORT = 443;
+let trackTiming = true;
 
 if ( window.location.hostname === 'localhost' ) {
     API_HOSTNAME = 'lvh.me';
@@ -143,6 +144,8 @@ const getPosts = function getPosts ( search, groups, services, dispatch ) {
         }
     }
 
+    const startTime = new Date().getTime();
+
     const request = https.request( options, ( response ) => {
         let body = '';
 
@@ -153,6 +156,15 @@ const getPosts = function getPosts ( search, groups, services, dispatch ) {
         } );
 
         response.on( 'end', () => {
+            if ( window.ga && trackTiming ) {
+                ga( 'send', {
+                    hitType: 'timing',
+                    timingCategory: 'Posts API',
+                    timingVar: 'load',
+                    timingValue: new Date().getTime() - startTime,
+                    timingLabel: options.path,
+                } );
+            }
             dispatch( receivePosts( JSON.parse( body ).data ) );
         } );
     } );
