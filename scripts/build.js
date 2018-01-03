@@ -134,7 +134,13 @@ const buildGames = function buildGames( games ) {
         fs.writeFileSync( path.join( gamePath, '/assets/styles.min.css' ), gameData.builtStyles );
 
         // Copy all extra files
-        const extraFiles = fs.readdirSync( gameFilesPath );
+        let extraFiles = [];
+
+        try {
+            extraFiles = fs.readdirSync( gameFilesPath );
+        } catch ( readDirError ) {
+            // Do nothing, the folder just doesn't exist
+        }
 
         extraFiles.forEach( ( filename ) => {
             // Skip files not marked for copy
@@ -179,7 +185,6 @@ const buildGames = function buildGames( games ) {
             } );
         }
 
-        return true;
     }
 };
 
