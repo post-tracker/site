@@ -75,6 +75,7 @@ const getGames = async function getGames() {
 
 const buildGames = function buildGames( games ) {
     for ( gameIdentifier in games ) {
+        console.log( `Building ${ gameIdentifier }` );
         const gameData = games[ gameIdentifier ];
         const gamePath = path.join( __dirname, `/../dist/${ gameIdentifier }` );
         const gameFilesPath = path.join( __dirname, `/../games/${ gameIdentifier }` );
@@ -185,6 +186,7 @@ const buildGames = function buildGames( games ) {
             } );
         }
 
+        console.log( `Build ${ gameIdentifier } done` );
     }
 };
 
