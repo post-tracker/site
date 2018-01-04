@@ -1,9 +1,9 @@
 @font-face {
     font-family: 'Eurostile';
-    src: url( 'assets/eurostile.woff2' ) format( 'woff2' ),
-         url( 'assets/eurostile.woff' ) format( 'woff' );
-    font-weight: normal;
     font-style: normal;
+    font-weight: normal;
+    src: url( 'assets/eurostile.woff2' ) format( 'woff2' ),
+        url( 'assets/eurostile.woff' ) format( 'woff' );
 }
 
 body {
