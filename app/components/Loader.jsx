@@ -2,6 +2,7 @@ import React from 'react';
 
 const styles = {
     image: {
+        maxWidth: '25%',
         width: 200,
     },
     wrapper: {
