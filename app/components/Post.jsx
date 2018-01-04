@@ -97,6 +97,9 @@ class Post extends React.Component {
             case 'Bungie.net':
                 service = 'comments';
                 break;
+            case 'tarkovForum':
+                service = 'comments';
+                break;
             default:
                 service = originalService;
                 break;
