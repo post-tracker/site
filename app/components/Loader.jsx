@@ -22,7 +22,7 @@ class Loader extends React.Component {
            >
                <img
                    className = { 'loader' }
-                   src = { 'assets/loader.svg' }
+                   src = { 'assets/loader.svg?v=2' }
                    style = { styles.image }
                />
            </div>

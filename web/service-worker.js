@@ -21,7 +21,7 @@ const PRECACHE_ASSETS = [
     'index.html',
     './',
     './assets/styles.min.css?v={{version}}',
-    './assets/loader.svg',
+    './assets/loader.svg?v=2',
     './scripts/app.js?v={{version}}',
     'manifest.json',
 ];
