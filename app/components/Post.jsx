@@ -85,23 +85,13 @@ class Post extends React.Component {
             case 'MiggyRSS':
                 service = 'RSS';
                 break;
-            case 'LudeonForums':
-                service = 'comments';
-                break;
-            case 'PUBGForums':
-                service = 'comments';
-                break;
-            case 'SurviveTheArk':
-                service = 'comments';
-                break;
-            case 'Bungie.net':
-                service = 'comments';
-                break;
-            case 'tarkovForum':
-                service = 'comments';
+            case 'steam':
+            case 'reddit':
+            case 'twitter':
+                service = originalService;
                 break;
             default:
-                service = originalService;
+                service = 'comments';
                 break;
         }
 
