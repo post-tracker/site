@@ -190,6 +190,55 @@ const buildGames = function buildGames( games ) {
     }
 };
 
+const buildAllGames = function buildAllGames( gamesData ){
+    const allGamesTemplate = fs.readFileSync( path.join( __dirname, '..', 'web-assets', 'games-template.html' ), 'utf8' );
+    const games = Object.values( gamesData );
+    const renderData = {
+        games: [],
+    };
+
+    games.sort( ( a, b ) => {
+        return a.name.localeCompare( b.name );
+    } );
+
+    for ( let i = 0; i < games.length; i = i + 1 ) {
+        // Don't build games set as not live
+        if ( games[ i ].config && games[ i ].config.live === 0 ) {
+            continue;
+        }
+
+        let name = games[ i ].name;
+        let url = games[ i ].hostname;
+        let image = '';
+
+        if ( games[ i ].config && games[ i ].config.twitchName ) {
+            name = games[ i ].config.twitchName;
+        }
+
+        if ( url === 'developertracker.com' ) {
+            url = `${ url }/${ games[ i ].identifier }/`
+        }
+
+        if ( games[ i ].config && games[ i ].config.boxart ) {
+            image = games[ i ].config.boxart;
+        } else {
+            image = `https://static-cdn.jtvnw.net/ttv-boxart/${ encodeURIComponent( name ) }-285x380.jpg`;
+        }
+
+        renderData.games.push( {
+            url,
+            image,
+            name,
+        } );
+    }
+
+    fs.writeFile( path.join( __dirname, '..', 'dist', 'index.html' ), mustache.render( allGamesTemplate, renderData ), ( writeFileError ) => {
+        if ( writeFileError ) {
+            console.log( writeFileError );
+        }
+    } );
+};
+
 const run = async function run() {
     const games = await getGames();
     const addGameProperty = function addGameProperty( property, value ) {
@@ -279,6 +328,7 @@ const run = async function run() {
         } )
         .then( () => {
             buildGames( games );
+            buildAllGames( games );
         } )
         .catch( ( chainError ) => {
             throw chainError;
