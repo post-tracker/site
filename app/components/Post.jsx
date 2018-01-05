@@ -154,15 +154,26 @@ class Post extends React.Component {
     updateImages ( htmlString ) {
         const maxWidth = Math.min( window.innerWidth, 1140 );
         const maxHeight = Math.min( window.innerWidth, 600 );
-        const regex = new RegExp( '<img[^>]+?(src="(https?:)?\/\/(.+?)").*?>', 'g' );
+        const imgRegex = new RegExp( '<img[^>]+?(src="(https?:)?\/\/(.+?)").*?>', 'g' );
+        const srcsetRegex = new RegExp( '<img[^>]+?(srcset="(https?:)?\/\/(.+?)) (.+?)".*?>', 'g' );
         let matches;
 
-        while ( ( matches = regex.exec( htmlString ) ) !== null ) {
+        while ( ( matches = imgRegex.exec( htmlString ) ) !== null ) {
             let fallbackUrl = matches[ 3 ];
             if ( matches[ 2 ] === 'https:' ) {
                 fallbackUrl = `ssl:${ fallbackUrl }`;
             }
             const newSrc = `src="https://images.weserv.nl/?url=${ encodeURIComponent( matches[ 3 ] ) }&w=${ maxWidth }&h=${ maxHeight }&t=fit&il&errorredirect=${ encodeURIComponent( fallbackUrl ) }"`
+            htmlString = htmlString.replace( matches[ 1 ], newSrc );
+        }
+
+        while ( ( matches = srcsetRegex.exec( htmlString ) ) !== null ) {
+            let fallbackUrl = matches[ 3 ];
+            if ( matches[ 2 ] === 'https:' ) {
+                fallbackUrl = `ssl:${ fallbackUrl }`;
+            }
+            console.log( matches );
+            const newSrc = `srcset="https://images.weserv.nl/?url=${ encodeURIComponent( matches[ 3 ] ) }&w=${ maxWidth }&h=${ maxHeight }&t=fit&il&errorredirect=${ encodeURIComponent( fallbackUrl ) } ${ matches[ 4 ] }"`
             htmlString = htmlString.replace( matches[ 1 ], newSrc );
         }
 
