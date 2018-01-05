@@ -85,9 +85,9 @@ class Post extends React.Component {
             case 'MiggyRSS':
                 service = 'RSS';
                 break;
-            case 'steam':
-            case 'reddit':
-            case 'twitter':
+            case 'Steam':
+            case 'Reddit':
+            case 'Twitter':
                 service = originalService;
                 break;
             default:
