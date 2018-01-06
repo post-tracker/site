@@ -179,8 +179,31 @@ class Post extends React.Component {
         return htmlString;
     }
 
+    updateIframes ( htmlString ) {
+        const frameRegex = new RegExp( '<iframe.+?src="(http:\/\/.+?)".+?><\/iframe>', 'g' )
+        let matches;
+
+        while ( ( matches = frameRegex.exec( htmlString ) ) !== null ) {
+            let url = matches[ 1 ];
+
+            // handle some invision power board stuff
+            if ( url.substr( -9 ) === '?do=embed' ) {
+                url = url.substring( 0, url.length - 9 );
+            }
+
+            const newHtml = `<a href="${ url }">${ url }</a>`;
+
+            htmlString = htmlString.replace( matches[ 0 ], newHtml );
+            frameRegex.lastIndex = 0;
+        }
+
+        return htmlString;
+    }
+
     getContentMarkup () {
         let content = this.updateImages( this.props.postData.content );
+
+        content = this.updateIframes( content );
 
         return content;
     }
