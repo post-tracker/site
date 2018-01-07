@@ -260,10 +260,20 @@ const run = async function run() {
 
                 // Transform service names to objects
                 services = services.map( ( name ) => {
+                    let label = name;
+                    if ( games[ identifier ].config && games[ identifier ].config.sources && games[ identifier ].config.sources[ name ] ) {
+                        label = games[ identifier ].config.sources[ name ].label || name;
+                    }
+
                     return {
                         active: true,
                         name: name,
+                        label: label,
                     };
+                } );
+
+                services.sort( ( a,b ) => {
+                    return a.label.localeCompare( b.label );
                 } );
 
                 games[ identifier ].services = JSON.stringify( services );

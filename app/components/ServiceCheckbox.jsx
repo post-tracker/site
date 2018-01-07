@@ -28,9 +28,9 @@ class ServiceCheckbox extends React.Component {
                     />
                     <span
                         className = { `filter-label service-label ${ this.getParsedServiceName() }` }
-                        title = { this.props.name }
+                        title = { this.props.label }
                     >
-                        { this.props.name }
+                        { this.props.label }
                     </span>
                 </label>
             </div>
@@ -52,6 +52,7 @@ ServiceCheckbox.propTypes = {
     checked: React.PropTypes.bool.isRequired,
     handleCheckboxChange: React.PropTypes.func.isRequired,
     name: React.PropTypes.string.isRequired,
+    label: React.PropTypes.string.isRequired,
 };
 
 export default connect(

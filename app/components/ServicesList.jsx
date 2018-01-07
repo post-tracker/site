@@ -36,6 +36,7 @@ class ServicesList extends React.Component {
                     checked = { service.active }
                     key = { service.name }
                     name = { service.name }
+                    label = { service.label }
                 />
             );
         } );
