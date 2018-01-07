@@ -203,26 +203,16 @@ const buildAllGames = function buildAllGames( gamesData ){
 
     for ( let i = 0; i < games.length; i = i + 1 ) {
         // Don't build games set as not live
-        if ( games[ i ].config && games[ i ].config.live === 0 ) {
+        if ( !games[ i ].config || games[ i ].config.live === 0 ) {
             continue;
         }
 
         let name = games[ i ].name;
         let url = games[ i ].hostname;
-        let image = '';
-
-        if ( games[ i ].config && games[ i ].config.twitchName ) {
-            name = games[ i ].config.twitchName;
-        }
+        let image = games[ i ].config.boxart;
 
         if ( url === 'developertracker.com' ) {
             url = `${ url }/${ games[ i ].identifier }/`
-        }
-
-        if ( games[ i ].config && games[ i ].config.boxart ) {
-            image = games[ i ].config.boxart;
-        } else {
-            image = `https://static-cdn.jtvnw.net/ttv-boxart/${ encodeURIComponent( name ) }-285x380.jpg`;
         }
 
         renderData.games.push( {
