@@ -7,12 +7,16 @@ Let us know by posting an [issue](https://github.com/post-tracker/site/issues/ne
 
 ## Currently hosting
 
+[Anthem Dev Tracker](https://developertracker.com/anthem/)  
 [ARK: Survival Evolved Dev Tracker](https://arkdevtracker.com)  
 [Battlefield 1 Dev Tracker](https://battlefielddevtracker.com)  
-[Conan Dev Tracker](https://conandevtracker.com)  
-[CSGO Dev Tracker](https://csgodevtracker.com)  
+[Conan: Exiles Dev Tracker](https://conandevtracker.com)  
 [Destiny Dev Tracker](https://destinydevtracker.com)  
 [Elite: Dangerous Dev Tracker](https://elitedevtracker.com)  
+[Escape from Tarkov Dev Tracker](https://developertracker.com/escape-from-tarkov/)  
+[Fortnite Dev Tracker](https://developertracker.com/fortnite/)  
 [PLAYERUNKNOWN'S BATTLEGROUNDS Dev Tracker](https://pubgdevtracker.com)  
 [Rainbow 6: Siege Dev Tracker](https://developertracker.com/rainbow6/)  
 [RimWorld Dev Tracker](https://rimworlddevtracker.com)  
+[Star Citizen Dev Tracker](https://developertracker.com/star-citizen/)  
+[They Are Billions Dev Tracker](https://rimworlddevtracker.com/tab/)  
