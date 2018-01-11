@@ -168,7 +168,12 @@ const getPosts = function getPosts ( search, groups, services, dispatch ) {
                     timingLabel: options.path,
                 } );
             }
-            dispatch( receivePosts( JSON.parse( body ).data ) );
+            try {
+                dispatch( receivePosts( JSON.parse( body ).data ) );
+            } catch ( postsFail ) {
+                dispatch( receivePosts( [] ) );
+                console.error( postsFail );
+            }
         } );
     } );
 
