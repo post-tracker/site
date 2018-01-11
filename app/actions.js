@@ -179,7 +179,7 @@ const getPosts = function getPosts ( search, groups, services, dispatch ) {
 
     request.on( 'error', ( requestError ) => {
         // eslint-disable-next-line no-console
-        console.log( `problem with request: ${ requestError.message }` );
+        console.error( `problem with request: ${ requestError.message }` );
     } );
 
     request.end();
