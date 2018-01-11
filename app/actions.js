@@ -122,10 +122,6 @@ const getPosts = function getPosts ( search, groups, services, dispatch ) {
         if ( window.location.search !== locationSearch && window.history.pushState ) {
             window.history.pushState( {}, search, locationSearch );
         }
-    } else {
-        if ( window.history.pushState ) {
-            window.history.pushState( {}, search, window.location.pathname );
-        }
     }
 
     const cookieServices = cookie.load( 'services' );
