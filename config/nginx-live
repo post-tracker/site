@@ -6,6 +6,51 @@ server {
 }
 
 server {
+    server_name www.arkdevtracker.com;
+    return 301 https://arkdevtracker.com$request_uri;
+}
+
+server {
+    server_name www.battlefielddevtracker.com;
+    return 301 https://battlefielddevtracker.com$request_uri;
+}
+
+server {
+    server_name www.conandevtracker.com;
+    return 301 https://conandevtracker.com$request_uri;
+}
+
+server {
+    server_name www.csgodevtracker.com;
+    return 301 https://csgodevtracker.com$request_uri;
+}
+
+server {
+    server_name www.destinydevtracker.com;
+    return 301 https://destinydevtracker.com$request_uri;
+}
+
+server {
+    server_name www.developertracker.com;
+    return 301 https://developertracker.com$request_uri;
+}
+
+server {
+    server_name www.elitedevtracker.com;
+    return 301 https://elitedevtracker.com$request_uri;
+}
+
+server {
+    server_name www.rimworlddevtracker.com;
+    return 301 https://rimworlddevtracker.com$request_uri;
+}
+
+server {
+    server_name www.pubgdevtracker.com;
+    return 301 https://pubgdevtracker.com$request_uri;
+}
+
+server {
     listen 443 ssl http2;
     listen [::]:443 ssl http2;
 
