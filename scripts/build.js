@@ -3,26 +3,62 @@
 const path = require( 'path' );
 const https = require( 'https' );
 const url = require( 'url' );
+const fs = require( 'fs' );
 
-const fs = require( 'fs-extra' );
 const mustache = require( 'mustache' );
 const postcss = require( 'postcss' );
 const cssnano = require( 'cssnano' );
+const AWS = require( 'aws-sdk' );
+const junk = require( 'junk' );
+const mime = require( 'mime-types' );
+const recursive = require( 'recursive-readdir' );
 
-const distPath = path.join( __dirname, '/../dist' );
-const KEYS = require( '../config/keys.json' );
-const API_TOKEN = KEYS.API_KEY;
+require( 'dotenv' ).config();
 
-if ( !API_TOKEN ) {
+if ( !process.env.AWS_ACCESS_KEY || !process.env.AWS_SECRET_KEY ) {
+    throw new Error( 'AWS auth not configured' );
+}
+
+if ( !process.env.API_TOKEN ) {
     throw new Error( 'Unable to load api key' );
 }
 
-// Make sure the dist folder exists
-try {
-    fs.accessSync( distPath );
-} catch ( error ) {
-    fs.mkdirSync( distPath );
-}
+const S3_BUCKET = 'developer-tracker';
+const API_HOST = 'api.kokarn.com';
+// const API_HOST = 'localhost:3000';
+// process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
+const s3 = new AWS.S3( {
+    accessKeyId: process.env.AWS_ACCESS_KEY,
+    secretAccessKey: process.env.AWS_SECRET_KEY,
+} );
+
+const cacheControls = [
+    {
+        match: 'service-worker.js',
+        cache: 'public, max-age=600, must-revalidate',
+    },
+    {
+        match: '.*\.html',
+        cache: 'public, max-age=600',
+    },
+    {
+        match: '.*\.css',
+        cache: 'public, max-age=31536000',
+    },
+    {
+        match: '.*\.js',
+        cache: 'public, max-age=31536000',
+    },
+    {
+        match: '\.(jpg|jpeg|gif|png|ico|cur|gz|svg|svgz|mp4|ogg|ogv|webm|htc|woff|woff2)',
+        cache: 'public, max-age=2678400',
+    },
+    {
+        match: '\.(json|xml)',
+        cache: 'public, max-age=2678400',
+    },
+];
 
 const promiseGet = function promiseGet( requestUrl, headers = false ) {
     return new Promise( ( resolve, reject ) => {
@@ -34,8 +70,11 @@ const promiseGet = function promiseGet( requestUrl, headers = false ) {
                 headers: headers,
                 hostname: urlParts.hostname,
                 path: urlParts.path,
+                port: urlParts.port || 443,
             };
         }
+
+        console.log( `Loading ${ requestUrl }` );
 
         const request = https.get( httpsGet, ( response ) => {
             if ( response.statusCode < 200 || response.statusCode > 299 ) {
@@ -43,6 +82,8 @@ const promiseGet = function promiseGet( requestUrl, headers = false ) {
             }
 
             const body = [];
+
+            console.log( `Done with ${ requestUrl }` );
 
             response.on( 'data', ( chunk ) => {
                 body.push( chunk );
@@ -60,11 +101,19 @@ const promiseGet = function promiseGet( requestUrl, headers = false ) {
 };
 
 const getGames = async function getGames() {
-    const gamesConfigResponse = await promiseGet( 'https://api.kokarn.com/games', {
-        Authorization: `Bearer ${ API_TOKEN }`,
-    } );
-    const allGamesConfig = JSON.parse( gamesConfigResponse );
+    let allGamesConfig;
     const gamesConfig = {};
+
+    try {
+        const gamesConfigResponse = await promiseGet( `https://${ API_HOST }/games`, {
+            Authorization: `Bearer ${ process.env.API_TOKEN }`,
+        } );
+        allGamesConfig = JSON.parse( gamesConfigResponse );
+    } catch ( getGamesError ) {
+        console.log( `Unable to load games. Got "${ getGamesError.message }"` );
+
+        throw getGamesError;
+    }
 
     allGamesConfig.data.forEach( ( gameConfig ) => {
         gamesConfig[ gameConfig.identifier ] = gameConfig;
@@ -73,121 +122,118 @@ const getGames = async function getGames() {
     return gamesConfig;
 };
 
-const buildGames = function buildGames( games ) {
-    for ( gameIdentifier in games ) {
-        console.log( `Building ${ gameIdentifier }` );
-        const gameData = games[ gameIdentifier ];
-        const gamePath = path.join( __dirname, `/../dist/${ gameIdentifier }` );
-        const gameFilesPath = path.join( __dirname, `/../games/${ gameIdentifier }` );
-        let maintenanceFile = false;
-        const customFiles = [
-            'android-chrome-192x192.png',
-            'android-chrome-512x512.png',
-            'apple-touch-icon.png',
-            'assets',
-            'browserconfig.xml',
-            'favicon-16x16.png',
-            'favicon-32x32.png',
-            'favicon.ico',
-            'manifest.json',
-            'mstile-150x150.png',
-            'safari-pinned-tab.svg',
-        ];
-        const rewriteFiles = [
-            'index.html',
-            'service-worker.js',
-            'rss.php',
-        ];
-        const hasLogo = fs.existsSync( path.join( gamePath, '/assets/logo.png' ) );
+const getCache = function getCache ( filePath ) {
+    const filename = path.parse( filePath ).base;
 
-        try {
-            fs.accessSync( gamePath );
-        } catch ( error ) {
-            fs.mkdirSync( gamePath );
+    for ( const cacheSetup of cacheControls ) {
+        const regex = new RegExp( cacheSetup.match );
+
+        if ( regex.test( filePath ) ) {
+            return cacheSetup.cache;
+        }
+    }
+
+    console.error( `No cache for ${ filename }` );
+
+    return false;
+};
+
+const uploadFile = function uploadFile( filePath, fileData ) {
+    const params = {
+        Bucket: S3_BUCKET,
+        Key: filePath,
+        Body: fileData,
+        CacheControl: getCache( filePath ),
+        ContentType: mime.lookup( filePath ),
+    };
+
+    s3.putObject( params, ( uploadError, data ) => {
+        if ( uploadError ) {
+            console.error( uploadError )
+        } else {
+            console.log( `Successfully uploaded ${ filePath } to ${ S3_BUCKET }` );
+        }
+    } );
+};
+
+const buildGame = function buildGame( gameData ) {
+    console.log( `Building ${ gameData.identifier }` );
+    const gameFilesPath = path.join( __dirname, '..', 'games', gameData.identifier );
+    const rewriteFiles = [
+        'index.html',
+        'service-worker.js',
+    ];
+    const dataRootPath = path.join( __dirname, '..', 'web' );
+
+    // Upload all default files
+    recursive( dataRootPath, ( readDirError, files ) => {
+        if ( readDirError ) {
+            throw readDirError;
         }
 
-        try {
-            fs.accessSync( path.join( gamePath, '/maintenance.html' ) );
-            maintenanceFile = fs.readFileSync( path.join( gamePath, '/maintenance.html' ), 'utf8' );
-        } catch ( error ) {
-            // If doesn't exist we don't really have to do anything
-        }
+        fileLoop:
+        for ( const file of files ) {
+            if ( junk.is( path.parse( file ).base ) ) {
+                continue;
+            }
+            const fileName = path.join( gameData.identifier, file.replace( dataRootPath, '' ) )
 
-        // Remove everything
-        const gameFiles = fs.readdirSync( gamePath );
-
-        gameFiles.forEach( ( fileOrFolder ) => {
-            fs.removeSync( path.join( gamePath, `/${ fileOrFolder }` ) );
-
-            return true;
-        } );
-
-        // Write a temporary maintenance file
-        if ( maintenanceFile ) {
-            fs.writeFileSync( path.join( gamePath, '/index.html' ), maintenanceFile );
-        }
-
-        // Copy all files from the web directory
-        fs.copySync( path.join( __dirname, '/../web/' ), gamePath, {
-            clobber: true,
-        } );
-
-        fs.writeFileSync( path.join( gamePath, '/assets/styles.min.css' ), gameData.builtStyles );
-
-        // Copy all extra files
-        let extraFiles = [];
-
-        try {
-            extraFiles = fs.readdirSync( gameFilesPath );
-        } catch ( readDirError ) {
-            // Do nothing, the folder just doesn't exist
-        }
-
-        extraFiles.forEach( ( filename ) => {
-            // Skip files not marked for copy
-            if ( customFiles.indexOf( filename ) < 0 ) {
-                return true;
+            // Don't upload files we'll rewrite
+            for ( const rewriteFile of rewriteFiles ) {
+                if ( fileName.includes( rewriteFile ) ) {
+                    continue fileLoop;
+                }
             }
 
-            // Copy over the file
-            fs.copySync( path.join( gameFilesPath, `/${ filename }` ), path.join( gamePath,  `/${ filename }` ), {
-                clobber: true,
-            } );
+            uploadFile( fileName, fs.readFileSync( file ) );
+        }
+    } );
 
-            return true;
-        } );
+    uploadFile( path.join( gameData.identifier, '/assets/styles.min.css' ), gameData.builtStyles );
 
-        if ( extraFiles.indexOf( 'styles.css' ) > -1  ) {
-            gameData.styles = fs.readFileSync( path.join( gameFilesPath, '/styles.css' ) );
+    recursive( gameFilesPath, ( gameFilesError, gameFiles ) => {
+        if ( gameFilesError ) {
+            console.log( `No game files found for ${ gameData.identifier } ` );
+            gameFiles = [];
         }
 
-        if ( hasLogo ) {
-            gameData.logo = '<img src="assets/logo.png" class="header-logo">';
-        } else {
+        for ( const filename of gameFiles ) {
+            if ( junk.is( path.parse( filename ).base ) ) {
+                continue;
+            }
+
+            if ( filename.includes( 'styles.css' ) ) {
+                gameData.styles = fs.readFileSync( filename );
+            }
+
+            if ( filename.includes( 'assets/logo.png' ) ) {
+                gameData.logo = '<img src="assets/logo.png" class="header-logo">';
+            }
+
+            uploadFile( path.join( gameData.identifier, filename.replace( gameFilesPath, '' ) ), fs.readFileSync( filename ) );
+        }
+
+        if ( !gameData.logo ) {
             gameData.logo = gameData.shortName;
         }
 
         for ( let i = 0; i < rewriteFiles.length; i = i + 1 ) {
             // Fill in the data where needed
-            fs.readFile( path.join( gamePath, rewriteFiles[ i ] ), 'utf8', ( readFileError, fileData ) => {
+            fs.readFile( path.join( dataRootPath, rewriteFiles[ i ] ), 'utf8', ( readFileError, fileData ) => {
                 if ( readFileError ) {
-                    console.log( readFileError );
+                    console.error( readFileError );
 
                     return false;
                 }
 
-                fs.writeFile( path.join( gamePath, rewriteFiles[ i ] ), mustache.render( fileData, gameData ), ( writeFileError ) => {
-                    if ( writeFileError ) {
-                        console.log( writeFileError );
-                    }
-                } );
+                uploadFile( path.join( gameData.identifier, rewriteFiles[ i ] ), mustache.render( fileData, gameData ) );
 
                 return true;
             } );
         }
+    } );
 
-        console.log( `Build ${ gameIdentifier } done` );
-    }
+    console.log( `Build ${ gameData.identifier } done` );
 };
 
 const buildAllGames = function buildAllGames( gamesData ){
@@ -222,15 +268,19 @@ const buildAllGames = function buildAllGames( gamesData ){
         } );
     }
 
-    fs.writeFile( path.join( __dirname, '..', 'dist', 'index.html' ), mustache.render( allGamesTemplate, renderData ), ( writeFileError ) => {
-        if ( writeFileError ) {
-            console.log( writeFileError );
-        }
-    } );
+    uploadFile( 'index.html', mustache.render( allGamesTemplate, renderData ) );
 };
 
 const run = async function run() {
-    const games = await getGames();
+    let games;
+
+    try {
+        games = await getGames();
+    } catch ( loadGamesError ) {
+        console.error( 'Failed to load games from the API, not building' );
+
+        return false;
+    }
     const addGameProperty = function addGameProperty( property, value ) {
         for ( const identifier in games ) {
             games[ identifier ][ property ] = value;
@@ -249,7 +299,7 @@ const run = async function run() {
     const servicePromises = [];
 
     for ( const identifier in games ) {
-        const servicePromise = promiseGet( `https://api.kokarn.com/${ identifier }/services` )
+        const servicePromise = promiseGet( `https://${ API_HOST }/${ identifier }/services` )
             .then( ( servicesResponse ) => {
                 let services = JSON.parse( servicesResponse ).data;
 
@@ -288,7 +338,7 @@ const run = async function run() {
     const groupPromises = [];
 
     for ( const identifier in games ) {
-        const groupPromise = promiseGet( `https://api.kokarn.com/${ identifier }/groups` )
+        const groupPromise = promiseGet( `https://${ API_HOST }/${ identifier }/groups` )
             .then( ( groupsResponse ) => {
                 let groups = JSON.parse( groupsResponse ).data;
 
@@ -327,7 +377,10 @@ const run = async function run() {
             ] );
         } )
         .then( () => {
-            buildGames( games );
+            for ( const gameIdentifier in games ) {
+                buildGame( games[ gameIdentifier ] );
+            }
+
             buildAllGames( games );
         } )
         .catch( ( chainError ) => {
