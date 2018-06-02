@@ -17,10 +17,10 @@
   "author": "Oskar Risberg <kokarn@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://kokarn@github.com/kokarn/dev-tracker.git"
+    "url": "https://kokarn@github.com/post-tracker/site.git"
   },
   "bugs": {
-    "url": "https://github.com/kokarn/dev-tracker/issues"
+    "url": "https://github.com/post-tracker/site/issues"
   },
   "engines": {
     "node": "^6.5.0"
