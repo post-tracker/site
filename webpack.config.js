@@ -24,6 +24,7 @@ module.exports = {
         contentBase: path.join( __dirname, 'dev' ),
         compress: true,
         https: true,
+        host: '0.0.0.0',
         port: 9000,
         publicPath: "https://localhost:9000/scripts/"
     },
