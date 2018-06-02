@@ -52,6 +52,10 @@ h1 a:hover {
     right: 75px;
 }
 
+.twitter-link {
+    right: 105px;
+}
+
 .panel {
     position: relative;
     word-wrap: break-word;
