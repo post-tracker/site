@@ -172,7 +172,10 @@ input[type="checkbox"],
     font-size: 12px;
     margin: 5px;
     line-height: 15px;
-    width: 105px;
+}
+
+.groups-wrapper .checkbox label {
+    white-space: nowrap;
 }
 
 .group-label {
@@ -180,12 +183,11 @@ input[type="checkbox"],
     background-repeat: no-repeat;
     display: inline-block;
     height: 23px;
-    line-height: 23px;
+    line-height: 25px;
     overflow: hidden;
     text-align: left;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: 50px;
 }
 
 .filters-wrapper {
@@ -220,12 +222,6 @@ input[type="checkbox"],
     .groups-wrapper {
         text-align: center;
         width: auto;
-    }
-}
-
-@media screen and ( max-width: 1040px ){
-    .groups-wrapper .checkbox {
-        width: 80px;
     }
 }
 
