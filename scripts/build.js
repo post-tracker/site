@@ -249,7 +249,7 @@ const buildAllGames = function buildAllGames( gamesData ){
 
     for ( let i = 0; i < games.length; i = i + 1 ) {
         // Don't build games set as not live
-        if ( !games[ i ].config || games[ i ].config.live === 0 ) {
+        if ( !games[ i ].config || games[ i ].config.live === 0 || games[ i ].config.live === false ) {
             continue;
         }
 
