@@ -26,7 +26,16 @@ module.exports = {
         https: true,
         host: '0.0.0.0',
         port: 9000,
-        publicPath: "https://localhost:9000/scripts/"
+        publicPath: "https://localhost:9000/scripts/",
+        proxy: {
+            '/pubg/': {
+                target: 'https://0.0.0.0:9000',
+                secure: false,
+                pathRewrite: {
+                    '^/pubg' : '',
+                },
+            },
+        },
     },
     output: {
         filename: 'app.js',
