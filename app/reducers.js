@@ -46,6 +46,8 @@ const groups = function groups ( state = {
                 updatedItems = state.items.map( ( group ) => {
                     if ( currentQuery[ 'groups[]' ].indexOf( group.name ) > -1 ) {
                         group.active = true;
+                    } else {
+                        group.active = false;
                     }
 
                     return group;
@@ -119,6 +121,8 @@ const services = function services ( state = {
                 updatedItems = state.items.map( ( service ) => {
                     if ( currentQuery[ 'service[]' ].indexOf( service.name ) > -1 ) {
                         service.active = true;
+                    } else {
+                        service.active = false;
                     }
 
                     return service;

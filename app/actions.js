@@ -27,7 +27,7 @@ const setSearchTerm = function setSearchTerm ( term ) {
         // Bad browser support
         // Reflect.deleteProperty( currentQuery, 'post' );
         delete currentQuery.post;
-        
+
         let newPath = queryString.stringify( currentQuery );
 
         if ( newPath.length > 0 ) {
@@ -75,29 +75,44 @@ const toggleServiceState = function toggleServiceState ( name ) {
     };
 };
 
-// eslint-disable-next-line max-params
-const getPosts = function getPosts ( search, groups, services, dispatch ) {
+const updatePath = function updatePath ( getState ) {
+    const state = getState();
+    const querystringParameters = getQueryParameters( state.services, state.groups, state.search );
+    const parsedQuerystring = queryString.stringify( querystringParameters );
+    let locationSearch = `?${ parsedQuerystring }`;
+
+    if ( parsedQuerystring.length === 0 ) {
+        locationSearch = './';
+    }
+
+    if ( window.location.search !== locationSearch && window.history.pushState ) {
+        window.history.pushState( {}, '', locationSearch );
+    }
+};
+
+const getQueryParameters = function getQueryParameters ( services, groups, search ) {
+    const currentQuery = queryString.parse( location.search );
     let querystringParameters = {};
-    const options = {
-        hostname: API_HOSTNAME,
-        method: 'GET',
-        path: `/${ window.game }/posts`,
-        port: API_PORT,
-    };
-    const activeGroups = groups.items.filter( ( group ) => {
-        return group.active;
-    } );
-
-    dispatch( requestPosts() );
     let activeServices = [];
+    let activeGroups = [];
 
-    activeServices = services.items.filter( ( service ) => {
-        return service.active;
-    } );
+    // If we have a post, don't keep anything else in the querystring
+    if ( currentQuery.post ) {
+        querystringParameters = {
+            post: currentQuery.post,
+        };
 
+        return querystringParameters;
+    }
+
+    // Set search
     if ( typeof search !== 'undefined' && search.length > 0 ) {
         querystringParameters.search = search;
     }
+
+    activeGroups = groups.items.filter( ( group ) => {
+        return group.active;
+    } );
 
     if ( activeGroups && activeGroups.length > 0 && activeGroups.length !== groups.items.length ) {
         querystringParameters[ 'groups[]' ] = activeGroups.map( ( group ) => {
@@ -105,24 +120,9 @@ const getPosts = function getPosts ( search, groups, services, dispatch ) {
         } );
     }
 
-    const currentQuery = queryString.parse( location.search );
-
-    // If we have a post, don't keep anything else in the querystring
-    if ( currentQuery.post ) {
-        querystringParameters = {
-            post: currentQuery.post,
-        };
-    }
-
-    let parsedQuerystring = queryString.stringify( querystringParameters );
-
-    if ( parsedQuerystring.length > 0 ) {
-        const locationSearch = `?${ parsedQuerystring }`;
-
-        if ( window.location.search !== locationSearch && window.history.pushState ) {
-            window.history.pushState( {}, search, locationSearch );
-        }
-    }
+    activeServices = services.items.filter( ( service ) => {
+        return service.active;
+    } );
 
     const cookieServices = cookie.load( 'services' );
 
@@ -130,24 +130,38 @@ const getPosts = function getPosts ( search, groups, services, dispatch ) {
         querystringParameters[ 'services[]' ] = activeServices.map( ( service ) => {
             return service.name;
         } );
-
-        parsedQuerystring = queryString.stringify( querystringParameters );
     }
 
-    if ( services.items.length === 0 && cookieServices && !currentQuery.post ) {
+    if ( services.items.length === 0 && cookieServices ) {
         querystringParameters[ 'services[]' ] = cookieServices;
-        parsedQuerystring = queryString.stringify( querystringParameters );
     }
 
-    if ( parsedQuerystring.length > 0 ) {
-        if ( querystringParameters.post ) {
-            options.path = `${ options.path }/${ querystringParameters.post }`;
-        } else {
-            options.path = `${ options.path }?${ parsedQuerystring }`;
-        }
+    return querystringParameters;
+};
+
+// eslint-disable-next-line max-params
+const getPosts = function getPosts ( search, groups, services, dispatch ) {
+    const options = {
+        hostname: API_HOSTNAME,
+        method: 'GET',
+        path: `/${ window.game }/posts`,
+        port: API_PORT,
+    };
+
+    const querystringParameters = getQueryParameters( services, groups, search );
+    const parsedQuerystring = queryString.stringify( querystringParameters );
+
+    console.log( 'parsed: ' + parsedQuerystring );
+    console.log( 'window search: ' + window.location.search );
+
+    if ( querystringParameters.post ) {
+        options.path = `${ options.path }/${ querystringParameters.post }`;
+    } else {
+        options.path = `${ options.path }?${ parsedQuerystring }`;
     }
 
     const startTime = new Date().getTime();
+    dispatch( requestPosts() );
 
     const request = https.request( options, ( response ) => {
         let body = '';
@@ -220,6 +234,7 @@ export const fetchPostsIfNeeded = function fetchPostsIfNeeded () {
 export const search = function search ( searchTerm ) {
     return ( dispatch, getState ) => {
         dispatch( setSearchTerm( searchTerm ) );
+        updatePath( getState );
 
         return dispatch( fetchPosts( getState() ) );
     };
@@ -228,6 +243,7 @@ export const search = function search ( searchTerm ) {
 export const toggleGroup = function toggleGroup ( name ) {
     return ( dispatch, getState ) => {
         dispatch( toggleGroupState( name ) );
+        updatePath( getState );
 
         return dispatch( fetchPostsImmediate( getState() ) );
     };
@@ -236,6 +252,7 @@ export const toggleGroup = function toggleGroup ( name ) {
 export const toggleService = function toggleService ( name ) {
     return ( dispatch, getState ) => {
         dispatch( toggleServiceState( name ) );
+        updatePath( getState );
 
         return dispatch( fetchPostsImmediate( getState() ) );
     };
