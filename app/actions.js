@@ -147,12 +147,8 @@ const getPosts = function getPosts ( search, groups, services, dispatch ) {
         path: `/${ window.game }/posts`,
         port: API_PORT,
     };
-
     const querystringParameters = getQueryParameters( services, groups, search );
     const parsedQuerystring = queryString.stringify( querystringParameters );
-
-    console.log( 'parsed: ' + parsedQuerystring );
-    console.log( 'window search: ' + window.location.search );
 
     if ( querystringParameters.post ) {
         options.path = `${ options.path }/${ querystringParameters.post }`;
