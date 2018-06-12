@@ -24,6 +24,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "concurrently": "^3.5.1",
     "eslint": "^3.5.0",
     "eslint-config-kokarn": "^2.0.0",
     "nodemon": "^1.17.5",
