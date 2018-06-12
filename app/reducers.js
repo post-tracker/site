@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import queryString from 'query-string';
+import queryString from 'querystring';
 import cookie from 'react-cookie';
 
 import {
@@ -14,7 +14,7 @@ const groups = function groups ( state = {
     items: window.trackerData.groups,
 }, action ) {
     let updatedItems;
-    const currentQuery = queryString.parse( location.search );
+    const currentQuery = queryString.parse( location.search.substr( 1 ) );
 
     if ( typeof currentQuery[ 'groups[]' ] === 'string' ) {
         currentQuery[ 'groups[]' ] = [ currentQuery[ 'groups[]' ] ];
@@ -78,7 +78,9 @@ const services = function services ( state = {
     items: window.trackerData.services,
 }, action ) {
     let updatedItems;
-    const currentQuery = queryString.parse( location.search );
+    const currentQuery = queryString.parse( location.search.substr( 1 ) );
+
+    console.log( currentQuery );
 
     if ( typeof currentQuery[ 'services[]' ] === 'string' ) {
         currentQuery[ 'services[]' ] = [ currentQuery[ 'services[]' ] ];
@@ -157,7 +159,7 @@ const services = function services ( state = {
 };
 
 const search = function search ( state, action ) {
-    const currentQuery = queryString.parse( location.search );
+    const currentQuery = queryString.parse( location.search.substr( 1 ) );
 
     switch ( action.type ) {
         case SET_SEARCH_TERM:

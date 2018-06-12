@@ -44,7 +44,6 @@
     "minimist": "^1.2.0",
     "mustache": "^2.2.1",
     "node-sass": "^4.9.0",
-    "query-string": "^4.2.3",
     "postcss": "^6.0.22",
     "react": "^15.6.2",
     "react-cookie": "^1.0.5",

@@ -1,5 +1,5 @@
 import https from 'https';
-import queryString from 'query-string';
+import queryString from 'querystring';
 import debounce from 'debounce';
 import cookie from 'react-cookie';
 
@@ -91,7 +91,7 @@ const updatePath = function updatePath ( getState ) {
 };
 
 const getQueryParameters = function getQueryParameters ( services, groups, search ) {
-    const currentQuery = queryString.parse( location.search );
+    const currentQuery = queryString.parse( location.search.substr( 1 ) );
     let querystringParameters = {};
     let activeServices = [];
     let activeGroups = [];
