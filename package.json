@@ -5,7 +5,8 @@
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack -p --progress && node scripts/build.js",
+    "build": "webpack --mode=production --progress",
+    "deploy": "node scripts/build.js",
     "dev": "concurrently \"webpack-dev-server --open\" \"nodemon --watch web-assets/styles.scss scripts/buildstyles.js\"",
     "lint:components": "eslint -c kokarn/react app/**/*",
     "lint:scripts": "eslint -c kokarn/nodejs scripts/*.js",
