@@ -27,6 +27,7 @@ module.exports = {
         host: '0.0.0.0',
         port: 9000,
         publicPath: "https://localhost:9000/scripts/",
+        watchContentBase: true,
         proxy: {
             '/pubg/': {
                 target: 'https://0.0.0.0:9000',

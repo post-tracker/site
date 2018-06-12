@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack -p --progress && node scripts/build.js",
-    "start": "webpack-dev-server --open",
+    "dev": "concurrently \"webpack-dev-server --open\" \"nodemon --watch web-assets/styles.scss scripts/buildstyles.js\"",
     "lint:components": "eslint -c kokarn/react app/**/*",
     "lint:scripts": "eslint -c kokarn/nodejs scripts/*.js",
     "pretest": "eslint *.js"
@@ -26,6 +26,7 @@
   "devDependencies": {
     "eslint": "^3.5.0",
     "eslint-config-kokarn": "^2.0.0",
+    "nodemon": "^1.17.5",
     "redux-devtools": "^3.3.2",
     "webpack-dev-server": "^2.6.1"
   },
@@ -42,6 +43,7 @@
     "junk": "^2.1.0",
     "minimist": "^1.2.0",
     "mustache": "^2.2.1",
+    "node-sass": "^4.9.0",
     "postcss": "^6.0.6",
     "query-string": "^4.2.3",
     "react": "^15.3.0",
