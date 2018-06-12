@@ -21,7 +21,7 @@ if ( window.location.hostname === 'localhost' ) {
 }
 
 const setSearchTerm = function setSearchTerm ( term ) {
-    const currentQuery = queryString.parse( location.search );
+    const currentQuery = queryString.parse( location.search.substr( 1 ) );
 
     if ( currentQuery.post ) {
         // Bad browser support
