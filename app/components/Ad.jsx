@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const styles = {
     wrapper: {
@@ -43,9 +44,9 @@ Ad.defaultProps = {
 };
 
 Ad.propTypes = {
-    dataAdSlot: React.PropTypes.string.isRequired,
+    dataAdSlot: PropTypes.string.isRequired,
     // eslint-disable-next-line react/forbid-prop-types
-    styles: React.PropTypes.object,
+    styles: PropTypes.object,
 };
 
 export default Ad;

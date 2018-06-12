@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const styles = {
     clearer: {
@@ -82,8 +83,8 @@ class Search extends React.Component {
 Search.displayName = 'Search';
 
 Search.propTypes = {
-    searchTerm: React.PropTypes.string.isRequired,
-    updateSearchTerm: React.PropTypes.func.isRequired,
+    searchTerm: PropTypes.string.isRequired,
+    updateSearchTerm: PropTypes.func.isRequired,
 };
 
 export default Search;

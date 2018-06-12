@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import GroupCheckbox from './GroupCheckbox.jsx';
 
@@ -96,7 +97,7 @@ GroupList.displayName = 'GroupList';
 
 GroupList.propTypes = {
     // eslint-disable-next-line
-    groups: React.PropTypes.array.isRequired,
+    groups: PropTypes.array.isRequired,
 };
 
 export default GroupList;

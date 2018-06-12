@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import {
@@ -62,10 +63,10 @@ const mapDispatchToProps = ( dispatch ) => {
 };
 
 PostListContainer.propTypes = {
-    isFetching: React.PropTypes.bool.isRequired,
-    getPosts: React.PropTypes.func.isRequired,
+    isFetching: PropTypes.bool.isRequired,
+    getPosts: PropTypes.func.isRequired,
     // eslint-disable-next-line react/forbid-prop-types
-    posts: React.PropTypes.array.isRequired,
+    posts: PropTypes.array.isRequired,
 };
 
 export default connect(

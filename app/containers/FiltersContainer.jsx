@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import ServicesList from '../components/ServicesList.jsx';
@@ -35,9 +36,9 @@ const mapStateToProps = function mapStateToProps ( state ) {
 
 FiltersContainer.propTypes = {
     // eslint-disable-next-line react/forbid-prop-types
-    groups: React.PropTypes.array.isRequired,
+    groups: PropTypes.array.isRequired,
     // eslint-disable-next-line react/forbid-prop-types
-    services: React.PropTypes.array.isRequired,
+    services: PropTypes.array.isRequired,
 };
 
 export default connect(

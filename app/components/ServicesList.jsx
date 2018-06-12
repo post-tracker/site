@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import ServiceCheckbox from './ServiceCheckbox.jsx';
 
@@ -63,7 +64,7 @@ ServicesList.displayName = 'ServicesList';
 
 ServicesList.propTypes = {
     // eslint-disable-next-line
-    services: React.PropTypes.array.isRequired,
+    services: PropTypes.array.isRequired,
 };
 
 export default ServicesList;

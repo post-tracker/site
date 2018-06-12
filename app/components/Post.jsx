@@ -1,5 +1,6 @@
 import React from 'react';
 import TimeAgo from 'react-timeago';
+import PropTypes from 'prop-types';
 
 const POST_CUTOFF_HEIGHT = 1000;
 const TIMESTAMP_UPDATE_INTERVAL = 1000;
@@ -335,25 +336,25 @@ class Post extends React.Component {
 }
 
 Post.propTypes = {
-    postData: React.PropTypes.shape( {
-        account: React.PropTypes.shape( {
-            developer: React.PropTypes.shape( {
-                group: React.PropTypes.string,
-                name: React.PropTypes.string,
-                nick: React.PropTypes.string,
-                role: React.PropTypes.string,
+    postData: PropTypes.shape( {
+        account: PropTypes.shape( {
+            developer: PropTypes.shape( {
+                group: PropTypes.string,
+                name: PropTypes.string,
+                nick: PropTypes.string,
+                role: PropTypes.string,
             } ),
-            identifier: React.PropTypes.string,
-            service: React.PropTypes.string,
+            identifier: PropTypes.string,
+            service: PropTypes.string,
         } ),
-        content: React.PropTypes.string,
-        id: React.PropTypes.string,
-        section: React.PropTypes.string,
-        timestamp: React.PropTypes.number,
-        topic: React.PropTypes.string,
-        topicUrl: React.PropTypes.string,
-        url: React.PropTypes.string,
-        urlHash: React.PropTypes.string,
+        content: PropTypes.string,
+        id: PropTypes.string,
+        section: PropTypes.string,
+        timestamp: PropTypes.number,
+        topic: PropTypes.string,
+        topicUrl: PropTypes.string,
+        url: PropTypes.string,
+        urlHash: PropTypes.string,
     } ).isRequired,
 };
 

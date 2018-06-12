@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import {
@@ -49,9 +49,9 @@ const mapDispatchToProps = ( dispatch, ownProps ) => {
 GroupCheckbox.displayName = 'GroupCheckbox';
 
 GroupCheckbox.propTypes = {
-    checked: React.PropTypes.bool.isRequired,
-    handleCheckboxChange: React.PropTypes.func.isRequired,
-    name: React.PropTypes.string.isRequired,
+    checked: PropTypes.bool.isRequired,
+    handleCheckboxChange: PropTypes.func.isRequired,
+    name: PropTypes.string.isRequired,
 };
 
 export default connect(
