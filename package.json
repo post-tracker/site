@@ -46,7 +46,7 @@
     "react-cookie": "^1.0.5",
     "react-dom": "^16.4.0",
     "react-redux": "^5.0.7",
-    "react-timeago": "^3.1.2",
+    "react-timeago": "^4.1.9",
     "recursive-readdir": "^2.2.2",
     "redux": "^4.0.0",
     "redux-devtools": "^3.4.1",
