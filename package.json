@@ -5,13 +5,10 @@
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:components": "webpack --progress --colors && node scripts/build.js",
-    "dev:serviceworker": "node scripts/build.js",
     "build": "webpack -p --progress && node scripts/build.js",
     "start": "webpack-dev-server --open",
     "lint:components": "eslint -c kokarn/react app/**/*",
     "lint:scripts": "eslint -c kokarn/nodejs scripts/*.js",
-    "watch": "npm-watch",
     "pretest": "eslint *.js"
   },
   "author": "Oskar Risberg <kokarn@gmail.com>",
@@ -25,21 +22,10 @@
   "engines": {
     "node": "^6.5.0"
   },
-  "watch": {
-    "dev:components": {
-      "patterns": [
-        "app/*"
-      ],
-      "extensions": "js,jsx"
-    },
-    "lint:scripts": "scripts/*.js",
-    "dev:serviceworker": "web/service-worker.js"
-  },
   "license": "MIT",
   "devDependencies": {
     "eslint": "^3.5.0",
     "eslint-config-kokarn": "^2.0.0",
-    "npm-watch": "^0.1.8",
     "redux-devtools": "^3.3.2",
     "webpack-dev-server": "^2.6.1"
   },
