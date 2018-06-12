@@ -80,8 +80,6 @@ const services = function services ( state = {
     let updatedItems;
     const currentQuery = queryString.parse( location.search.substr( 1 ) );
 
-    console.log( currentQuery );
-
     if ( typeof currentQuery[ 'services[]' ] === 'string' ) {
         currentQuery[ 'services[]' ] = [ currentQuery[ 'services[]' ] ];
     }
