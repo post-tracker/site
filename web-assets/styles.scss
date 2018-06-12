@@ -214,6 +214,14 @@ input[type="checkbox"],
     padding: 10px;
 }
 
+body.dark-mode {
+    background-color: #000;
+
+    .dark-mode-toggle {
+        fill: #fff;
+    }
+}
+
 @media screen and ( max-width: 1800px ){
     .adsbygoogle {
         display: none;
