@@ -142,12 +142,6 @@ if ( !window.location.origin ) {
             services: [{"active":true,"name":"PUBGForums","label":"PUBGForums"},{"active":true,"name":"Reddit","label":"Reddit"},{"active":true,"name":"Steam","label":"Steam"},{"active":true,"name":"Twitter","label":"Twitter"}],
         };
 
-        const cookieIsDark = function cookieIsDark() {
-            return document.cookie.split( ';' ).filter( ( item ) => {
-                return item.includes( 'dark=1' )
-            } ).length;
-        };
-
         (function(){
             var preventClick = false;
 
@@ -163,10 +157,6 @@ if ( !window.location.origin ) {
                 return element.parentNode && parentHasClass( element.parentNode, className );
             }
 
-            if ( cookieIsDark() ) {
-                document.querySelector( 'body' ).classList.add( 'dark-mode' );
-            }
-
             window.addEventListener( 'click', function( event ) {
                 // If set, bail early to prevent ghost clicks
                 if ( preventClick ) {
@@ -175,23 +165,6 @@ if ( !window.location.origin ) {
 
                 if ( parentHasClass( event.target.parentNode, 'bb-spoiler-toggle' ) ) {
                     event.target.closest( '.bb-spoiler-toggle' ).classList.toggle( 'active' );
-                }
-
-                if ( parentHasClass( event.target, 'dark-mode-toggle' ) ) {
-                    const body = document.querySelector( 'body' );
-
-                    if ( !body.classList.contains( 'dark-mode' ) ) {
-                        body.classList.add( 'dark-mode' );
-                        if ( !cookieIsDark() ) {
-                            document.cookie = document.cookie + 'dark=1;';
-                        }
-                    } else {
-                        body.classList.remove( 'dark-mode' );
-
-                        if ( cookieIsDark() ){
-                            document.cookie = document.cookie.replace( 'dark=1', 'dark=0' );
-                        }
-                    }
                 }
             } );
 
@@ -204,7 +177,7 @@ if ( !window.location.origin ) {
             } );
         })();
     </script>
-
+    <script async src="./scripts/dev.js"></script>
     <script async src="scripts/app.js"></script>
 </body>
 </html>
