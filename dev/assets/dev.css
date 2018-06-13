@@ -1,0 +1,19 @@
+.dev-game-select-wrapper {
+    background-color: rgba( 0, 0, 0, 0.6 );
+    bottom: 3px;
+    height: 30px;
+    left: 3px;
+    overflow: hidden;
+    padding: 5px;
+    position: fixed;
+}
+
+.dev-game-select-wrapper:hover {
+    height: auto;
+}
+
+.dev-game-select {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
