@@ -214,6 +214,11 @@ input[type="checkbox"],
     padding: 10px;
 }
 
+.dark-mode-toggle {
+    position: absolute;
+    top: 10px;
+}
+
 body.dark-mode {
     background-color: #000;
 
