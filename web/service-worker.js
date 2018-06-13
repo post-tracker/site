@@ -24,6 +24,7 @@ const PRECACHE_ASSETS = [
     './assets/loader.svg?v=2',
     './scripts/app.js?v={{version}}',
     'manifest.json',
+    './assets/bootstrap.min.css?v=3.3.7'
 ];
 
 const cacheOrNetwork = function cacheOrNetwork( event ) {

@@ -290,9 +290,7 @@ const run = async function run() {
     addGameProperty( 'polyfills', polyfills );
 
     // Styles
-    const generalStyles = fs.readFileSync( path.join( __dirname, '/../web-assets/bootswatch.css' ), 'utf8' );
-    const trackerStyles = fs.readFileSync( path.join( __dirname, '/../web-assets/styles.css' ), 'utf8' );
-    const globalStyles = `${ generalStyles }\n${ trackerStyles }`;
+    const globalStyles = fs.readFileSync( path.join( __dirname, '/../web-assets/styles.css' ), 'utf8' );
 
     addGameProperty( 'version', Date.now() );
 
