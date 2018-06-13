@@ -5,7 +5,7 @@ const defaultRewrite = function ( path, req ) {
 };
 
 const assetsRewrite = function ( path, req ) {
-    if ( path.match( '/assets/light.css' ) || path.match( '/assets/dark.css' ) ) {
+    if ( path.match( '/assets/theme-light.css' ) || path.match( '/assets/theme-dark.css' ) ) {
         return path.replace( '/assets', '' );
     }
 
@@ -40,7 +40,6 @@ module.exports = {
         compress: true,
         https: true,
         host: '0.0.0.0',
-        index: 'index.html',
         port: 9000,
         publicPath: "https://0.0.0.0:9000/scripts/",
         watchContentBase: true,

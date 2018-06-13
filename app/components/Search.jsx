@@ -71,6 +71,7 @@ class Search extends React.Component {
                         } }
                         role = { 'search' }
                         type = { 'text' }
+                        autoComplete = { 'off' }
                     />
                     { clearerNode }
                 </div>

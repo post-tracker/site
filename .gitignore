@@ -15,4 +15,4 @@ web/scripts/app\.js\.map
 config/keys.json
 package-lock\.json
 .env
-.idea
+.idea/

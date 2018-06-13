@@ -1,4 +1,4 @@
-@import "../../web-assets/dark";
+@import "../../web-assets/theme-light";
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
@@ -11,10 +11,10 @@
 }
 
 body {
-	font-family: 'Open Sans';
+	font-family: 'Open Sans', serif;
 }
 
 h1 {
-	font-family: 'Burbank Big Condensed';
-	font-weight: 'bold';
+	font-family: 'Burbank Big Condensed', serif;
+	font-weight: bold;
 }
