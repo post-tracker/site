@@ -1,0 +1,232 @@
+*::-ms-clear {
+  height: 0;
+  width: 0; }
+
+body {
+  font-size: 15px;
+  line-height: 1.5; }
+
+blockquote {
+  font-size: inherit;
+  color: test; }
+
+br {
+  content: ' ';
+  display: block;
+  margin: 15px auto; }
+
+h1 {
+  text-align: center; }
+
+h1 a,
+h1 a:active,
+h1 a:hover {
+  text-decoration: none; }
+
+.header-container {
+  position: relative; }
+
+.header-link {
+  position: absolute;
+  right: 15px;
+  top: 10px; }
+
+.header-link i {
+  font-size: 1.8em;
+  margin: 0; }
+
+.github-link {
+  right: 45px; }
+
+.reddit-link {
+  right: 75px; }
+
+.twitter-link {
+  right: 105px; }
+
+.panel {
+  position: relative;
+  word-wrap: break-word; }
+
+.panel-body img {
+  max-width: 100%; }
+
+.icon {
+  height: 25px;
+  width: 25px; }
+
+.clearer:hover {
+  cursor: pointer; }
+
+.expandable {
+  max-height: 500px;
+  overflow: hidden; }
+
+.expander {
+  bottom: 44px;
+  left: 15px;
+  padding-bottom: 20px;
+  padding-top: 60px;
+  position: absolute;
+  right: 0; }
+
+.expander:hover {
+  cursor: pointer;
+  text-decoration: underline; }
+
+input[type="checkbox"],
+.checkbox input[type="checkbox"] {
+  margin-bottom: 0;
+  margin-right: 5px; }
+
+.filter-label {
+  height: 23px;
+  line-height: 23px;
+  vertical-align: top; }
+
+.services-wrapper {
+  text-align: center; }
+
+.service-checkbox,
+.service-checkbox + .service-checkbox {
+  display: inline-block;
+  margin: 5px 20px 5px 5px; }
+
+.service-checkbox label {
+  height: 23px;
+  width: 100%; }
+
+.groups-wrapper {
+  margin: 0 auto 20px auto;
+  text-align: center;
+  width: 1040px; }
+
+.groups-wrapper input[type="checkbox"],
+.groups-wrapper .checkbox input[type="checkbox"] {
+  height: 18px;
+  width: 18px; }
+
+.groups-wrapper .filters-wrapper svg {
+  transition: transform 0.3s ease; }
+
+.groups-wrapper.show .filters-wrapper svg {
+  transform: rotate(180deg); }
+
+.groups-wrapper .checkbox {
+  display: inline-block;
+  font-size: 12px;
+  margin: 5px;
+  line-height: 15px; }
+
+.groups-wrapper .checkbox label {
+  white-space: nowrap; }
+
+.group-label {
+  background-position: center left;
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 23px;
+  line-height: 25px;
+  overflow: hidden;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+
+.filters-wrapper {
+  display: none; }
+
+.adsbygoogle {
+  display: block; }
+
+.bb-spoiler-toggle + .bb-spoiler {
+  display: none; }
+
+.bb-spoiler-toggle.active + .bb-spoiler {
+  display: block; }
+
+.bb-spoiler {
+  border: 1px dashed;
+  margin: 10px 0;
+  padding: 10px; }
+
+a.ipsAttachLink_image {
+  display: flex;
+  justify-content: center; }
+
+.services-wrapper label:hover {
+  text-decoration: underline; }
+
+@media screen and (max-width: 1800px) {
+  .adsbygoogle {
+    display: none; } }
+
+@media screen and (max-width: 1200px) {
+  .groups-wrapper {
+    text-align: center;
+    width: auto; } }
+
+@media screen and (max-width: 660px) {
+  .header-link {
+    display: none; } }
+
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 38px; }
+  .services-wrapper {
+    text-align: inherit; }
+  .service-checkbox,
+  .service-checkbox + .service-checkbox {
+    margin: 0;
+    text-align: left;
+    width: 50%; }
+  .service-checkbox:nth-child(odd) label {
+    padding-right: 30px;
+    padding-left: 0; }
+  .service-checkbox:nth-child(odd) input[type="checkbox"] {
+    float: right;
+    margin-left: 10px;
+    margin-right: -25px; }
+  .service-checkbox:nth-child(even) input[type="checkbox"] {
+    float: left; }
+  .service-checkbox:nth-child(even) span {
+    float: right; }
+  .service-checkbox:nth-child(odd) span {
+    float: left; }
+  .filter-label {
+    line-height: 25px; }
+  .filters-wrapper {
+    display: block; }
+  .groups-wrapper .checkbox {
+    display: none; }
+  .groups-wrapper.show .checkbox {
+    display: inline-block; } }
+
+.dark-mode-toggle {
+  fill: #000; }
+
+h1 a,
+h1 a:active,
+h1 a:hover {
+  color: #000; }
+
+#icon-rss rect {
+  fill: #2196f3; }
+
+#icon-reddit rect {
+  fill: #666; }
+
+#icon-twitter rect {
+  fill: #666; }
+
+#icon-comments {
+  fill: #666; }
+
+#icon-caret {
+  fill: #666; }
+
+.expander {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, white 40%, white 100%);
+  color: #2196F3; }
+
+.bb-spoiler {
+  border-color: #ccc; }

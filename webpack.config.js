@@ -5,7 +5,7 @@ const defaultRewrite = function ( path, req ) {
 };
 
 const assetsRewrite = function ( path, req ) {
-    if ( path.match( '/assets/styles.css' ) ) {
+    if ( path.match( '/assets/light.css' ) || path.match( '/assets/dark.css' ) ) {
         return path.replace( '/assets', '' );
     }
 

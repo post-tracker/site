@@ -1,0 +1,13 @@
+@import "../../web-assets/dark";
+
+@font-face {
+    font-family: 'Destiny';
+    font-weight: normal;
+    font-style: normal;
+    src: url( 'assets/destiny-font.woff2' ) format( 'woff2' ),
+         url( 'assets/destiny-font.woff' ) format( 'woff' );
+}
+
+body {
+    font-family: Destiny, Roboto;
+}

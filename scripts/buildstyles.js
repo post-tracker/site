@@ -32,38 +32,60 @@ const promiseGet = function promiseGet( requestUrl ) {
     } );
 };
 
-const SOURCE_FILE = path.join( __dirname, '..', 'web-assets', 'styles.scss' );
+const LIGHT_SOURCE_FILE = path.join( __dirname, '..', 'web-assets', 'light.scss' );
+const DARK_SOURCE_FILE = path.join( __dirname, '..', 'web-assets', 'dark.scss' );
 
-const sassResult = sass.renderSync( {
-    file: SOURCE_FILE,
+const lightBaseResult = sass.renderSync( {
+    file: LIGHT_SOURCE_FILE,
 } );
+
+const darkBaseResult = sass.renderSync( {
+    file: DARK_SOURCE_FILE,
+} );
+
+const baseStyles = {
+    dark: darkBaseResult.css.toString(),
+    light: lightBaseResult.css.toString(),
+};
+
+const writeStyle = function writeStyle( identifier, type ) {
+    let gameStyles = false;
+    const writePath = path.join( __dirname, '..', 'dev', identifier );
+
+    try {
+        const gameSassResult = sass.renderSync( {
+            file: path.join( __dirname, '..', 'games', identifier, `${ type }.scss` ),
+        } );
+
+        if ( gameSassResult ) {
+            gameStyles = gameSassResult.css.toString();
+        }
+    } catch( readError ) {
+        // We don't care if we can't read it
+    }
+
+    if ( !gameStyles ) {
+        gameStyles = baseStyles[ type ];
+    }
+
+    try {
+        fs.mkdirSync( writePath );
+    } catch ( createDirError ) {
+        // We don't care if it already exists
+    }
+
+    fs.writeFileSync( path.join( writePath, `${ type }.css` ), gameStyles );
+};
 
 promiseGet( 'https://api.developertracker.com/games' )
       .then( ( gamesBody ) => {
           const games = JSON.parse( gamesBody );
+          writeStyle( 'assets', 'light' );
+          writeStyle( 'assets', 'dark' );
 
           for ( const game of games.data ) {
-              let localStyles = false;
-              let gameStyle = sassResult.css.toString();
-              const writePath = path.join( __dirname, '..', 'dev', game.identifier );
-
-              try {
-                  localStyles = fs.readFileSync( path.join( __dirname, '..', 'games', game.identifier, 'styles.css' ) );
-              } catch( readError ) {
-                  // We don't care if we can't read it
-              }
-
-              if ( localStyles ) {
-                  gameStyle = `${ gameStyle }\n${ localStyles }`;
-              }
-
-              try {
-                  fs.mkdirSync( writePath );
-              } catch ( createDirError ) {
-                  // We don't care if it already exists
-              }
-
-              fs.writeFileSync( path.join( writePath, 'styles.css' ), gameStyle );
+              writeStyle( game.identifier, 'light' );
+              writeStyle( game.identifier, 'dark' );
           }
       } )
       .catch( ( requestError ) => {

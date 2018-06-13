@@ -10,6 +10,7 @@ body {
 
 blockquote {
     font-size: inherit;
+    color: test
 }
 
 br {
@@ -18,8 +19,6 @@ br {
     margin: 15px auto;
 }
 
-
-
 h1 {
     text-align: center;
 }
@@ -27,7 +26,6 @@ h1 {
 h1 a,
 h1 a:active,
 h1 a:hover {
-    color: #000;
     text-decoration: none;
 }
 
@@ -72,26 +70,6 @@ h1 a:hover {
     width: 25px;
 }
 
-#icon-rss rect {
-    fill: #2196f3;
-}
-
-#icon-reddit rect {
-    fill: #666;
-}
-
-#icon-twitter rect {
-    fill: #666;
-}
-
-#icon-comments {
-    fill: #666;
-}
-
-#icon-caret {
-    fill: #666;
-}
-
 .clearer:hover {
     cursor: pointer;
 }
@@ -102,14 +80,7 @@ h1 a:hover {
 }
 
 .expander {
-    background: linear-gradient(
-        to bottom,
-        rgba( 255, 255, 255, 0 ) 0%,
-        rgba( 255, 255, 255, 1 ) 40%,
-        rgba( 255, 255, 255, 1 ) 100%
-    );
     bottom: 44px;
-    color: #2196F3;
     left: 15px;
     padding-bottom: 20px;
     padding-top: 60px;
@@ -209,21 +180,19 @@ input[type="checkbox"],
 }
 
 .bb-spoiler {
-    border: 1px dashed #ccc;
+    border: 1px dashed;
     margin: 10px 0;
     padding: 10px;
 }
 
-.dark-mode-toggle {
-    position: absolute;
-    top: 10px;
+a.ipsAttachLink_image {
+    display: flex;
+    justify-content: center;
 }
 
-body.dark-mode {
-    background-color: #000;
-
-    .dark-mode-toggle {
-        fill: #fff;
+.services-wrapper {
+    label:hover {
+        text-decoration: underline;
     }
 }
 
