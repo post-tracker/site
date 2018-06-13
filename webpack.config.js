@@ -1,5 +1,19 @@
 const path = require( 'path' );
 
+const defaultRewrite = function ( path, req ) {
+    return '/index.html';
+};
+
+const assetsRewrite = function ( path, req ) {
+    if ( path.match( '/assets/styles.css' ) ) {
+        return path.replace( '/assets', '' );
+    }
+
+    const matches = path.match( /\/.+?(\/.*)/ );
+
+    return matches[ 1 ];
+};
+
 module.exports = {
     entry: './app/index.jsx',
     mode: 'development',
@@ -26,15 +40,45 @@ module.exports = {
         compress: true,
         https: true,
         host: '0.0.0.0',
+        index: 'index.html',
         port: 9000,
-        publicPath: "https://localhost:9000/scripts/",
+        publicPath: "https://0.0.0.0:9000/scripts/",
         watchContentBase: true,
         proxy: {
-            '/pubg/': {
+            '/*/*.html': {
+                target: 'https://0.0.0.0:9000',
+                secure: false,
+                pathRewrite: defaultRewrite,
+            },
+            '/*/': {
+                target: 'https://0.0.0.0:9000',
+                secure: false,
+                pathRewrite: defaultRewrite,
+            },
+            '/*/assets/**': {
+                target: 'https://0.0.0.0:9000',
+                secure: false,
+                pathRewrite: assetsRewrite,
+            },
+            '/*/scripts/dev.js': {
                 target: 'https://0.0.0.0:9000',
                 secure: false,
                 pathRewrite: {
-                    '^/pubg' : '',
+                    '^/.*/scripts': '/assets'
+                },
+            },
+            '/scripts/dev.js': {
+                target: 'https://0.0.0.0:9000',
+                secure: false,
+                pathRewrite: {
+                    '^/scripts': '/assets'
+                },
+            },
+            '/*/scripts/app.js': {
+                target: 'https://0.0.0.0:9000',
+                secure: false,
+                pathRewrite: {
+                    '^/.*/scripts': '/scripts'
                 },
             },
         },
