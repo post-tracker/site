@@ -7,20 +7,23 @@
 
     if ( cookieIsDark() ) {
         document.querySelector( 'body' ).classList.add( 'dark-mode' );
+        document.getElementById( 'theme-style' ).href = './assets/dark.css';
     }
 
     window.addEventListener( 'click', function( event ) {
-        if ( event.target.classList.contains( 'dark-mode-toggle' ) ) {
+        if ( event.target.parentNode.classList.contains( 'dark-mode-toggle' ) ) {
             const body = document.querySelector( 'body' );
 
             if ( !body.classList.contains( 'dark-mode' ) ) {
                 body.classList.add( 'dark-mode' );
+                document.getElementById( 'theme-style' ).href = './assets/dark.css';
 
                 if ( !cookieIsDark() ) {
                     document.cookie = document.cookie + 'dark=1;';
                 }
             } else {
                 body.classList.remove( 'dark-mode' );
+                document.getElementById( 'theme-style' ).href = './assets/light.css';
 
                 if ( cookieIsDark() ){
                     document.cookie = document.cookie.replace( 'dark=1', 'dark=0' );
