@@ -1,13 +1,12 @@
 (function(){
-    const cookieIsDark = function cookieIsDark() {
-        return document.cookie.split( ';' ).filter( ( item ) => {
+    const cookieIsDark =
+       () => document.cookie.split( ';' ).filter( ( item ) => {
             return item.includes( 'dark=1' )
-        } ).length;
-    };
+       } ).length;
 
     if ( cookieIsDark() ) {
         document.querySelector( 'body' ).classList.add( 'dark-mode' );
-        document.getElementById( 'theme-style' ).href = './assets/dark.css';
+        document.getElementById( 'theme-style' ).href = './assets/theme-dark.css';
     }
 
     window.addEventListener( 'click', function( event ) {
@@ -16,14 +15,14 @@
 
             if ( !body.classList.contains( 'dark-mode' ) ) {
                 body.classList.add( 'dark-mode' );
-                document.getElementById( 'theme-style' ).href = './assets/dark.css';
+                document.getElementById( 'theme-style' ).href = './assets/theme-dark.css';
 
                 if ( !cookieIsDark() ) {
                     document.cookie = document.cookie + 'dark=1;';
                 }
             } else {
                 body.classList.remove( 'dark-mode' );
-                document.getElementById( 'theme-style' ).href = './assets/light.css';
+                document.getElementById( 'theme-style' ).href = './assets/theme-light.css';
 
                 if ( cookieIsDark() ){
                     document.cookie = document.cookie.replace( 'dark=1', 'dark=0' );

@@ -32,8 +32,8 @@ const promiseGet = function promiseGet( requestUrl ) {
     } );
 };
 
-const LIGHT_SOURCE_FILE = path.join( __dirname, '..', 'web-assets', 'light.scss' );
-const DARK_SOURCE_FILE = path.join( __dirname, '..', 'web-assets', 'dark.scss' );
+const LIGHT_SOURCE_FILE = path.join( __dirname, '..', 'web-assets', 'theme-light.scss' );
+const DARK_SOURCE_FILE = path.join( __dirname, '..', 'web-assets', 'theme-dark.scss' );
 
 const lightBaseResult = sass.renderSync( {
     file: LIGHT_SOURCE_FILE,
@@ -44,8 +44,8 @@ const darkBaseResult = sass.renderSync( {
 } );
 
 const baseStyles = {
-    dark: darkBaseResult.css.toString(),
-    light: lightBaseResult.css.toString(),
+    'theme-dark': darkBaseResult.css.toString(),
+    'theme-light': lightBaseResult.css.toString(),
 };
 
 const writeStyle = function writeStyle( identifier, type ) {
@@ -80,12 +80,12 @@ const writeStyle = function writeStyle( identifier, type ) {
 promiseGet( 'https://api.developertracker.com/games' )
       .then( ( gamesBody ) => {
           const games = JSON.parse( gamesBody );
-          writeStyle( 'assets', 'light' );
-          writeStyle( 'assets', 'dark' );
+          writeStyle( 'assets', 'theme-light' );
+          writeStyle( 'assets', 'theme-dark' );
 
           for ( const game of games.data ) {
-              writeStyle( game.identifier, 'light' );
-              writeStyle( game.identifier, 'dark' );
+              writeStyle( game.identifier, 'theme-light' );
+              writeStyle( game.identifier, 'theme-dark' );
           }
       } )
       .catch( ( requestError ) => {

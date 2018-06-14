@@ -8,7 +8,7 @@ body {
 
 blockquote {
   font-size: inherit;
-  color: test; }
+  color: #eee; }
 
 br {
   content: ' ';
@@ -52,6 +52,19 @@ h1 a:hover {
   position: relative;
   word-wrap: break-word; }
 
+.panel-footer {
+  position: relative;
+  padding: 3px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+  .panel-footer .timed {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+    .panel-footer .timed .icon-a {
+      font-size: 0; }
+
 .panel-body img {
   max-width: 100%; }
 
@@ -67,16 +80,15 @@ h1 a:hover {
   overflow: hidden; }
 
 .expander {
-  bottom: 44px;
+  bottom: 100%;
   left: 15px;
   padding-bottom: 20px;
   padding-top: 60px;
   position: absolute;
   right: 0; }
-
-.expander:hover {
-  cursor: pointer;
-  text-decoration: underline; }
+  .expander:hover {
+    cursor: pointer;
+    text-decoration: underline; }
 
 input[type="checkbox"],
 .checkbox input[type="checkbox"] {
@@ -206,61 +218,31 @@ a.ipsAttachLink_image {
     display: inline-block; } }
 
 .dark-mode-toggle {
-  fill: #fff; }
-
-body {
-  background-color: #0e0e0e;
-  color: #dcdcdc; }
+  fill: #000; }
 
 h1 a,
 h1 a:active,
 h1 a:hover {
-  color: #fff; }
+  color: #000; }
 
-.services-wrapper {
-  color: #fff; }
+#icon-rss rect {
+  fill: #2196f3; }
 
-.has-feedback input[type="text"] {
-  box-shadow: inset 0 -1px 0 #22d;
-  color: #d22; }
+#icon-reddit rect {
+  fill: #666; }
 
-.has-feedback input[type="text"]:focus {
-  box-shadow: inset 0 -2px 0 #dd2; }
+#icon-twitter rect {
+  fill: #666; }
 
-.has-feedback input[type="text"]::placeholder {
-  color: #2d2; }
+#icon-comments {
+  fill: #666; }
 
-.panel {
-  background-color: #171715; }
-
-.panel-default > .panel-heading {
-  color: #dad1b6;
-  background-color: #21211f; }
-
-.panel-default > .panel-footer {
-  background-color: #171715; }
-
-blockquote {
-  border-color: #74c7dd; }
+#icon-caret {
+  fill: #666; }
 
 .expander {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0, #1f1d18);
-  text-align: center; }
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, white 40%, white 100%);
+  color: #2196F3; }
 
-.btn {
-  background-color: #c5b88e; }
-
-.btn-default:active:hover,
-.btn-default:hover {
-  background-color: #8e7f61; }
-
-iframe {
-  border: 1px solid; }
-
-.panel svg.icon,
-img.loader {
-  filter: sepia(100%); }
-
-input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
-  background-color: transparent !important;
-  color: #c5b88e !important; }
+.bb-spoiler {
+  border-color: #ccc; }

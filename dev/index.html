@@ -8,7 +8,7 @@
         DEV Dev Tracker
     </title>
     <link rel="stylesheet" href="./assets/bootstrap.min.css?v=3.3.7">
-    <link rel="stylesheet" href="./assets/light.css" id="theme-style">
+    <link rel="stylesheet" href="./assets/theme-light.css" id="theme-style">
     <link rel="stylesheet" href="./assets/dev.css">
 </head>
 <body>
@@ -97,7 +97,7 @@
     </div>
     <div class="container" id="js-app"></div>
     <script>
-        if (typeof Object.assign != 'function') {
+        if (typeof Object.assign !== 'function') {
   Object.assign = function(target, varArgs) { // .length of function is 2
     'use strict';
     if (target == null) { // TypeError if undefined or null
@@ -136,11 +136,20 @@ if ( !window.location.origin ) {
         // window.iframeSrc = 'PCFET0NUWVBFIGh0bWw+PG1ldGEgY2hhcnNldD11dGYtOD48dGl0bGU+LjwvdGl0bGU+PHN0eWxlPmJvZHksaHRtbHtoZWlnaHQ6MTAwJX1ib2R5e2JhY2tncm91bmQtY29sb3I6cmdiYSgwLDAsMCwuNyk7Y29sb3I6I2ZmZjtkaXNwbGF5OnRhYmxlO2ZvbnQtd2VpZ2h0OjcwMDt3aWR0aDoxMDAlO21hcmdpbjowfWRpdntkaXNwbGF5OnRhYmxlLWNlbGw7dGV4dC1hbGlnbjpjZW50ZXI7dmVydGljYWwtYWxpZ246bWlkZGxlfTwvc3R5bGU+PGRpdj5DbGljayB0byBsb2FkPC9kaXY+PHNjcmlwdD5mdW5jdGlvbiB1cGRhdGVTcmNGcm9tTmFtZSgpe3dpbmRvdy5sb2NhdGlvbi5yZXBsYWNlKHdpbmRvdy5uYW1lKX13aW5kb3cuYWRkRXZlbnRMaXN0ZW5lcigiY2xpY2siLHVwZGF0ZVNyY0Zyb21OYW1lKTwvc2NyaXB0Pg==';
 
 
+        /*
         window.game = 'pubg';
 
         window.trackerData = {
             groups: [{"active":true,"name":"ESL"},{"active":true,"name":"PUBG Corporation"}],
             services: [{"active":true,"name":"PUBGForums","label":"PUBGForums"},{"active":true,"name":"Reddit","label":"Reddit"},{"active":true,"name":"Steam","label":"Steam"},{"active":true,"name":"Twitter","label":"Twitter"}],
+        };
+        */
+
+        window.game = 'escape-from-tarkov';
+
+        window.trackerData = {
+           groups: [],
+           services: [{"active":true,"name":"tarkovForum","label":"Forums"},{"active":true,"name":"Reddit","label":"Reddit"},{"active":true,"name":"Twitter","label":"Twitter"}],
         };
 
         (function(){

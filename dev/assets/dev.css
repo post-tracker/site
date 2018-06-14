@@ -17,3 +17,13 @@
     margin: 0;
     padding: 0;
 }
+
+.dev-game-select li a {
+    display: block;
+    text-transform: lowercase;
+    padding: 0 3px;
+}
+
+.dev-game-select li a:hover {
+    background-color: #111;
+}
