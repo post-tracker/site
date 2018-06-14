@@ -1,34 +1,29 @@
-(function(){
-    const cookieIsDark =
-       () => document.cookie.split( ';' ).filter( ( item ) => {
-            return item.includes( 'dark=1' )
-       } ).length;
+(function() {
+    let currentTheme;
 
-    if ( cookieIsDark() ) {
-        document.querySelector( 'body' ).classList.add( 'dark-mode' );
-        document.getElementById( 'theme-style' ).href = './assets/theme-dark.css';
-    }
+    const getCurrentTheme =
+        () => localStorage.getItem( 'theme' ) || 'theme-light';
 
-    window.addEventListener( 'click', function( event ) {
-        if ( event.target.parentNode.classList.contains( 'dark-mode-toggle' ) ) {
-            const body = document.querySelector( 'body' );
+    const setTheme =
+        ( theme ) => {
+            if( !currentTheme )
+                return;
 
-            if ( !body.classList.contains( 'dark-mode' ) ) {
-                body.classList.add( 'dark-mode' );
-                document.getElementById( 'theme-style' ).href = './assets/theme-dark.css';
+            const bodyClasses = document.querySelector( 'body' ).classList;
+            bodyClasses.remove( currentTheme );
+            bodyClasses.add( theme );
 
-                if ( !cookieIsDark() ) {
-                    document.cookie = document.cookie + 'dark=1;';
-                }
-            } else {
-                body.classList.remove( 'dark-mode' );
-                document.getElementById( 'theme-style' ).href = './assets/theme-light.css';
+            document.getElementById( 'theme-style' ).href = `./assets/${theme}.css`;
+            localStorage.setItem( 'theme', theme );
+            
+            currentTheme = theme;
+        };
 
-                if ( cookieIsDark() ){
-                    document.cookie = document.cookie.replace( 'dark=1', 'dark=0' );
-                }
-            }
-        }
+    setTheme( currentTheme = getCurrentTheme() );
+
+    document.querySelector( '.dark-mode-toggle' ).addEventListener( 'click', function( event ) {
+        event.preventDefault();
+        setTheme( currentTheme === 'theme-dark'? 'theme-light': 'theme-dark' );
     } );
 
     window.fetch( 'https://api.developertracker.com/games' )
