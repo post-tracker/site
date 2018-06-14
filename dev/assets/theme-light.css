@@ -172,6 +172,9 @@ a.ipsAttachLink_image {
 .services-wrapper label:hover {
   text-decoration: underline; }
 
+.has-feedback input[role=search] {
+  padding: 0 15px; }
+
 @media screen and (max-width: 1800px) {
   .adsbygoogle {
     display: none; } }

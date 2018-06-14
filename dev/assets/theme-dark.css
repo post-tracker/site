@@ -172,6 +172,9 @@ a.ipsAttachLink_image {
 .services-wrapper label:hover {
   text-decoration: underline; }
 
+.has-feedback input[role=search] {
+  padding: 0 15px; }
+
 @media screen and (max-width: 1800px) {
   .adsbygoogle {
     display: none; } }
@@ -218,8 +221,8 @@ a.ipsAttachLink_image {
     display: inline-block; } }
 
 body {
-  background-color: #222222;
-  color: #dcdcdc; }
+  color: #dcdcdc;
+  background-color: #222222; }
 
 a {
   color: #74c7dd; }
@@ -237,21 +240,32 @@ h1 a:hover {
 .services-wrapper {
   opacity: .8; }
 
+.checkbox-inline input[type="checkbox"]:after,
+.checkbox input[type="checkbox"]:after,
+input[type="checkbox"]:after {
+  border-color: #2e9fbd; }
+
+.checkbox-inline input[type="checkbox"]:focus:after,
+.checkbox input[type="checkbox"]:focus:after,
+input[type="checkbox"]:focus:after {
+  border-color: #2e9fbd; }
+
+.checkbox-inline input[type="checkbox"]:checked:after,
+.checkbox input[type="checkbox"]:checked:after,
+input[type="checkbox"]:checked:after {
+  background-color: #2e9fbd;
+  border-color: #2e9fbd; }
+
 .has-feedback input[role=search] {
   box-shadow: inset 0 -1px 0 #cbd5dd;
-  color: #dcdcdc;
-  padding: 0 15px; }
+  color: #dcdcdc; }
   .has-feedback input[role=search]:focus {
     box-shadow: inset 0 -2px 0 white; }
   .has-feedback input[role=search]::placeholder {
     color: darkgray; }
 
-input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
-  background-color: transparent !important;
-  color: #f0f0f0 !important; }
-
 .panel {
-  color: #ffffff;
+  color: #dcdcdc;
   background-color: #272727; }
   .panel > .panel-heading {
     color: #beafa8;
@@ -293,17 +307,17 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
   background: #4bb6d3; }
 
 blockquote {
-  opacity: .4;
+  color: #c3c3c3;
   border-color: #74c7dd;
-  background-color: rgba(255, 255, 255, 0.05);
-  color: #e6e6e6; }
+  opacity: .4;
+  background-color: rgba(255, 255, 255, 0.05); }
   blockquote:hover {
     opacity: 1; }
 
 pre {
+  color: #eeeeee;
   background-color: #444444;
   border-color: #999999;
-  color: #eeeeee;
   line-height: 1.4;
   border-radius: 1px; }
 
