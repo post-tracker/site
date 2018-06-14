@@ -5,7 +5,7 @@ $fc-head: #beafa8 !default;
 $fc-btxt: #d4e0e4 !default;
 $fc-srch: #dcdcdc !default;
 $bs-srch: #cbd5dd !default;
-$fc-main: #ffffff !default;
+$fc-main: #dcdcdc !default;
 $bg-main: #222222 !default;
 $bg-pres: #444444 !default;
 $bc-pres: #999999 !default;
@@ -14,15 +14,16 @@ $bc-quot: $fc-link !default;
 
 $fc-h1tx: lighten($bg-main, 50%) !default;
 $fc-auth: lighten($fc-head, 10%) !default;
-$fc-role: darken($fc-auth, 30%) !default;
 $bg-head: lighten($bg-main, 5%) !default;
 $bg-pane: lighten($bg-main, 2%) !default;
+$fc-role: darken($fc-auth, 30%) !default;
 $bg-foot: darken($bg-head, 2%) !default;
 $bg-post: darken($fc-link, 20%) !default;
+$fc-quot: darken($fc-main, 10%) !default;
 
 body {
+    color: $fc-main;
     background-color: $bg-main;
-    color: #dcdcdc;
 }
 
 a {
@@ -50,7 +51,6 @@ h1 a:hover {
 .has-feedback input[role=search] {
     box-shadow: inset 0 -1px 0 $bs-srch;
     color: $fc-srch;
-    padding: 0 15px;
 
     &:focus {
         box-shadow: inset 0 -2px 0 lighten($fc-srch, 20%);
@@ -59,11 +59,6 @@ h1 a:hover {
     &::placeholder {
         color: darken($fc-srch, 20%);
     }
-}
-
-input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
-    background-color: transparent !important;
-    color: #f0f0f0 !important;
 }
 
 .panel {
@@ -132,10 +127,10 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 }
 
 blockquote {
-    opacity: .4;
+    color: $fc-quot;
     border-color: $bc-quot;
+    opacity: .4;
     background-color: rgba(255, 255, 255, .05);
-    color: darken($fc-main, 10%);
 
     &:hover {
         opacity: 1;
@@ -143,9 +138,9 @@ blockquote {
 }
 
 pre {
+    color: $fc-pres;
     background-color: $bg-pres;
     border-color: $bc-pres;
-    color: $fc-pres;
     line-height: 1.4;
     border-radius: 1px;
 }

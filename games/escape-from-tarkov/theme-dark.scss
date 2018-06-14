@@ -1,1 +1,63 @@
+$fc-link: #827356;
+$fc-head: #dad1b6;
+$fc-btxt: #d4e0e4;
+$fc-srch: #dcdcdc;
+$bs-srch: #c5b88e;
+$fc-main: #c5b88e;
+$bg-main: #0e0e0e;
+$bg-pres: #444444;
+$bc-pres: #999999;
+$fc-pres: #eeeeee;
+$bc-quot: #827356;
+
+$fc-h1tx: #c5b88e;
+$fc-auth: lighten($fc-head, 10%);
+$fc-role: mix($fc-auth, #000, 70%);
+$bg-head: #21211f;
+$bg-pane: #171715;
+$bg-foot: #171715;
+$bg-post: #5f5440;
+$fc-quot: $fc-main;
+
 @import "../../web-assets/theme-dark";
+
+.services-wrapper {
+   color: #827356;
+}
+
+.checkbox-inline input[type="checkbox"]:after,
+.checkbox input[type="checkbox"]:after,
+input[type="checkbox"]:after {
+   border-color: $bg-post;
+}
+
+.checkbox-inline input[type="checkbox"]:focus:after,
+.checkbox input[type="checkbox"]:focus:after,
+input[type="checkbox"]:focus:after {
+   border-color: $bg-post;
+}
+
+.checkbox-inline input[type="checkbox"]:checked:after,
+.checkbox input[type="checkbox"]:checked:after,
+input[type="checkbox"]:checked:after {
+   background-color: $bg-post;
+   border-color: $bg-post;
+}
+
+iframe {
+   border: 1px solid;
+}
+
+
+.header-link {
+   opacity: .7;
+
+   &:hover {
+      opacity: 1;
+   }
+}
+
+.panel svg.icon,
+img.loader {
+   filter: sepia(100%);
+}
