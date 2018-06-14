@@ -240,6 +240,22 @@ h1 a:hover {
 .services-wrapper {
   opacity: .8; }
 
+.checkbox-inline input[type="checkbox"]:after,
+.checkbox input[type="checkbox"]:after,
+input[type="checkbox"]:after {
+  border-color: #2e9fbd; }
+
+.checkbox-inline input[type="checkbox"]:focus:after,
+.checkbox input[type="checkbox"]:focus:after,
+input[type="checkbox"]:focus:after {
+  border-color: #2e9fbd; }
+
+.checkbox-inline input[type="checkbox"]:checked:after,
+.checkbox input[type="checkbox"]:checked:after,
+input[type="checkbox"]:checked:after {
+  background-color: #2e9fbd;
+  border-color: #2e9fbd; }
+
 .has-feedback input[role=search] {
   box-shadow: inset 0 -1px 0 #cbd5dd;
   color: #dcdcdc; }

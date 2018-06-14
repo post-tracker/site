@@ -9,6 +9,7 @@ $bg-pres: #444444;
 $bc-pres: #999999;
 $fc-pres: #eeeeee;
 $bc-quot: #827356;
+$fc-serv: #827356;
 
 $fc-h1tx: #c5b88e;
 $fc-auth: lighten($fc-head, 10%);
@@ -18,36 +19,17 @@ $bg-pane: #171715;
 $bg-foot: #171715;
 $bg-post: #5f5440;
 $fc-quot: $fc-main;
+$bg-chck: $bg-post;
 
 @import "../../web-assets/theme-dark";
 
 .services-wrapper {
-   color: #827356;
-}
-
-.checkbox-inline input[type="checkbox"]:after,
-.checkbox input[type="checkbox"]:after,
-input[type="checkbox"]:after {
-   border-color: $bg-post;
-}
-
-.checkbox-inline input[type="checkbox"]:focus:after,
-.checkbox input[type="checkbox"]:focus:after,
-input[type="checkbox"]:focus:after {
-   border-color: $bg-post;
-}
-
-.checkbox-inline input[type="checkbox"]:checked:after,
-.checkbox input[type="checkbox"]:checked:after,
-input[type="checkbox"]:checked:after {
-   background-color: $bg-post;
-   border-color: $bg-post;
+   color: $fc-serv;
 }
 
 iframe {
    border: 1px solid;
 }
-
 
 .header-link {
    opacity: .7;
