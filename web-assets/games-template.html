@@ -12,52 +12,52 @@
     <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
     <link rel="manifest" href="manifest.json">
     <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
-	<link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
     <meta name="theme-color" content="#ffffff">
-	<style>
-		body {
-			font-family: 'Roboto', sans-serif;
-			margin: 0;
-			padding: 0;
-		}
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
-		h1 {
-			font-size: 3em;
-			font-weight: 100;
-			text-align: center;
-		}
+        h1 {
+            font-size: 3em;
+            font-weight: 100;
+            text-align: center;
+        }
 
-		.games-wrapper {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: center;
-			margin: 0 auto;
-		}
+        .games-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 0 auto;
+        }
 
-		.game-wrapper {
-			line-height: 0;
-			margin: 2vw;
-			max-width: 28%;
-		}
+        .game-wrapper {
+            line-height: 0;
+            margin: 2vw;
+            max-width: 28%;
+        }
 
-		.game-wrapper img {
-			max-width: 100%;
-		}
-	</style>
+        .game-wrapper img {
+            max-width: 100%;
+        }
+    </style>
 </head>
 <body>
-	<h1>
-		Developer Trackers
-	</h1>
-	<div class="games-wrapper js-games-wrapper">
-	{{#games}}
-		<div class="game-wrapper">
-			<a href="https://{{{ url }}}" title="{{ name }} dev tracker">
-				<img src="{{{ image }}}">
-			</a>
-		</div>
-	{{/games}}
-	</div>
+    <h1>
+        Developer Trackers
+    </h1>
+    <div class="games-wrapper js-games-wrapper">
+        {{#games}}
+        <div class="game-wrapper">
+            <a href="https://{{{ url }}}" title="{{ name }} dev tracker">
+                <img src="{{{ image }}}">
+            </a>
+        </div>
+        {{/games}}
+    </div>
     <script>
         window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
         ga('set', 'dimension1', '{{name}}');

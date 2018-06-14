@@ -21,105 +21,105 @@ $bg-foot: darken($bg-head, 2%) !default;
 $bg-post: darken($fc-link, 20%) !default;
 
 body {
-   background-color: $bg-main;
-   color: #dcdcdc;
+    background-color: $bg-main;
+    color: #dcdcdc;
 }
 
 a {
-   color: $fc-link;
+    color: $fc-link;
 
-   &:hover {
-      color: lighten($fc-link, 20%);
-   }
+    &:hover {
+        color: lighten($fc-link, 20%);
+    }
 }
 
 h1 a,
 h1 a:active,
 h1 a:hover {
-   color: $fc-h1tx;
+    color: $fc-h1tx;
 }
 
 .dark-mode-toggle {
-   fill: #fff;
+    fill: #fff;
 }
 
 .services-wrapper {
-   opacity: .8;
+    opacity: .8;
 }
 
 .has-feedback input[role=search] {
-   box-shadow: inset 0 -1px 0 $bs-srch;
-   color: $fc-srch;
-   padding: 0 15px;
+    box-shadow: inset 0 -1px 0 $bs-srch;
+    color: $fc-srch;
+    padding: 0 15px;
 
-   &:focus {
-      box-shadow: inset 0 -2px 0 lighten($fc-srch, 20%);
-   }
+    &:focus {
+        box-shadow: inset 0 -2px 0 lighten($fc-srch, 20%);
+    }
 
-   &::placeholder {
-      color: darken($fc-srch, 20%);
-   }
+    &::placeholder {
+        color: darken($fc-srch, 20%);
+    }
 }
 
 input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
-   background-color: transparent !important;
-   color: #f0f0f0 !important;
+    background-color: transparent !important;
+    color: #f0f0f0 !important;
 }
 
 .panel {
-   color: $fc-main;
-   background-color: $bg-pane;
+    color: $fc-main;
+    background-color: $bg-pane;
 
-   > .panel-heading {
-      color: $fc-head;
-      background-color: $bg-head;
+    > .panel-heading {
+        color: $fc-head;
+        background-color: $bg-head;
 
-      .author {
-         color: $fc-auth;
-         font-weight: bold;
-         font-size: 1.7rem;
+        .author {
+            color: $fc-auth;
+            font-weight: bold;
+            font-size: 1.7rem;
 
-         .role {
-            color: $fc-role;
-            font-size: 1.2rem;
-            display: inline-block;
-            vertical-align: middle;
-            margin-left: 3px;
-         }
-      }
-   }
+            .role {
+                color: $fc-role;
+                font-size: 1.2rem;
+                display: inline-block;
+                vertical-align: middle;
+                margin-left: 3px;
+            }
+        }
+    }
 
-   > .panel-footer {
-      background-color: $bg-foot;
+    > .panel-footer {
+        background-color: $bg-foot;
 
-      .timed, .link {
-         opacity: .7;
+        .timed, .link {
+            opacity: .7;
 
-         &:hover {
-            opacity: 1;
-         }
-      }
+            &:hover {
+                opacity: 1;
+            }
+        }
 
-      .icon {
-         &.comments {
-            fill: #fff;
-         }
-      }
+        .icon {
+            &.comments {
+                fill: #fff;
+            }
+        }
 
-      .expander {
-         background: linear-gradient(180deg, hsla(0, 0%, 100%, 0) 0, $bg-pane);
-         text-align: center;
-      }
-   }
+        .expander {
+            background: linear-gradient(180deg, hsla(0, 0%, 100%, 0) 0, $bg-pane);
+            text-align: center;
+        }
+    }
 }
 
 .btn {
-   color: $fc-btxt;
-   background-color: $bg-post;
+    color: $fc-btxt;
+    background-color: $bg-post;
 
-   &:hover {
-      color: $fc-btxt;
-   }
+    &:hover {
+        color: $fc-btxt;
+    }
 }
 
 .btn-default:active:focus,
@@ -127,29 +127,29 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 .btn-default:active,
 .btn-default:focus,
 .btn-default:hover {
-   color: $fc-btxt;
-   background: lighten($bg-post, 10%);
+    color: $fc-btxt;
+    background: lighten($bg-post, 10%);
 }
 
 blockquote {
-   opacity: .4;
-   border-color: $bc-quot;
-   background-color: rgba(255, 255, 255, .05);
-   color: darken($fc-main, 10%);
+    opacity: .4;
+    border-color: $bc-quot;
+    background-color: rgba(255, 255, 255, .05);
+    color: darken($fc-main, 10%);
 
-   &:hover {
-      opacity: 1;
-   }
+    &:hover {
+        opacity: 1;
+    }
 }
 
 pre {
-   background-color: $bg-pres;
-   border-color: $bc-pres;
-   color: $fc-pres;
-   line-height: 1.4;
-   border-radius: 1px;
+    background-color: $bg-pres;
+    border-color: $bc-pres;
+    color: $fc-pres;
+    line-height: 1.4;
+    border-radius: 1px;
 }
 
 iframe {
-   border: 1px solid;
+    border: 1px solid;
 }

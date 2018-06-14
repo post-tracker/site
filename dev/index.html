@@ -81,8 +81,8 @@
         </h1>
         <a href="https://www.reddit.com/message/compose/?to=kokarn&subject=Thoughts%20about%20the%20ARK%20dev%20tracker" class="header-link reddit-link" title="Give me some private feedback">
             <svg class="icon">
-				<use xlink:href="#icon-reddit"></use>
-			</svg>
+                <use xlink:href="#icon-reddit"></use>
+            </svg>
         </a>
         <a href="https://twitter.com/oskarrisberg" class="header-link twitter-link" title="Give me some private feedback">
             <svg class="icon">
@@ -91,41 +91,41 @@
         </a>
         <a href="https://github.com/post-tracker/site" class="header-link github-link" title="Site source code">
             <svg class="icon">
-				<use xlink:href="#icon-github"></use>
-			</svg>
+                <use xlink:href="#icon-github"></use>
+            </svg>
         </a>
         <a href="./rss" class="header-link rss-link" title="All posts as an RSS feed">
             <svg class="icon">
-				<use xlink:href="#icon-rss"></use>
-			</svg>
+                <use xlink:href="#icon-rss"></use>
+            </svg>
         </a>
     </div>
     <div class="container" id="js-app"></div>
     <script>
         if (typeof Object.assign !== 'function') {
-  Object.assign = function(target, varArgs) { // .length of function is 2
-    'use strict';
-    if (target == null) { // TypeError if undefined or null
-      throw new TypeError('Cannot convert undefined or null to object');
-    }
+            Object.assign = function(target, varArgs) { // .length of function is 2
+                'use strict';
+                if (target == null) { // TypeError if undefined or null
+                    throw new TypeError('Cannot convert undefined or null to object');
+                }
 
-    var to = Object(target);
+                var to = Object(target);
 
-    for (var index = 1; index < arguments.length; index++) {
-      var nextSource = arguments[index];
+                for (var index = 1; index < arguments.length; index++) {
+                    var nextSource = arguments[index];
 
-      if (nextSource != null) { // Skip over if undefined or null
-        for (var nextKey in nextSource) {
-          // Avoid bugs when hasOwnProperty is shadowed
-          if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
-            to[nextKey] = nextSource[nextKey];
-          }
+                    if (nextSource != null) { // Skip over if undefined or null
+                        for (var nextKey in nextSource) {
+                            // Avoid bugs when hasOwnProperty is shadowed
+                            if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+                                to[nextKey] = nextSource[nextKey];
+                            }
+                        }
+                    }
+                }
+                return to;
+            };
         }
-      }
-    }
-    return to;
-  };
-}
 
 // Add window.location.origin to IE & Edge
 if ( !window.location.origin ) {

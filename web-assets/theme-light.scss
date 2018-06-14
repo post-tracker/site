@@ -1,45 +1,45 @@
 @import "_styles";
 
 .dark-mode-toggle {
-   fill: #000;
+    fill: #000;
 }
 
 h1 a,
 h1 a:active,
 h1 a:hover {
-   color: #000;
+    color: #000;
 }
 
 #icon-rss rect {
-   fill: #2196f3;
+    fill: #2196f3;
 }
 
 #icon-reddit rect {
-   fill: #666;
+    fill: #666;
 }
 
 #icon-twitter rect {
-   fill: #666;
+    fill: #666;
 }
 
 #icon-comments {
-   fill: #666;
+    fill: #666;
 }
 
 #icon-caret {
-   fill: #666;
+    fill: #666;
 }
 
 .expander {
-   background: linear-gradient(
-               to bottom,
-               rgba( 255, 255, 255, 0 ) 0%,
-               rgba( 255, 255, 255, 1 ) 40%,
-               rgba( 255, 255, 255, 1 ) 100%
-   );
-   color: #2196F3;
+    background: linear-gradient(
+        to bottom,
+        rgba( 255, 255, 255, 0 ) 0%,
+        rgba( 255, 255, 255, 1 ) 40%,
+        rgba( 255, 255, 255, 1 ) 100%
+    );
+    color: #2196F3;
 }
 
 .bb-spoiler {
-   border-color: #ccc;
+    border-color: #ccc;
 }
