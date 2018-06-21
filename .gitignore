@@ -16,3 +16,4 @@ config/keys.json
 package-lock\.json
 .env
 .idea/
+stage

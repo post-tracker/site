@@ -1,14 +1,20 @@
+require( 'dotenv' ).config();
+
 const path = require( 'path' );
+const fs = require( 'fs' );
+const mkdirp = require( 'mkdirp' );
 
 const mime = require( 'mime-types' );
-
-require( 'dotenv' ).config();
+const AWS = require( 'aws-sdk' );
+const argv = require( 'minimist' )( process.argv.slice( 2 ) );
 
 if ( !process.env.AWS_ACCESS_KEY || !process.env.AWS_SECRET_KEY ) {
     throw new Error( 'AWS auth not configured' );
 }
 
 const S3_BUCKET = 'developer-tracker';
+const STAGE_PATH = path.join( __dirname, '..', '..', 'stage' );
+
 const s3 = new AWS.S3( {
     accessKeyId: process.env.AWS_ACCESS_KEY,
     secretAccessKey: process.env.AWS_SECRET_KEY,
@@ -66,11 +72,23 @@ module.exports = function saveFile( filePath, fileData ) {
         ContentType: mime.lookup( filePath ),
     };
 
-    s3.putObject( params, ( uploadError, data ) => {
-        if ( uploadError ) {
-            console.error( uploadError )
-        } else {
-            console.log( `Successfully uploaded ${ filePath } to ${ S3_BUCKET }` );
-        }
-    } );
+    if ( argv.stage ) {
+        const fullPath = path.join( STAGE_PATH, filePath );
+
+        mkdirp( path.parse( fullPath ).dir, ( writeError ) => {
+            if ( writeError ) {
+                throw writeError;
+            }
+
+            fs.writeFileSync( fullPath, fileData );
+        } );
+    } else {
+        s3.putObject( params, ( uploadError, data ) => {
+            if ( uploadError ) {
+                console.error( uploadError )
+            } else {
+                console.log( `Successfully uploaded ${ filePath } to ${ S3_BUCKET }` );
+            }
+        } );
+    }
 };
