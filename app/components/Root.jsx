@@ -6,6 +6,8 @@ import App from './App.jsx';
 
 const store = configureStore();
 
+window.reduxStore = store;
+
 class Root extends React.Component {
     constructor () {
         super();

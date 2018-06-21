@@ -11,7 +11,14 @@
                 return response.json();
             } )
             .then( ( services ) => {
-                window.trackerData.services = services;
+                const currentState = window.reduxStore.getState();
+                currentState.services.items = services.data.map( ( serviceName ) => {
+                    return {
+                        active: true,
+                        name: serviceName,
+                        label: serviceName,
+                    };
+                } );
 
                 return window.fetch( `https://api.developertracker.com/${ getPathGame() }/groups` );
             } )
@@ -19,7 +26,14 @@
                 return response.json();
             } )
             .then( ( groups ) => {
-                window.trackerData.groups = groups;
+                const currentState = window.reduxStore.getState();
+                currentState.groups.items = groups.data.map( ( name ) => {
+                    return {
+                        active: true,
+                        name: name,
+                    };
+                } );
+                
                 window.game = getPathGame();
                 window.dispatchEvent( new Event( 'gamechange' ) );
             } )
