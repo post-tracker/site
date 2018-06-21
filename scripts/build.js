@@ -11,6 +11,8 @@ const postcss = require( 'postcss' );
 const cssnano = require( 'cssnano' );
 const junk = require( 'junk' );
 const recursive = require( 'recursive-readdir' );
+const rimraf = require( 'rimraf' );
+const argv = require( 'minimist' )( process.argv.slice( 2 ) );
 
 const savefile = require( './modules/savefile' );
 
@@ -19,6 +21,7 @@ if ( !process.env.API_TOKEN ) {
 }
 
 const API_HOST = 'api.kokarn.com';
+const STAGE_PATH = path.join( __dirname, '..', 'stage' );
 // const API_HOST = 'localhost:3000';
 // process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
@@ -201,6 +204,14 @@ const buildRootPage = function buildRootPage( gamesData ){
 
 const run = async function run() {
     let games;
+
+    if ( argv.stage ) {
+        try {
+            rimraf.sync( STAGE_PATH );
+        } catch( removeError ) {
+            console.error( removeError );
+        }
+    }
 
     try {
         games = await getGames();
