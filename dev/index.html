@@ -172,6 +172,55 @@ if ( !window.location.origin ) {
                 return element.parentNode && parentHasClass( element.parentNode, className );
             }
 
+            var getActiveTheme = function getActiveTheme(){
+                var currentData = document.getElementById( 'theme-style' ).href.match( /(theme\-.+?)(\..+?)$/ );
+
+                return {
+                    name: currentData[ 1 ],
+                    cssSuffix: currentData[ 2 ],
+                };
+            };
+
+            var getCurrentTheme = function getCurrentTheme(){
+                var localStorageTheme = localStorage.getItem( 'theme' );
+
+                if ( localStorageTheme && localStorageTheme !== 'undefined' ) {
+                    return localStorageTheme;
+                }
+
+                return getActiveTheme().name;
+            };
+
+            var setTheme = function setTheme( theme ) {
+                var bodyClasses = document.querySelector( 'body' ).classList;
+                var currentThemeData = getActiveTheme();
+                var cssSuffix = '.css';
+
+                if ( currentThemeData.cssSuffix ) {
+                    cssSuffix = currentThemeData.cssSuffix;
+                }
+
+                bodyClasses.remove( currentThemeData.name );
+                bodyClasses.add( theme );
+
+                document.getElementById( 'theme-style' ).href = './assets/' + theme + cssSuffix;
+                localStorage.setItem( 'theme', theme );
+            };
+
+            setTheme( getCurrentTheme() );
+
+            window.addEventListener( 'click', function( event ) {
+                if ( parentHasClass( event.target.parentNode, 'dark-mode-toggle' ) ) {
+                    event.preventDefault();
+
+                    if ( getCurrentTheme() === 'theme-dark' ) {
+                        setTheme( 'theme-light' );
+                    } else {
+                        setTheme( 'theme-dark' );
+                    }
+                }
+            } );
+
             window.addEventListener( 'click', function( event ) {
                 // If set, bail early to prevent ghost clicks
                 if ( preventClick ) {

@@ -1,31 +1,4 @@
 (function() {
-    let currentTheme;
-
-    const getCurrentTheme =
-        () => localStorage.getItem( 'theme' ) || 'theme-light';
-
-    const setTheme =
-        ( theme ) => {
-            if( !currentTheme )
-                return;
-
-            const bodyClasses = document.querySelector( 'body' ).classList;
-            bodyClasses.remove( currentTheme );
-            bodyClasses.add( theme );
-
-            document.getElementById( 'theme-style' ).href = `./assets/${theme}.css`;
-            localStorage.setItem( 'theme', theme );
-            
-            currentTheme = theme;
-        };
-
-    setTheme( currentTheme = getCurrentTheme() );
-
-    document.querySelector( '.dark-mode-toggle' ).addEventListener( 'click', function( event ) {
-        event.preventDefault();
-        setTheme( currentTheme === 'theme-dark'? 'theme-light': 'theme-dark' );
-    } );
-
     window.fetch( 'https://api.developertracker.com/games' )
         .then( ( response ) => {
             return response.json();
