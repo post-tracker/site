@@ -164,7 +164,7 @@ const buildGame = function buildGame( gameData ) {
     console.log( `Build ${ gameData.identifier } done` );
 };
 
-const buildAllGames = function buildAllGames( gamesData ){
+const buildRootPage = function buildRootPage( gamesData ){
     const allGamesTemplate = fs.readFileSync( path.join( __dirname, '..', 'web-assets', 'games-template.html' ), 'utf8' );
     const games = Object.values( gamesData );
     const renderData = {
@@ -307,7 +307,7 @@ const run = async function run() {
                 buildGame( games[ gameIdentifier ] );
             }
 
-            buildAllGames( games );
+            buildRootPage( games );
         } )
         .catch( ( chainError ) => {
             throw chainError;
