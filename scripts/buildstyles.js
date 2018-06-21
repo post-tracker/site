@@ -2,7 +2,7 @@ const path = require( 'path' );
 const fs = require( 'fs' );
 const https = require( 'https' );
 
-const gameCss = require( './modules/gamecss' );
+const gamecss = require( './modules/gamecss' );
 
 const promiseGet = function promiseGet( requestUrl ) {
     return new Promise( ( resolve, reject ) => {
@@ -34,7 +34,7 @@ const promiseGet = function promiseGet( requestUrl ) {
 
 const writeStyle = function writeStyle( identifier, type ) {
     const writePath = path.join( __dirname, '..', 'dev', identifier );
-    const gameStyles = gameCss( identifier, type );
+    const gameStyles = gamecss( identifier, type );
 
     try {
         fs.mkdirSync( writePath );
@@ -42,18 +42,18 @@ const writeStyle = function writeStyle( identifier, type ) {
         // We don't care if it already exists
     }
 
-    fs.writeFileSync( path.join( writePath, `${ type }.css` ), gameStyles );
+    fs.writeFileSync( path.join( writePath, `theme-${ type }.css` ), gameStyles );
 };
 
 promiseGet( 'https://api.developertracker.com/games' )
       .then( ( gamesBody ) => {
           const games = JSON.parse( gamesBody );
-          writeStyle( 'assets', 'theme-light' );
-          writeStyle( 'assets', 'theme-dark' );
+          writeStyle( 'assets', 'light' );
+          writeStyle( 'assets', 'dark' );
 
           for ( const game of games.data ) {
-              writeStyle( game.identifier, 'theme-light' );
-              writeStyle( game.identifier, 'theme-dark' );
+              writeStyle( game.identifier, 'light' );
+              writeStyle( game.identifier, 'dark' );
           }
       } )
       .catch( ( requestError ) => {
