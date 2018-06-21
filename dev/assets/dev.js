@@ -1,4 +1,33 @@
 (function() {
+    const getPathGame = function getPathGame() {
+        const pathGame = window.location.pathname.replace( /\//g, '' );
+
+        return pathGame;
+    };
+
+    if ( getPathGame() !== window.game ) {
+        window.fetch( `https://api.developertracker.com/${ getPathGame() }/services` )
+            .then( ( response ) => {
+                return response.json();
+            } )
+            .then( ( services ) => {
+                window.trackerData.services = services;
+
+                return window.fetch( `https://api.developertracker.com/${ getPathGame() }/groups` );
+            } )
+            .then( ( response ) => {
+                return response.json();
+            } )
+            .then( ( groups ) => {
+                window.trackerData.groups = groups;
+                window.game = getPathGame();
+                window.dispatchEvent( new Event( 'gamechange' ) );
+            } )
+            .catch( ( requestError ) => {
+                throw requestError;
+            } );
+    }
+
     window.fetch( 'https://api.developertracker.com/games' )
         .then( ( response ) => {
             return response.json();

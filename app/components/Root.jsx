@@ -7,12 +7,31 @@ import App from './App.jsx';
 const store = configureStore();
 
 class Root extends React.Component {
+    constructor () {
+        super();
+
+        this.state = {
+            key: Date.now(),
+        };
+    }
+
+    componentDidMount(){
+        window.addEventListener( 'gamechange', () => {
+            this.setState( {
+                key: Date.now(),
+            } );
+        } );
+    }
+
     render () {
+        console.log( 'got Root re-render' );
         return (
             <Provider
                 store = { store }
             >
-                <App />
+                <App
+                    key = { this.state.key }
+                />
             </Provider>
         );
     }
