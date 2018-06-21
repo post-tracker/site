@@ -1,4 +1,5 @@
 /* eslint-disable no-sync */
+require( 'dotenv' ).config();
 
 const path = require( 'path' );
 const https = require( 'https' );
@@ -11,7 +12,6 @@ const cssnano = require( 'cssnano' );
 const junk = require( 'junk' );
 const recursive = require( 'recursive-readdir' );
 
-require( 'dotenv' ).config();
 const savefile = require( './modules/savefile' );
 
 if ( !process.env.API_TOKEN ) {
