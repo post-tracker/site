@@ -17,14 +17,14 @@ module.exports = function( game, type ) {
     } );
 
     const baseStyles = {
-        'theme-dark': darkBaseResult.css.toString(),
-        'theme-light': lightBaseResult.css.toString(),
+        'dark': darkBaseResult.css.toString(),
+        'light': lightBaseResult.css.toString(),
     };
     let gameStyles = false;
 
     try {
         const gameSassResult = sass.renderSync( {
-            file: path.join( __dirname, '..', 'games', identifier, `${ type }.scss` ),
+            file: path.join( __dirname, '..', '..', 'games', identifier, `${ type }.scss` ),
         } );
 
         if ( gameSassResult ) {
