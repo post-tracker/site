@@ -8,57 +8,19 @@ const fs = require( 'fs' );
 const mustache = require( 'mustache' );
 const postcss = require( 'postcss' );
 const cssnano = require( 'cssnano' );
-const AWS = require( 'aws-sdk' );
 const junk = require( 'junk' );
-const mime = require( 'mime-types' );
 const recursive = require( 'recursive-readdir' );
 
 require( 'dotenv' ).config();
-
-if ( !process.env.AWS_ACCESS_KEY || !process.env.AWS_SECRET_KEY ) {
-    throw new Error( 'AWS auth not configured' );
-}
+const savefile = require( './modules/savefile' );
 
 if ( !process.env.API_TOKEN ) {
     throw new Error( 'Unable to load api key' );
 }
 
-const S3_BUCKET = 'developer-tracker';
 const API_HOST = 'api.kokarn.com';
 // const API_HOST = 'localhost:3000';
 // process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
-
-const s3 = new AWS.S3( {
-    accessKeyId: process.env.AWS_ACCESS_KEY,
-    secretAccessKey: process.env.AWS_SECRET_KEY,
-} );
-
-const cacheControls = [
-    {
-        match: 'service-worker.js',
-        cache: 'public, max-age=600, must-revalidate',
-    },
-    {
-        match: '.*\.html',
-        cache: 'public, max-age=600',
-    },
-    {
-        match: '.*\.css',
-        cache: 'public, max-age=31536000',
-    },
-    {
-        match: '.*\.js',
-        cache: 'public, max-age=31536000',
-    },
-    {
-        match: '\.(jpg|jpeg|gif|png|ico|cur|gz|svg|svgz|mp4|ogg|ogv|webm|htc|woff|woff2)',
-        cache: 'public, max-age=2678400',
-    },
-    {
-        match: '\.(json|xml)',
-        cache: 'public, max-age=2678400',
-    },
-];
 
 const promiseGet = function promiseGet( requestUrl, headers = false ) {
     return new Promise( ( resolve, reject ) => {
@@ -122,40 +84,6 @@ const getGames = async function getGames() {
     return gamesConfig;
 };
 
-const getCache = function getCache ( filePath ) {
-    const filename = path.parse( filePath ).base;
-
-    for ( const cacheSetup of cacheControls ) {
-        const regex = new RegExp( cacheSetup.match );
-
-        if ( regex.test( filePath ) ) {
-            return cacheSetup.cache;
-        }
-    }
-
-    console.error( `No cache for ${ filename }` );
-
-    return false;
-};
-
-const uploadFile = function uploadFile( filePath, fileData ) {
-    const params = {
-        Bucket: S3_BUCKET,
-        Key: filePath,
-        Body: fileData,
-        CacheControl: getCache( filePath ),
-        ContentType: mime.lookup( filePath ),
-    };
-
-    s3.putObject( params, ( uploadError, data ) => {
-        if ( uploadError ) {
-            console.error( uploadError )
-        } else {
-            console.log( `Successfully uploaded ${ filePath } to ${ S3_BUCKET }` );
-        }
-    } );
-};
-
 const buildGame = function buildGame( gameData ) {
     console.log( `Building ${ gameData.identifier }` );
     const gameFilesPath = path.join( __dirname, '..', 'games', gameData.identifier );
@@ -185,11 +113,11 @@ const buildGame = function buildGame( gameData ) {
                 }
             }
 
-            uploadFile( fileName, fs.readFileSync( file ) );
+            savefile( fileName, fs.readFileSync( file ) );
         }
     } );
 
-    uploadFile( path.join( gameData.identifier, '/assets/styles.min.css' ), gameData.builtStyles );
+    savefile( path.join( gameData.identifier, '/assets/styles.min.css' ), gameData.builtStyles );
 
     recursive( gameFilesPath, ( gameFilesError, gameFiles ) => {
         if ( gameFilesError ) {
@@ -210,7 +138,7 @@ const buildGame = function buildGame( gameData ) {
                 gameData.logo = '<img src="assets/logo.png" class="header-logo">';
             }
 
-            uploadFile( path.join( gameData.identifier, filename.replace( gameFilesPath, '' ) ), fs.readFileSync( filename ) );
+            savefile( path.join( gameData.identifier, filename.replace( gameFilesPath, '' ) ), fs.readFileSync( filename ) );
         }
 
         if ( !gameData.logo ) {
@@ -226,7 +154,7 @@ const buildGame = function buildGame( gameData ) {
                     return false;
                 }
 
-                uploadFile( path.join( gameData.identifier, rewriteFiles[ i ] ), mustache.render( fileData, gameData ) );
+                savefile( path.join( gameData.identifier, rewriteFiles[ i ] ), mustache.render( fileData, gameData ) );
 
                 return true;
             } );
@@ -268,7 +196,7 @@ const buildAllGames = function buildAllGames( gamesData ){
         } );
     }
 
-    uploadFile( 'index.html', mustache.render( allGamesTemplate, renderData ) );
+    savefile( 'index.html', mustache.render( allGamesTemplate, renderData ) );
 };
 
 const run = async function run() {
