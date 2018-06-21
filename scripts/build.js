@@ -7,13 +7,12 @@ const url = require( 'url' );
 const fs = require( 'fs' );
 
 const mustache = require( 'mustache' );
-const postcss = require( 'postcss' );
-const cssnano = require( 'cssnano' );
 const junk = require( 'junk' );
 const recursive = require( 'recursive-readdir' );
 const rimraf = require( 'rimraf' );
 const argv = require( 'minimist' )( process.argv.slice( 2 ) );
 
+const gamecss = require( './modules/gamecss' );
 const savefile = require( './modules/savefile' );
 
 if ( !process.env.API_TOKEN ) {
@@ -120,7 +119,8 @@ const buildGame = function buildGame( gameData ) {
         }
     } );
 
-    savefile( path.join( gameData.identifier, '/assets/styles.min.css' ), gameData.builtStyles );
+    savefile( path.join( gameData.identifier, '/assets/theme-dark.min.css' ), gameData.themeDark );
+    savefile( path.join( gameData.identifier, '/assets/theme-light.min.css' ), gameData.themeLight );
 
     recursive( gameFilesPath, ( gameFilesError, gameFiles ) => {
         if ( gameFilesError ) {
@@ -227,11 +227,8 @@ const run = async function run() {
     };
     const polyfills = fs.readFileSync( path.join( __dirname, '/../web-assets/polyfills.js' ), 'utf8' );
     addGameProperty( 'polyfills', polyfills );
-
-    // Styles
-    const globalStyles = fs.readFileSync( path.join( __dirname, '/../web-assets/styles.css' ), 'utf8' );
-
     addGameProperty( 'version', Date.now() );
+    addGameProperty( 'defaultTheme', 'light' );
 
     const servicePromises = [];
 
@@ -301,18 +298,19 @@ const run = async function run() {
         groupPromises.push( groupPromise );
     }
 
-    postcss( [ cssnano ] )
-        .process( globalStyles )
-        .then( ( result ) => {
-            addGameProperty( 'builtStyles', result.css );
-        } )
-        .then( () => {
-            // Wait for a bunch of promises
-            return Promise.all( [
-                Promise.all( servicePromises ),
-                Promise.all( groupPromises ),
-            ] );
-        } )
+    for ( const identifier in games ) {
+        games[ identifier ].themeDark = gamecss( identifier, 'dark' );
+        games[ identifier ].themeLight = gamecss( identifier, 'light' );
+
+        if ( games[ identifier ].config && games[ identifier ].config.defaultTheme ) {
+            games[ identifier ].defaultTheme = games[ identifier ].config.defaultTheme;
+        }
+    }
+
+    Promise.all( [
+        Promise.all( servicePromises ),
+        Promise.all( groupPromises ),
+    ] )
         .then( () => {
             for ( const gameIdentifier in games ) {
                 buildGame( games[ gameIdentifier ] );

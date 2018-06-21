@@ -15,7 +15,7 @@
     <meta name="theme-color" content="#ffffff">
     <link rel="alternate" type="application/rss+xml" title="RSS" href="./rss">
     <link rel="stylesheet" href="./assets/bootstrap.min.css?v=3.3.7">
-    <link rel="stylesheet" href="./assets/styles.min.css?v={{version}}">
+    <link rel="stylesheet" id="theme-style" href="./assets/theme-{{defaultTheme}}.min.css?v={{version}}">
     <style>
         {{{styles}}}
     </style>
@@ -66,8 +66,22 @@
         	</g>
         </symbol>
 
+        <symbol id="icon-bulb" viewBox="0 0 512 512">
+            <path d="M320,416c0,8.844-7.156,16-16,16h-96c-8.844,0-16-7.156-16-16s7.156-16,16-16h96C312.844,400,320,407.156,320,416z M304,448
+    h-96c-8.844,0-16,7.156-16,16s7.156,16,16,16c0,17.688,14.313,32,32,32h32c17.688,0,32-14.313,32-32c8.844,0,16-7.156,16-16
+    S312.844,448,304,448z M256,32c70.594,0,128,57.438,128,128c0,45.625-23.969,86.813-64.094,110.156L304,279.406v18.406V352h-96
+    v-54.188v-18.375l-15.906-9.281C151.938,246.781,128,205.594,128,160C128,89.438,185.438,32,256,32 M256,0
+    C167.625,0,96,71.625,96,160c0,59.063,32.375,110.063,80,137.813V352c0,17.688,14.313,32,32,32h96c17.656,0,32-14.313,32-32v-54.188
+    c47.625-27.719,80-78.75,80-137.813C416,71.625,344.375,0,256,0L256,0z"/>
+        </symbol>
+
     </svg>
     <div class="container header-container">
+        <a href="#" class="dark-mode-toggle">
+            <svg class="icon">
+                <use xlink:href="#icon-bulb"></use>
+            </svg>
+        </a>
         <h1>
             <a href=".">
                 {{{logo}}} Dev Tracker
@@ -134,6 +148,56 @@
 
                 return element.parentNode && parentHasClass( element.parentNode, className );
             }
+
+            var getActiveTheme = function getActiveTheme(){
+                var currentData = document.getElementById( 'theme-style' ).href.match( /(theme\-.+?)(\..+?)$/ );
+                console.log( currentData );
+
+                return {
+                    name: currentData[ 1 ],
+                    cssSuffix: currentData[ 2 ],
+                };
+            };
+
+            var getCurrentTheme = function getCurrentTheme(){
+                var localStorageTheme = localStorage.getItem( 'theme' );
+
+                if ( localStorageTheme && localStorageTheme !== 'undefined' ) {
+                    return localStorageTheme;
+                }
+
+                return getActiveTheme().name;
+            };
+
+            var setTheme = function setTheme( theme ) {
+                var bodyClasses = document.querySelector( 'body' ).classList;
+                var currentThemeData = getActiveTheme();
+                var cssSuffix = '.css';
+
+                if ( currentThemeData.cssSuffix ) {
+                    cssSuffix = currentThemeData.cssSuffix;
+                }
+
+                bodyClasses.remove( currentThemeData.name );
+                bodyClasses.add( theme );
+
+                document.getElementById( 'theme-style' ).href = './assets/' + theme + cssSuffix;
+                localStorage.setItem( 'theme', theme );
+            };
+
+            setTheme( getCurrentTheme() );
+
+            window.addEventListener( 'click', function( event ) {
+                if ( parentHasClass( event.target.parentNode, 'dark-mode-toggle' ) ) {
+                    event.preventDefault();
+
+                    if ( getCurrentTheme() === 'theme-dark' ) {
+                        setTheme( 'theme-light' );
+                    } else {
+                        setTheme( 'theme-dark' );
+                    }
+                }
+            } );
 
             window.addEventListener( 'click', function( event ) {
                 // If set, bail early to prevent ghost clicks
