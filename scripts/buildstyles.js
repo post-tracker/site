@@ -43,6 +43,7 @@ const writeStyle = function writeStyle( identifier, type ) {
     }
 
     fs.writeFileSync( path.join( writePath, `theme-${ type }.css` ), gameStyles );
+    fs.writeFileSync( path.join( writePath, `theme-${ type }.map` ), gameStyles );
 };
 
 promiseGet( 'https://api.developertracker.com/games' )
