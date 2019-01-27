@@ -16,7 +16,7 @@ $fc-h1tx: lighten($bg-main, 50%) !default;
 $fc-auth: lighten($fc-head, 10%) !default;
 $bg-head: lighten($bg-main, 5%) !default;
 $bg-pane: lighten($bg-main, 2%) !default;
-$fc-role: darken($fc-auth, 30%) !default;
+$fc-role: lighten($bg-pres, 15%) !default;
 $bg-foot: darken($bg-head, 2%) !default;
 $bg-post: darken($fc-link, 20%) !default;
 $fc-quot: darken($fc-main, 10%) !default;
