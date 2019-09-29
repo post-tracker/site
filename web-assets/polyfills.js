@@ -31,3 +31,7 @@ if ( !window.location.origin ) {
         window.location.origin = window.location.origin + ':' + window.location.port;
     }
 }
+
+Number.isNaN = Number.isNaN || function(value) {     
+    return value !== null && (value != value || +value != value);
+}
