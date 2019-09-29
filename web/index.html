@@ -117,9 +117,11 @@
         id="right-ad"
         style="position: absolute; right: 10px; top: 0; width: 300px;"
     ></div> -->
-    <script src="https://cdn.ravenjs.com/3.26.2/raven.min.js" crossorigin="anonymous"></script>
+    <script src="https://browser.sentry-cdn.com/5.6.3/bundle.min.js" integrity="sha384-/Cqa/8kaWn7emdqIBLk3AkFMAHBk0LObErtMhO+hr52CntkaurEnihPmqYj3uJho" crossorigin="anonymous"></script>
     <script>
-        Raven.config('https://2b33c8dea5644772a16965c650e7703b@sentry.io/196507').install();
+        Sentry.init( {
+            dns: 'https://2b33c8dea5644772a16965c650e7703b@sentry.io/196507',
+        });
         {{{polyfills}}}
     </script>
     <script>
