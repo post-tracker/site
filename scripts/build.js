@@ -9,7 +9,6 @@ const fs = require( 'fs' );
 const mustache = require( 'mustache' );
 const junk = require( 'junk' );
 const recursive = require( 'recursive-readdir' );
-const rimraf = require( 'rimraf' );
 const argv = require( 'minimist' )( process.argv.slice( 2 ) );
 
 const gamecss = require( './modules/gamecss' );
@@ -207,7 +206,9 @@ const run = async function run() {
 
     if ( argv.stage ) {
         try {
-            rimraf.sync( STAGE_PATH );
+            fs.rmdirSync( STAGE_PATH, {
+                recursive: true,
+            } );
         } catch( removeError ) {
             console.error( removeError );
         }
