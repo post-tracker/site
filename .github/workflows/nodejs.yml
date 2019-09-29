@@ -1,6 +1,9 @@
-name: Node CI
+name: Build & deploy
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   build:
