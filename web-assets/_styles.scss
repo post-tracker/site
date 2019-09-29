@@ -239,6 +239,19 @@ a.ipsAttachLink_image {
     .header-link {
         display: none;
     }
+    
+    .dark-mode-toggle {
+        background-color: #f5f5f5;
+        border-radius: 50%;
+        bottom: 20px;
+        display: block;
+        padding: 15px;
+        height: 55px;
+        position: fixed;
+        right: 20px;
+        top: auto;
+        z-index: 1;
+    }
 }
 
 @media screen and ( max-width: 480px ){

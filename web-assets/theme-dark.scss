@@ -168,3 +168,9 @@ pre {
 iframe {
     border: 1px solid;
 }
+
+@media screen and ( max-width: 660px ){
+    .dark-mode-toggle {
+        background-color: $bg-pres;
+    }
+}
