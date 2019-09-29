@@ -5,7 +5,12 @@ const defaultRewrite = function ( path, req ) {
 };
 
 const assetsRewrite = function ( path, req ) {
-    if ( path.match( '/assets/theme-light.css' ) || path.match( '/assets/theme-dark.css' ) ) {
+    if (
+        path.match( '/assets/theme-light.css' ) || 
+        path.match( '/assets/theme-dark.css' ) || 
+        path.match( '/assets/theme-light.map' ) || 
+        path.match( '/assets/theme-dark.map' )
+    ) {
         return path.replace( '/assets', '' );
     }
 
