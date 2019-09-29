@@ -2,7 +2,6 @@ require( 'dotenv' ).config();
 
 const path = require( 'path' );
 const fs = require( 'fs' );
-const mkdirp = require( 'mkdirp' );
 
 const mime = require( 'mime-types' );
 const AWS = require( 'aws-sdk' );
@@ -75,7 +74,9 @@ module.exports = function saveFile( filePath, fileData ) {
     if ( argv.stage ) {
         const fullPath = path.join( STAGE_PATH, filePath );
 
-        mkdirp( path.parse( fullPath ).dir, ( writeError ) => {
+        fs.mkdir( path.parse( fullPath ).dir, {
+            recursive: true,
+        }, ( writeError ) => {
             if ( writeError ) {
                 throw writeError;
             }

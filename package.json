@@ -20,7 +20,7 @@
     "url": "https://github.com/post-tracker/site/issues"
   },
   "engines": {
-    "node": "^6.5.0"
+    "node": "^12.11.0"
   },
   "license": "MIT",
   "dependencies": {
@@ -37,7 +37,6 @@
     "eslint-config-kokarn": "^2.0.0",
     "junk": "^2.1.0",
     "minimist": "^1.2.0",
-    "mkdirp": "^0.5.1",
     "mustache": "^2.2.1",
     "node-sass": "^4.9.0",
     "nodemon": "^1.17.5",
