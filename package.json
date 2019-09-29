@@ -24,7 +24,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "aws-sdk": "^2.255.1",
+    "aws-sdk": "^2.538.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.7.0",
@@ -35,7 +35,7 @@
     "dotenv": "^8.1.0",
     "eslint": "^3.5.0",
     "eslint-config-kokarn": "^2.0.0",
-    "junk": "^2.1.0",
+    "junk": "^3.1.0",
     "minimist": "^1.2.0",
     "mustache": "^2.2.1",
     "node-sass": "^4.12.0",
