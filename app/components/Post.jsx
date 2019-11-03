@@ -174,7 +174,7 @@ class Post extends React.Component {
     }
 
     updateIframes ( htmlString ) {
-        const frameRegex = new RegExp( '<iframe.+?src="(http:\/\/.+?)".+?><\/iframe>', 'g' )
+        const frameRegex = new RegExp( '<iframe.+?src="(https?:\/\/.+?)".+?><\/iframe>', 'g' )
         let matches;
 
         while ( ( matches = frameRegex.exec( htmlString ) ) !== null ) {
