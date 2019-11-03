@@ -157,7 +157,7 @@ class Post extends React.Component {
             if ( matches[ 2 ] === 'https:' ) {
                 fallbackUrl = `ssl:${ fallbackUrl }`;
             }
-            const newSrc = `src="https://images.weserv.nl/?url=${ encodeURIComponent( matches[ 3 ] ) }&w=${ maxWidth }&h=${ maxHeight }&t=fit&il&errorredirect=${ encodeURIComponent( fallbackUrl ) }"`
+            const newSrc = `src="https://images.weserv.nl/?url=${ encodeURIComponent( matches[ 3 ] ) }&w=${ maxWidth }&h=${ maxHeight }&t=fit&il&errorredirect=${ encodeURIComponent( fallbackUrl ) }" loading="lazy" `
             htmlString = htmlString.replace( matches[ 1 ], newSrc );
         }
 
@@ -166,7 +166,7 @@ class Post extends React.Component {
             if ( matches[ 2 ] === 'https:' ) {
                 fallbackUrl = `ssl:${ fallbackUrl }`;
             }
-            const newSrc = `srcset="https://images.weserv.nl/?url=${ encodeURIComponent( matches[ 3 ] ) }&w=${ maxWidth }&h=${ maxHeight }&t=fit&il&errorredirect=${ encodeURIComponent( fallbackUrl ) } ${ matches[ 4 ] }"`
+            const newSrc = `srcset="https://images.weserv.nl/?url=${ encodeURIComponent( matches[ 3 ] ) }&w=${ maxWidth }&h=${ maxHeight }&t=fit&il&errorredirect=${ encodeURIComponent( fallbackUrl ) } ${ matches[ 4 ] }" loading="lazy"`
             htmlString = htmlString.replace( matches[ 1 ], newSrc );
         }
 
