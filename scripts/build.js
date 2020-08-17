@@ -13,6 +13,7 @@ const argv = require( 'minimist' )( process.argv.slice( 2 ) );
 
 const gamecss = require( './modules/gamecss' );
 const savefile = require( './modules/savefile' );
+const sleep = require('./modules/sleep');
 
 if ( !process.env.API_TOKEN ) {
     throw new Error( 'Unable to load api key' );
@@ -268,6 +269,7 @@ const run = async function run() {
             } );
 
         servicePromises.push( servicePromise );
+        await sleep(500);
     }
 
     const groupPromises = [];
@@ -297,6 +299,7 @@ const run = async function run() {
             } );
 
         groupPromises.push( groupPromise );
+        await sleep(500);
     }
 
     for ( const identifier in games ) {
