@@ -149,6 +149,10 @@
         if ( 'serviceWorker' in navigator ) {
             navigator.serviceWorker.register( 'service-worker.js' );
         }
+        
+        if(window.location.hostname === 'battlefielddevtracker.com'){
+            window.location.href = window.location.href.replace ( new RegExp("^" + "https://battlefielddevtracker.com/"), "https://developertracker.com/battlefield1/" );
+        }
 
         (function(){
             var preventClick = false;
