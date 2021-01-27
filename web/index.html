@@ -50,7 +50,7 @@
             <rect width="512" height="512" rx="15%" fill="#1da1f3"/>
             <path fill="#fff" d="M437 152a72 72 0 0 1-40 12 72 72 0 0 0 32-40 72 72 0 0 1-45 17 72 72 0 0 0-122 65 200 200 0 0 1-145-74 72 72 0 0 0 22 94 72 72 0 0 1-32-7 72 72 0 0 0 56 69 72 72 0 0 1-32 1 72 72 0 0 0 67 50 200 200 0 0 1-105 29 200 200 0 0 0 309-179 200 200 0 0 0 35-37"/>
         </symbol>
-        
+
         <symbol id="icon-patreon" viewBox="0 0 512 512" aria-label="Patreon" role="img">
             <rect width="512" height="512" rx="15%" fill="#052d49"/>
             <circle cx="310" cy="223" r="113" fill="#fff"/>
@@ -93,7 +93,7 @@
                 {{{logo}}} Dev Tracker
             </a>
         </h1>
-        <a href="https://www.patreon.com/kokarn" class="header-link reddit-link" title="Support the development on Patreon">
+        <a href="https://www.patreon.com/kokarn" class="header-link patreon-link" title="Support the development on Patreon">
             <svg class="icon">
                 <use xlink:href="#icon-patreon"></use>
             </svg>
@@ -149,7 +149,7 @@
         if ( 'serviceWorker' in navigator ) {
             navigator.serviceWorker.register( 'service-worker.js' );
         }
-        
+
         if(window.location.hostname === 'battlefielddevtracker.com'){
             window.location.href = window.location.href.replace ( new RegExp("^" + "https://battlefielddevtracker.com/"), "https://developertracker.com/battlefield1/" );
         }
