@@ -19,9 +19,6 @@
   "bugs": {
     "url": "https://github.com/post-tracker/site/issues"
   },
-  "engines": {
-    "node": "^12.11.0"
-  },
   "license": "MIT",
   "dependencies": {
     "aws-sdk": "^2.562.0",
@@ -38,7 +35,7 @@
     "junk": "^3.1.0",
     "minimist": "^1.2.0",
     "mustache": "^2.3.2",
-    "node-sass": "^4.14.1",
+    "node-sass": "^6.0.1",
     "nodemon": "^1.19.4",
     "postcss": "^6.0.23",
     "prop-types": "^15.7.2",
