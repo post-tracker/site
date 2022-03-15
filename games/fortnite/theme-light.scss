@@ -1,6 +1,6 @@
 @import "../../web-assets/theme-light";
 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
 @font-face {
 	font-family: 'Burbank Big Condensed';
@@ -8,6 +8,7 @@
 	font-weight: bold;
 	src: url('BurbankBigCondensed-Bold.woff2') format('woff2'),
 		url('BurbankBigCondensed-Bold.woff') format('woff');
+    font-display: swap;
 }
 
 body {
