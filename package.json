@@ -9,7 +9,8 @@
     "deploy": "node scripts/build.js",
     "dev": "concurrently \"webpack-dev-server --open\" \"nodemon --watch web-assets --watch games -e scss scripts/buildstyles.js\"",
     "lint:components": "eslint -c kokarn/react app/**/*",
-    "lint:scripts": "eslint -c kokarn/nodejs scripts/*.js"
+    "lint:scripts": "eslint -c kokarn/nodejs scripts/*.js",
+    "pretest": "eslint *.js"
   },
   "author": "Oskar Risberg <kokarn@gmail.com>",
   "repository": {
