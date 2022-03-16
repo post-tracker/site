@@ -13,7 +13,6 @@ Developers - *.csv
 *.log
 web/scripts/app\.js\.map
 config/keys.json
-package-lock\.json
 .env
 .idea/
 stage
