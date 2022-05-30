@@ -16,13 +16,16 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 18.x
-    - run: npm install
+
+    - run: npm ci
+
     - run: npm run build --if-present
       env:
         CI: true
         API_TOKEN: ${{ secrets.API_TOKEN }}
         AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
         AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
+
     - run: npm run deploy --if-present
       env:
         CI: true
