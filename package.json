@@ -56,5 +56,8 @@
   },
   "eslintConfig": {
     "extends": "kokarn"
+  },
+  "engines": {
+    "node": "^18.0.0"
   }
 }
