@@ -1,4 +1,3 @@
-import https from 'https';
 import queryString from 'querystring';
 import debounce from 'debounce';
 import cookie from 'react-cookie';
@@ -141,58 +140,42 @@ const getQueryParameters = function getQueryParameters ( services, groups, searc
 
 // eslint-disable-next-line max-params
 const getPosts = function getPosts ( search, groups, services, dispatch ) {
-    const options = {
-        hostname: API_HOSTNAME,
-        method: 'GET',
-        path: `/${ window.game }/posts`,
-        port: API_PORT,
-    };
+    let urlPath = `/${ window.game }/posts`;
     const querystringParameters = getQueryParameters( services, groups, search );
     const parsedQuerystring = queryString.stringify( querystringParameters );
 
     if ( querystringParameters.post ) {
-        options.path = `${ options.path }/${ querystringParameters.post }`;
+        urlPath = `${ urlPath }/${ querystringParameters.post }`;
     } else {
-        options.path = `${ options.path }?${ parsedQuerystring }`;
+        urlPath = `${ urlPath }?${ parsedQuerystring }`;
     }
+
+    const url = new URL(`https://${API_HOSTNAME}:${API_PORT}${urlPath}`);
 
     const startTime = new Date().getTime();
     dispatch( requestPosts() );
 
-    const request = https.request( options, ( response ) => {
-        let body = '';
-
-        response.setEncoding( 'utf8' );
-
-        response.on( 'data', ( chunk ) => {
-            body = body + chunk;
-        } );
-
-        response.on( 'end', () => {
+    fetch( url )
+        .then((response) => {
+            return response.json();
+        })
+        .then((posts) => {
             if ( window.ga && trackTiming ) {
                 ga( 'send', {
                     hitType: 'timing',
                     timingCategory: 'Posts API',
                     timingVar: 'load',
                     timingValue: new Date().getTime() - startTime,
-                    timingLabel: options.path,
+                    timingLabel: url.path,
                 } );
             }
-            try {
-                dispatch( receivePosts( JSON.parse( body ).data ) );
-            } catch ( postsFail ) {
-                dispatch( receivePosts( [] ) );
-                console.error( postsFail );
-            }
-        } );
-    } );
-
-    request.on( 'error', ( requestError ) => {
-        // eslint-disable-next-line no-console
-        console.error( `problem with request: ${ requestError.message }` );
-    } );
-
-    request.end();
+            console.log(posts);
+            dispatch( receivePosts( posts.data ) );
+        })
+        .catch((requestError) => {
+            dispatch( receivePosts( [] ) );
+            onsole.error( postsFail );
+        });
 };
 
 const debouncedFetchPosts = debounce( getPosts, FETCH_DEBOUNCE_INTERVAL );
