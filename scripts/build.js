@@ -207,7 +207,7 @@ const run = async function run() {
 
     if ( argv.stage ) {
         try {
-            fs.rmdirSync( STAGE_PATH, {
+            fs.rmSync( STAGE_PATH, {
                 recursive: true,
             } );
         } catch( removeError ) {
