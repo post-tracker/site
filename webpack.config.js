@@ -6,9 +6,9 @@ const defaultRewrite = function ( path, req ) {
 
 const assetsRewrite = function ( path, req ) {
     if (
-        path.match( '/assets/theme-light.css' ) || 
-        path.match( '/assets/theme-dark.css' ) || 
-        path.match( '/assets/theme-light.map' ) || 
+        path.match( '/assets/theme-light.css' ) ||
+        path.match( '/assets/theme-dark.css' ) ||
+        path.match( '/assets/theme-light.map' ) ||
         path.match( '/assets/theme-dark.map' )
     ) {
         return path.replace( '/assets', '' );
@@ -16,7 +16,7 @@ const assetsRewrite = function ( path, req ) {
 
     const matches = path.match( /\/.+?(\/.*)/ );
 
-    return matches[ 1 ];
+    return matches[ 1 ];
 };
 
 module.exports = {
@@ -25,14 +25,14 @@ module.exports = {
     module: {
         rules: [
             {
-                exclude: /(node_modules|bower_components)/,
+                exclude: /(node_modules)/,
                 test: /\.jsx?$/,
                 use: {
                     loader: 'babel-loader',
                     options: {
                         presets: [
-                            'env',
-                            'react',
+                            '@babel/env',
+                            '@babel/react',
                         ],
                     },
                 },
@@ -41,13 +41,16 @@ module.exports = {
     },
     devtool: 'source-map',
     devServer: {
-        contentBase: path.join( __dirname, 'dev' ),
-        compress: true,
         https: true,
         host: '0.0.0.0',
         port: 9000,
-        publicPath: "https://0.0.0.0:9000/scripts/",
-        watchContentBase: true,
+        devMiddleware: {
+            publicPath: "https://0.0.0.0:9000/scripts/",
+        },
+        static: {
+            directory: path.join( __dirname, 'dev' ),
+            watch: true,
+        },
         proxy: {
             '/*/*.html': {
                 target: 'https://0.0.0.0:9000',
