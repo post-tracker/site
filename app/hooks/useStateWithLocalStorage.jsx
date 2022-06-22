@@ -6,7 +6,12 @@ const useStateWithLocalStorage = (localStorageKey, fallbackValue) => {
     if (initialValue === null) {
         initialValue = fallbackValue;
     } else {
-        initialValue = JSON.parse(initialValue);
+        try {
+            initialValue = JSON.parse(initialValue);
+        } catch (jsonParseError) {
+            // If we have something non-json in local storage, fall back to fallback value
+            initialValue = fallbackValue;
+        }
     }
 
     const [value, setValue] = useState(initialValue);
