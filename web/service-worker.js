@@ -23,7 +23,6 @@ const PRECACHE_ASSETS = [
     './assets/styles.min.css?v={{version}}',
     './assets/loader.svg?v=2',
     './scripts/app.js?v={{version}}',
-    'manifest.json',
     './assets/bootstrap.min.css?v=3.3.7'
 ];
 
