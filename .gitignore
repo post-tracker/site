@@ -16,3 +16,4 @@ config/keys.json
 .env
 .idea/
 stage
+dev/assets/theme*

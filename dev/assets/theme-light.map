@@ -49,10 +49,6 @@ h1 a:hover {
 .patreon-link {
   right: 165px; }
 
-.dark-mode-toggle {
-  position: absolute;
-  top: 10px; }
-
 .panel {
   position: relative;
   word-wrap: break-word; }
@@ -191,18 +187,7 @@ a.ipsAttachLink_image {
 
 @media screen and (max-width: 660px) {
   .header-link {
-    display: none; }
-  .dark-mode-toggle {
-    background-color: #f5f5f5;
-    border-radius: 50%;
-    bottom: 20px;
-    display: block;
-    padding: 15px;
-    height: 55px;
-    position: fixed;
-    right: 20px;
-    top: auto;
-    z-index: 1; } }
+    display: none; } }
 
 @media screen and (max-width: 480px) {
   h1 {
@@ -235,9 +220,6 @@ a.ipsAttachLink_image {
     display: none; }
   .groups-wrapper.show .checkbox {
     display: inline-block; } }
-
-.dark-mode-toggle {
-  fill: #000; }
 
 h1 a,
 h1 a:active,
