@@ -48,6 +48,7 @@
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.2",
     "react-timeago": "^7.1.0",
+    "react-toggle-dark-mode": "^1.1.0",
     "recursive-readdir": "^2.2.2",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",

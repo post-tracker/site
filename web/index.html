@@ -77,15 +77,6 @@
         	</g>
         </symbol>
 
-        <symbol id="icon-bulb" viewBox="0 0 512 512">
-            <path d="M320,416c0,8.844-7.156,16-16,16h-96c-8.844,0-16-7.156-16-16s7.156-16,16-16h96C312.844,400,320,407.156,320,416z M304,448
-    h-96c-8.844,0-16,7.156-16,16s7.156,16,16,16c0,17.688,14.313,32,32,32h32c17.688,0,32-14.313,32-32c8.844,0,16-7.156,16-16
-    S312.844,448,304,448z M256,32c70.594,0,128,57.438,128,128c0,45.625-23.969,86.813-64.094,110.156L304,279.406v18.406V352h-96
-    v-54.188v-18.375l-15.906-9.281C151.938,246.781,128,205.594,128,160C128,89.438,185.438,32,256,32 M256,0
-    C167.625,0,96,71.625,96,160c0,59.063,32.375,110.063,80,137.813V352c0,17.688,14.313,32,32,32h96c17.656,0,32-14.313,32-32v-54.188
-    c47.625-27.719,80-78.75,80-137.813C416,71.625,344.375,0,256,0L256,0z"/>
-        </symbol>
-
         <symbol id="icon-discord" viewBox="0 0 512 512">
             <rect width="512" height="512" rx="15%" fill="#666"/>
             <path 
@@ -95,11 +86,6 @@
         </symbol>
     </svg>
     <div class="container header-container">
-        <a href="#" class="dark-mode-toggle">
-            <svg class="icon">
-                <use xlink:href="#icon-bulb"></use>
-            </svg>
-        </a>
         <h1>
             <a href=".">
                 {{{logo}}} Dev Tracker
@@ -196,7 +182,7 @@
             };
 
             var getCurrentTheme = function getCurrentTheme(){
-                var localStorageTheme = localStorage.getItem( 'theme' );
+                var localStorageTheme = JSON.parse(localStorage.getItem( 'theme' ));
 
                 if ( localStorageTheme && localStorageTheme !== 'undefined' ) {
                     return localStorageTheme;
@@ -218,21 +204,13 @@
                 bodyClasses.add( theme );
 
                 document.getElementById( 'theme-style' ).href = './assets/' + theme + cssSuffix;
-                localStorage.setItem( 'theme', theme );
+
             };
 
             setTheme( getCurrentTheme() );
 
-            window.addEventListener( 'click', function( event ) {
-                if ( parentHasClass( event.target.parentNode, 'dark-mode-toggle' ) ) {
-                    event.preventDefault();
-
-                    if ( getCurrentTheme() === 'theme-dark' ) {
-                        setTheme( 'theme-light' );
-                    } else {
-                        setTheme( 'theme-dark' );
-                    }
-                }
+            window.addEventListener( 'switch-theme', function( event ) {
+                setTheme(event.detail);
             } );
 
             window.addEventListener( 'click', function( event ) {
