@@ -27,6 +27,17 @@
             text-align: center;
         }
 
+        .discord-bot-wrapper {
+            margin: 0;
+            text-align: center;
+        }
+
+        .discord-bot-wrapper a {
+            color: initial;
+            text-underline-offset: 4px;
+            text-decoration-thickness: 0.5px;
+        }
+
         .games-wrapper {
             display: flex;
             flex-wrap: wrap;
@@ -49,6 +60,13 @@
     <h1>
         Developer Trackers
     </h1>
+    <p
+        class="discord-bot-wrapper"
+    >
+        <a href="https://discord.com/api/oauth2/authorize?client_id=982257201211138050&permissions=274877925376&scope=bot%20applications.commands">
+            Add to Discord
+        </a>
+    </p>
     <div class="games-wrapper js-games-wrapper">
         {{#games}}
         <div class="game-wrapper">
