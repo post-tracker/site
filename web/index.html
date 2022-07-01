@@ -235,13 +235,18 @@
     </script>
 
     <script async src="scripts/app.js?v={{version}}"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LXYBCGVGVL"></script>
     <script>
-        window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-        ga('set', 'dimension1', '{{name}}');
-        ga('create', 'UA-3953312-29', 'auto');
-        ga('send', 'pageview');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        
+        gtag('config', 'G-LXYBCGVGVL');
+        gtag('set', 'dimension1', '{{name}}');
     </script>
-    <script async src="https://www.google-analytics.com/analytics.js"></script>
     <script data-ad-client="ca-pub-7039480870927391" async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </body>
 </html>
