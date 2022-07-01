@@ -76,12 +76,16 @@
         </div>
         {{/games}}
     </div>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LXYBCGVGVL"></script>
     <script>
-        window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-        ga('set', 'dimension1', '{{name}}');
-        ga('create', 'UA-3953312-29', 'auto');
-        ga('send', 'pageview');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        
+        gtag('config', 'G-LXYBCGVGVL');
+        gtag('set', 'dimension1', '{{name}}');
     </script>
-    <script async src="https://www.google-analytics.com/analytics.js"></script>
 </body>
 </html>
