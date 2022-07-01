@@ -4,7 +4,7 @@
   "description": "A framework for running multiple dev trackers",
   "main": "index.html",
   "scripts": {
-    "stage": "node scripts/build.js --stage",
+    "stage": "node scripts/build.js --stage && npx serve stage",
     "build": "webpack --mode=production --progress",
     "deploy": "node scripts/build.js",
     "dev": "concurrently \"webpack-dev-server --open\" \"nodemon --watch web-assets --watch games -e scss scripts/buildstyles.js\"",
