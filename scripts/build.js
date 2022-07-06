@@ -19,7 +19,7 @@ if ( !process.env.API_TOKEN ) {
     throw new Error( 'Unable to load api key' );
 }
 
-const API_HOST = 'api.kokarn.com';
+const API_HOST = 'api2.developertracker.com';
 const STAGE_PATH = path.join( __dirname, '..', 'stage' );
 // const API_HOST = 'localhost:3000';
 // process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
