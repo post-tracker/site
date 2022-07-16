@@ -7,11 +7,12 @@ class PostList extends React.Component {
     render () {
         let postNodes = [];
 
-        postNodes = this.props.posts.map( ( communityPost ) => {
+        postNodes = this.props.posts.map( ( communityPost, index ) => {
             return (
                 <Post
                     key = { communityPost.urlHash }
                     postData = { communityPost }
+                    postIndex = { index }
                 />
             );
         } );

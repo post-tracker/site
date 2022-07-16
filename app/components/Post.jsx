@@ -27,6 +27,7 @@ class Post extends React.Component {
         this.state = {
             expandable: false,
         };
+        this.postIndex = props.postIndex;
     }
 
     componentWillMount () {
@@ -151,13 +152,18 @@ class Post extends React.Component {
         const imgRegex = new RegExp( '<img[^>]+?(src="(https?:)?\/\/(.+?)").*?>', 'g' );
         const srcsetRegex = new RegExp( '<img[^>]+?(srcset="(https?:)?\/\/(.+?)) (.+?)".*?>', 'g' );
         let matches;
+        let loadingTypeString = ' loading="lazy" ';
+
+        if(this.postIndex === 0){
+            loadingTypeString = '';
+        }
 
         while ( ( matches = imgRegex.exec( htmlString ) ) !== null ) {
             let fallbackUrl = matches[ 3 ];
             if ( matches[ 2 ] === 'https:' ) {
                 fallbackUrl = `ssl:${ fallbackUrl }`;
             }
-            const newSrc = `src="https://images.weserv.nl/?url=${ encodeURIComponent( matches[ 3 ] ) }&w=${ maxWidth }&h=${ maxHeight }&t=fit&il&errorredirect=${ encodeURIComponent( fallbackUrl ) }" loading="lazy" `
+            const newSrc = `src="https://images.weserv.nl/?url=${ encodeURIComponent( matches[ 3 ] ) }&w=${ maxWidth }&h=${ maxHeight }&t=fit&il&errorredirect=${ encodeURIComponent( fallbackUrl ) }"${ loadingTypeString }`;
             htmlString = htmlString.replace( matches[ 1 ], newSrc );
         }
 
@@ -166,7 +172,7 @@ class Post extends React.Component {
             if ( matches[ 2 ] === 'https:' ) {
                 fallbackUrl = `ssl:${ fallbackUrl }`;
             }
-            const newSrc = `srcset="https://images.weserv.nl/?url=${ encodeURIComponent( matches[ 3 ] ) }&w=${ maxWidth }&h=${ maxHeight }&t=fit&il&errorredirect=${ encodeURIComponent( fallbackUrl ) } ${ matches[ 4 ] }" loading="lazy"`
+            const newSrc = `srcset="https://images.weserv.nl/?url=${ encodeURIComponent( matches[ 3 ] ) }&w=${ maxWidth }&h=${ maxHeight }&t=fit&il&errorredirect=${ encodeURIComponent( fallbackUrl ) } ${ matches[ 4 ] }"${ loadingTypeString }`
             htmlString = htmlString.replace( matches[ 1 ], newSrc );
         }
 
@@ -362,6 +368,7 @@ Post.propTypes = {
         url: PropTypes.string,
         urlHash: PropTypes.string,
     } ).isRequired,
+    postIndex: PropTypes.number,
 };
 
 export default Post;
