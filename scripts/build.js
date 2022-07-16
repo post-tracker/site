@@ -227,8 +227,6 @@ const run = async function run() {
             games[ identifier ][ property ] = value;
         }
     };
-    const polyfills = fs.readFileSync( path.join( __dirname, '/../web-assets/polyfills.js' ), 'utf8' );
-    addGameProperty( 'polyfills', polyfills );
     addGameProperty( 'version', Date.now() );
     addGameProperty( 'defaultTheme', 'light' );
 
