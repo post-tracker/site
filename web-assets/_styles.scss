@@ -235,6 +235,10 @@ a.ipsAttachLink_image {
 }
 
 @media screen and ( max-width: 660px ){
+    h1 {
+        margin-top: 35px;
+    }
+    
     .header-link {
         display: none;
     }
