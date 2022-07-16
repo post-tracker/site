@@ -7,7 +7,7 @@ import {
 } from '../actions';
 
 import PostList from '../components/PostList.jsx';
-import Loader from '../components/Loader.jsx';
+// import Loader from '../components/Loader.jsx';
 import NoPosts from '../components/NoPosts.jsx';
 
 class PostListContainer extends React.Component {
@@ -16,13 +16,13 @@ class PostListContainer extends React.Component {
     }
 
     render () {
-        if ( this.props.isFetching ) {
-            return (
-                <Loader
-                    isFetching = { this.props.isFetching }
-                />
-            );
-        }
+        // if ( this.props.isFetching ) {
+        //     return (
+        //         <Loader
+        //             isFetching = { this.props.isFetching }
+        //         />
+        //     );
+        // }
 
         if ( this.props.posts.length < 1 ) {
             return (
