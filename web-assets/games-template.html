@@ -51,6 +51,21 @@
             max-width: 28%;
         }
 
+        .game-wrapper a {
+            color: initial;
+            text-decoration: none;
+            text-underline-offset: 5px;
+        }
+
+        .game-wrapper a:hover {
+            text-decoration: underline;
+        }
+
+        .game-wrapper h2 {
+            color: initial;
+            text-align: center;
+        }
+
         .game-wrapper img {
             max-width: 100%;
         }
@@ -72,6 +87,7 @@
         <div class="game-wrapper">
             <a href="https://{{{ url }}}" title="{{ name }} dev tracker">
                 <img src="{{{ image }}}">
+                <h2>{{ name }}</h2>
             </a>
         </div>
         {{/games}}
@@ -83,7 +99,7 @@
             dataLayer.push(arguments);
         }
         gtag('js', new Date());
-        
+
         gtag('config', 'G-LXYBCGVGVL');
         gtag('set', 'dimension1', '{{name}}');
     </script>
