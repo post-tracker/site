@@ -41,7 +41,7 @@
     "mustache": "^2.3.2",
     "node-sass": "^7.0.1",
     "nodemon": "^2.0.15",
-    "postcss": "^6.0.23",
+    "postcss": "^7.0.36",
     "prop-types": "^15.7.2",
     "react": "^18.2.0",
     "react-cookie": "^1.0.5",
