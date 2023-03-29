@@ -27,34 +27,30 @@
             text-align: center;
         }
 
-        .discord-bot-wrapper {
-            margin: 0;
-            text-align: center;
-        }
-
-        .discord-bot-wrapper a {
+        a {
             color: initial;
             text-underline-offset: 4px;
             text-decoration-thickness: 0.5px;
         }
 
+        .discord-bot-wrapper {
+            text-align: center;
+        }
+
         .games-wrapper {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
-            margin: 0 auto;
+            justify-content: space-between;
         }
 
         .game-wrapper {
-            line-height: 0;
-            margin: 2vw;
-            max-width: 28%;
+            /* line-height: 0;
+            margin: 2vw; */
+            width: 18%;
         }
 
         .game-wrapper a {
-            color: initial;
             text-decoration: none;
-            text-underline-offset: 5px;
         }
 
         .game-wrapper a:hover {
@@ -67,7 +63,19 @@
         }
 
         .game-wrapper img {
-            max-width: 100%;
+            width: 100%;
+        }
+
+        @media screen and (max-width: 768px) {
+            .game-wrapper {
+                width: 30%;
+            }
+
+            .game-wrapper h2 {
+                font-size: 12px;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
         }
     </style>
 </head>
