@@ -33,7 +33,7 @@ services:
   # --- HTTP Services ---
 
   rest-api:
-    build: ./rest-api
+    image: ghcr.io/post-tracker/rest-api:latest
     ports:
       - "3000:3000"
     environment:
@@ -49,7 +49,7 @@ services:
         condition: service_healthy
 
   admin:
-    build: ./admin
+    image: ghcr.io/post-tracker/admin:latest
     ports:
       - "4000:4000"
     environment:
@@ -61,7 +61,7 @@ services:
       - rest-api
 
   queue-admin:
-    build: ./queue-admin
+    image: ghcr.io/post-tracker/queue-admin:latest
     ports:
       - "4001:4000"
     environment:
@@ -75,7 +75,7 @@ services:
         condition: service_healthy
 
   chieftain:
-    build: ./chieftain
+    image: ghcr.io/post-tracker/chieftain:latest
     ports:
       - "4002:3000"
     environment:
@@ -89,7 +89,7 @@ services:
   # --- Queue Workers ---
 
   peon:
-    build: ./peon
+    image: ghcr.io/post-tracker/peon:latest
     environment:
       REDIS_URL: redis://redis:6379
       API_TOKEN: ${API_TOKEN:-}
@@ -100,7 +100,7 @@ services:
         condition: service_started
 
   grunt:
-    build: ./grunt
+    image: ghcr.io/post-tracker/grunt:latest
     environment:
       REDIS_URL: redis://redis:6379
       API_TOKEN: ${API_TOKEN:-}
@@ -113,7 +113,7 @@ services:
   # --- Indexers & Finders ---
 
   indexer:
-    build: ./indexer
+    image: ghcr.io/post-tracker/indexer:latest
     environment:
       API_TOKEN: ${API_TOKEN:-}
       LIMIT_SERVICE: ${LIMIT_SERVICE:-}
@@ -121,24 +121,24 @@ services:
       - rest-api
 
   finder:
-    build: ./finder
+    image: ghcr.io/post-tracker/finder:latest
     environment:
       API_TOKEN: ${API_TOKEN:-}
     depends_on:
       - rest-api
 
   game-finder:
-    build: ./game-finder
+    image: ghcr.io/post-tracker/game-finder:latest
     depends_on:
       - rest-api
 
   ludeon-finder:
-    build: ./ludeon-finder
+    image: ghcr.io/post-tracker/ludeon-finder:latest
 
   # --- Queue Setup (one-shot) ---
 
   queue-users:
-    build: ./queue-users
+    image: ghcr.io/post-tracker/queue-users:latest
     environment:
       REDIS_URL: redis://redis:6379
       API_TOKEN: ${API_TOKEN:-}
@@ -149,7 +149,7 @@ services:
         condition: service_started
 
   queuer:
-    build: ./queuer
+    image: ghcr.io/post-tracker/queuer:latest
     environment:
       REDIS_URL: redis://redis:6379
       API_TOKEN: ${API_TOKEN:-}
@@ -162,14 +162,14 @@ services:
   # --- Utilities ---
 
   turtle:
-    build: ./turtle
+    image: ghcr.io/post-tracker/turtle:latest
     environment:
       API_TOKEN: ${API_TOKEN:-}
       AWS_ACCESS_KEY: ${AWS_ACCESS_KEY:-}
       AWS_SECRET_KEY: ${AWS_SECRET_KEY:-}
 
   twitch-lurker:
-    build: ./twitch-lurker
+    image: ghcr.io/post-tracker/twitch-lurker:latest
     environment:
       API_TOKEN: ${API_TOKEN:-}
       TWITCH_CLIENTID: ${TWITCH_CLIENTID:-}
