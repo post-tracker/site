@@ -1,0 +1,181 @@
+services:
+  # --- Infrastructure ---
+
+  mysql:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-devtracker}
+      MYSQL_DATABASE: ${DB_NAME:-developertracker}
+      MYSQL_USER: ${DB_USERNAME:-devtracker}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-devtracker}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # --- HTTP Services ---
+
+  rest-api:
+    build: ./rest-api
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+      NODE_ENV: ${NODE_ENV:-development}
+      DB_HOST: mysql
+      DB_NAME: ${DB_NAME:-developertracker}
+      DB_USERNAME: ${DB_USERNAME:-devtracker}
+      DB_PASSWORD: ${DB_PASSWORD:-devtracker}
+      API_TOKENS: ${API_TOKENS:-{}}
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  admin:
+    build: ./admin
+    ports:
+      - "4000:4000"
+    environment:
+      PORT: 4000
+      API_TOKEN: ${API_TOKEN:-}
+      ACCESS_USERNAME: ${ACCESS_USERNAME:-admin}
+      ACCESS_PASSWORD: ${ACCESS_PASSWORD:-admin}
+    depends_on:
+      - rest-api
+
+  queue-admin:
+    build: ./queue-admin
+    ports:
+      - "4001:4000"
+    environment:
+      PORT: 4000
+      REDIS_URL: redis://redis:6379
+      QUEUES: ${QUEUES:-[{"name":"posts","hostId":"redis"},{"name":"users","hostId":"redis"}]}
+      ACCESS_USERNAME: ${ACCESS_USERNAME:-admin}
+      ACCESS_PASSWORD: ${ACCESS_PASSWORD:-admin}
+    depends_on:
+      redis:
+        condition: service_healthy
+
+  chieftain:
+    build: ./chieftain
+    ports:
+      - "4002:3000"
+    environment:
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: ""
+    depends_on:
+      redis:
+        condition: service_healthy
+
+  # --- Queue Workers ---
+
+  peon:
+    build: ./peon
+    environment:
+      REDIS_URL: redis://redis:6379
+      API_TOKEN: ${API_TOKEN:-}
+    depends_on:
+      redis:
+        condition: service_healthy
+      rest-api:
+        condition: service_started
+
+  grunt:
+    build: ./grunt
+    environment:
+      REDIS_URL: redis://redis:6379
+      API_TOKEN: ${API_TOKEN:-}
+    depends_on:
+      redis:
+        condition: service_healthy
+      rest-api:
+        condition: service_started
+
+  # --- Indexers & Finders ---
+
+  indexer:
+    build: ./indexer
+    environment:
+      API_TOKEN: ${API_TOKEN:-}
+      LIMIT_SERVICE: ${LIMIT_SERVICE:-}
+    depends_on:
+      - rest-api
+
+  finder:
+    build: ./finder
+    environment:
+      API_TOKEN: ${API_TOKEN:-}
+    depends_on:
+      - rest-api
+
+  game-finder:
+    build: ./game-finder
+    depends_on:
+      - rest-api
+
+  ludeon-finder:
+    build: ./ludeon-finder
+
+  # --- Queue Setup (one-shot) ---
+
+  queue-users:
+    build: ./queue-users
+    environment:
+      REDIS_URL: redis://redis:6379
+      API_TOKEN: ${API_TOKEN:-}
+    depends_on:
+      redis:
+        condition: service_healthy
+      rest-api:
+        condition: service_started
+
+  queuer:
+    build: ./queuer
+    environment:
+      REDIS_URL: redis://redis:6379
+      API_TOKEN: ${API_TOKEN:-}
+    depends_on:
+      redis:
+        condition: service_healthy
+      rest-api:
+        condition: service_started
+
+  # --- Utilities ---
+
+  turtle:
+    build: ./turtle
+    environment:
+      API_TOKEN: ${API_TOKEN:-}
+      AWS_ACCESS_KEY: ${AWS_ACCESS_KEY:-}
+      AWS_SECRET_KEY: ${AWS_SECRET_KEY:-}
+
+  twitch-lurker:
+    build: ./twitch-lurker
+    environment:
+      API_TOKEN: ${API_TOKEN:-}
+      TWITCH_CLIENTID: ${TWITCH_CLIENTID:-}
+      TWITCH_USERNAME: ${TWITCH_USERNAME:-}
+      TWITCH_OAUTH: ${TWITCH_OAUTH:-}
+
+volumes:
+  mysql-data:
+  redis-data:
