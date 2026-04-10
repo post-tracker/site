@@ -74,17 +74,17 @@ services:
       redis:
         condition: service_healthy
 
-  chieftain:
-    image: ghcr.io/post-tracker/chieftain:latest
-    ports:
-      - "4002:3000"
-    environment:
-      REDIS_HOST: redis
-      REDIS_PORT: 6379
-      REDIS_PASSWORD: ""
-    depends_on:
-      redis:
-        condition: service_healthy
+  # chieftain:
+  #   image: ghcr.io/post-tracker/chieftain:latest
+  #   ports:
+  #     - "4002:3000"
+  #   environment:
+  #     REDIS_HOST: redis
+  #     REDIS_PORT: 6379
+  #     REDIS_PASSWORD: ""
+  #   depends_on:
+  #     redis:
+  #       condition: service_healthy
 
   # --- Queue Workers ---
 
@@ -127,13 +127,13 @@ services:
     depends_on:
       - rest-api
 
-  game-finder:
-    image: ghcr.io/post-tracker/game-finder:latest
-    depends_on:
-      - rest-api
+  # game-finder:
+  #   image: ghcr.io/post-tracker/game-finder:latest
+  #   depends_on:
+  #     - rest-api
 
-  ludeon-finder:
-    image: ghcr.io/post-tracker/ludeon-finder:latest
+  # ludeon-finder:
+  #   image: ghcr.io/post-tracker/ludeon-finder:latest
 
   # --- Queue Setup (one-shot) ---
 
@@ -168,13 +168,13 @@ services:
       AWS_ACCESS_KEY: ${AWS_ACCESS_KEY:-}
       AWS_SECRET_KEY: ${AWS_SECRET_KEY:-}
 
-  twitch-lurker:
-    image: ghcr.io/post-tracker/twitch-lurker:latest
-    environment:
-      API_TOKEN: ${API_TOKEN:-}
-      TWITCH_CLIENTID: ${TWITCH_CLIENTID:-}
-      TWITCH_USERNAME: ${TWITCH_USERNAME:-}
-      TWITCH_OAUTH: ${TWITCH_OAUTH:-}
+  # twitch-lurker:
+  #   image: ghcr.io/post-tracker/twitch-lurker:latest
+  #   environment:
+  #     API_TOKEN: ${API_TOKEN:-}
+  #     TWITCH_CLIENTID: ${TWITCH_CLIENTID:-}
+  #     TWITCH_USERNAME: ${TWITCH_USERNAME:-}
+  #     TWITCH_OAUTH: ${TWITCH_OAUTH:-}
 
 volumes:
   mysql-data:
