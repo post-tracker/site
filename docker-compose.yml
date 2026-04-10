@@ -48,97 +48,48 @@ services:
       mysql:
         condition: service_healthy
 
-  admin:
-    image: ghcr.io/post-tracker/admin:latest
-    ports:
-      - "4000:4000"
-    environment:
-      PORT: 4000
-      API_TOKEN: ${API_TOKEN:-}
-      ACCESS_USERNAME: ${ACCESS_USERNAME:-admin}
-      ACCESS_PASSWORD: ${ACCESS_PASSWORD:-admin}
-    depends_on:
-      - rest-api
-
-  queue-admin:
-    image: ghcr.io/post-tracker/queue-admin:latest
-    ports:
-      - "4001:4000"
-    environment:
-      PORT: 4000
-      REDIS_URL: redis://redis:6379
-      QUEUES: ${QUEUES:-[{"name":"posts","hostId":"redis"},{"name":"users","hostId":"redis"}]}
-      ACCESS_USERNAME: ${ACCESS_USERNAME:-admin}
-      ACCESS_PASSWORD: ${ACCESS_PASSWORD:-admin}
-    depends_on:
-      redis:
-        condition: service_healthy
-
-  # chieftain:
-  #   image: ghcr.io/post-tracker/chieftain:latest
+  # admin:
+  #   image: ghcr.io/post-tracker/admin:latest
   #   ports:
-  #     - "4002:3000"
+  #     - "4000:4000"
   #   environment:
-  #     REDIS_HOST: redis
-  #     REDIS_PORT: 6379
-  #     REDIS_PASSWORD: ""
-  #   depends_on:
-  #     redis:
-  #       condition: service_healthy
-
-  # --- Queue Workers ---
-
-  peon:
-    image: ghcr.io/post-tracker/peon:latest
-    environment:
-      REDIS_URL: redis://redis:6379
-      API_TOKEN: ${API_TOKEN:-}
-    depends_on:
-      redis:
-        condition: service_healthy
-      rest-api:
-        condition: service_started
-
-  # grunt:
-  #   image: ghcr.io/post-tracker/grunt:latest
-  #   environment:
-  #     REDIS_URL: redis://redis:6379
+  #     PORT: 4000
   #     API_TOKEN: ${API_TOKEN:-}
-  #   depends_on:
-  #     redis:
-  #       condition: service_healthy
-  #     rest-api:
-  #       condition: service_started
-
-  # --- Indexers & Finders ---
-
-  indexer:
-    image: ghcr.io/post-tracker/indexer:latest
-    environment:
-      API_TOKEN: ${API_TOKEN:-}
-      LIMIT_SERVICE: ${LIMIT_SERVICE:-}
-    depends_on:
-      - rest-api
-
-  finder:
-    image: ghcr.io/post-tracker/finder:latest
-    environment:
-      API_TOKEN: ${API_TOKEN:-}
-    depends_on:
-      - rest-api
-
-  # game-finder:
-  #   image: ghcr.io/post-tracker/game-finder:latest
+  #     ACCESS_USERNAME: ${ACCESS_USERNAME:-admin}
+  #     ACCESS_PASSWORD: ${ACCESS_PASSWORD:-admin}
   #   depends_on:
   #     - rest-api
 
-  # ludeon-finder:
-  #   image: ghcr.io/post-tracker/ludeon-finder:latest
+  # queue-admin:
+  #   image: ghcr.io/post-tracker/queue-admin:latest
+  #   ports:
+  #     - "4001:4000"
+  #   environment:
+  #     PORT: 4000
+  #     REDIS_URL: redis://redis:6379
+  #     QUEUES: ${QUEUES:-[{"name":"posts","hostId":"redis"},{"name":"users","hostId":"redis"}]}
+  #     ACCESS_USERNAME: ${ACCESS_USERNAME:-admin}
+  #     ACCESS_PASSWORD: ${ACCESS_PASSWORD:-admin}
+  #   depends_on:
+  #     redis:
+  #       condition: service_healthy
 
-  # --- Queue Setup (one-shot) ---
+  # # chieftain:
+  # #   image: ghcr.io/post-tracker/chieftain:latest
+  # #   ports:
+  # #     - "4002:3000"
+  # #   environment:
+  # #     REDIS_HOST: redis
+  # #     REDIS_PORT: 6379
+  # #     REDIS_PASSWORD: ""
+  # #   depends_on:
+  # #     redis:
+  # #       condition: service_healthy
 
-  # queue-users:
-  #   image: ghcr.io/post-tracker/queue-users:latest
+  # # --- Queue Workers ---
+
+  # peon:
+  #   image: ghcr.io/post-tracker/peon:latest
   #   environment:
   #     REDIS_URL: redis://redis:6379
   #     API_TOKEN: ${API_TOKEN:-}
@@ -148,25 +99,74 @@ services:
   #     rest-api:
   #       condition: service_started
 
-  queuer:
-    image: ghcr.io/post-tracker/queuer:latest
-    environment:
-      REDIS_URL: redis://redis:6379
-      API_TOKEN: ${API_TOKEN:-}
-    depends_on:
-      redis:
-        condition: service_healthy
-      rest-api:
-        condition: service_started
+  # # grunt:
+  # #   image: ghcr.io/post-tracker/grunt:latest
+  # #   environment:
+  # #     REDIS_URL: redis://redis:6379
+  # #     API_TOKEN: ${API_TOKEN:-}
+  # #   depends_on:
+  # #     redis:
+  # #       condition: service_healthy
+  # #     rest-api:
+  # #       condition: service_started
 
-  # --- Utilities ---
+  # # --- Indexers & Finders ---
 
-  turtle:
-    image: ghcr.io/post-tracker/turtle:latest
-    environment:
-      API_TOKEN: ${API_TOKEN:-}
-      AWS_ACCESS_KEY: ${AWS_ACCESS_KEY:-}
-      AWS_SECRET_KEY: ${AWS_SECRET_KEY:-}
+  # indexer:
+  #   image: ghcr.io/post-tracker/indexer:latest
+  #   environment:
+  #     API_TOKEN: ${API_TOKEN:-}
+  #     LIMIT_SERVICE: ${LIMIT_SERVICE:-}
+  #   depends_on:
+  #     - rest-api
+
+  # finder:
+  #   image: ghcr.io/post-tracker/finder:latest
+  #   environment:
+  #     API_TOKEN: ${API_TOKEN:-}
+  #   depends_on:
+  #     - rest-api
+
+  # # game-finder:
+  # #   image: ghcr.io/post-tracker/game-finder:latest
+  # #   depends_on:
+  # #     - rest-api
+
+  # # ludeon-finder:
+  # #   image: ghcr.io/post-tracker/ludeon-finder:latest
+
+  # # --- Queue Setup (one-shot) ---
+
+  # # queue-users:
+  # #   image: ghcr.io/post-tracker/queue-users:latest
+  # #   environment:
+  # #     REDIS_URL: redis://redis:6379
+  # #     API_TOKEN: ${API_TOKEN:-}
+  # #   depends_on:
+  # #     redis:
+  # #       condition: service_healthy
+  # #     rest-api:
+  # #       condition: service_started
+
+  # queuer:
+  #   image: ghcr.io/post-tracker/queuer:latest
+  #   environment:
+  #     REDIS_URL: redis://redis:6379
+  #     API_TOKEN: ${API_TOKEN:-}
+  #   depends_on:
+  #     redis:
+  #       condition: service_healthy
+  #     rest-api:
+  #       condition: service_started
+
+  # # --- Utilities ---
+
+  # turtle:
+  #   image: ghcr.io/post-tracker/turtle:latest
+  #   environment:
+  #     API_TOKEN: ${API_TOKEN:-}
+  #     AWS_ACCESS_KEY: ${AWS_ACCESS_KEY:-}
+  #     AWS_SECRET_KEY: ${AWS_SECRET_KEY:-}
 
   # twitch-lurker:
   #   image: ghcr.io/post-tracker/twitch-lurker:latest
