@@ -99,16 +99,16 @@ services:
       rest-api:
         condition: service_started
 
-  grunt:
-    image: ghcr.io/post-tracker/grunt:latest
-    environment:
-      REDIS_URL: redis://redis:6379
-      API_TOKEN: ${API_TOKEN:-}
-    depends_on:
-      redis:
-        condition: service_healthy
-      rest-api:
-        condition: service_started
+  # grunt:
+  #   image: ghcr.io/post-tracker/grunt:latest
+  #   environment:
+  #     REDIS_URL: redis://redis:6379
+  #     API_TOKEN: ${API_TOKEN:-}
+  #   depends_on:
+  #     redis:
+  #       condition: service_healthy
+  #     rest-api:
+  #       condition: service_started
 
   # --- Indexers & Finders ---
 
@@ -137,16 +137,16 @@ services:
 
   # --- Queue Setup (one-shot) ---
 
-  queue-users:
-    image: ghcr.io/post-tracker/queue-users:latest
-    environment:
-      REDIS_URL: redis://redis:6379
-      API_TOKEN: ${API_TOKEN:-}
-    depends_on:
-      redis:
-        condition: service_healthy
-      rest-api:
-        condition: service_started
+  # queue-users:
+  #   image: ghcr.io/post-tracker/queue-users:latest
+  #   environment:
+  #     REDIS_URL: redis://redis:6379
+  #     API_TOKEN: ${API_TOKEN:-}
+  #   depends_on:
+  #     redis:
+  #       condition: service_healthy
+  #     rest-api:
+  #       condition: service_started
 
   queuer:
     image: ghcr.io/post-tracker/queuer:latest
