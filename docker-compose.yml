@@ -33,7 +33,7 @@ services:
   # --- HTTP Services ---
 
   rest-api:
-    image: ghcr.io/post-tracker/rest-api:latest
+    image: "ghcr.io/post-tracker/rest-api:latest"
     ports:
       - "3000:3000"
     environment:
