@@ -32,21 +32,21 @@ services:
 
   # --- HTTP Services ---
 
-  rest-api:
-    image: "ghcr.io/post-tracker/rest-api:latest"
-    ports:
-      - "3000:3000"
-    environment:
-      PORT: 3000
-      NODE_ENV: ${NODE_ENV:-development}
-      DB_HOST: mysql
-      DB_NAME: ${DB_NAME:-developertracker}
-      DB_USERNAME: ${DB_USERNAME:-devtracker}
-      DB_PASSWORD: ${DB_PASSWORD:-devtracker}
-      API_TOKENS: ${API_TOKENS:-{}}
-    depends_on:
-      mysql:
-        condition: service_healthy
+  # rest-api:
+  #   image: "ghcr.io/post-tracker/rest-api:latest"
+  #   ports:
+  #     - "3000:3000"
+  #   environment:
+  #     PORT: 3000
+  #     NODE_ENV: ${NODE_ENV:-development}
+  #     DB_HOST: mysql
+  #     DB_NAME: ${DB_NAME:-developertracker}
+  #     DB_USERNAME: ${DB_USERNAME:-devtracker}
+  #     DB_PASSWORD: ${DB_PASSWORD:-devtracker}
+  #     API_TOKENS: ${API_TOKENS:-{}}
+  #   depends_on:
+  #     mysql:
+  #       condition: service_healthy
 
   # admin:
   #   image: ghcr.io/post-tracker/admin:latest
