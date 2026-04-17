@@ -173,14 +173,13 @@ a.ipsAttachLink_image {
 .services-wrapper label:hover {
   text-decoration: underline; }
 
-.has-feedback input[role=search] {
-  padding: 0 15px; }
-
 @media screen and (max-width: 1800px) {
   .adsbygoogle {
     display: none; } }
 
 @media screen and (max-width: 1200px) {
+  h1 {
+    margin-top: 35px; }
   .groups-wrapper {
     text-align: center;
     width: auto; } }
@@ -239,6 +238,9 @@ h1 a:hover {
   fill: #666; }
 
 #icon-caret {
+  fill: #666; }
+
+#icon-discord rect {
   fill: #666; }
 
 .expander {

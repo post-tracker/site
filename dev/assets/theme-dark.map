@@ -173,14 +173,13 @@ a.ipsAttachLink_image {
 .services-wrapper label:hover {
   text-decoration: underline; }
 
-.has-feedback input[role=search] {
-  padding: 0 15px; }
-
 @media screen and (max-width: 1800px) {
   .adsbygoogle {
     display: none; } }
 
 @media screen and (max-width: 1200px) {
+  h1 {
+    margin-top: 35px; }
   .groups-wrapper {
     text-align: center;
     width: auto; } }
@@ -258,7 +257,7 @@ input[type="checkbox"]:checked:after {
   border-color: #2e9fbd; }
 
 .has-feedback input[role=search] {
-  box-shadow: inset 0 -1px 0 #cbd5dd;
+  box-shadow: inset 0px -2px 0px -1px #cbd5dd;
   color: #dcdcdc; }
   .has-feedback input[role=search]:focus {
     box-shadow: inset 0 -2px 0 white; }
@@ -324,5 +323,8 @@ pre {
 
 iframe {
   border: 1px solid; }
+
+.groups-wrapper .filters-wrapper svg {
+  fill: #fff; }
 
 /*# sourceMappingURL=theme-dark.map */
