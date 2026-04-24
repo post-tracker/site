@@ -44,6 +44,7 @@ services:
       DB_USERNAME: ${DB_USERNAME:-devtracker}
       DB_PASSWORD: ${DB_PASSWORD:-devtracker}
       API_TOKENS: ${API_TOKENS:-{}}
+      API_TOKEN: ${API_TOKEN:-}
     depends_on:
       mysql:
         condition: service_healthy
