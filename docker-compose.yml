@@ -45,35 +45,41 @@ services:
       DB_PASSWORD: ${DB_PASSWORD:-devtracker}
       API_TOKENS: ${API_TOKENS:-{}}
       API_TOKEN: ${API_TOKEN:-}
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:3000/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
     depends_on:
       mysql:
         condition: service_healthy
 
-  # admin:
-  #   image: ghcr.io/post-tracker/admin:latest
-  #   ports:
-  #     - "4000:4000"
-  #   environment:
-  #     PORT: 4000
-  #     API_TOKEN: ${API_TOKEN:-}
-  #     ACCESS_USERNAME: ${ACCESS_USERNAME:-admin}
-  #     ACCESS_PASSWORD: ${ACCESS_PASSWORD:-admin}
-  #   depends_on:
-  #     - rest-api
+  admin:
+    image: ghcr.io/post-tracker/admin:latest
+    ports:
+      - "4000:4000"
+    environment:
+      PORT: 4000
+      API_TOKEN: ${API_TOKEN:-}
+      ACCESS_USERNAME: ${ACCESS_USERNAME:-admin}
+      ACCESS_PASSWORD: ${ACCESS_PASSWORD:-admin}
+    depends_on:
+      - rest-api
 
-  # queue-admin:
-  #   image: ghcr.io/post-tracker/queue-admin:latest
-  #   ports:
-  #     - "4001:4000"
-  #   environment:
-  #     PORT: 4000
-  #     REDIS_URL: redis://redis:6379
-  #     QUEUES: ${QUEUES:-[{"name":"posts","hostId":"redis"},{"name":"users","hostId":"redis"}]}
-  #     ACCESS_USERNAME: ${ACCESS_USERNAME:-admin}
-  #     ACCESS_PASSWORD: ${ACCESS_PASSWORD:-admin}
-  #   depends_on:
-  #     redis:
-  #       condition: service_healthy
+  queue-admin:
+    image: ghcr.io/post-tracker/queue-admin:latest
+    ports:
+      - "4001:4000"
+    environment:
+      PORT: 4000
+      REDIS_URL: redis://redis:6379
+      QUEUES: ${QUEUES:-[{"name":"posts","hostId":"redis"},{"name":"users","hostId":"redis"}]}
+      ACCESS_USERNAME: ${ACCESS_USERNAME:-admin}
+      ACCESS_PASSWORD: ${ACCESS_PASSWORD:-admin}
+    depends_on:
+      redis:
+        condition: service_healthy
 
   # # chieftain:
   # #   image: ghcr.io/post-tracker/chieftain:latest
@@ -89,16 +95,16 @@ services:
 
   # # --- Queue Workers ---
 
-  # peon:
-  #   image: ghcr.io/post-tracker/peon:latest
-  #   environment:
-  #     REDIS_URL: redis://redis:6379
-  #     API_TOKEN: ${API_TOKEN:-}
-  #   depends_on:
-  #     redis:
-  #       condition: service_healthy
-  #     rest-api:
-  #       condition: service_started
+  peon:
+    image: ghcr.io/post-tracker/peon:latest
+    environment:
+      REDIS_URL: redis://redis:6379
+      API_TOKEN: ${API_TOKEN:-}
+    depends_on:
+      redis:
+        condition: service_healthy
+      rest-api:
+        condition: service_started
 
   # # grunt:
   # #   image: ghcr.io/post-tracker/grunt:latest
@@ -113,20 +119,22 @@ services:
 
   # # --- Indexers & Finders ---
 
-  # indexer:
-  #   image: ghcr.io/post-tracker/indexer:latest
-  #   environment:
-  #     API_TOKEN: ${API_TOKEN:-}
-  #     LIMIT_SERVICE: ${LIMIT_SERVICE:-}
-  #   depends_on:
-  #     - rest-api
+  indexer:
+    image: ghcr.io/post-tracker/indexer:latest
+    environment:
+      API_TOKEN: ${API_TOKEN:-}
+      LIMIT_SERVICE: ${LIMIT_SERVICE:-}
+    depends_on:
+      rest-api:
+        condition: service_healthy
 
-  # finder:
-  #   image: ghcr.io/post-tracker/finder:latest
-  #   environment:
-  #     API_TOKEN: ${API_TOKEN:-}
-  #   depends_on:
-  #     - rest-api
+  finder:
+    image: ghcr.io/post-tracker/finder:latest
+    environment:
+      API_TOKEN: ${API_TOKEN:-}
+    depends_on:
+      rest-api:
+        condition: service_healthy
 
   # # game-finder:
   # #   image: ghcr.io/post-tracker/game-finder:latest
@@ -149,25 +157,48 @@ services:
   # #     rest-api:
   # #       condition: service_started
 
-  # queuer:
-  #   image: ghcr.io/post-tracker/queuer:latest
-  #   environment:
-  #     REDIS_URL: redis://redis:6379
-  #     API_TOKEN: ${API_TOKEN:-}
-  #   depends_on:
-  #     redis:
-  #       condition: service_healthy
-  #     rest-api:
-  #       condition: service_started
+  queuer:
+    image: ghcr.io/post-tracker/queuer:latest
+    environment:
+      REDIS_URL: redis://redis:6379
+      API_TOKEN: ${API_TOKEN:-}
+    depends_on:
+      redis:
+        condition: service_healthy
+      rest-api:
+        condition: service_healthy
 
-  # # --- Utilities ---
+  # --- Utilities ---
 
-  # turtle:
-  #   image: ghcr.io/post-tracker/turtle:latest
-  #   environment:
-  #     API_TOKEN: ${API_TOKEN:-}
-  #     AWS_ACCESS_KEY: ${AWS_ACCESS_KEY:-}
-  #     AWS_SECRET_KEY: ${AWS_SECRET_KEY:-}
+  # Turtle runs once and exits. It is not started by `docker compose up`;
+  # the `scheduler` service runs it on a cron schedule via ofelia.
+  # To run it manually: `docker compose run --rm turtle`.
+  turtle:
+    image: ghcr.io/post-tracker/turtle:latest
+    environment:
+      API_TOKEN: ${API_TOKEN:-}
+      AWS_ACCESS_KEY: ${AWS_ACCESS_KEY:-}
+      AWS_SECRET_KEY: ${AWS_SECRET_KEY:-}
+    restart: "no"
+    profiles: ["manual"]
+    depends_on:
+      rest-api:
+        condition: service_healthy
+
+  scheduler:
+    image: mcuadros/ofelia:latest
+    command: daemon --docker
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    depends_on:
+      rest-api:
+        condition: service_healthy
+    labels:
+      ofelia.job-run.turtle.schedule: "@every 30m"
+      ofelia.job-run.turtle.image: "ghcr.io/post-tracker/turtle:latest"
+      ofelia.job-run.turtle.network: "post-tracker"
+      ofelia.job-run.turtle.delete: "true"
+      ofelia.job-run.turtle.environment: "[\"API_TOKEN=${API_TOKEN:-}\",\"AWS_ACCESS_KEY=${AWS_ACCESS_KEY:-}\",\"AWS_SECRET_KEY=${AWS_SECRET_KEY:-}\"]"
 
   # twitch-lurker:
   #   image: ghcr.io/post-tracker/twitch-lurker:latest
@@ -180,3 +211,7 @@ services:
 volumes:
   mysql-data:
   redis-data:
+
+networks:
+  default:
+    name: post-tracker
