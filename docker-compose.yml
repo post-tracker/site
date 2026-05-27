@@ -157,16 +157,13 @@ services:
   # #     rest-api:
   # #       condition: service_started
 
-  # Queuer runs once and exits. It is not started by `docker compose up`;
-  # the `scheduler` service runs it on a cron schedule via ofelia.
-  # To run it manually: `docker compose run --rm queuer`.
+  # Queuer runs continuously, scheduling its own work internally on a 1h cycle.
   queuer:
     image: ghcr.io/post-tracker/queuer:latest
     environment:
       REDIS_URL: redis://redis:6379
       API_TOKEN: ${API_TOKEN:-}
-    restart: "no"
-    profiles: ["manual"]
+    restart: unless-stopped
     depends_on:
       redis:
         condition: service_healthy
@@ -175,40 +172,17 @@ services:
 
   # --- Utilities ---
 
-  # Turtle runs once and exits. It is not started by `docker compose up`;
-  # the `scheduler` service runs it on a cron schedule via ofelia.
-  # To run it manually: `docker compose run --rm turtle`.
+  # Turtle runs continuously, regenerating RSS feeds on a 10m cycle.
   turtle:
     image: ghcr.io/post-tracker/turtle:latest
     environment:
       API_TOKEN: ${API_TOKEN:-}
       AWS_ACCESS_KEY: ${AWS_ACCESS_KEY:-}
       AWS_SECRET_KEY: ${AWS_SECRET_KEY:-}
-    restart: "no"
-    profiles: ["manual"]
+    restart: unless-stopped
     depends_on:
       rest-api:
         condition: service_healthy
-
-  scheduler:
-    image: mcuadros/ofelia:latest
-    command: daemon --docker
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-    depends_on:
-      rest-api:
-        condition: service_healthy
-    labels:
-      ofelia.job-run.turtle.schedule: "@every 30m"
-      ofelia.job-run.turtle.image: "ghcr.io/post-tracker/turtle:latest"
-      ofelia.job-run.turtle.network: "post-tracker"
-      ofelia.job-run.turtle.delete: "true"
-      ofelia.job-run.turtle.environment: "[\"API_TOKEN=${API_TOKEN:-}\",\"AWS_ACCESS_KEY=${AWS_ACCESS_KEY:-}\",\"AWS_SECRET_KEY=${AWS_SECRET_KEY:-}\"]"
-      ofelia.job-run.queuer.schedule: "@every 1h"
-      ofelia.job-run.queuer.image: "ghcr.io/post-tracker/queuer:latest"
-      ofelia.job-run.queuer.network: "post-tracker"
-      ofelia.job-run.queuer.delete: "true"
-      ofelia.job-run.queuer.environment: "[\"REDIS_URL=redis://redis:6379\",\"API_TOKEN=${API_TOKEN:-}\"]"
 
   # twitch-lurker:
   #   image: ghcr.io/post-tracker/twitch-lurker:latest
