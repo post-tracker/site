@@ -128,7 +128,7 @@ services:
       rest-api:
         condition: service_healthy
 
-  # Finder runs continuously, scheduling its own work internally on a 1h cycle.
+  # Finder runs continuously, scheduling its own work internally on a 6h cycle.
   finder:
     image: ghcr.io/post-tracker/finder:latest
     environment:
