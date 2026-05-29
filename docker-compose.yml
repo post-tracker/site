@@ -61,7 +61,7 @@ services:
       - "4000:4000"
     environment:
       PORT: 4000
-      API_TOKEN: ${API_TOKEN:-}
+      API_TOKEN: ${ADMIN_API_TOKEN:-}
       ACCESS_USERNAME: ${ACCESS_USERNAME:-admin}
       ACCESS_PASSWORD: ${ACCESS_PASSWORD:-admin}
     depends_on:
