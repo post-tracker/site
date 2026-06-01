@@ -45,35 +45,41 @@ services:
       DB_PASSWORD: ${DB_PASSWORD:-devtracker}
       API_TOKENS: ${API_TOKENS:-{}}
       API_TOKEN: ${API_TOKEN:-}
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:3000/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
     depends_on:
       mysql:
         condition: service_healthy
 
-  # admin:
-  #   image: ghcr.io/post-tracker/admin:latest
-  #   ports:
-  #     - "4000:4000"
-  #   environment:
-  #     PORT: 4000
-  #     API_TOKEN: ${API_TOKEN:-}
-  #     ACCESS_USERNAME: ${ACCESS_USERNAME:-admin}
-  #     ACCESS_PASSWORD: ${ACCESS_PASSWORD:-admin}
-  #   depends_on:
-  #     - rest-api
+  admin:
+    image: ghcr.io/post-tracker/admin:latest
+    ports:
+      - "4000:4000"
+    environment:
+      PORT: 4000
+      API_TOKEN: ${ADMIN_API_TOKEN:-}
+      ACCESS_USERNAME: ${ACCESS_USERNAME:-admin}
+      ACCESS_PASSWORD: ${ACCESS_PASSWORD:-admin}
+    depends_on:
+      - rest-api
 
-  # queue-admin:
-  #   image: ghcr.io/post-tracker/queue-admin:latest
-  #   ports:
-  #     - "4001:4000"
-  #   environment:
-  #     PORT: 4000
-  #     REDIS_URL: redis://redis:6379
-  #     QUEUES: ${QUEUES:-[{"name":"posts","hostId":"redis"},{"name":"users","hostId":"redis"}]}
-  #     ACCESS_USERNAME: ${ACCESS_USERNAME:-admin}
-  #     ACCESS_PASSWORD: ${ACCESS_PASSWORD:-admin}
-  #   depends_on:
-  #     redis:
-  #       condition: service_healthy
+  queue-admin:
+    image: ghcr.io/post-tracker/queue-admin:latest
+    ports:
+      - "4001:4000"
+    environment:
+      PORT: 4000
+      REDIS_URL: redis://redis:6379
+      QUEUES: ${QUEUES:-[{"name":"posts","hostId":"redis"},{"name":"users","hostId":"redis"}]}
+      ACCESS_USERNAME: ${ACCESS_USERNAME:-admin}
+      ACCESS_PASSWORD: ${ACCESS_PASSWORD:-admin}
+    depends_on:
+      redis:
+        condition: service_healthy
 
   # # chieftain:
   # #   image: ghcr.io/post-tracker/chieftain:latest
@@ -89,44 +95,51 @@ services:
 
   # # --- Queue Workers ---
 
-  # peon:
-  #   image: ghcr.io/post-tracker/peon:latest
-  #   environment:
-  #     REDIS_URL: redis://redis:6379
-  #     API_TOKEN: ${API_TOKEN:-}
-  #   depends_on:
-  #     redis:
-  #       condition: service_healthy
-  #     rest-api:
-  #       condition: service_started
+  peon:
+    image: ghcr.io/post-tracker/peon:latest
+    environment:
+      REDIS_URL: redis://redis:6379
+      API_TOKEN: ${API_TOKEN:-}
+    depends_on:
+      redis:
+        condition: service_healthy
+      rest-api:
+        condition: service_started
 
-  # # grunt:
-  # #   image: ghcr.io/post-tracker/grunt:latest
-  # #   environment:
-  # #     REDIS_URL: redis://redis:6379
-  # #     API_TOKEN: ${API_TOKEN:-}
-  # #   depends_on:
-  # #     redis:
-  # #       condition: service_healthy
-  # #     rest-api:
-  # #       condition: service_started
+  # grunt consumes the 'users' queue, discovers Reddit posts, and enqueues them
+  # onto the 'posts' queue for peon to parse + save.
+  grunt:
+    image: ghcr.io/post-tracker/grunt:latest
+    environment:
+      REDIS_URL: redis://redis:6379
+      API_TOKEN: ${API_TOKEN:-}
+    depends_on:
+      redis:
+        condition: service_healthy
+      rest-api:
+        condition: service_started
 
   # # --- Indexers & Finders ---
 
-  # indexer:
-  #   image: ghcr.io/post-tracker/indexer:latest
-  #   environment:
-  #     API_TOKEN: ${API_TOKEN:-}
-  #     LIMIT_SERVICE: ${LIMIT_SERVICE:-}
-  #   depends_on:
-  #     - rest-api
+  indexer:
+    image: ghcr.io/post-tracker/indexer:latest
+    environment:
+      API_TOKEN: ${API_TOKEN:-}
+      LIMIT_SERVICE: ${LIMIT_SERVICE:-}
+    depends_on:
+      rest-api:
+        condition: service_healthy
 
-  # finder:
-  #   image: ghcr.io/post-tracker/finder:latest
-  #   environment:
-  #     API_TOKEN: ${API_TOKEN:-}
-  #   depends_on:
-  #     - rest-api
+  # Finder runs continuously, scheduling its own work internally on a 6h cycle.
+  finder:
+    image: ghcr.io/post-tracker/finder:latest
+    environment:
+      API_TOKEN: ${API_TOKEN:-}
+      RUN_SCHEDULE: ${FINDER_RUN_SCHEDULE:-}
+    restart: unless-stopped
+    depends_on:
+      rest-api:
+        condition: service_healthy
 
   # # game-finder:
   # #   image: ghcr.io/post-tracker/game-finder:latest
@@ -136,38 +149,38 @@ services:
   # # ludeon-finder:
   # #   image: ghcr.io/post-tracker/ludeon-finder:latest
 
-  # # --- Queue Setup (one-shot) ---
+  # --- Queue Setup ---
 
-  # # queue-users:
-  # #   image: ghcr.io/post-tracker/queue-users:latest
-  # #   environment:
-  # #     REDIS_URL: redis://redis:6379
-  # #     API_TOKEN: ${API_TOKEN:-}
-  # #   depends_on:
-  # #     redis:
-  # #       condition: service_healthy
-  # #     rest-api:
-  # #       condition: service_started
+  # queue-users runs continuously, re-syncing Reddit accounts and (re)registering
+  # repeatable 'users' jobs on a 6h cycle (repeatables persist in Redis between runs).
+  queue-users:
+    image: ghcr.io/post-tracker/queue-users:latest
+    environment:
+      REDIS_URL: redis://redis:6379
+      API_TOKEN: ${API_TOKEN:-}
+      RUN_SCHEDULE: ${QUEUE_USERS_RUN_SCHEDULE:-}
+    restart: unless-stopped
+    depends_on:
+      redis:
+        condition: service_healthy
+      rest-api:
+        condition: service_healthy
 
-  # queuer:
-  #   image: ghcr.io/post-tracker/queuer:latest
-  #   environment:
-  #     REDIS_URL: redis://redis:6379
-  #     API_TOKEN: ${API_TOKEN:-}
-  #   depends_on:
-  #     redis:
-  #       condition: service_healthy
-  #     rest-api:
-  #       condition: service_started
+  # Reddit ingestion moved to the queue-users -> grunt -> peon pipeline; queuer retired.
 
-  # # --- Utilities ---
+  # --- Utilities ---
 
-  # turtle:
-  #   image: ghcr.io/post-tracker/turtle:latest
-  #   environment:
-  #     API_TOKEN: ${API_TOKEN:-}
-  #     AWS_ACCESS_KEY: ${AWS_ACCESS_KEY:-}
-  #     AWS_SECRET_KEY: ${AWS_SECRET_KEY:-}
+  # Turtle runs continuously, regenerating RSS feeds on a 10m cycle.
+  turtle:
+    image: ghcr.io/post-tracker/turtle:latest
+    environment:
+      API_TOKEN: ${API_TOKEN:-}
+      AWS_ACCESS_KEY: ${AWS_ACCESS_KEY:-}
+      AWS_SECRET_KEY: ${AWS_SECRET_KEY:-}
+    restart: unless-stopped
+    depends_on:
+      rest-api:
+        condition: service_healthy
 
   # twitch-lurker:
   #   image: ghcr.io/post-tracker/twitch-lurker:latest
@@ -180,3 +193,7 @@ services:
 volumes:
   mysql-data:
   redis-data:
+
+networks:
+  default:
+    name: post-tracker
