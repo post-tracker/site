@@ -100,22 +100,36 @@ services:
     environment:
       REDIS_URL: redis://redis:6379
       API_TOKEN: ${API_TOKEN:-}
+      # Per-service Reddit OAuth app so each can have its own credentials / rate budget.
+      REDDIT_CLIENT_ID: ${PEON_REDDIT_CLIENT_ID:-}
+      REDDIT_CLIENT_SECRET: ${PEON_REDDIT_CLIENT_SECRET:-}
+      REDDIT_USERNAME: ${PEON_REDDIT_USERNAME:-}
+      REDDIT_PASSWORD: ${PEON_REDDIT_PASSWORD:-}
+      REDDIT_USER_AGENT: ${PEON_REDDIT_USER_AGENT:-}
     depends_on:
       redis:
         condition: service_healthy
       rest-api:
         condition: service_started
 
-  # # grunt:
-  # #   image: ghcr.io/post-tracker/grunt:latest
-  # #   environment:
-  # #     REDIS_URL: redis://redis:6379
-  # #     API_TOKEN: ${API_TOKEN:-}
-  # #   depends_on:
-  # #     redis:
-  # #       condition: service_healthy
-  # #     rest-api:
-  # #       condition: service_started
+  # grunt consumes the 'users' queue, discovers Reddit posts, and enqueues them
+  # onto the 'posts' queue for peon to parse + save.
+  grunt:
+    image: ghcr.io/post-tracker/grunt:latest
+    environment:
+      REDIS_URL: redis://redis:6379
+      API_TOKEN: ${API_TOKEN:-}
+      # Per-service Reddit OAuth app so each can have its own credentials / rate budget.
+      REDDIT_CLIENT_ID: ${GRUNT_REDDIT_CLIENT_ID:-}
+      REDDIT_CLIENT_SECRET: ${GRUNT_REDDIT_CLIENT_SECRET:-}
+      REDDIT_USERNAME: ${GRUNT_REDDIT_USERNAME:-}
+      REDDIT_PASSWORD: ${GRUNT_REDDIT_PASSWORD:-}
+      REDDIT_USER_AGENT: ${GRUNT_REDDIT_USER_AGENT:-}
+    depends_on:
+      redis:
+        condition: service_healthy
+      rest-api:
+        condition: service_started
 
   # # --- Indexers & Finders ---
 
@@ -134,6 +148,12 @@ services:
     environment:
       API_TOKEN: ${API_TOKEN:-}
       RUN_SCHEDULE: ${FINDER_RUN_SCHEDULE:-}
+      # Per-service Reddit OAuth app so each can have its own credentials / rate budget.
+      REDDIT_CLIENT_ID: ${FINDER_REDDIT_CLIENT_ID:-}
+      REDDIT_CLIENT_SECRET: ${FINDER_REDDIT_CLIENT_SECRET:-}
+      REDDIT_USERNAME: ${FINDER_REDDIT_USERNAME:-}
+      REDDIT_PASSWORD: ${FINDER_REDDIT_PASSWORD:-}
+      REDDIT_USER_AGENT: ${FINDER_REDDIT_USER_AGENT:-}
     restart: unless-stopped
     depends_on:
       rest-api:
@@ -147,31 +167,24 @@ services:
   # # ludeon-finder:
   # #   image: ghcr.io/post-tracker/ludeon-finder:latest
 
-  # # --- Queue Setup (one-shot) ---
+  # --- Queue Setup ---
 
-  # # queue-users:
-  # #   image: ghcr.io/post-tracker/queue-users:latest
-  # #   environment:
-  # #     REDIS_URL: redis://redis:6379
-  # #     API_TOKEN: ${API_TOKEN:-}
-  # #   depends_on:
-  # #     redis:
-  # #       condition: service_healthy
-  # #     rest-api:
-  # #       condition: service_started
-
-  # Queuer runs continuously, scheduling its own work internally on a 1h cycle.
-  queuer:
-    image: ghcr.io/post-tracker/queuer:latest
+  # queue-users runs continuously, re-syncing Reddit accounts and (re)registering
+  # repeatable 'users' jobs on a 6h cycle (repeatables persist in Redis between runs).
+  queue-users:
+    image: ghcr.io/post-tracker/queue-users:latest
     environment:
       REDIS_URL: redis://redis:6379
       API_TOKEN: ${API_TOKEN:-}
+      RUN_SCHEDULE: ${QUEUE_USERS_RUN_SCHEDULE:-}
     restart: unless-stopped
     depends_on:
       redis:
         condition: service_healthy
       rest-api:
         condition: service_healthy
+
+  # Reddit ingestion moved to the queue-users -> grunt -> peon pipeline; queuer retired.
 
   # --- Utilities ---
 
