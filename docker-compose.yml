@@ -3,6 +3,9 @@ services:
 
   mysql:
     image: mysql:8
+    labels:
+      # Never auto-update infra: a surprise image swap risks data/connection loss.
+      - "dockhand.update=false"
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-devtracker}
       MYSQL_DATABASE: ${DB_NAME:-developertracker}
@@ -20,6 +23,9 @@ services:
 
   redis:
     image: redis:7-alpine
+    labels:
+      # Never auto-update infra: a surprise image swap risks data/connection loss.
+      - "dockhand.update=false"
     ports:
       - "6379:6379"
     volumes:
