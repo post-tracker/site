@@ -70,8 +70,11 @@ services:
       API_TOKEN: ${ADMIN_API_TOKEN:-}
       ACCESS_USERNAME: ${ACCESS_USERNAME:-admin}
       ACCESS_PASSWORD: ${ACCESS_PASSWORD:-admin}
+      REDIS_URL: redis://redis:6379
+      QUEUE_NAMES: ${ADMIN_QUEUE_NAMES:-posts,users}
     depends_on:
       - rest-api
+      - redis
 
   queue-admin:
     image: ghcr.io/post-tracker/queue-admin:latest
