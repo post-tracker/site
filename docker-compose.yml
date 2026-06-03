@@ -76,20 +76,6 @@ services:
       - rest-api
       - redis
 
-  queue-admin:
-    image: ghcr.io/post-tracker/queue-admin:latest
-    ports:
-      - "4001:4000"
-    environment:
-      PORT: 4000
-      REDIS_URL: redis://redis:6379
-      QUEUES: ${QUEUES:-[{"name":"posts","hostId":"redis"},{"name":"users","hostId":"redis"}]}
-      ACCESS_USERNAME: ${ACCESS_USERNAME:-admin}
-      ACCESS_PASSWORD: ${ACCESS_PASSWORD:-admin}
-    depends_on:
-      redis:
-        condition: service_healthy
-
   # # chieftain:
   # #   image: ghcr.io/post-tracker/chieftain:latest
   # #   ports:
