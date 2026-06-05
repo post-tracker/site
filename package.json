@@ -6,7 +6,7 @@
   "scripts": {
     "stage": "node scripts/build.js && npx serve stage",
     "build": "webpack --mode=production --progress",
-    "deploy": "npm run build && node scripts/build.js && wrangler pages deploy stage --project-name=developertracker",
+    "deploy": "npm run build && node scripts/build.js && wrangler pages deploy",
     "dev": "concurrently \"webpack serve --open\" \"nodemon --watch web-assets --watch games -e scss scripts/buildstyles.js\"",
     "lint": "eslint ."
   },

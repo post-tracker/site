@@ -52,4 +52,18 @@ module.exports = [
             },
         },
     },
+    {
+        // Cloudflare Pages Functions — ES modules, Workers runtime globals.
+        files: [ 'functions/**/*.js' ],
+        languageOptions: {
+            ecmaVersion: 'latest',
+            sourceType: 'module',
+            globals: {
+                ...globals.serviceworker,
+                Response: 'readonly',
+                Request: 'readonly',
+                URL: 'readonly',
+            },
+        },
+    },
 ];

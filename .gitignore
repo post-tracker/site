@@ -18,3 +18,5 @@ config/keys.json
 .idea/
 stage
 dev/assets/theme*
+.wrangler/
+.dev.vars
