@@ -179,8 +179,9 @@ const buildRootPage = function buildRootPage( gamesData ){
     } );
 
     for ( let i = 0; i < games.length; i = i + 1 ) {
-        // Don't build games set as not live
-        if ( !games[ i ].config || games[ i ].config.live === 0 || games[ i ].config.live === false ) {
+        // Skip games with no config (no boxart etc). Offline games (config.live
+        // falsy) still build — "offline" now only stops indexing, not the site.
+        if ( !games[ i ].config ) {
             continue;
         }
 

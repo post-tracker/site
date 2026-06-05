@@ -3,6 +3,9 @@ services:
 
   mysql:
     image: mysql:8
+    labels:
+      # Never auto-update infra: a surprise image swap risks data/connection loss.
+      - "dockhand.update=false"
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-devtracker}
       MYSQL_DATABASE: ${DB_NAME:-developertracker}
@@ -20,6 +23,9 @@ services:
 
   redis:
     image: redis:7-alpine
+    labels:
+      # Never auto-update infra: a surprise image swap risks data/connection loss.
+      - "dockhand.update=false"
     ports:
       - "6379:6379"
     volumes:
@@ -64,22 +70,11 @@ services:
       API_TOKEN: ${ADMIN_API_TOKEN:-}
       ACCESS_USERNAME: ${ACCESS_USERNAME:-admin}
       ACCESS_PASSWORD: ${ACCESS_PASSWORD:-admin}
+      REDIS_URL: redis://redis:6379
+      QUEUE_NAMES: ${ADMIN_QUEUE_NAMES:-posts,users}
     depends_on:
       - rest-api
-
-  queue-admin:
-    image: ghcr.io/post-tracker/queue-admin:latest
-    ports:
-      - "4001:4000"
-    environment:
-      PORT: 4000
-      REDIS_URL: redis://redis:6379
-      QUEUES: ${QUEUES:-[{"name":"posts","hostId":"redis"},{"name":"users","hostId":"redis"}]}
-      ACCESS_USERNAME: ${ACCESS_USERNAME:-admin}
-      ACCESS_PASSWORD: ${ACCESS_PASSWORD:-admin}
-    depends_on:
-      redis:
-        condition: service_healthy
+      - redis
 
   # # chieftain:
   # #   image: ghcr.io/post-tracker/chieftain:latest
@@ -100,6 +95,12 @@ services:
     environment:
       REDIS_URL: redis://redis:6379
       API_TOKEN: ${API_TOKEN:-}
+      # Per-service Reddit OAuth app so each can have its own credentials / rate budget.
+      REDDIT_CLIENT_ID: ${PEON_REDDIT_CLIENT_ID:-}
+      REDDIT_CLIENT_SECRET: ${PEON_REDDIT_CLIENT_SECRET:-}
+      REDDIT_USERNAME: ${PEON_REDDIT_USERNAME:-}
+      REDDIT_PASSWORD: ${PEON_REDDIT_PASSWORD:-}
+      REDDIT_USER_AGENT: ${PEON_REDDIT_USER_AGENT:-}
     depends_on:
       redis:
         condition: service_healthy
@@ -113,6 +114,12 @@ services:
     environment:
       REDIS_URL: redis://redis:6379
       API_TOKEN: ${API_TOKEN:-}
+      # Per-service Reddit OAuth app so each can have its own credentials / rate budget.
+      REDDIT_CLIENT_ID: ${GRUNT_REDDIT_CLIENT_ID:-}
+      REDDIT_CLIENT_SECRET: ${GRUNT_REDDIT_CLIENT_SECRET:-}
+      REDDIT_USERNAME: ${GRUNT_REDDIT_USERNAME:-}
+      REDDIT_PASSWORD: ${GRUNT_REDDIT_PASSWORD:-}
+      REDDIT_USER_AGENT: ${GRUNT_REDDIT_USER_AGENT:-}
     depends_on:
       redis:
         condition: service_healthy
@@ -136,6 +143,12 @@ services:
     environment:
       API_TOKEN: ${API_TOKEN:-}
       RUN_SCHEDULE: ${FINDER_RUN_SCHEDULE:-}
+      # Per-service Reddit OAuth app so each can have its own credentials / rate budget.
+      REDDIT_CLIENT_ID: ${FINDER_REDDIT_CLIENT_ID:-}
+      REDDIT_CLIENT_SECRET: ${FINDER_REDDIT_CLIENT_SECRET:-}
+      REDDIT_USERNAME: ${FINDER_REDDIT_USERNAME:-}
+      REDDIT_PASSWORD: ${FINDER_REDDIT_PASSWORD:-}
+      REDDIT_USER_AGENT: ${FINDER_REDDIT_USER_AGENT:-}
     restart: unless-stopped
     depends_on:
       rest-api:
