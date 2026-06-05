@@ -12,6 +12,7 @@ config/cron/
 Developers - *.csv
 *.log
 web/scripts/app\.js\.map
+web/scripts/*.LICENSE.txt
 config/keys.json
 .env
 .idea/

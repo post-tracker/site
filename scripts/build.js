@@ -9,7 +9,6 @@ const fs = require( 'fs' );
 const mustache = require( 'mustache' );
 const junk = require( 'junk' );
 const recursive = require( 'recursive-readdir' );
-const argv = require( 'minimist' )( process.argv.slice( 2 ) );
 
 const gamecss = require( './modules/gamecss' );
 const savefile = require( './modules/savefile' );
@@ -189,8 +188,10 @@ const buildRootPage = function buildRootPage( gamesData ){
         let url = games[ i ].hostname;
         let image = games[ i ].config.boxart;
 
-        if ( url === 'developertracker.com' ) {
-            url = `${ url }/${ games[ i ].identifier }/`
+        // Games on the main domain (or with no explicit hostname) link to their
+        // subfolder. Without this, a missing hostname renders as `https://`.
+        if ( !url || url === 'developertracker.com' ) {
+            url = `developertracker.com/${ games[ i ].identifier }/`;
         }
 
         renderData.games.push( {
@@ -203,15 +204,91 @@ const buildRootPage = function buildRootPage( gamesData ){
     savefile( 'index.html', mustache.render( allGamesTemplate, renderData ) );
 };
 
+// Cloudflare Pages reads a single _headers file at the deploy root. These rules
+// replicate the per-object Cache-Control policy that the old S3 upload set.
+// `*` is a splat (matches across path segments), so `/*.css` covers nested
+// per-game assets like /anthem/assets/theme-dark.min.css.
+//
+// Pages *combines* the headers of every matching rule (it does not let a later
+// rule override an earlier one), so overlapping globs on the same header would
+// emit a doubled Cache-Control. Pages also honors only a single `*` splat per
+// pattern (a multi-segment pattern like /*/scripts/*.js silently matches
+// nothing). The only long-cache JS is the per-game bundle /<game>/scripts/app.js,
+// so the js rule is /*app.js — one splat, matches the bundle but not
+// /<game>/service-worker.js, leaving the service-worker rule below as the only
+// rule that applies to the worker.
+const buildHeaders = function buildHeaders() {
+    const headers = [
+        '/*.html',
+        '  Cache-Control: public, max-age=600',
+        '/*.css',
+        '  Cache-Control: public, max-age=31536000',
+        '/*app.js',
+        '  Cache-Control: public, max-age=31536000',
+        '/*.jpg',
+        '  Cache-Control: public, max-age=2678400',
+        '/*.jpeg',
+        '  Cache-Control: public, max-age=2678400',
+        '/*.gif',
+        '  Cache-Control: public, max-age=2678400',
+        '/*.png',
+        '  Cache-Control: public, max-age=2678400',
+        '/*.ico',
+        '  Cache-Control: public, max-age=2678400',
+        '/*.svg',
+        '  Cache-Control: public, max-age=2678400',
+        '/*.woff',
+        '  Cache-Control: public, max-age=2678400',
+        '/*.woff2',
+        '  Cache-Control: public, max-age=2678400',
+        '/*.mp4',
+        '  Cache-Control: public, max-age=2678400',
+        '/*.webm',
+        '  Cache-Control: public, max-age=2678400',
+        '/*.json',
+        '  Cache-Control: public, max-age=2678400',
+        '/*.xml',
+        '  Cache-Control: public, max-age=2678400',
+        '/*service-worker.js',
+        '  Cache-Control: public, max-age=600, must-revalidate',
+        '',
+    ];
+
+    savefile( '_headers', headers.join( '\n' ) );
+};
+
+// The per-game folders get a copy of web/ via buildGame, but the root landing
+// page also references favicons/manifest (apple-touch-icon.png, site.webmanifest,
+// safari-pinned-tab.svg, etc.). Copy web/'s top-level static files to the deploy
+// root so those resolve. Skip index.html (the per-game template, not the landing
+// page) and service-worker.js (rewritten per game, not served at root).
+const buildRootAssets = function buildRootAssets() {
+    const dataRootPath = path.join( __dirname, '..', 'web' );
+    const skip = [
+        'index.html',
+        'service-worker.js',
+    ];
+
+    for ( const entry of fs.readdirSync( dataRootPath, { withFileTypes: true } ) ) {
+        if ( !entry.isFile() || junk.is( entry.name ) || skip.includes( entry.name ) ) {
+            continue;
+        }
+
+        savefile( entry.name, fs.readFileSync( path.join( dataRootPath, entry.name ) ) );
+    }
+};
+
 const run = async function run() {
     let games;
 
-    if ( argv.stage ) {
-        try {
-            fs.rmSync( STAGE_PATH, {
-                recursive: true,
-            } );
-        } catch( removeError ) {
+    // Always start from a clean output tree; everything is rebuilt below and
+    // then deployed to Cloudflare Pages.
+    try {
+        fs.rmSync( STAGE_PATH, {
+            recursive: true,
+        } );
+    } catch( removeError ) {
+        if ( removeError.code !== 'ENOENT' ) {
             console.error( removeError );
         }
     }
@@ -320,6 +397,8 @@ const run = async function run() {
             }
 
             buildRootPage( games );
+            buildHeaders();
+            buildRootAssets();
         } )
         .catch( ( chainError ) => {
             throw chainError;

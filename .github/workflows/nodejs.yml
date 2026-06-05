@@ -1,4 +1,4 @@
-name: Build
+name: Build & Deploy
 
 on:
   workflow_dispatch:
@@ -7,22 +7,29 @@ on:
       - master
 
 jobs:
-  build:
+  deploy:
 
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js 18.x
-      uses: actions/setup-node@v1
+    - uses: actions/checkout@v4
+    - name: Use Node.js 20.x
+      uses: actions/setup-node@v4
       with:
-        node-version: 18.x
+        node-version: 20.x
 
     - run: npm ci
 
-    - run: npm run build --if-present
+    - run: npm run build
+
+    - name: Generate static site
+      run: node scripts/build.js
       env:
-        CI: true
         API_TOKEN: ${{ secrets.API_TOKEN }}
-        AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
-        AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
+
+    - name: Deploy to Cloudflare Pages
+      uses: cloudflare/wrangler-action@v3
+      with:
+        apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        command: pages deploy stage --project-name=developertracker
