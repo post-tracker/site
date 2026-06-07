@@ -185,14 +185,13 @@ const buildRootPage = function buildRootPage( gamesData ){
         }
 
         let name = games[ i ].name;
-        let url = games[ i ].hostname;
         let image = games[ i ].config.boxart;
 
-        // Games on the main domain (or with no explicit hostname) link to their
-        // subfolder. Without this, a missing hostname renders as `https://`.
-        if ( !url || url === 'developertracker.com' ) {
-            url = `developertracker.com/${ games[ i ].identifier }/`;
-        }
+        // Single-domain: every game lives at /<identifier>/ on whatever host
+        // serves this page, so the link is relative — a visitor on www stays on
+        // www instead of being bounced to the apex (or pages.dev). The stored
+        // game.hostname (now always developertracker.com or empty) is ignored.
+        const url = `/${ games[ i ].identifier }/`;
 
         renderData.games.push( {
             url,
