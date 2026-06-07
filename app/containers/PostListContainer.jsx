@@ -7,7 +7,7 @@ import {
 } from '../actions';
 
 import PostList from '../components/PostList.jsx';
-// import Loader from '../components/Loader.jsx';
+import Skeleton from '../components/Skeleton.jsx';
 import NoPosts from '../components/NoPosts.jsx';
 
 class PostListContainer extends React.Component {
@@ -16,13 +16,15 @@ class PostListContainer extends React.Component {
     }
 
     render () {
-        // if ( this.props.isFetching ) {
-        //     return (
-        //         <Loader
-        //             isFetching = { this.props.isFetching }
-        //         />
-        //     );
-        // }
+        // Show skeleton placeholders whenever we're fetching — the initial load
+        // as well as searches, filter and service changes. The fetch on search
+        // is debounced, so isFetching only flips once the request actually
+        // starts, not on every keystroke.
+        if ( this.props.isFetching ) {
+            return (
+                <Skeleton />
+            );
+        }
 
         if ( this.props.posts.length < 1 ) {
             return (

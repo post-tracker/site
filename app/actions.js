@@ -168,7 +168,7 @@ const getPosts = function getPosts ( search, groups, services, dispatch ) {
         })
         .catch((requestError) => {
             dispatch( receivePosts( [] ) );
-            onsole.error( postsFail );
+            console.error( requestError );
         });
 };
 
