@@ -12,94 +12,461 @@
     <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
     <link rel="manifest" href="site.webmanifest">
     <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#222222" media="(prefers-color-scheme: dark)">
     <style>
+        /* Match the per-game dev tracker pages: Bootstrap 3 base font, centered
+           h1, top-right social icons, panel-style cards, light by default with a
+           dark variant pulled from the tracker's theme-dark palette. */
+        :root {
+            --bg: #ffffff;
+            --text: #333333;
+            --muted: #777777;
+            --link: #337ab7;
+            --link-hover: #23527c;
+            --h1: #000000;
+            --icon: #666666;
+            --card-bg: #ffffff;
+            --card-border: #dddddd;
+            --card-head: #f5f5f5;
+            --input-bg: #ffffff;
+            --input-border: #cccccc;
+            --input-focus: #66afe9;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #222222;
+                --text: #dcdcdc;
+                --muted: #999999;
+                --link: #74c7dd;
+                --link-hover: #a6e0ef;
+                --h1: #8c8c8c;
+                --icon: #ffffff;
+                --card-bg: #272727;
+                --card-border: #3a3a3a;
+                --card-head: #2e2e2e;
+                --input-bg: #272727;
+                --input-border: #444444;
+                --input-focus: #74c7dd;
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 15px;
+            line-height: 1.5;
             margin: 0;
-            padding: 0;
+            background: var(--bg);
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1170px;
+            margin: 0 auto;
+            padding: 20px 15px 60px;
+        }
+
+        /* Header mirrors the tracker: centered title, social icons pinned right. */
+        .header-container {
+            position: relative;
+            margin-bottom: 10px;
         }
 
         h1 {
-            font-size: 3em;
-            font-weight: 100;
             text-align: center;
+            font-size: 36px;
+            font-weight: 500;
+            color: var(--h1);
+            margin: 20px 0 10px;
         }
 
-        a {
-            color: initial;
-            text-underline-offset: 4px;
-            text-decoration-thickness: 0.5px;
+        .header-links {
+            position: absolute;
+            top: 10px;
+            right: 0;
+            display: flex;
+            gap: 10px;
         }
 
-        .discord-bot-wrapper {
+        .header-links a {
+            display: inline-flex;
+            opacity: 0.85;
+            transition: opacity 0.15s ease;
+        }
+
+        .header-links a:hover {
+            opacity: 1;
+        }
+
+        .header-links .icon {
+            height: 25px;
+            width: 25px;
+        }
+
+        .intro {
             text-align: center;
+            color: var(--muted);
+            margin: 0 0 20px;
+        }
+
+        /* Filter + Discord button share a single centered row. */
+        .toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 0 auto 30px;
+        }
+
+        .game-filter {
+            font: inherit;
+            color: var(--text);
+            background: var(--input-bg);
+            border: 1px solid var(--input-border);
+            border-radius: 4px;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            padding: 8px 12px;
+            width: 280px;
+            max-width: 100%;
+            outline: none;
+            transition: border-color 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .game-filter::placeholder {
+            color: var(--muted);
+        }
+
+        .game-filter:focus {
+            border-color: var(--input-focus);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px rgba(102, 175, 233, 0.5);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font: inherit;
+            font-weight: 500;
+            white-space: nowrap;
+            border-radius: 4px;
+            padding: 8px 14px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+        }
+
+        .btn .icon {
+            height: 18px;
+            width: 18px;
+        }
+
+        /* Filled: join the community Discord (where games get requested). */
+        .btn-primary {
+            color: #ffffff;
+            background: var(--link);
+            border: 1px solid transparent;
+        }
+
+        .btn-primary:hover {
+            background: var(--link-hover);
+            color: #ffffff;
+        }
+
+        /* Outline: add the tracker bot to your own server (a separate action). */
+        .btn-outline {
+            color: var(--link);
+            background: transparent;
+            border: 1px solid var(--link);
+        }
+
+        .btn-outline:hover {
+            color: #ffffff;
+            background: var(--link);
         }
 
         .games-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
+            gap: 15px;
         }
 
-        .game-wrapper {
-            /* line-height: 0;
-            margin: 2vw; */
-            width: 18%;
-        }
-
+        /* Each card is a Bootstrap-style panel; the whole panel is the link. */
         .game-wrapper a {
+            display: flex;
+            flex-direction: column;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
             text-decoration: none;
+            color: var(--text);
+            transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
         }
 
-        .game-wrapper a:hover {
-            text-decoration: underline;
-        }
-
-        .game-wrapper h2 {
-            color: initial;
-            text-align: center;
+        .game-wrapper .thumb {
+            display: block;
+            aspect-ratio: 285 / 380;
+            background: var(--card-head);
+            overflow: hidden;
         }
 
         .game-wrapper img {
             width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.25s ease;
         }
 
-        @media screen and (max-width: 768px) {
-            .game-wrapper {
-                width: 30%;
+        .game-wrapper .meta {
+            padding: 10px 12px 12px;
+            border-top: 1px solid var(--card-border);
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .game-wrapper h2 {
+            margin: 0;
+            font-weight: 500;
+            font-size: 15px;
+            line-height: 1.3;
+            color: var(--text);
+            /* Reserve two lines so one- and two-line names give equal-height
+               cards; clamp longer names instead of growing the card. */
+            min-height: 2.6em;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .game-wrapper .cta {
+            font-size: 13px;
+            color: var(--link);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: gap 0.15s ease;
+        }
+
+        .game-wrapper .cta .arrow {
+            display: inline-block;
+            transition: transform 0.15s ease;
+        }
+
+        .game-wrapper a:hover {
+            transform: translateY(-3px);
+            border-color: var(--link);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+        }
+
+        .game-wrapper a:hover img {
+            transform: scale(1.04);
+        }
+
+        .game-wrapper a:hover .cta {
+            gap: 8px;
+        }
+
+        .game-wrapper a:hover .cta .arrow {
+            transform: translateX(3px);
+        }
+
+        .game-wrapper a:focus-visible {
+            outline: 2px solid var(--link);
+            outline-offset: 2px;
+        }
+
+        .no-results {
+            display: none;
+            text-align: center;
+            color: var(--muted);
+            padding: 40px 0;
+        }
+
+        .no-results.is-visible {
+            display: block;
+        }
+
+        .no-results a {
+            color: var(--link);
+            text-decoration: none;
+        }
+
+        .no-results a:hover {
+            color: var(--link-hover);
+            text-decoration: underline;
+        }
+
+        .site-footer {
+            margin-top: 40px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .supporters-label {
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 11px;
+        }
+
+        .supporters {
+            margin-top: 0;
+            color: var(--text);
+        }
+
+        .supporters .supporter:not(:last-child)::after {
+            content: '\00B7';
+            margin: 0 0.45em;
+            color: var(--muted);
+        }
+
+        .site-footer a {
+            color: var(--link);
+            text-decoration: none;
+        }
+
+        .site-footer a:hover {
+            color: var(--link-hover);
+            text-decoration: underline;
+        }
+
+        @media screen and (max-width: 660px) {
+            .header-links {
+                position: static;
+                justify-content: center;
+                margin-top: 12px;
             }
 
-            .game-wrapper h2 {
-                font-size: 12px;
-                text-overflow: ellipsis;
-                overflow: hidden;
+            h1 {
+                font-size: 30px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .games-wrapper {
+                grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
+                gap: 12px;
             }
         }
     </style>
 </head>
 <body>
-    <h1>
-        Developer Trackers
-    </h1>
-    <p
-        class="discord-bot-wrapper"
-    >
-        <a href="https://discord.com/api/oauth2/authorize?client_id=982257201211138050&permissions=274877925376&scope=bot%20applications.commands">
-            Add to Discord
-        </a>
-    </p>
-    <div class="games-wrapper js-games-wrapper">
-        {{#games}}
-        <div class="game-wrapper">
-            <a href="{{{ url }}}" title="{{ name }} dev tracker">
-                <img src="{{{ image }}}">
-                <h2>{{ name }}</h2>
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display: none;">
+        <symbol id="icon-discord" viewBox="0 0 512 512">
+            <rect width="512" height="512" rx="15%" fill="#7188da"/>
+            <path d="m386 137c-24-11-49.5-19-76.3-23.7c-.5 0-1 0-1.2.6c-3.3 5.9-7 13.5-9.5 19.5c-29-4.3-57.5-4.3-85.7 0c-2.6-6.2-6.3-13.7-10-19.5c-.3-.4-.7-.7-1.2-.6c-23 4.6-52.4 13-76 23.7c-.2 0-.4.2-.5.4c-49 73-62 143-55 213c0 .3.2.7.5 1c32 23.6 63 38 93.6 47.3c.5 0 1 0 1.3-.4c7.2-9.8 13.6-20.2 19.2-31.2c.3-.6 0-1.4-.7-1.6c-10-4-20-8.6-29.3-14c-.7-.4-.8-1.5 0-2c2-1.5 4-3 5.8-4.5c.3-.3.8-.3 1.2-.2c61.4 28 128 28 188 0c.4-.2.9-.1 1.2.1c1.9 1.6 3.8 3.1 5.8 4.6c.7.5.6 1.6 0 2c-9.3 5.5-19 10-29.3 14c-.7.3-1 1-.6 1.7c5.6 11 12.1 21.3 19 31c.3.4.8.6 1.3.4c30.6-9.5 61.7-23.8 93.8-47.3c.3-.2.5-.5.5-1c7.8-80.9-13.1-151-55.4-213c0-.2-.3-.4-.5-.4Zm-192 171c-19 0-34-17-34-38c0-21 15-38 34-38c19 0 34 17 34 38c0 21-15 38-34 38zm125 0c-19 0-34-17-34-38c0-21 15-38 34-38c19 0 34 17 34 38c0 21-15 38-34 38z" fill="#fff"/>
+        </symbol>
+        <symbol id="icon-patreon" viewBox="0 0 512 512" aria-label="Patreon" role="img">
+            <rect width="512" height="512" rx="15%" fill="#052d49"/>
+            <circle cx="310" cy="223" r="113" fill="#fff"/>
+            <path fill="#f96854" d="M165 410V110h-56v300"/>
+        </symbol>
+        <symbol id="icon-github" viewBox="0 0 512 512">
+            <rect fill="#171515" height="512" rx="15%" width="512"/>
+            <path d="m119 255c17 30 49 48 102 53-8 6-17 17-18 30-10 6-29 8-44 3-21-7-29-48-61-42-7 1-6 6 0 10 10 6 21 16 26 30 12 31 37 39 77 33v45c0 14-20 18-20 25 0 3 7 3 12 3 10 0 32-9 32-23 0-12 0-52 1-59 0-15 8-20 8-20s1 82-2 92c-4 13-10 11-10 17 0 9 26 2 35-17 7-15 4-95 3-94h7s0 37 1 53c0 17-1 39 9 50 7 7 29 19 29 8 0-6-12-12-12-29v-79c10 0 8 26 8 26l1 48s-2 18 19 25c8 3 24 3 25-1s-20-11-20-25v-49c0-36-5-49-22-60 53-5 86-18 102-53 10-20 12-44 12-62 0-50-24-67-29-76 7-38-1-55-5-60-14-5-48 12-66 24-30-9-94-8-118 2-44-31-67-26-67-26s-15 27-4 66c-15 18-25 31-26 65 0 27 3 44 15 67z" fill="#fff"/>
+        </symbol>
+    </svg>
+    <div class="container">
+        <div class="header-container">
+            <h1>
+                Developer Trackers
+            </h1>
+            <div class="header-links">
+                <a href="https://www.patreon.com/kokarn" title="Support the development on Patreon">
+                    <svg class="icon"><use xlink:href="#icon-patreon"></use></svg>
+                </a>
+                <a href="https://github.com/post-tracker/site" title="Site source code">
+                    <svg class="icon"><use xlink:href="#icon-github"></use></svg>
+                </a>
+            </div>
+        </div>
+        <p class="intro">
+            Follow what game developers are posting &mdash; across all sources. Pick a game:
+        </p>
+        <div class="toolbar">
+            <input
+                type="search"
+                class="js-game-filter game-filter"
+                placeholder="Filter games&hellip;"
+                aria-label="Filter games by name"
+                autocomplete="off"
+            >
+            <a class="btn btn-primary" href="https://discord.gg/QN9uveFYXX" title="Join our Discord to request a new game">
+                <svg class="icon"><use xlink:href="#icon-discord"></use></svg>
+                Join our Discord
+            </a>
+            <a class="btn btn-outline" href="https://discord.com/api/oauth2/authorize?client_id=982257201211138050&permissions=274877925376&scope=bot%20applications.commands" title="Add the tracker bot to your own Discord server">
+                <svg class="icon"><use xlink:href="#icon-discord"></use></svg>
+                Add the bot
             </a>
         </div>
-        {{/games}}
+        <main class="games-wrapper js-games-wrapper">
+            {{#games}}
+            <div class="game-wrapper" data-name="{{ name }}">
+                <a href="{{{ url }}}" title="{{ name }} dev tracker">
+                    <span class="thumb"><img loading="lazy" src="{{{ image }}}" alt=""></span>
+                    <span class="meta">
+                        <h2>{{ name }}</h2>
+                        <span class="cta">View tracker <span class="arrow">&rarr;</span></span>
+                    </span>
+                </a>
+            </div>
+            {{/games}}
+        </main>
+        <p class="no-results js-no-results">No games match that filter. <a href="https://discord.gg/QN9uveFYXX">Join our Discord</a> to request it.</p>
+        <footer class="site-footer">
+            <p class="supporters-label">Supported on Patreon by</p>
+            <p class="supporters">
+                {{#supporters}}<span class="supporter">{{ name }}</span>{{/supporters}}
+                {{^supporters}}<span class="supporter">you?</span>{{/supporters}}
+            </p>
+            <p>Become a <a href="https://www.patreon.com/kokarn">Patreon supporter</a> to get your name here.</p>
+            <p>developertracker.com</p>
+        </footer>
     </div>
+    <script>
+        // Client-side filter: match the typed text against each card's data-name.
+        (function () {
+            var input = document.querySelector('.js-game-filter');
+            var cards = Array.prototype.slice.call(document.querySelectorAll('.game-wrapper'));
+            var noResults = document.querySelector('.js-no-results');
+
+            if (!input) {
+                return;
+            }
+
+            input.addEventListener('input', function () {
+                var query = input.value.trim().toLowerCase();
+                var visible = 0;
+
+                for (var i = 0; i < cards.length; i = i + 1) {
+                    var name = (cards[i].getAttribute('data-name') || '').toLowerCase();
+                    var match = name.indexOf(query) !== -1;
+                    cards[i].style.display = match ? '' : 'none';
+                    if (match) {
+                        visible = visible + 1;
+                    }
+                }
+
+                if (noResults) {
+                    noResults.classList.toggle('is-visible', visible === 0);
+                }
+            });
+        })();
+    </script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LXYBCGVGVL"></script>
     <script>
         window.dataLayer = window.dataLayer || [];

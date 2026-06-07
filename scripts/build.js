@@ -166,11 +166,47 @@ const buildGame = function buildGame( gameData ) {
     console.log( `Build ${ gameData.identifier } done` );
 };
 
+// Patreon supporters are maintained by hand in supporters.json (an array of
+// names). Returns objects shaped for the {{#supporters}} section in the landing
+// template. A missing or empty file just means the footer shows its "you?"
+// fallback, so the build never fails over it.
+const loadSupporters = function loadSupporters() {
+    const supportersPath = path.join( __dirname, '..', 'supporters.json' );
+
+    let names;
+    try {
+        names = JSON.parse( fs.readFileSync( supportersPath, 'utf8' ) );
+    } catch ( supportersError ) {
+        if ( supportersError.code !== 'ENOENT' ) {
+            console.log( `Unable to read supporters.json, skipping. Got "${ supportersError.message }"` );
+        }
+
+        return [];
+    }
+
+    if ( !Array.isArray( names ) ) {
+        console.log( 'supporters.json is not an array, skipping' );
+
+        return [];
+    }
+
+    return names
+        .filter( ( name ) => {
+            return typeof name === 'string' && name.trim().length > 0;
+        } )
+        .map( ( name ) => {
+            return {
+                name: name.trim(),
+            };
+        } );
+};
+
 const buildRootPage = function buildRootPage( gamesData ){
     const allGamesTemplate = fs.readFileSync( path.join( __dirname, '..', 'web-assets', 'games-template.html' ), 'utf8' );
     const games = Object.values( gamesData );
     const renderData = {
         games: [],
+        supporters: loadSupporters(),
     };
 
     games.sort( ( a, b ) => {
