@@ -4,13 +4,11 @@
   "description": "A framework for running multiple dev trackers",
   "main": "index.html",
   "scripts": {
-    "stage": "node scripts/build.js --stage && npx serve stage",
+    "stage": "node scripts/build.js && npx serve stage",
     "build": "webpack --mode=production --progress",
-    "deploy": "node scripts/build.js",
-    "dev": "concurrently \"webpack-dev-server --open\" \"nodemon --watch web-assets --watch games -e scss scripts/buildstyles.js\"",
-    "lint:components": "eslint -c kokarn/react app/**/*",
-    "lint:scripts": "eslint -c kokarn/nodejs scripts/*.js",
-    "pretest": "eslint *.js"
+    "deploy": "npm run build && node scripts/build.js && wrangler pages deploy",
+    "dev": "concurrently \"webpack serve --open\" \"nodemon --watch web-assets --watch games -e scss scripts/buildstyles.js\"",
+    "lint": "eslint ."
   },
   "author": "Oskar Risberg <kokarn@gmail.com>",
   "repository": {
@@ -22,27 +20,12 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@babel/preset-env": "^7.18.2",
-    "@babel/preset-react": "^7.17.12",
-    "@redux-devtools/core": "^3.13.1",
-    "aws-sdk": "^2.562.0",
-    "babel-core": "^6.26.3",
-    "babel-loader": "^8.2.5",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "concurrently": "^7.0.0",
-    "cssnano": "^3.10.0",
     "debounce": "^1.2.0",
-    "dotenv": "^16.0.0",
-    "eslint": "^3.5.0",
-    "eslint-config-kokarn": "^2.0.0",
+    "dotenv": "^17.4.2",
     "junk": "^3.1.0",
-    "minimist": "^1.2.0",
-    "mustache": "^2.3.2",
-    "node-sass": "^7.0.1",
-    "nodemon": "^2.0.15",
-    "postcss": "^6.0.23",
+    "mustache": "^4.2.0",
     "prop-types": "^15.7.2",
+    "querystring-es3": "^0.2.1",
     "react": "^18.2.0",
     "react-cookie": "^1.0.5",
     "react-dom": "^18.2.0",
@@ -53,14 +36,24 @@
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
     "rss": "^1.2.2",
-    "webpack": "^5.72.1",
-    "webpack-cli": "^4.9.2",
-    "webpack-dev-server": "^4.9.0"
+    "sass": "^1.100.0"
   },
-  "eslintConfig": {
-    "extends": "kokarn"
+  "devDependencies": {
+    "@babel/preset-env": "^7.29.7",
+    "@babel/preset-react": "^7.29.7",
+    "@eslint/js": "^9.39.4",
+    "babel-loader": "^10.1.1",
+    "concurrently": "^10.0.0",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react": "^7.37.5",
+    "globals": "^17.6.0",
+    "nodemon": "^3.1.14",
+    "webpack": "^5.107.2",
+    "webpack-cli": "^7.0.3",
+    "webpack-dev-server": "^5.2.4",
+    "wrangler": "^4.95.0"
   },
   "engines": {
-    "node": "^18.0.0"
+    "node": ">=20.0.0"
   }
 }

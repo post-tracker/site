@@ -41,7 +41,7 @@ module.exports = {
     },
     devtool: 'source-map',
     devServer: {
-        https: true,
+        server: 'https',
         host: '0.0.0.0',
         port: 9000,
         devMiddleware: {
@@ -51,44 +51,45 @@ module.exports = {
             directory: path.join( __dirname, 'dev' ),
             watch: true,
         },
-        proxy: {
-            '/*/*.html': {
+        // webpack-dev-server 5 requires the array form for proxy config.
+        proxy: [
+            {
+                context: [ '/*/*.html', '/*/' ],
                 target: 'https://0.0.0.0:9000',
                 secure: false,
                 pathRewrite: defaultRewrite,
             },
-            '/*/': {
-                target: 'https://0.0.0.0:9000',
-                secure: false,
-                pathRewrite: defaultRewrite,
-            },
-            '/*/assets/**': {
+            {
+                context: [ '/*/assets/**' ],
                 target: 'https://0.0.0.0:9000',
                 secure: false,
                 pathRewrite: assetsRewrite,
             },
-            '/*/scripts/dev.js': {
+            {
+                context: [ '/*/scripts/dev.js' ],
                 target: 'https://0.0.0.0:9000',
                 secure: false,
                 pathRewrite: {
                     '^/.*/scripts': '/assets'
                 },
             },
-            '/scripts/dev.js': {
+            {
+                context: [ '/scripts/dev.js' ],
                 target: 'https://0.0.0.0:9000',
                 secure: false,
                 pathRewrite: {
                     '^/scripts': '/assets'
                 },
             },
-            '/*/scripts/app.js': {
+            {
+                context: [ '/*/scripts/app.js' ],
                 target: 'https://0.0.0.0:9000',
                 secure: false,
                 pathRewrite: {
                     '^/.*/scripts': '/scripts'
                 },
             },
-        },
+        ],
     },
     output: {
         filename: 'app.js',
@@ -99,5 +100,10 @@ module.exports = {
             '.js',
             '.jsx',
         ],
+        // webpack 5 dropped automatic node core-module polyfills; the app's
+        // querystring usage (actions.js / reducers.js) needs this shim.
+        fallback: {
+            querystring: require.resolve( 'querystring-es3' ),
+        },
     },
 };

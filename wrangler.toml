@@ -1,0 +1,9 @@
+name = "developertracker"
+pages_build_output_dir = "stage"
+compatibility_date = "2026-06-02"
+
+# RSS + sitemap feeds are written to this R2 bucket by the `turtle` service and
+# served by functions/_middleware.js at /<game>/rss and /sitemap*.xml.
+[[r2_buckets]]
+binding = "FEEDS"
+bucket_name = "developer-tracker"

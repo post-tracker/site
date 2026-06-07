@@ -9,15 +9,9 @@ export const SET_SEARCH_TERM = 'SET_SEARCH_TERM';
 export const TOGGLE_SERVICE = 'TOGGLE_SERVICE';
 
 const FETCH_DEBOUNCE_INTERVAL = 250;
-let API_HOSTNAME = 'api.developertracker.com';
-let API_PORT = 443;
+const API_HOSTNAME = 'api.developertracker.com';
+const API_PORT = 443;
 let trackTiming = true;
-
-if ( window.location.hostname === 'localhost' ) {
-    API_HOSTNAME = 'lvh.me';
-    // eslint-disable-next-line no-magic-numbers
-    API_PORT = 3000;
-}
 
 const setSearchTerm = function setSearchTerm ( term ) {
     const currentQuery = queryString.parse( location.search.substr( 1 ) );
