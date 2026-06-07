@@ -528,3 +528,20 @@
         font-size: 38px;
     }
 }
+
+/* The team-logo treatment for group labels is broken across the board:
+   csgo-data.com (remote team logos) no longer resolves, and the local
+   flair/logo sprites don't paint inside the inline filter labels. Every
+   group with a per-group rule above hides its text with `text-indent`, so
+   those broken images leave the filter full of blank checkboxes. Override
+   the lot to show the group name as plain text, so the filter is usable. */
+.group-label {
+    background-image: none !important;
+    text-indent: 0 !important;
+    bottom: auto !important;
+    height: auto !important;
+}
+
+.group-label:before {
+    display: none !important;
+}
