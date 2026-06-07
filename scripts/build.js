@@ -23,7 +23,17 @@ const STAGE_PATH = path.join( __dirname, '..', 'stage' );
 // const API_HOST = 'localhost:3000';
 // process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
-const promiseGet = function promiseGet( requestUrl, headers = false ) {
+// The API is self-hosted behind Cloudflare and occasionally returns a transient
+// gateway error (502/503/504/522) or stalls. Retry those a few times with a
+// short backoff so one hiccup doesn't fail the whole deploy. The timeout is a
+// generous backstop against a truly hung request — the build fires many
+// requests concurrently, so it must stay well above normal-under-load latency
+// to avoid aborting slow-but-healthy responses.
+const MAX_ATTEMPTS = 3;
+const RETRY_BACKOFF_MS = 1000;
+const REQUEST_TIMEOUT_MS = 60000;
+
+const attemptGet = function attemptGet( requestUrl, headers = false ) {
     return new Promise( ( resolve, reject ) => {
         let httpsGet = requestUrl;
         if ( headers ) {
@@ -41,7 +51,13 @@ const promiseGet = function promiseGet( requestUrl, headers = false ) {
 
         const request = https.get( httpsGet, ( response ) => {
             if ( response.statusCode < 200 || response.statusCode > 299 ) {
-                reject( new Error( `Failed to load ${ requestUrl }, status code: ${ response.statusCode }` ) );
+                const statusError = new Error( `Failed to load ${ requestUrl }, status code: ${ response.statusCode }` );
+                statusError.statusCode = response.statusCode;
+                // Drain so the socket can be freed/reused.
+                response.resume();
+                reject( statusError );
+
+                return;
             }
 
             const body = [];
@@ -60,7 +76,44 @@ const promiseGet = function promiseGet( requestUrl, headers = false ) {
         request.on( 'error', ( requestError ) => {
             reject( requestError );
         } );
+
+        // Don't let a stalled request hang the build; destroying it surfaces as
+        // an 'error' above, which the retry layer treats as transient.
+        request.setTimeout( REQUEST_TIMEOUT_MS, () => {
+            request.destroy( new Error( `Timed out after ${ REQUEST_TIMEOUT_MS }ms loading ${ requestUrl }` ) );
+        } );
     } );
+};
+
+// 5xx and network-level failures are transient and worth retrying; 4xx are not
+// (they won't self-heal), so we surface those immediately.
+const isRetryable = function isRetryable( requestError ) {
+    if ( typeof requestError.statusCode === 'number' ) {
+        return requestError.statusCode >= 500;
+    }
+
+    return true;
+};
+
+const promiseGet = async function promiseGet( requestUrl, headers = false ) {
+    let lastError;
+
+    for ( let attempt = 1; attempt <= MAX_ATTEMPTS; attempt = attempt + 1 ) {
+        try {
+            return await attemptGet( requestUrl, headers );
+        } catch ( requestError ) {
+            lastError = requestError;
+
+            if ( attempt >= MAX_ATTEMPTS || !isRetryable( requestError ) ) {
+                break;
+            }
+
+            console.log( `Attempt ${ attempt }/${ MAX_ATTEMPTS } failed for ${ requestUrl } (${ requestError.message }); retrying in ${ RETRY_BACKOFF_MS * attempt }ms` );
+            await sleep( RETRY_BACKOFF_MS * attempt );
+        }
+    }
+
+    throw lastError;
 };
 
 const getGames = async function getGames() {
@@ -333,6 +386,10 @@ const run = async function run() {
     } catch ( loadGamesError ) {
         console.error( 'Failed to load games from the API, not building' );
 
+        // Fail the process so CI stops here with a clear reason instead of
+        // continuing to a deploy step that finds no generated output.
+        process.exitCode = 1;
+
         return false;
     }
     const addGameProperty = function addGameProperty( property, value ) {
@@ -422,7 +479,7 @@ const run = async function run() {
         }
     }
 
-    Promise.all( [
+    return Promise.all( [
         Promise.all( servicePromises ),
         Promise.all( groupPromises ),
     ] )
@@ -434,10 +491,13 @@ const run = async function run() {
             buildRootPage( games );
             buildHeaders();
             buildRootAssets();
-        } )
-        .catch( ( chainError ) => {
-            throw chainError;
         } );
 };
 
-run();
+run()
+    .catch( ( buildError ) => {
+        console.error( 'Build failed:', buildError );
+
+        // Non-zero exit so CI fails at this step rather than deploying nothing.
+        process.exitCode = 1;
+    } );
