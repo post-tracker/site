@@ -33,6 +33,12 @@ const MAX_ATTEMPTS = 3;
 const RETRY_BACKOFF_MS = 1000;
 const REQUEST_TIMEOUT_MS = 60000;
 
+// Cap how many requests are in flight at once. The API's DB connection pool is
+// finite, so firing one request per game with no bound (services + groups for
+// ~50 games) stampedes it into "ResourceRequest timed out". A small cap keeps
+// the build a good citizen while still being far faster than serializing.
+const REQUEST_CONCURRENCY = 6;
+
 const attemptGet = function attemptGet( requestUrl, headers = false ) {
     return new Promise( ( resolve, reject ) => {
         let httpsGet = requestUrl;
@@ -114,6 +120,28 @@ const promiseGet = async function promiseGet( requestUrl, headers = false ) {
     }
 
     throw lastError;
+};
+
+// Run `worker` over `items` with at most `limit` concurrent invocations. Workers
+// mutate shared state by side effect (they don't return anything we collect), so
+// this just resolves once every item has been processed.
+const mapWithConcurrency = async function mapWithConcurrency( items, limit, worker ) {
+    let cursor = 0;
+
+    const runNext = async function runNext() {
+        while ( cursor < items.length ) {
+            const index = cursor;
+            cursor = cursor + 1;
+            await worker( items[ index ] );
+        }
+    };
+
+    const runners = [];
+    for ( let i = 0; i < Math.min( limit, items.length ); i = i + 1 ) {
+        runners.push( runNext() );
+    }
+
+    await Promise.all( runners );
 };
 
 const getGames = async function getGames() {
@@ -400,98 +428,87 @@ const run = async function run() {
     addGameProperty( 'version', Date.now() );
     addGameProperty( 'defaultTheme', 'light' );
 
-    const servicePromises = [];
+    const identifiers = Object.keys( games );
 
-    for ( const identifier in games ) {
-        const servicePromise = promiseGet( `https://${ API_HOST }/${ identifier }/services` )
-            .then( ( servicesResponse ) => {
-                let services = JSON.parse( servicesResponse ).data;
+    const serviceThunks = identifiers.map( ( identifier ) => {
+        return async () => {
+            const servicesResponse = await promiseGet( `https://${ API_HOST }/${ identifier }/services` );
+            let services = JSON.parse( servicesResponse ).data;
 
-                // If we only have one service, treat it as none
-                if ( services.length === 1 ) {
-                    services = [];
+            // If we only have one service, treat it as none
+            if ( services.length === 1 ) {
+                services = [];
+            }
+
+            // Transform service names to objects
+            services = services.map( ( name ) => {
+                let label = name;
+                if ( games[ identifier ].config && games[ identifier ].config.sources && games[ identifier ].config.sources[ name ] ) {
+                    label = games[ identifier ].config.sources[ name ].label || name;
                 }
 
-                // Transform service names to objects
-                services = services.map( ( name ) => {
-                    let label = name;
-                    if ( games[ identifier ].config && games[ identifier ].config.sources && games[ identifier ].config.sources[ name ] ) {
-                        label = games[ identifier ].config.sources[ name ].label || name;
-                    }
-
-                    return {
-                        active: true,
-                        name: name,
-                        label: label,
-                    };
-                } );
-
-                services.sort( ( a,b ) => {
-                    return a.label.localeCompare( b.label );
-                } );
-
-                games[ identifier ].services = JSON.stringify( services );
-            } )
-            .catch( ( serviceError ) => {
-                throw serviceError;
+                return {
+                    active: true,
+                    name: name,
+                    label: label,
+                };
             } );
 
-        servicePromises.push( servicePromise );
-        await sleep(500);
-    }
-
-    const groupPromises = [];
-
-    for ( const identifier in games ) {
-        const groupPromise = promiseGet( `https://${ API_HOST }/${ identifier }/groups` )
-            .then( ( groupsResponse ) => {
-                let groups = JSON.parse( groupsResponse ).data;
-
-                // If we only have one group, treat it as none
-                if ( groups.length === 1 ) {
-                    groups = [];
-                }
-
-                // Transform group names to objects
-                groups = groups.map( ( name ) => {
-                    return {
-                        active: true,
-                        name: name,
-                    };
-                } );
-
-                games[ identifier ].groups = JSON.stringify( groups );
-            } )
-            .catch( ( groupError ) => {
-                throw groupError;
+            services.sort( ( a,b ) => {
+                return a.label.localeCompare( b.label );
             } );
 
-        groupPromises.push( groupPromise );
-        await sleep(500);
-    }
+            games[ identifier ].services = JSON.stringify( services );
+        };
+    } );
+
+    const groupThunks = identifiers.map( ( identifier ) => {
+        return async () => {
+            const groupsResponse = await promiseGet( `https://${ API_HOST }/${ identifier }/groups` );
+            let groups = JSON.parse( groupsResponse ).data;
+
+            // If we only have one group, treat it as none
+            if ( groups.length === 1 ) {
+                groups = [];
+            }
+
+            // Transform group names to objects
+            groups = groups.map( ( name ) => {
+                return {
+                    active: true,
+                    name: name,
+                };
+            } );
+
+            games[ identifier ].groups = JSON.stringify( groups );
+        };
+    } );
+
+    // Bounded concurrency so a burst of requests does not exhaust the API's
+    // DB connection pool (which surfaces as "ResourceRequest timed out").
+    await mapWithConcurrency( serviceThunks, REQUEST_CONCURRENCY, ( thunk ) => {
+        return thunk();
+    } );
+    await mapWithConcurrency( groupThunks, REQUEST_CONCURRENCY, ( thunk ) => {
+        return thunk();
+    } );
 
     for ( const identifier in games ) {
         games[ identifier ].themeDark = gamecss( identifier, 'dark' );
         games[ identifier ].themeLight = gamecss( identifier, 'light' );
 
-        if ( games[ identifier ].config && games[ identifier ].config.defaultTheme ) {
-            games[ identifier ].defaultTheme = games[ identifier ].config.defaultTheme;
+        if ( games[ identifier ].config && games[ identifier ].config.defaultTheme ) {
+            games[ identifier ].defaultTheme = games[ identifier ].config.defaultTheme;
         }
     }
 
-    return Promise.all( [
-        Promise.all( servicePromises ),
-        Promise.all( groupPromises ),
-    ] )
-        .then( () => {
-            for ( const gameIdentifier in games ) {
-                buildGame( games[ gameIdentifier ] );
-            }
+    for ( const gameIdentifier in games ) {
+        buildGame( games[ gameIdentifier ] );
+    }
 
-            buildRootPage( games );
-            buildHeaders();
-            buildRootAssets();
-        } );
+    buildRootPage( games );
+    buildHeaders();
+    buildRootAssets();
 };
 
 run()

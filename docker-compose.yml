@@ -44,7 +44,10 @@ services:
       - "3000:3000"
     environment:
       PORT: 3000
-      NODE_ENV: ${NODE_ENV:-development}
+      # Default to production: rest-api/config.json's development pool caps DB
+      # connections at 5, which a burst of concurrent reads (e.g. the site build)
+      # exhausts -> "ResourceRequest timed out". Production raises pool.max to 40.
+      NODE_ENV: ${NODE_ENV:-production}
       DB_HOST: mysql
       DB_NAME: ${DB_NAME:-developertracker}
       DB_USERNAME: ${DB_USERNAME:-devtracker}
