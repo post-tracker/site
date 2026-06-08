@@ -2,8 +2,8 @@
 
 @font-face {
     font-family: 'Purista';
-    src: url( 'assets/purista-medium.woff2' ) format( 'woff2' ),
-         url( 'assets/purista-medium.woff' ) format( 'woff' );
+    src: url( 'purista-medium.woff2' ) format( 'woff2' ),
+         url( 'purista-medium.woff' ) format( 'woff' );
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -59,13 +59,13 @@ a:active {
 }
 
 .group-label.ea {
-    background-image: url( 'assets/logo-ea.png' );
+    background-image: url( 'logo-ea.png' );
     text-indent: -9999px;
     width: 50px;
 }
 
 .group-label.dice {
-    background-image: url( 'assets/logo-dice.png' );
+    background-image: url( 'logo-dice.png' );
     text-indent: -9999px;
     width: 50px;
 }
