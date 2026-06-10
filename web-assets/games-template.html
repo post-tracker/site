@@ -397,12 +397,15 @@
             Follow what game developers are posting &mdash; across all sources. Pick a game:
         </p>
         <div class="toolbar">
+            <!-- tabindex="1" pulls the filter to the front of the tab order so
+                 the first Tab press lands here, ahead of the header links. -->
             <input
                 type="search"
                 class="js-game-filter game-filter"
                 placeholder="Filter games&hellip;"
                 aria-label="Filter games by name"
                 autocomplete="off"
+                tabindex="1"
             >
             <a class="btn btn-primary" href="https://discord.gg/QN9uveFYXX" title="Join our Discord to request a new game">
                 <svg class="icon"><use xlink:href="#icon-discord"></use></svg>
