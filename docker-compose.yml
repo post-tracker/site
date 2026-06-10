@@ -75,6 +75,10 @@ services:
       ACCESS_PASSWORD: ${ACCESS_PASSWORD:-admin}
       REDIS_URL: redis://redis:6379
       QUEUE_NAMES: ${ADMIN_QUEUE_NAMES:-posts,users}
+      # Twitch dev app creds for the box art picker's game search (optional;
+      # the picker falls back to manual entry when unset).
+      TWITCH_CLIENT_ID: ${TWITCH_CLIENT_ID:-}
+      TWITCH_CLIENT_SECRET: ${TWITCH_CLIENT_SECRET:-}
     depends_on:
       - rest-api
       - redis
