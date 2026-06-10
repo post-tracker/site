@@ -68,7 +68,7 @@ const toggleServiceState = function toggleServiceState ( name ) {
     };
 };
 
-const updatePath = function updatePath ( getState ) {
+const updatePath = function updatePath ( getState, { replace = false } = {} ) {
     const state = getState();
     const querystringParameters = getQueryParameters( state.services, state.groups, state.search );
     const parsedQuerystring = queryString.stringify( querystringParameters );
@@ -78,7 +78,15 @@ const updatePath = function updatePath ( getState ) {
         locationSearch = './';
     }
 
-    if ( window.location.search !== locationSearch && window.history.pushState ) {
+    if ( window.location.search === locationSearch ) {
+        return;
+    }
+
+    // Search updates fire on every keystroke, so replace the current entry
+    // instead of pushing one per character (avoids polluting browser history).
+    if ( replace && window.history.replaceState ) {
+        window.history.replaceState( {}, '', locationSearch );
+    } else if ( window.history.pushState ) {
         window.history.pushState( {}, '', locationSearch );
     }
 };
@@ -207,7 +215,7 @@ export const fetchPostsIfNeeded = function fetchPostsIfNeeded () {
 export const search = function search ( searchTerm ) {
     return ( dispatch, getState ) => {
         dispatch( setSearchTerm( searchTerm ) );
-        updatePath( getState );
+        updatePath( getState, { replace: true } );
 
         return dispatch( fetchPosts( getState() ) );
     };
