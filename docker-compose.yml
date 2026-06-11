@@ -6,6 +6,11 @@ services:
     labels:
       # Never auto-update infra: a surprise image swap risks data/connection loss.
       - "dockhand.update=false"
+    # Default InnoDB buffer pool is only 128M. On the 6GB host this 2G pool caches
+    # the entire ~1.3GB database, so reads come from RAM instead of disk/swap —
+    # which is the single biggest win for query latency (search included).
+    # Apply ONLY after the host has the RAM (6GB); leaves ~4GB for the node stack.
+    command: ["--innodb-buffer-pool-size=2G"]
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-devtracker}
       MYSQL_DATABASE: ${DB_NAME:-developertracker}
