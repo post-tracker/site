@@ -80,10 +80,15 @@ services:
       ACCESS_PASSWORD: ${ACCESS_PASSWORD:-admin}
       REDIS_URL: redis://redis:6379
       QUEUE_NAMES: ${ADMIN_QUEUE_NAMES:-posts,users}
-      # Twitch dev app creds for the box art picker's game search (optional;
-      # the picker falls back to manual entry when unset).
+      # Twitch dev app creds for the box art picker's game search and the Game
+      # Finder page's Twitch source (optional; both fall back gracefully when
+      # unset — the picker to manual entry, Game Finder to Steam-only).
       TWITCH_CLIENT_ID: ${TWITCH_CLIENT_ID:-}
       TWITCH_CLIENT_SECRET: ${TWITCH_CLIENT_SECRET:-}
+      # Game Finder's persistent "not interested" ignore list.
+      GAME_FINDER_IGNORE_FILE: /data/ignored.json
+    volumes:
+      - game-finder-data:/data
     depends_on:
       - rest-api
       - redis
@@ -224,6 +229,7 @@ services:
 volumes:
   mysql-data:
   redis-data:
+  game-finder-data:
 
 networks:
   default:
