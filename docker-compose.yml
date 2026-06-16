@@ -85,6 +85,12 @@ services:
       # unset — the picker to manual entry, Game Finder to Steam-only).
       TWITCH_CLIENT_ID: ${TWITCH_CLIENT_ID:-}
       TWITCH_CLIENT_SECRET: ${TWITCH_CLIENT_SECRET:-}
+      # Reddit OAuth app for the flair editor's "Scan subreddit" — public reddit.com
+      # JSON 403s from server IPs, so the scan needs OAuth (falls back to public
+      # JSON + a clean error when unset). client-credentials grant, so no user/pass.
+      REDDIT_CLIENT_ID: ${ADMIN_REDDIT_CLIENT_ID:-}
+      REDDIT_CLIENT_SECRET: ${ADMIN_REDDIT_CLIENT_SECRET:-}
+      REDDIT_USER_AGENT: ${ADMIN_REDDIT_USER_AGENT:-}
       # Game Finder's persistent "not interested" ignore list.
       GAME_FINDER_IGNORE_FILE: /data/ignored.json
     volumes:
