@@ -112,14 +112,19 @@
             </svg>
         </a>
     </div>
+    <!-- Ad rails hug the centered 1170px .container: anchored 15px outside each
+         edge (585px half-width + 15px) and stretched to the viewport edge, so the
+         rail width is whatever gap is left. The responsive AdSense unit inside
+         fills that width. _styles.scss hides them once the gap gets too narrow to
+         serve a unit (~1480px viewport). -->
     <div
         id="left-ad"
-        style="position: absolute; left: 10px; top: 0; width: 300px;"
+        style="position: absolute; top: 170px; left: 15px; right: calc(50% + 600px);"
     ></div>
     <div class="container" id="js-app"></div>
     <div
         id="right-ad"
-        style="position: absolute; right: 10px; top: 0; width: 300px;"
+        style="position: absolute; top: 170px; right: 15px; left: calc(50% + 600px);"
     ></div>
     <!-- <script src="https://browser.sentry-cdn.com/5.6.3/bundle.min.js" integrity="sha384-/Cqa/8kaWn7emdqIBLk3AkFMAHBk0LObErtMhO+hr52CntkaurEnihPmqYj3uJho" crossorigin="anonymous"></script>
     <script>

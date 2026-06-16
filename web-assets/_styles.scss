@@ -217,7 +217,11 @@ a.ipsAttachLink_image {
     }
 }
 
-@media screen and ( max-width: 1800px ){
+// Below ~1480px the gap beside the centered 1170px container is too narrow
+// (< ~125px) to serve a side-rail unit, so hide the rails. The rails are
+// responsive (see #left-ad / #right-ad in index.html), so anything wider gets
+// an ad sized to the available gap — not just screens past 1800px.
+@media screen and ( max-width: 1480px ){
     .adsbygoogle {
         display: none;
     }
