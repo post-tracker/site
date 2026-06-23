@@ -428,6 +428,32 @@ const run = async function run() {
     addGameProperty( 'version', Date.now() );
     addGameProperty( 'defaultTheme', 'light' );
 
+    // Drop games with no posts before building anything: an empty game produces
+    // a dead-looking page and clutters the landing grid. The posts endpoint with
+    // limit=1 is the cheapest "does this game have anything?" probe — a game with
+    // no accounts/posts comes back with an empty data array.
+    const postCheckThunks = Object.keys( games ).map( ( identifier ) => {
+        return async () => {
+            try {
+                const postsResponse = await promiseGet( `https://${ API_HOST }/${ identifier }/posts?limit=1` );
+                const posts = JSON.parse( postsResponse ).data;
+
+                if ( !Array.isArray( posts ) || posts.length === 0 ) {
+                    console.log( `Skipping ${ identifier }: no posts` );
+                    delete games[ identifier ];
+                }
+            } catch ( postsError ) {
+                // If we can't tell, keep the game rather than dropping it from
+                // the site over a transient API hiccup.
+                console.log( `Unable to check posts for ${ identifier }, keeping it. Got "${ postsError.message }"` );
+            }
+        };
+    } );
+
+    await mapWithConcurrency( postCheckThunks, REQUEST_CONCURRENCY, ( thunk ) => {
+        return thunk();
+    } );
+
     const identifiers = Object.keys( games );
 
     const serviceThunks = identifiers.map( ( identifier ) => {
