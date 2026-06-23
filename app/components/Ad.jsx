@@ -30,7 +30,7 @@ class Ad extends React.Component {
             <ins
                 className = { 'adsbygoogle' }
                 data-ad-client = { 'ca-pub-7039480870927391' }
-                data-ad-format = { 'auto' }
+                data-ad-format = { this.props.dataAdFormat }
                 data-ad-slot = { this.props.dataAdSlot }
                 data-full-width-responsive = { 'true' }
                 style = { this.state.styles }
@@ -42,10 +42,12 @@ class Ad extends React.Component {
 Ad.displayName = 'Ad';
 
 Ad.defaultProps = {
+    dataAdFormat: 'auto',
     styles: {},
 };
 
 Ad.propTypes = {
+    dataAdFormat: PropTypes.string,
     dataAdSlot: PropTypes.string.isRequired,
     // eslint-disable-next-line react/forbid-prop-types
     styles: PropTypes.object,

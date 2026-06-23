@@ -27,6 +27,13 @@ body {
     background-color: $bg-main;
 }
 
+// Opaque backing for the mobile sticky footer ad (layout lives in _styles.scss)
+// so posts scrolling underneath the fixed bar don't show through its margins.
+#footer-ad {
+    background-color: $bg-main;
+    border-top: 1px solid $bg-pres;
+}
+
 a {
     color: $fc-link;
 

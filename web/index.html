@@ -126,6 +126,10 @@
         id="right-ad"
         style="position: absolute; top: 170px; right: 15px; left: calc(50% + 600px);"
     ></div>
+    <!-- Mobile-only sticky footer ad. Hidden on desktop (the side rails cover
+         that); shown only within the same <=1480px breakpoint that hides the
+         rails. Positioning/visibility live in _styles.scss. -->
+    <div id="footer-ad"></div>
     <!-- <script src="https://browser.sentry-cdn.com/5.6.3/bundle.min.js" integrity="sha384-/Cqa/8kaWn7emdqIBLk3AkFMAHBk0LObErtMhO+hr52CntkaurEnihPmqYj3uJho" crossorigin="anonymous"></script>
     <script>
         Sentry.init( {

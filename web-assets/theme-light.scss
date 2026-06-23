@@ -6,6 +6,13 @@ h1 a:hover {
     color: #000;
 }
 
+// Opaque backing for the mobile sticky footer ad (layout lives in _styles.scss)
+// so posts scrolling underneath the fixed bar don't show through its margins.
+#footer-ad {
+    background-color: #fff;
+    border-top: 1px solid #e0e0e0;
+}
+
 #icon-rss rect {
     fill: #2196f3;
 }

@@ -217,6 +217,23 @@ a.ipsAttachLink_image {
     }
 }
 
+// In-feed ad injected between posts (see PostList.jsx). Centered with spacing
+// that matches the gap between post panels so it reads as its own block, not
+// part of a post. Shown on every viewport (the mobile exemption is below).
+.in-feed-ad {
+    margin: 20px 0;
+    text-align: center;
+}
+
+// Mobile-only sticky footer ad — see #footer-ad in index.html. Hidden by
+// default (desktop is served by the side rails); the <=1480px block below pins
+// it to the bottom of the viewport. Gating on the parent (not the inner
+// .adsbygoogle, which carries an inline display) keeps the desktop hide solid.
+// The opaque background is theme-specific (see theme-*.scss).
+#footer-ad {
+    display: none;
+}
+
 // Below ~1480px the gap beside the centered 1170px container is too narrow
 // (< ~125px) to serve a side-rail unit, so hide the rails. The rails are
 // responsive (see #left-ad / #right-ad in index.html), so anything wider gets
@@ -224,6 +241,32 @@ a.ipsAttachLink_image {
 @media screen and ( max-width: 1480px ){
     .adsbygoogle {
         display: none;
+    }
+
+    // The in-feed ad is in normal flow (not a narrow side gap), so it stays
+    // visible on mobile. This more-specific selector wins back the blanket
+    // .adsbygoogle hide above.
+    .in-feed-ad .adsbygoogle {
+        display: block;
+    }
+
+    // The rails are gone here, so show the footer unit instead: a short
+    // horizontal banner (format set in index.jsx) pinned to the bottom. The bar
+    // sizes to the banner (no fixed height — clipping ad content is against
+    // AdSense policy); the body gets bottom padding sized to clear the tallest
+    // horizontal banner (~90px) so the last post never hides behind the bar.
+    #footer-ad {
+        bottom: 0;
+        display: block;
+        left: 0;
+        position: fixed;
+        right: 0;
+        text-align: center;
+        z-index: 1000;
+    }
+
+    body {
+        padding-bottom: 100px;
     }
 }
 

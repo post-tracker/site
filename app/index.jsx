@@ -16,6 +16,17 @@ ad2Root.render(<Ad
     dataAdSlot = { '7806508818' }
 />);
 
+// Mobile-only footer ad. The side rails above are hidden below 1480px (see
+// _styles.scss), so phones/tablets otherwise see no ad — this fills that gap.
+// `horizontal` keeps it a short banner suited to the sticky bottom bar.
+const FOOTER_AD_SLOT = '3651963216';
+const footerAdContainer = document.getElementById( 'footer-ad' );
+const footerAdRoot = createRoot(footerAdContainer);
+footerAdRoot.render(<Ad
+    dataAdSlot = { FOOTER_AD_SLOT }
+    dataAdFormat = { 'horizontal' }
+/>);
+
 const pageContainer = document.getElementById( 'js-app' );
 const pageRoot = createRoot(pageContainer);
 pageRoot.render(<Root />);
