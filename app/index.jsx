@@ -18,16 +18,22 @@ const isNarrow = window.matchMedia && window.matchMedia( '( max-width: 1480px )'
 
 if ( isNarrow ) {
     // Phones/tablets: the rails are hidden, so the only ad is a sticky footer
-    // banner. Responsive `horizontal` with full-width-responsive off, so AdSense
-    // serves a standard banner (320x50 on a phone) — a thin line, not a tall
-    // block — while still measuring the full-width container.
+    // banner. A *fixed* 320x50 unit, not a responsive one: responsive
+    // `horizontal` let AdSense resolve the slot to the 320x100 large mobile
+    // banner on a phone (twice the height we want for a sticky bar). Passing a
+    // falsy dataAdFormat opts out of the responsive path in Ad.jsx, so the
+    // explicit 320x50 in `styles` is the served size — a thin line, fixed height.
     const FOOTER_AD_SLOT = '3651963216';
     const footerAdContainer = document.getElementById( 'footer-ad' );
     const footerAdRoot = createRoot(footerAdContainer);
     footerAdRoot.render(<Ad
         dataAdSlot = { FOOTER_AD_SLOT }
-        dataAdFormat = { 'horizontal' }
-        dataFullWidthResponsive = { 'false' }
+        dataAdFormat = { '' }
+        styles = { {
+            display: 'inline-block',
+            height: '50px',
+            width: '320px',
+        } }
     />);
 } else {
     // Desktop: the centered container leaves a gap on each side wide enough for

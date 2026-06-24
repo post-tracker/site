@@ -262,6 +262,11 @@ a.ipsAttachLink_image {
         bottom: 0;
         display: block;
         left: 0;
+        // font-size:0 removes the inline-block whitespace gap below the <ins>,
+        // so the fixed bar hugs the 50px banner instead of adding a line's worth
+        // of height.
+        font-size: 0;
+        line-height: 0;
         position: fixed;
         right: 0;
         text-align: center;
@@ -269,7 +274,9 @@ a.ipsAttachLink_image {
     }
 
     body {
-        padding-bottom: 100px;
+        // Clears the 50px sticky banner (+ its 1px top border and a little
+        // breathing room) so the last post never hides behind the bar.
+        padding-bottom: 58px;
     }
 }
 
