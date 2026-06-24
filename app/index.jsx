@@ -18,19 +18,16 @@ ad2Root.render(<Ad
 
 // Mobile-only footer ad. The side rails above are hidden below 1480px (see
 // _styles.scss), so phones/tablets otherwise see no ad — this fills that gap.
-// Rendered as a fixed 320x50 banner (no format) so it stays a thin line rather
-// than a tall responsive block.
+// Responsive `horizontal` with full-width-responsive off, so AdSense serves a
+// standard banner (320x50 on a phone) — a thin line, not a tall block — while
+// still measuring the full-width container (which avoids availableWidth=0).
 const FOOTER_AD_SLOT = '3651963216';
 const footerAdContainer = document.getElementById( 'footer-ad' );
 const footerAdRoot = createRoot(footerAdContainer);
 footerAdRoot.render(<Ad
     dataAdSlot = { FOOTER_AD_SLOT }
-    dataAdFormat = { '' }
-    styles = { {
-        display: 'inline-block',
-        height: '50px',
-        width: '320px',
-    } }
+    dataAdFormat = { 'horizontal' }
+    dataFullWidthResponsive = { 'false' }
 />);
 
 const pageContainer = document.getElementById( 'js-app' );

@@ -40,13 +40,13 @@ class Ad extends React.Component {
             style: this.state.styles,
         };
 
-        // With a format set, the unit is responsive and sizes itself to the
-        // container. With no format, it renders at the exact width/height in
-        // `styles` — used for the small fixed footer banner so it stays a thin
-        // line instead of a tall full-width-responsive block.
+        // The unit is responsive and sizes itself from the container width.
+        // With full-width-responsive off, AdSense picks the largest standard
+        // banner that fits (e.g. 320x50 on a phone) instead of expanding to a
+        // tall adaptive block — that's how the footer stays a thin line.
         if ( this.props.dataAdFormat ) {
             insProps[ 'data-ad-format' ] = this.props.dataAdFormat;
-            insProps[ 'data-full-width-responsive' ] = 'true';
+            insProps[ 'data-full-width-responsive' ] = this.props.dataFullWidthResponsive;
         }
 
         return (
@@ -59,11 +59,13 @@ Ad.displayName = 'Ad';
 
 Ad.defaultProps = {
     dataAdFormat: 'auto',
+    dataFullWidthResponsive: 'true',
     styles: {},
 };
 
 Ad.propTypes = {
     dataAdFormat: PropTypes.string,
+    dataFullWidthResponsive: PropTypes.string,
     dataAdSlot: PropTypes.string.isRequired,
     // eslint-disable-next-line react/forbid-prop-types
     styles: PropTypes.object,

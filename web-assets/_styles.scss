@@ -250,9 +250,10 @@ a.ipsAttachLink_image {
         display: block;
     }
 
-    // The rails are gone here, so show the footer unit instead: a fixed 320x50
-    // banner (sized in index.jsx) pinned to the bottom as a thin line. The body
-    // gets matching bottom padding so the last post never hides behind the bar.
+    // The rails are gone here, so show the footer unit instead: a standard
+    // banner (320x50 on a phone, up to 728x90 on a wide tablet — see index.jsx)
+    // pinned to the bottom as a thin line. The body gets bottom padding sized to
+    // clear the tallest banner so the last post never hides behind the bar.
     #footer-ad {
         bottom: 0;
         display: block;
@@ -264,7 +265,7 @@ a.ipsAttachLink_image {
     }
 
     body {
-        padding-bottom: 70px;
+        padding-bottom: 100px;
     }
 }
 
