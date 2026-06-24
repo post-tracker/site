@@ -223,6 +223,10 @@ a.ipsAttachLink_image {
 .in-feed-ad {
     margin: 20px 0;
     text-align: center;
+    // Reserve a banner-height floor so the unit filling in-flow doesn't shove
+    // the posts below it down (a layout-shift hit). A floor rather than a fixed
+    // height keeps a taller fill from being clipped.
+    min-height: 100px;
 }
 
 // Mobile-only sticky footer ad — see #footer-ad in index.html. Hidden by

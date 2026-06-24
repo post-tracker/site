@@ -317,6 +317,22 @@ const buildRootPage = function buildRootPage( gamesData ){
         } );
     }
 
+    // The boxart grid is the landing page's only above-the-fold imagery, and the
+    // first tile is its LCP element. Lazy-loading every tile (the default in the
+    // template) defers that request and tanks LCP, so eager-load the first row
+    // and give the very first image high fetch priority. EAGER_COUNT covers a
+    // typical first row across breakpoints without eager-loading the whole grid.
+    const EAGER_COUNT = 5;
+    renderData.games.forEach( ( game, index ) => {
+        if ( index < EAGER_COUNT ) {
+            game.eager = true;
+        }
+
+        if ( index === 0 ) {
+            game.priority = true;
+        }
+    } );
+
     savefile( 'index.html', mustache.render( allGamesTemplate, renderData ) );
 };
 

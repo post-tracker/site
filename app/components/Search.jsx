@@ -55,11 +55,13 @@ class Search extends React.Component {
         return (
             <form
                 onSubmit = { this.handleSubmit }
+                role = { 'search' }
             >
                 <div
                     className = { 'form-group has-feedback' }
                 >
                     <input
+                        aria-label = { 'Search posts' }
                         className = { 'form-control' }
                         defaultValue = { this.props.searchTerm }
                         name = { 'search' }
@@ -69,7 +71,6 @@ class Search extends React.Component {
                         ref = { ( input ) => {
                             this.input = input;
                         } }
-                        role = { 'search' }
                         type = { 'text' }
                         autoComplete = { 'off' }
                     />

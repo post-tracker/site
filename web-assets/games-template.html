@@ -7,6 +7,7 @@
     <title>
         Developer Tracker
     </title>
+    <meta name="description" content="Developer Tracker follows what game developers post across Reddit, Twitter, Steam, forums and more — one page per game so you never miss an official update.">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
@@ -14,6 +15,9 @@
     <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#222222" media="(prefers-color-scheme: dark)">
+    <!-- Boxart is served from Twitch's CDN; the LCP tile is the first image, so
+         warm the connection before the grid is parsed. -->
+    <link rel="preconnect" href="https://static-cdn.jtvnw.net" crossorigin>
     <style>
         /* Match the per-game dev tracker pages: Bootstrap 3 base font, centered
            h1, top-right social icons, panel-style cards, light by default with a
@@ -21,7 +25,10 @@
         :root {
             --bg: #ffffff;
             --text: #333333;
-            --muted: #777777;
+            /* #777 is only ~4.48:1 on white (fails AA for body text); #6a6a6a
+               clears it at ~5.4:1. The dark-theme --muted below sits on #222
+               and already passes, so it stays. */
+            --muted: #6a6a6a;
             --link: #337ab7;
             --link-hover: #23527c;
             --h1: #000000;
@@ -397,15 +404,12 @@
             Follow what game developers are posting &mdash; across all sources. Pick a game:
         </p>
         <div class="toolbar">
-            <!-- tabindex="1" pulls the filter to the front of the tab order so
-                 the first Tab press lands here, ahead of the header links. -->
             <input
                 type="search"
                 class="js-game-filter game-filter"
                 placeholder="Filter games&hellip;"
                 aria-label="Filter games by name"
                 autocomplete="off"
-                tabindex="1"
             >
             <a class="btn btn-primary" href="https://discord.gg/QN9uveFYXX" title="Join our Discord to request a new game">
                 <svg class="icon"><use xlink:href="#icon-discord"></use></svg>
@@ -420,7 +424,7 @@
             {{#games}}
             <div class="game-wrapper" data-name="{{ name }}">
                 <a href="{{{ url }}}" title="{{ name }} dev tracker">
-                    <span class="thumb"><img loading="lazy" src="{{{ image }}}" alt=""></span>
+                    <span class="thumb"><img {{#priority}}fetchpriority="high" {{/priority}}{{^eager}}loading="lazy" {{/eager}}src="{{{ image }}}" alt=""></span>
                     <span class="meta">
                         <h2>{{ name }}</h2>
                         <span class="cta">View tracker <span class="arrow">&rarr;</span></span>

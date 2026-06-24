@@ -163,7 +163,12 @@ class Post extends React.Component {
             if ( matches[ 2 ] === 'https:' ) {
                 fallbackUrl = `ssl:${ fallbackUrl }`;
             }
-            const newSrc = `src="https://images.weserv.nl/?url=${ encodeURIComponent( matches[ 3 ] ) }&w=${ maxWidth }&h=${ maxHeight }&t=fit&format=webp&il&errorredirect=${ encodeURIComponent( fallbackUrl ) }"${ loadingTypeString }`;
+            // Post bodies are raw developer HTML; embedded media rarely carries
+            // an alt, which fails the image-alt a11y audit. Treat them as
+            // decorative with alt="" — but only when the source tag has none, so
+            // a real description is never clobbered.
+            const altAttr = ( /\balt\s*=/ ).test( matches[ 0 ] ) ? '' : ' alt=""';
+            const newSrc = `src="https://images.weserv.nl/?url=${ encodeURIComponent( matches[ 3 ] ) }&w=${ maxWidth }&h=${ maxHeight }&t=fit&format=webp&il&errorredirect=${ encodeURIComponent( fallbackUrl ) }"${ loadingTypeString }${ altAttr }`;
             htmlString = htmlString.replace( matches[ 1 ], newSrc );
         }
 
@@ -172,7 +177,8 @@ class Post extends React.Component {
             if ( matches[ 2 ] === 'https:' ) {
                 fallbackUrl = `ssl:${ fallbackUrl }`;
             }
-            const newSrc = `srcset="https://images.weserv.nl/?url=${ encodeURIComponent( matches[ 3 ] ) }&w=${ maxWidth }&h=${ maxHeight }&t=fit&format=webp&&il&errorredirect=${ encodeURIComponent( fallbackUrl ) } ${ matches[ 4 ] }"${ loadingTypeString }`
+            const altAttr = ( /\balt\s*=/ ).test( matches[ 0 ] ) ? '' : ' alt=""';
+            const newSrc = `srcset="https://images.weserv.nl/?url=${ encodeURIComponent( matches[ 3 ] ) }&w=${ maxWidth }&h=${ maxHeight }&t=fit&format=webp&&il&errorredirect=${ encodeURIComponent( fallbackUrl ) } ${ matches[ 4 ] }"${ loadingTypeString }${ altAttr }`
             htmlString = htmlString.replace( matches[ 1 ], newSrc );
         }
 

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://developertracker.com/sitemap.xml
