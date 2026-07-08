@@ -5,6 +5,11 @@ on:
   push:
     branches:
       - master
+  # Rebuild + redeploy hourly so a game that only just gained posts (and was
+  # therefore skipped by build.js's zero-post filter on the last run) goes live
+  # without waiting for the next commit.
+  schedule:
+    - cron: '0 * * * *'
 
 jobs:
   deploy:
@@ -20,16 +25,75 @@ jobs:
 
     - run: npm ci
 
-    - run: npm run build
+    # Fingerprint the set of games that currently have posts (same filter the
+    # build applies). On scheduled runs we use this to skip an identical
+    # rebuild/redeploy when nothing changed, so hourly runs don't churn the
+    # service-worker / re-upload for every visitor when there's nothing new.
+    # Push and manual runs always deploy regardless.
+    - name: Fingerprint published games
+      id: fingerprint
+      env:
+        API_TOKEN: ${{ secrets.API_TOKEN }}
+      run: |
+        if fp=$(node scripts/games-fingerprint.js); then
+          echo "value=$fp" >> "$GITHUB_OUTPUT"
+          echo "ok=true" >> "$GITHUB_OUTPUT"
+          echo "Games fingerprint: $fp"
+        else
+          # Fail-safe: if we can't compute the fingerprint, don't skip — fall
+          # through to a normal deploy.
+          echo "ok=false" >> "$GITHUB_OUTPUT"
+          echo "Fingerprint unavailable; will deploy unconditionally."
+        fi
+
+    # Cross-run state: a cache under this exact key exists only if a previous
+    # run already deployed this same set of games. A hit therefore means
+    # "nothing to do".
+    - name: Check for prior deploy of this game set
+      id: fpcache
+      if: steps.fingerprint.outputs.ok == 'true'
+      uses: actions/cache@v4
+      with:
+        path: .games-fingerprint
+        key: games-fingerprint-${{ steps.fingerprint.outputs.value }}
+
+    # Skip the deploy only on scheduled runs where the game set is unchanged
+    # (cache hit). Any other event, a fingerprint failure, or a cache miss
+    # proceeds to deploy.
+    - name: Decide whether to deploy
+      id: gate
+      run: |
+        if [ "${{ github.event_name }}" = "schedule" ] \
+           && [ "${{ steps.fingerprint.outputs.ok }}" = "true" ] \
+           && [ "${{ steps.fpcache.outputs.cache-hit }}" = "true" ]; then
+          echo "deploy=false" >> "$GITHUB_OUTPUT"
+          echo "Scheduled run, game set unchanged — skipping deploy."
+        else
+          echo "deploy=true" >> "$GITHUB_OUTPUT"
+          echo "Deploying."
+        fi
+
+    - name: Build
+      if: steps.gate.outputs.deploy == 'true'
+      run: npm run build
 
     - name: Generate static site
+      if: steps.gate.outputs.deploy == 'true'
       run: node scripts/build.js
       env:
         API_TOKEN: ${{ secrets.API_TOKEN }}
 
     - name: Deploy to Cloudflare Pages
+      if: steps.gate.outputs.deploy == 'true'
       uses: cloudflare/wrangler-action@v3
       with:
         apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         command: pages deploy
+
+    # Record the fingerprint we just deployed so the cache key gets saved at
+    # job end (only saved on a cache miss, i.e. the first time we deploy this
+    # set). This is what makes the next scheduled run able to skip.
+    - name: Record deployed fingerprint
+      if: steps.gate.outputs.deploy == 'true' && steps.fingerprint.outputs.ok == 'true'
+      run: echo "${{ steps.fingerprint.outputs.value }}" > .games-fingerprint
