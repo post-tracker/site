@@ -186,7 +186,17 @@ const buildGame = function buildGame( gameData ) {
             if ( junk.is( path.parse( file ).base ) ) {
                 continue;
             }
-            const fileName = path.join( gameData.identifier, file.replace( dataRootPath, '' ) )
+            const relativeName = file.replace( dataRootPath, '' );
+
+            // posters/ holds landing-grid boxart keyed by game identifier and is
+            // only referenced from the root page, so it's copied ONCE to the
+            // deploy root by buildRootAssets. Skip it here or it'd be duplicated
+            // into every per-game folder (68× the same images).
+            if ( relativeName.replace( /^[/\\]/, '' ).startsWith( 'posters' + path.sep ) || relativeName.replace( /^[/\\]/, '' ).startsWith( 'posters/' ) ) {
+                continue;
+            }
+
+            const fileName = path.join( gameData.identifier, relativeName )
 
             // Don't upload files we'll rewrite
             for ( const rewriteFile of rewriteFiles ) {
@@ -391,8 +401,11 @@ const buildHeaders = function buildHeaders() {
 
 // The per-game folders get a copy of web/ via buildGame, but the root landing
 // page also references favicons/manifest (apple-touch-icon.png, site.webmanifest,
-// safari-pinned-tab.svg, etc.). Copy web/'s top-level static files to the deploy
-// root so those resolve. Skip index.html (the per-game template, not the landing
+// safari-pinned-tab.svg, etc.) plus shared asset folders like posters/ (per-game
+// boxart keyed by identifier — web/posters/<identifier>.jpg served at
+// /posters/<identifier>.jpg). Copy web/'s top-level static files to the deploy
+// root so those resolve, and recurse into its subdirectories so shared asset
+// folders ship whole. Skip index.html (the per-game template, not the landing
 // page) and service-worker.js (rewritten per game, not served at root).
 const buildRootAssets = function buildRootAssets() {
     const dataRootPath = path.join( __dirname, '..', 'web' );
@@ -401,13 +414,37 @@ const buildRootAssets = function buildRootAssets() {
         'service-worker.js',
     ];
 
-    for ( const entry of fs.readdirSync( dataRootPath, { withFileTypes: true } ) ) {
-        if ( !entry.isFile() || junk.is( entry.name ) || skip.includes( entry.name ) ) {
-            continue;
-        }
+    const copyTree = function copyTree( relativeDir ) {
+        const absoluteDir = path.join( dataRootPath, relativeDir );
 
-        savefile( entry.name, fs.readFileSync( path.join( dataRootPath, entry.name ) ) );
-    }
+        for ( const entry of fs.readdirSync( absoluteDir, { withFileTypes: true } ) ) {
+            if ( junk.is( entry.name ) ) {
+                continue;
+            }
+
+            const relativePath = path.join( relativeDir, entry.name );
+
+            // Only skip the reserved names at the deploy root; a file called
+            // index.html deeper in an asset folder is a real asset.
+            if ( relativeDir === '' && skip.includes( entry.name ) ) {
+                continue;
+            }
+
+            if ( entry.isDirectory() ) {
+                copyTree( relativePath );
+
+                continue;
+            }
+
+            if ( !entry.isFile() ) {
+                continue;
+            }
+
+            savefile( relativePath, fs.readFileSync( path.join( dataRootPath, relativePath ) ) );
+        }
+    };
+
+    copyTree( '' );
 };
 
 const run = async function run() {
