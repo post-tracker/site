@@ -19,6 +19,7 @@ class PostList extends React.Component {
                     key = { communityPost.urlHash }
                     postData = { communityPost }
                     postIndex = { index }
+                    isNew = { Boolean( this.props.unread[ communityPost.urlHash ] ) }
                 />
             );
 
@@ -47,6 +48,12 @@ class PostList extends React.Component {
 PostList.propTypes = {
     // eslint-disable-next-line react/forbid-prop-types
     posts: PropTypes.array.isRequired,
+    // eslint-disable-next-line react/forbid-prop-types
+    unread: PropTypes.object,
+};
+
+PostList.defaultProps = {
+    unread: {},
 };
 
 export default PostList;

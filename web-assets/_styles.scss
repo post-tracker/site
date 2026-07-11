@@ -64,6 +64,27 @@ h1 a:hover {
     word-wrap: break-word;
 }
 
+// Unread posts (#14): a left accent stripe so the feed is scannable at a
+// glance. The stripe colour is theme-specific (see theme-*.scss).
+.panel.unread {
+    border-left-width: 3px;
+    border-left-style: solid;
+}
+
+// The "New" pill in a post header (#14). Colours are theme-specific.
+.new-badge {
+    display: inline-block;
+    font-size: .62rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    line-height: 1;
+    padding: 3px 6px;
+    border-radius: 3px;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
 .panel-footer {
     position: relative;
     padding: 3px 15px;

@@ -6,6 +6,8 @@ import {
     fetchPostsIfNeeded,
 } from '../actions';
 
+import { getUnreadMap, commitSeen } from '../unread';
+
 import PostList from '../components/PostList.jsx';
 import Skeleton from '../components/Skeleton.jsx';
 import NoPosts from '../components/NoPosts.jsx';
@@ -13,6 +15,17 @@ import NoPosts from '../components/NoPosts.jsx';
 class PostListContainer extends React.Component {
     componentDidMount () {
         this.props.getPosts();
+        commitSeen( this.props.posts );
+    }
+
+    componentDidUpdate ( previousProps ) {
+        // Advance the watermark + app badge whenever a new set of posts lands
+        // (initial load, search, filter/service change). The unread markers
+        // shown this render are still based on the session baseline captured
+        // before this call, so flagged posts stay flagged for the visit.
+        if ( previousProps.posts !== this.props.posts ) {
+            commitSeen( this.props.posts );
+        }
     }
 
     render () {
@@ -38,6 +51,7 @@ class PostListContainer extends React.Component {
         return (
             <PostList
                 posts = { this.props.posts }
+                unread = { getUnreadMap( this.props.posts ) }
             />
         );
     }

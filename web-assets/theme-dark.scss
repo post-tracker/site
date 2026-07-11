@@ -179,3 +179,14 @@ iframe {
 .groups-wrapper .filters-wrapper svg {
     fill: #fff;
 }
+
+// Unread post accent + "New" pill (#14) — the theme's link cyan, with a dark
+// text colour on the pill for contrast against the light background.
+.panel.unread {
+    border-left-color: $fc-link;
+}
+
+.new-badge {
+    color: darken($bg-main, 2%);
+    background: $fc-link;
+}

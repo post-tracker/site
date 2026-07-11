@@ -55,3 +55,13 @@ h1 a:hover {
 .bb-spoiler {
     border-color: #ccc;
 }
+
+// Unread post accent + "New" pill (#14) — on-brand blue.
+.panel.unread {
+    border-left-color: #1565c0;
+}
+
+.new-badge {
+    color: #fff;
+    background: #1565c0;
+}

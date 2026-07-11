@@ -286,7 +286,7 @@ class Post extends React.Component {
 
         return (
             <div
-                className = { 'panel panel-default' }
+                className = { this.props.isNew ? 'panel panel-default unread' : 'panel panel-default' }
             >
                 <div
                     className = { 'panel-heading' }
@@ -306,6 +306,14 @@ class Post extends React.Component {
                             : ''
                         }
                     </span>
+                    { this.props.isNew ?
+                        <span
+                            className = { 'new-badge' }
+                        >
+                            { 'New' }
+                        </span>
+                        : ''
+                    }
                     { postedString }
                     { topicLinkNode }
                 </div>
@@ -375,6 +383,7 @@ Post.propTypes = {
         urlHash: PropTypes.string,
     } ).isRequired,
     postIndex: PropTypes.number,
+    isNew: PropTypes.bool,
 };
 
 export default Post;
