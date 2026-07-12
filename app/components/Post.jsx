@@ -7,6 +7,16 @@ import { highlightHtml } from '../highlight';
 const POST_CUTOFF_HEIGHT = 1000;
 const TIMESTAMP_UPDATE_INTERVAL = 1000;
 
+// Services whose "topic" is the platform name itself (a feed you post *on*),
+// not a thread/forum/subreddit you post *in*. Drives the "posted on/in …"
+// preposition in the header. Compared case-insensitively. Only list services
+// whose topic is genuinely a platform label AND that carry a topicUrl (so they
+// reach the "posted <prep> <topic>" branch) — e.g. Twitter's topic is the verb
+// "tweeted" with no topicUrl, so it must NOT go here.
+const POSTED_ON_SERVICES = [
+    'bluesky',
+];
+
 const styles = {
     permalink: {
         float: 'right',
@@ -324,12 +334,22 @@ class Post extends React.Component {
         }
 
         if ( this.props.postData.topicUrl ) {
-            postedString = `${ postedString } posted in `;
+            const service = String( this.props.postData.account.service || '' ).toLowerCase();
+            const preposition = POSTED_ON_SERVICES.indexOf( service ) > -1 ? 'on' : 'in';
+
+            // Historically some sources stored the topic with the phrase baked
+            // in (e.g. Bluesky's "posted on Bluesky"), which rendered as
+            // "posted on posted on Bluesky". We supply the "posted on/in " lead
+            // ourselves, so strip any such leading phrase off the stored topic
+            // to normalise both old rows and current ones to a single label.
+            const topic = String( this.props.postData.topic || '' ).replace( /^\s*posted\s+(?:on|in)\s+/i, '' );
+
+            postedString = `${ postedString } posted ${ preposition } `;
             topicLinkNode = (
                 <a
                     // eslint-disable-next-line react/no-danger
                     dangerouslySetInnerHTML = { {
-                        __html: highlightHtml( this.props.postData.topic, this.props.searchTerm ),
+                        __html: highlightHtml( topic, this.props.searchTerm ),
                     } }
                     href = { this.props.postData.topicUrl }
                 />
