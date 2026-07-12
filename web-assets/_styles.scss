@@ -85,6 +85,16 @@ h1 a:hover {
     vertical-align: middle;
 }
 
+// Search phrase highlight (#45): the matched term(s) inside post bodies and
+// topics are wrapped in <mark class="search-highlight">. Colours are
+// theme-specific (see theme-*.scss). Reset the UA <mark> defaults so the
+// highlight matches the theme rather than the browser's yellow.
+.search-highlight {
+    padding: 0 1px;
+    border-radius: 2px;
+    color: inherit;
+}
+
 .panel-footer {
     position: relative;
     padding: 3px 15px;

@@ -190,3 +190,10 @@ iframe {
     color: darken($bg-main, 2%);
     background: $fc-link;
 }
+
+// Search phrase highlight (#45) — a soft wash of the theme's link cyan behind
+// the match, with a stronger underline bar for emphasis on the dark bg.
+.search-highlight {
+    background: rgba(116, 199, 221, .18);
+    box-shadow: inset 0 -2px 0 rgba(116, 199, 221, .7);
+}

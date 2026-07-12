@@ -2,6 +2,8 @@ import React from 'react';
 import TimeAgo from 'react-timeago';
 import PropTypes from 'prop-types';
 
+import { highlightHtml } from '../highlight';
+
 const POST_CUTOFF_HEIGHT = 1000;
 const TIMESTAMP_UPDATE_INTERVAL = 1000;
 
@@ -211,6 +213,8 @@ class Post extends React.Component {
 
         content = this.updateIframes( content );
 
+        content = highlightHtml( content, this.props.searchTerm );
+
         return content;
     }
 
@@ -275,7 +279,7 @@ class Post extends React.Component {
                 <a
                     // eslint-disable-next-line react/no-danger
                     dangerouslySetInnerHTML = { {
-                        __html: this.props.postData.topic,
+                        __html: highlightHtml( this.props.postData.topic, this.props.searchTerm ),
                     } }
                     href = { this.props.postData.topicUrl }
                 />
@@ -384,6 +388,7 @@ Post.propTypes = {
     } ).isRequired,
     postIndex: PropTypes.number,
     isNew: PropTypes.bool,
+    searchTerm: PropTypes.string,
 };
 
 export default Post;

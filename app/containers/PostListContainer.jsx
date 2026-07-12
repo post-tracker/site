@@ -52,6 +52,7 @@ class PostListContainer extends React.Component {
             <PostList
                 posts = { this.props.posts }
                 unread = { getUnreadMap( this.props.posts ) }
+                searchTerm = { this.props.searchString }
             />
         );
     }
