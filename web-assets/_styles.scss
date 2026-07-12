@@ -111,6 +111,21 @@ h1 a:hover {
             font-size: 0;
         }
     }
+
+    // Post actions grouped on the right (#27): Share (when supported) + Direct
+    // link, kept together rather than pushed apart by the footer's space-between.
+    .footer-links {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        line-height: 27px;
+    }
+
+    .share-link {
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+    }
 }
 
 .panel-body img {

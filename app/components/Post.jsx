@@ -17,6 +17,12 @@ const styles = {
         marginRight: '8px',
         width: '20px',
     },
+    shareIcon: {
+        height: '14px',
+        width: '14px',
+        verticalAlign: 'middle',
+        marginRight: '4px',
+    },
 };
 
 class Post extends React.Component {
@@ -25,9 +31,14 @@ class Post extends React.Component {
 
         this.expand = this.expand.bind( this );
         this.handleExpandClick = this.handleExpandClick.bind( this );
+        this.handleShareClick = this.handleShareClick.bind( this );
 
         this.state = {
             expandable: false,
+            // Whether the Web Share API is available (#27). Feature-detected so
+            // the button is only rendered where the browser can honour it —
+            // mobile browsers + desktop Chrome/Edge, not Firefox desktop.
+            canShare: typeof navigator !== 'undefined' && typeof navigator.share === 'function',
         };
         this.postIndex = props.postIndex;
     }
@@ -71,6 +82,45 @@ class Post extends React.Component {
 
     handleExpandClick () {
         this.expand();
+    }
+
+    getPermalink () {
+        // The footer "Direct link" points at ?post=<id> on the current game
+        // page; share that same canonical URL as an absolute address.
+        const permalink = `?post=${ this.props.postData.id }`;
+
+        if ( typeof window === 'undefined' || !window.location ) {
+            return permalink;
+        }
+
+        return new URL( permalink, window.location.href ).href;
+    }
+
+    getShareTitle () {
+        const dev = this.props.postData.account.developer;
+        const who = ( dev && ( dev.nick || dev.name ) ) || 'A developer';
+        const game = ( typeof window !== 'undefined' && window.gameName ) || 'the dev tracker';
+
+        return `${ who } on ${ game }`;
+    }
+
+    handleShareClick ( event ) {
+        event.preventDefault();
+
+        if ( !this.state.canShare ) {
+            return;
+        }
+
+        // navigator.share rejects if the user dismisses the sheet; swallow that
+        // (and any other error) so it never surfaces as an unhandled rejection.
+        const sharePromise = navigator.share( {
+            title: this.getShareTitle(),
+            url: this.getPermalink(),
+        } );
+
+        if ( sharePromise && typeof sharePromise.catch === 'function' ) {
+            sharePromise.catch( () => {} );
+        }
     }
 
     expand () {
@@ -350,15 +400,36 @@ class Post extends React.Component {
                             />
                         </a>
                     </span>
-                    <a
-                        className = { 'link' }
-                        href = { `?post=${ this.props.postData.id }` }
-                        style = {
-                            styles.permalink
-                        }
+                    <span
+                        className = { 'footer-links' }
                     >
-                        { 'Direct link' }
-                    </a>
+                        { this.state.canShare ?
+                            <a
+                                className = { 'link share-link' }
+                                href = { `?post=${ this.props.postData.id }` }
+                                onClick = { this.handleShareClick }
+                                title = { 'Share this post' }
+                                aria-label = { 'Share this post' }
+                            >
+                                <svg
+                                    className = { 'icon' }
+                                    style = { styles.shareIcon }
+                                >
+                                    <use
+                                        xlinkHref = { '#icon-share' }
+                                    />
+                                </svg>
+                                { 'Share' }
+                            </a>
+                            : ''
+                        }
+                        <a
+                            className = { 'link' }
+                            href = { `?post=${ this.props.postData.id }` }
+                        >
+                            { 'Direct link' }
+                        </a>
+                    </span>
                 </div>
             </div>
         );
