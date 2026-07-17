@@ -172,9 +172,15 @@ services:
       REDDIT_USERNAME: ${FINDER_REDDIT_USERNAME:-}
       REDDIT_PASSWORD: ${FINDER_REDDIT_PASSWORD:-}
       REDDIT_USER_AGENT: ${FINDER_REDDIT_USER_AGENT:-}
+      # Redis (shared stack instance) caches resolved Steam personas/SteamID64s
+      # so the Steam finder stops re-fetching all tracked accounts' profile XML
+      # every run — that repeated fetching is what tripped Steam's rate limiting.
+      REDIS_URL: redis://redis:6379
     restart: unless-stopped
     depends_on:
       rest-api:
+        condition: service_healthy
+      redis:
         condition: service_healthy
 
   # # game-finder:
