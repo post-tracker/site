@@ -49,8 +49,8 @@
     "globals": "^17.6.0",
     "nodemon": "^3.1.14",
     "webpack": "^5.107.2",
-    "webpack-cli": "^7.0.3",
-    "webpack-dev-server": "^5.2.4",
+    "webpack-cli": "^7.2.1",
+    "webpack-dev-server": "^6.0.0",
     "wrangler": "^4.95.0"
   },
   "engines": {
