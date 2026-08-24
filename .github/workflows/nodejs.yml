@@ -8,8 +8,8 @@ on:
   # Rebuild + redeploy hourly so a game that only just gained posts (and was
   # therefore skipped by build.js's zero-post filter on the last run) goes live
   # without waiting for the next commit.
-  schedule:
-    - cron: '0 * * * *'
+  # schedule:
+  #  - cron: '0 * * * *'
 
 jobs:
   deploy:
