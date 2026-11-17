@@ -397,6 +397,16 @@ const buildHeaders = function buildHeaders() {
     ];
 
     savefile( '_headers', headers.join( '\n' ) );
+
+    // Only invoke the Pages Function (functions/_middleware.js) for the feed
+    // paths it actually serves. Without this it runs on every request and
+    // blows through the free plan's 100k invocations/day; static assets are
+    // free and unlimited.
+    savefile( '_routes.json', JSON.stringify( {
+        version: 1,
+        include: [ '/sitemap*', '/*/rss' ],
+        exclude: [],
+    }, null, 2 ) );
 };
 
 // The per-game folders get a copy of web/ via buildGame, but the root landing
